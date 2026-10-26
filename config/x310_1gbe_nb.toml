@@ -1,0 +1,16 @@
+# punjdrone default profile: X310 (serial 326CF02), 1GbE narrowband, single antenna.
+# Narrowband = one DroneID channel at 15.36 MSPS, which fits comfortably on 1GbE.
+
+[radio]
+device_args       = "addr=192.168.10.2"
+master_clock_rate = 184320000      # 12 x 15.36 MSPS -> integer DDC decimation
+sample_rate       = 15360000       # one DroneID channel
+center_freq       = 2459500000     # 2.4595 GHz (2.4 GHz band; retune/dwell later)
+gain_db           = 20
+antenna           = "RX2"
+wire_format       = "sc16"         # sc8 for dual-channel DF on 1GbE
+num_channels      = 1              # 1 = single antenna; 2 = direction finding
+
+[ui]
+ui            = true
+progress_file = "progress.md"

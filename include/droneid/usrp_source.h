@@ -1,0 +1,57 @@
+// droneid/usrp_source.h — IqSource backed by a live USRP (X310 + UBX-160) via UHD.
+// pimpl keeps all UHD/Boost headers out of this public header, so code that doesn't
+// touch the radio builds without UHD.
+// GPL-3.0-or-later.
+#pragma once
+
+#include <cstdint>
+#include <memory>
+#include <string>
+
+#include "droneid/iq_source.h"
+
+namespace droneid {
+
+struct UsrpParams {
+  std::string device_args      = "addr=192.168.10.2";
+  double      master_clock_rate = 184.32e6;  // 12 x 15.36 MSPS -> integer DDC decim
+  double      sample_rate       = 15.36e6;
+  double      center_freq       = 2.4595e9;
+  double      gain_db           = 20.0;
+  double      bandwidth         = 10e6;       // analog BW; <=0 leaves UHD default
+  std::string antenna           = "RX2";
+  std::string wire_format       = "sc16";     // over-the-wire: sc16 | sc8 (host side is fc32)
+  std::size_t channel           = 0;          // Radio#0 = single antenna
+  std::string clock_source      = "internal"; // internal | external | gpsdo
+  std::string time_source       = "internal";
+};
+
+class UsrpSource : public IqSource {
+ public:
+  explicit UsrpSource(const UsrpParams& p);
+  ~UsrpSource() override;
+
+  // Begin continuous streaming. Called by the ctor already; exposed for restart.
+  void start();
+  void stop();
+
+  // IqSource. Blocks up to ~a few hundred ms; returns 0 only on a hard error/stop.
+  std::size_t recv(cf32* buf, std::size_t n, int64_t& t_ns) override;
+  double sample_rate() const override;
+  double center_freq() const override;
+
+  // Status for the UI / logging.
+  bool          ref_locked() const;
+  std::uint64_t overflow_count() const;
+  std::string   serial() const;
+  std::string   summary() const;
+
+  // Retune (dwell/hop, Phase 4). Returns the actual center set.
+  double tune(double center_hz);
+
+ private:
+  struct Impl;
+  std::unique_ptr<Impl> impl_;
+};
+
+}  // namespace droneid

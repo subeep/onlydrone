@@ -1,0 +1,10 @@
+build/
+*.iq
+*.iq.meta
+*.sigmf-data
+*.sigmf-meta
+imgui.ini
+*.o
+*.so
+*.a
+compile_commands.json
