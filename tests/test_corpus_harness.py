@@ -5,7 +5,10 @@ import tempfile
 import unittest
 import zipfile
 
-import h5py
+try:
+    import h5py
+except ImportError:
+    h5py = None
 import numpy as np
 
 spec = importlib.util.spec_from_file_location("corpus", Path(__file__).resolve().parents[1] / "scripts/validate_corpus.py")
@@ -24,6 +27,7 @@ class CorpusHarnessTests(unittest.TestCase):
         self.assertIsNone(corpus.packet_record(payload.hex())["serial"])
         self.assertIsNone(corpus.packet_record(payload.hex())["version"])
 
+    @unittest.skipIf(h5py is None, "h5py not installed in current Python environment")
     def test_hdf_and_zip_layout(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

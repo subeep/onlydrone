@@ -44,6 +44,15 @@ struct DecodedBurst {
   std::vector<uint8_t> payload;  // 176 raw frame bytes (valid if crc_ok)
 };
 
+// DF-3: Paired decoded burst carrying both the decoded packet and the exact
+// time-aligned, identically filtered/shifted burst window from both channels.
+struct PairedDecodedBurst {
+  DecodedBurst decoded;
+  int64_t end_sample_index = 0;
+  std::vector<cf32> ch0_window;
+  std::vector<cf32> ch1_window;
+};
+
 // Full telemetry parsed from a CRC-valid payload (fields confirmed/placeheld — see frame.cpp).
 struct Telemetry {
   uint8_t  version = 0;
@@ -75,6 +84,14 @@ std::vector<DecodedBurst> decode_file(const std::string& path, SampleFormat fmt,
 
 // Decode an in-memory stream, centering/resampling to 15.36 MSPS before detection.
 std::vector<DecodedBurst> decode_samples(const std::vector<cf32>& iq, const DecodeOptions& opt);
+
+// DF-3: Shared paired DSP: uses one frequency/centering decision and matched resamplers on
+// ch0 and ch1, detects bursts once, and extracts identical intervals from both channels.
+std::vector<PairedDecodedBurst> decode_paired_samples(const std::vector<cf32>& ch0,
+                                                      const std::vector<cf32>& ch1,
+                                                      const DecodeOptions& opt,
+                                                      std::vector<cf32>* resampled_ch0_out = nullptr,
+                                                      std::vector<cf32>* resampled_ch1_out = nullptr);
 
 // Diagnostic: peak ZC (symbol-4) correlation at each frequency offset in [lo,hi] step.
 struct OffsetScore { double offset_hz; float max_corr; int64_t index; };

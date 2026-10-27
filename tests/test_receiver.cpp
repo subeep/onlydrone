@@ -3,6 +3,9 @@
 #include "droneid/test/microtest.h"
 
 #include <cmath>
+#include <cstdio>
+#include <filesystem>
+#include <fstream>
 #include <limits>
 #include <stdexcept>
 
@@ -83,6 +86,197 @@ TEST(Direction, CalibratedAnglesAndRejections) {
   EXPECT_FALSE(estimate(123, calibration.center_hz, calibration, 2000000000).valid);
   second.pop_back();
   EXPECT_FALSE(estimate(123, calibration.center_hz, calibration, 2000000000).valid);
+}
+
+TEST(DfGate1, PairedBlockAndManifestTransaction) {
+  droneid::PairedBlock block;
+  block.ch0.assign(512, droneid::cf32(0.2f, 0.1f));
+  block.ch1.assign(512, droneid::cf32(0.1f, 0.2f));
+  block.sample_rate = 15.36e6;
+  block.center_hz = 2459.5e6;
+  block.session_id = "sess_df1";
+  block.config_epoch = 1;
+  block.rig_id = "rig_a";
+
+  // Missing/zero device timestamp must be rejected (never fabricated zero timestamp).
+  block.first_device_timestamp_ns = 0;
+  EXPECT_FALSE(block.validate());
+  block.first_device_timestamp_ns = -1;
+  EXPECT_FALSE(block.validate());
+  block.first_device_timestamp_ns = 500000000LL;
+  EXPECT_TRUE(block.validate());
+
+  // Gap, overflow, channel swap/duplicate, or length mismatch must be rejected.
+  block.has_gap = true;
+  EXPECT_FALSE(block.validate());
+  block.has_gap = false;
+  block.has_overflow = true;
+  EXPECT_FALSE(block.validate());
+  block.has_overflow = false;
+  block.channel_order = {0, 0};
+  EXPECT_FALSE(block.validate());
+  block.channel_order = {0, 1};
+  EXPECT_TRUE(block.validate());
+
+  // Manifest-last transaction & file/checksum/sidecar validation.
+  const auto dir = std::filesystem::temp_directory_path();
+  const auto ch0_file = (dir / "df1_test.ch0.cf32").string();
+  const auto ch1_file = (dir / "df1_test.ch1.cf32").string();
+  const auto manifest_file = (dir / "df1_test.pair.toml").string();
+  {
+    std::ofstream f0(ch0_file, std::ios::binary);
+    std::ofstream f1(ch1_file, std::ios::binary);
+    f0.write(reinterpret_cast<const char*>(block.ch0.data()), block.ch0.size() * sizeof(droneid::cf32));
+    f1.write(reinterpret_cast<const char*>(block.ch1.data()), block.ch1.size() * sizeof(droneid::cf32));
+  }
+  {
+    std::ofstream m0(ch0_file + ".meta");
+    std::ofstream m1(ch1_file + ".meta");
+    m0 << "format=cf32\nsample_rate=15360000\ncenter_freq=2459500000\nchannel=0\n"
+          "first_device_timestamp_ns=500000000\nsamples=512\noverflows=0\n";
+    m1 << "format=cf32\nsample_rate=15360000\ncenter_freq=2459500000\nchannel=1\n"
+          "first_device_timestamp_ns=500000000\nsamples=512\noverflows=0\n";
+  }
+
+  droneid::PairManifest manifest;
+  manifest.complete = false;
+  manifest.status_reason = "interrupted";
+  manifest.session_id = "sess_df1";
+  manifest.config_epoch = 1;
+  manifest.rig_id = "rig_a";
+  manifest.sample_rate = 15.36e6;
+  manifest.center_hz = 2459.5e6;
+  manifest.gain_ch0_db = 20;
+  manifest.gain_ch1_db = 20;
+  manifest.first_device_timestamp_ns = 500000000LL;
+  manifest.capture_host_unix_ns = 1700000000000000000LL;
+  manifest.sample_count = 512;
+  manifest.ch0_path = "df1_test.ch0.cf32";
+  manifest.ch1_path = "df1_test.ch1.cf32";
+  manifest.ch0_fnv1a64 = droneid::fnv1a64_file(ch0_file);
+  manifest.ch1_fnv1a64 = droneid::fnv1a64_file(ch1_file);
+
+  // Incomplete manifest must be rejected.
+  EXPECT_FALSE(manifest.validate_files(ch0_file, ch1_file));
+
+  // Complete manifest passes roundtrip and file verification.
+  manifest.complete = true;
+  manifest.status_reason = "ok";
+  manifest.save(manifest_file);
+  const auto loaded = droneid::PairManifest::load(manifest_file);
+  EXPECT_TRUE(loaded.validate_files(ch0_file, ch1_file));
+
+  // Corrupted checksum or unequal EOF must fail validation.
+  auto bad_hash = loaded;
+  bad_hash.ch1_fnv1a64 = "0000000000000000";
+  EXPECT_FALSE(bad_hash.validate_files(ch0_file, ch1_file));
+
+  std::filesystem::remove(ch0_file);
+  std::filesystem::remove(ch1_file);
+  std::filesystem::remove(ch0_file + ".meta");
+  std::filesystem::remove(ch1_file + ".meta");
+  std::filesystem::remove(manifest_file);
+}
+
+TEST(DfGate2And3, CalibrationLifecycleAndQualityGates) {
+  const double pi = std::acos(-1.0);
+  const double center_hz = 2459.5e6;
+  const double rate = 15.36e6;
+  const double spacing_m = 0.05;
+  const double bias_rad = -1.15;
+
+  droneid::DfCalibrationService service;
+  EXPECT_EQ(service.state(), droneid::DfCalState::Disconnected);
+
+  // Connect transitions Disconnected -> Uncalibrated.
+  EXPECT_TRUE(service.connect("sess_live_1", 1, "rig_ubx", center_hz, rate, 30.0, {0, 1}, true, true));
+  EXPECT_EQ(service.state(), droneid::DfCalState::Uncalibrated);
+
+  // Build a clean splitter reference block.
+  droneid::PairedBlock ref;
+  ref.ch0.resize(2048);
+  ref.ch1.resize(2048);
+  for (std::size_t i = 0; i < ref.ch0.size(); ++i) {
+    ref.ch0[i] = std::polar(0.35f, static_cast<float>(0.021 * i));
+    ref.ch1[i] = ref.ch0[i] * std::polar(1.0f, static_cast<float>(bias_rad));
+  }
+  ref.first_device_timestamp_ns = 100000000LL;
+  ref.sample_rate = rate;
+  ref.center_hz = center_hz;
+  ref.session_id = "sess_live_1";
+  ref.config_epoch = 1;
+  ref.rig_id = "rig_ubx";
+  ref.channel_order = {0, 1};
+
+  // Uncalibrated block estimation must be rejected.
+  EXPECT_FALSE(service.estimate_block_bearing(ref, 2000000000LL).valid);
+
+  // Calibrate: Uncalibrated -> Calibrating -> Valid.
+  EXPECT_TRUE(service.begin_calibration("splitter"));
+  EXPECT_EQ(service.state(), droneid::DfCalState::Calibrating);
+  EXPECT_TRUE(service.complete_calibration(ref, spacing_m, 1000000000LL, 60.0, 10e6));
+  EXPECT_EQ(service.state(), droneid::DfCalState::Valid);
+
+  // Estimate target at +30 deg and +60 deg; check mirrored angle and endfire uncertainty growth.
+  auto make_target = [&](double deg) {
+    droneid::PairedBlock blk = ref;
+    blk.first_device_timestamp_ns = 200000000LL;
+    const double geom_phase =
+        bias_rad + 2.0 * pi * spacing_m * (center_hz / 299792458.0) * std::sin(deg * pi / 180.0);
+    for (std::size_t i = 0; i < blk.ch0.size(); ++i) {
+      blk.ch0[i] = std::polar(0.35f, static_cast<float>(0.017 * i));
+      blk.ch1[i] = blk.ch0[i] * std::polar(0.95f, static_cast<float>(geom_phase + ((i & 1) ? 0.01 : -0.01)));
+    }
+    return blk;
+  };
+  const auto b0 = service.estimate_block_bearing(make_target(0.0), 2000000000LL, 1e-5, 10.0);
+  const auto b30 = service.estimate_block_bearing(make_target(30.0), 2000000000LL, 1e-5, 10.0);
+  const auto b60 = service.estimate_block_bearing(make_target(60.0), 2000000000LL, 1e-5, 10.0);
+  EXPECT_TRUE(b0.valid);
+  EXPECT_TRUE(b30.valid);
+  EXPECT_TRUE(b60.valid);
+  EXPECT_NEAR(b30.broadside_deg, 30.0, 0.05);
+  EXPECT_NEAR(b30.mirrored_deg, 150.0, 0.05);
+  EXPECT_TRUE(b60.uncertainty_deg > b0.uncertainty_deg * 1.8);  // Endfire sensitivity check.
+
+  // Clipping gate rejection.
+  auto clipped = make_target(15.0);
+  for (std::size_t i = 0; i < 20; ++i) clipped.ch0[i] = droneid::cf32(1.0f, 1.0f);
+  EXPECT_FALSE(service.estimate_block_bearing(clipped, 2000000000LL).valid);
+
+  // Excessive phase dispersion / overlapping emitter gate rejection.
+  auto dispersed = make_target(15.0);
+  for (std::size_t i = dispersed.ch1.size() / 2; i < dispersed.ch1.size(); ++i)
+    dispersed.ch1[i] *= std::polar(1.0f, 1.2f);
+  EXPECT_FALSE(service.estimate_block_bearing(dispersed, 2000000000LL).valid);
+
+  // Channel swap rejection.
+  auto swapped = make_target(15.0);
+  swapped.channel_order = {1, 0};
+  EXPECT_FALSE(service.estimate_block_bearing(swapped, 2000000000LL).valid);
+
+  // Retune transitions Valid -> Stale and suppresses bearings.
+  service.on_retune(2444.5e6);
+  EXPECT_EQ(service.state(), droneid::DfCalState::Stale);
+  EXPECT_FALSE(service.estimate_block_bearing(make_target(15.0), 2000000000LL).valid);
+
+  // Recalibrate with OTA broadside method, then verify gap/overflow and LO unlock invalidation.
+  ref.center_hz = 2444.5e6;
+  ref.config_epoch = service.config_epoch();
+  EXPECT_TRUE(service.begin_calibration("ota_broadside"));
+  EXPECT_TRUE(service.complete_calibration(ref, spacing_m, 1500000000LL, 60.0, 10e6));
+  EXPECT_EQ(service.state(), droneid::DfCalState::Valid);
+  EXPECT_EQ(service.calibration().reference_method, std::string("ota_broadside"));
+
+  auto gapped = ref;
+  gapped.has_gap = true;
+  EXPECT_FALSE(service.estimate_block_bearing(gapped, 2000000000LL).valid);
+  EXPECT_EQ(service.state(), droneid::DfCalState::Stale);
+
+  service.on_lo_unlock();
+  EXPECT_EQ(service.state(), droneid::DfCalState::Error);
+  service.on_disconnect();
+  EXPECT_EQ(service.state(), droneid::DfCalState::Disconnected);
 }
 
 MICROTEST_MAIN

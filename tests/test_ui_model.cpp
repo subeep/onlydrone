@@ -117,4 +117,65 @@ TEST(UiModel, UnsupportedPayloadDoesNotInventTrack) {
   EXPECT_TRUE(model.tracks().empty());
 }
 
+TEST(UiModelDf, InvalidationClearsStaleArrowsAndTracksRejectionReasons) {
+  UiModel model;
+  PacketRow packet;
+  packet.serial = "DRONE-DF-01";
+  model.add_packet(packet);
+  DfUiStatus df;
+  df.state = DfUiState::Valid;
+  df.session_id = "sess_01";
+  df.config_epoch = 2;
+  df.reference_method = "splitter";
+  model.set_df_status(df);
+  model.set_bearing_detailed("DRONE-DF-01", -25.0f, -155.0f, 1.8f, 0.99f, true, 1000, 12000);
+  EXPECT_TRUE(model.tracks().front().has_bearing);
+  EXPECT_NEAR(model.tracks().front().mirrored_deg, -155.0, 1e-3);
+
+  // Recording accepted and rejected DF events updates aggregate counters and JSONL without GPS.
+  DfBearingEvent ok_ev;
+  ok_ev.burst_id = 1;
+  ok_ev.start_sample = 1000;
+  ok_ev.end_sample = 12000;
+  ok_ev.session_id = "sess_01";
+  ok_ev.config_epoch = 2;
+  ok_ev.classification = "decoded_droneid";
+  ok_ev.serial = "DRONE-DF-01";
+  ok_ev.valid = true;
+  ok_ev.broadside_deg = -25.0;
+  ok_ev.mirrored_deg = -155.0;
+  ok_ev.uncertainty_deg = 1.8;
+  ok_ev.coherence = 0.99;
+  model.record_df_event(ok_ev);
+
+  for (const char* reason : {"insufficient channel coherence",
+                             "receiver clipping detected",
+                             "excessive phase dispersion or overlapping emitters",
+                             "SNR below bearing gate threshold",
+                             "signal spectral occupancy outside calibrated passband",
+                             "overlapping_or_multipath_burst"}) {
+    DfBearingEvent rej;
+    rej.burst_id = 2;
+    rej.valid = false;
+    rej.rejection_reason = reason;
+    model.record_df_event(rej);
+  }
+
+  const auto summary = model.df_status();
+  EXPECT_EQ(summary.accepted_bearings, uint64_t(1));
+  EXPECT_EQ(summary.rejected_bearings, uint64_t(6));
+  EXPECT_EQ(summary.rejected_coherence, uint64_t(1));
+  EXPECT_EQ(summary.rejected_clipping, uint64_t(1));
+  EXPECT_EQ(summary.rejected_dispersion, uint64_t(1));
+  EXPECT_EQ(summary.rejected_snr, uint64_t(1));
+  EXPECT_EQ(summary.rejected_passband, uint64_t(1));
+  EXPECT_EQ(summary.rejected_overlap, uint64_t(1));
+  EXPECT_TRUE(ok_ev.to_jsonl().find("\"absolute_position\":null") != std::string::npos);
+
+  // Invalidation hides stale bearing arrows immediately.
+  model.invalidate_bearings(DfUiState::Stale, "retune invalidated calibration");
+  EXPECT_EQ(model.df_status().state, DfUiState::Stale);
+  EXPECT_FALSE(model.tracks().front().has_bearing);
+}
+
 MICROTEST_MAIN

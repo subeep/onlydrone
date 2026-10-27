@@ -31,6 +31,7 @@ execute_process(COMMAND "${DF}" "${FIXTURE}" "${FIXTURE}" --aligned --cal "${cal
   --format sc16 --rate 15360000 --center 2459500000 --samples 8000 --start-sample 8000
   RESULT_VARIABLE status OUTPUT_VARIABLE output)
 file(REMOVE "${calibration}")
-if(NOT status EQUAL 0 OR NOT output MATCHES "broadside_deg\":0" OR NOT output MATCHES "ambiguous_front_back\":true")
+if(NOT status EQUAL 0 OR NOT output MATCHES "broadside_deg\":0" OR NOT output MATCHES "ambiguous_front_back\":true"
+   OR NOT output MATCHES "provenance\":\"unverified_aligned_assertion\"")
   message(FATAL_ERROR "DF CLI roundtrip failed: ${output}")
 endif()

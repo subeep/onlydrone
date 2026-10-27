@@ -42,6 +42,7 @@ using droneid::ui::UsrpStatus;
 
 using Config = droneid::ui::SourceConfig;
 using droneid::ui::replay_worker;
+using droneid::ui::paired_replay_worker;
 using droneid::ui::live_worker;
 using droneid::ui::df_live_worker;
 
@@ -98,8 +99,12 @@ void draw_drones(const std::vector<ui::DroneTrack>& tracks, const ui::RfSummary&
       ImGui::TableNextColumn(); ImGui::TextUnformatted(t.generation.c_str());
       ImGui::TableNextColumn(); ImGui::Text("%.2f", t.corr);
       ImGui::TableNextColumn();
-      if (t.has_bearing) ImGui::Text("%.0f%s", t.bearing_deg, t.bearing_ambiguous ? "?" : "");
-      else ImGui::TextDisabled("-");
+      if (t.has_bearing) {
+        ImGui::Text("%+.0f deg (+/-%.0f)%s", t.bearing_deg, t.bearing_uncertainty_deg,
+                    t.bearing_ambiguous ? " [F/B?]" : "");
+      } else {
+        ImGui::TextDisabled("-");
+      }
       ImGui::TableNextColumn(); ImGui::Text("%llu", static_cast<unsigned long long>(t.count));
     }
     ImGui::EndTable();
@@ -155,28 +160,74 @@ void draw_packets(const std::vector<ui::PacketRow>& packets) {
   ImGui::EndChild();
 }
 
-void draw_direction(const std::vector<ui::DroneTrack>& tracks) {
+void draw_direction(const std::vector<ui::DroneTrack>& tracks, const ui::DfUiStatus& df,
+                    bool& want_cal_splitter, bool& want_cal_ota, bool& want_cal_cancel) {
   ImGui::BeginChild("direction", ImVec2(0, 0), true);
-  ImGui::SeparatorText("Direction");
+  ImGui::SeparatorText("Direction (2-Element Broadside AoA)");
+
+  ImVec4 state_col(0.6f, 0.6f, 0.6f, 1.0f);
+  if (df.state == ui::DfUiState::Valid) state_col = ImVec4(0.2f, 0.85f, 0.35f, 1.0f);
+  else if (df.state == ui::DfUiState::Calibrating || df.state == ui::DfUiState::Uncalibrated)
+    state_col = ImVec4(0.95f, 0.75f, 0.15f, 1.0f);
+  else if (df.state == ui::DfUiState::Stale || df.state == ui::DfUiState::Error)
+    state_col = ImVec4(0.9f, 0.25f, 0.25f, 1.0f);
+
+  ImGui::TextColored(state_col, "Cal: %s", ui::to_string(df.state));
+  ImGui::SameLine();
+  ImGui::TextDisabled("| ref: %s | age: %.0fs", df.reference_method.c_str(), df.cal_age_seconds);
+  if (!df.reason.empty()) ImGui::TextDisabled("%s", df.reason.c_str());
+
+  if (ImGui::SmallButton("Calibrate (Splitter)")) want_cal_splitter = true;
+  ImGui::SameLine();
+  if (ImGui::SmallButton("Calibrate (OTA)")) want_cal_ota = true;
+  ImGui::SameLine();
+  if (ImGui::SmallButton("Cancel/Invalidate")) want_cal_cancel = true;
+
+  ImGui::TextDisabled("Rig: %s (epoch %llu) | %.3f GHz | orient %.0f deg",
+                      df.rig_id.empty() ? "-" : df.rig_id.c_str(),
+                      static_cast<unsigned long long>(df.config_epoch),
+                      df.center_hz / 1e9, df.orientation_deg);
+  ImGui::TextDisabled("Accepted %llu | Rejected %llu (coh %llu, disp %llu, clip %llu, ovlp %llu)",
+                      static_cast<unsigned long long>(df.accepted_bearings),
+                      static_cast<unsigned long long>(df.rejected_bearings),
+                      static_cast<unsigned long long>(df.rejected_coherence),
+                      static_cast<unsigned long long>(df.rejected_dispersion),
+                      static_cast<unsigned long long>(df.rejected_clipping),
+                      static_cast<unsigned long long>(df.rejected_overlap));
+
   ImDrawList* dl = ImGui::GetWindowDrawList();
   const ImVec2 p0 = ImGui::GetCursorScreenPos();
   const ImVec2 avail = ImGui::GetContentRegionAvail();
-  const float r = std::max(30.0f, std::min(avail.x, avail.y) * 0.45f);
+  const float r = std::max(30.0f, std::min(avail.x, avail.y - 36.0f) * 0.44f);
   const ImVec2 c(p0.x + avail.x * 0.5f, p0.y + r + 8);
   dl->AddCircle(c, r, IM_COL32(120, 120, 120, 255), 48);
   dl->AddLine(ImVec2(c.x - r, c.y), ImVec2(c.x + r, c.y), IM_COL32(70, 70, 70, 255));
   dl->AddLine(ImVec2(c.x, c.y - r), ImVec2(c.x, c.y + r), IM_COL32(70, 70, 70, 255));
+
   bool any = false;
-  for (const auto& t : tracks) {
-    if (!t.has_bearing) continue;
-    any = true;
-    const double a = (t.bearing_deg - 90.0) * 3.14159265 / 180.0;  // 0deg = up
-    const ImVec2 tip(c.x + static_cast<float>(std::cos(a)) * r,
-                     c.y + static_cast<float>(std::sin(a)) * r);
-    dl->AddLine(c, tip, IM_COL32(60, 200, 90, 255), 2.0f);
+  if (df.state == ui::DfUiState::Valid) {
+    for (const auto& t : tracks) {
+      if (!t.has_bearing) continue;
+      any = true;
+      const float q = std::clamp(t.bearing_quality, 0.25f, 1.0f);
+      const double a = (t.bearing_deg - 90.0) * 3.14159265358979323846 / 180.0;  // 0deg = broadside up
+      const ImVec2 tip(c.x + static_cast<float>(std::cos(a)) * r * q,
+                       c.y + static_cast<float>(std::sin(a)) * r * q);
+      dl->AddLine(c, tip, IM_COL32(60, 210, 95, static_cast<int>(255 * q)), 2.5f);
+      if (t.bearing_ambiguous) {
+        const double ma = (t.mirrored_deg - 90.0) * 3.14159265358979323846 / 180.0;
+        const ImVec2 mtip(c.x + static_cast<float>(std::cos(ma)) * r * q * 0.85f,
+                          c.y + static_cast<float>(std::sin(ma)) * r * q * 0.85f);
+        dl->AddLine(c, mtip, IM_COL32(220, 170, 50, static_cast<int>(180 * q)), 1.5f);
+      }
+    }
   }
   ImGui::Dummy(ImVec2(avail.x, 2 * r + 16));
-  if (!any) ImGui::TextDisabled("No bearings (single antenna / DF off)");
+  if (!any) {
+    ImGui::TextDisabled("No active validated bearings (%s)", ui::to_string(df.state));
+  } else {
+    ImGui::TextDisabled("Solid green: broadside angle; amber: front/back mirror ambiguity.");
+  }
   ImGui::EndChild();
 }
 
@@ -196,21 +247,30 @@ int run_window(UiModel& model, const Config& cfg) {
   ImGui_ImplGlfw_InitForOpenGL(win, true);
   ImGui_ImplOpenGL3_Init(glsl);
 
-  // Worker (replay source) lifecycle, driven by the Connect/Disconnect/Reconnect buttons.
+  // Worker lifecycle, driven by Connect/Disconnect/Reconnect buttons.
   std::atomic<bool> stop{false};
   std::thread worker;
   bool running = false;
   std::atomic<bool> worker_done{true};
   bool restart_requested = false;
+  Config active_cfg = cfg;
+
   auto stop_worker = [&]() {
     if (!running) return;
     stop.store(true);
   };
   auto start_worker = [&]() {
     if (running) { stop_worker(); restart_requested = true; return; }
-    if (cfg.df) {                     // direction-finding (two-channel) source
+    if (!active_cfg.pair_manifest.empty() || !active_cfg.replay_ch1.empty()) {
+      stop.store(false);
+      worker_done.store(false);
+      worker = std::thread([&] { paired_replay_worker(model, active_cfg, stop); worker_done.store(true); });
+      running = true;
+      return;
+    }
+    if (active_cfg.df) {              // live direction-finding (two-channel) source
 #ifdef DRONEID_HAVE_UHD
-      if (cfg.device.empty() || cfg.df_cal.empty()) {
+      if (active_cfg.device.empty() || active_cfg.df_cal.empty()) {
         UsrpStatus s;
         s.state = UsrpStatus::State::Error;
         s.label = "DF setup";
@@ -220,7 +280,7 @@ int run_window(UiModel& model, const Config& cfg) {
       }
       stop.store(false);
       worker_done.store(false);
-      worker = std::thread([&] { df_live_worker(model, cfg, stop); worker_done.store(true); });
+      worker = std::thread([&] { df_live_worker(model, active_cfg, stop); worker_done.store(true); });
       running = true;
 #else
       UsrpStatus s;
@@ -231,11 +291,11 @@ int run_window(UiModel& model, const Config& cfg) {
 #endif
       return;
     }
-    if (!cfg.device.empty()) {        // live radio takes priority when a device is given
+    if (!active_cfg.device.empty()) { // live radio takes priority when a device is given
 #ifdef DRONEID_HAVE_UHD
       stop.store(false);
       worker_done.store(false);
-      worker = std::thread([&] { live_worker(model, cfg, stop); worker_done.store(true); });
+      worker = std::thread([&] { live_worker(model, active_cfg, stop); worker_done.store(true); });
       running = true;
 #else
       UsrpStatus s;
@@ -246,7 +306,7 @@ int run_window(UiModel& model, const Config& cfg) {
 #endif
       return;
     }
-    if (cfg.replay.empty()) {
+    if (active_cfg.replay.empty()) {
       UsrpStatus s;
       s.state = UsrpStatus::State::Error;
       s.label = "No source";
@@ -256,7 +316,7 @@ int run_window(UiModel& model, const Config& cfg) {
     }
     stop.store(false);
     worker_done.store(false);
-    worker = std::thread([&] { replay_worker(model, cfg, stop); worker_done.store(true); });
+    worker = std::thread([&] { replay_worker(model, active_cfg, stop); worker_done.store(true); });
     running = true;
   };
   start_worker();  // auto-connect on launch
@@ -271,6 +331,7 @@ int run_window(UiModel& model, const Config& cfg) {
         auto status = model.status();
         status.state = UsrpStatus::State::Disconnected;
         model.set_status(status);
+        model.invalidate_bearings(ui::DfUiState::Disconnected, "Disconnected by operator");
       }
       if (restart_requested) { restart_requested = false; start_worker(); }
     }
@@ -288,12 +349,17 @@ int run_window(UiModel& model, const Config& cfg) {
 
     bool want_start = false, want_stop = false;
     draw_usrp_bar(model.status(), want_start, want_stop);
-    if (want_stop) { restart_requested = false; stop_worker(); }
+    if (want_stop) {
+      restart_requested = false;
+      stop_worker();
+      model.invalidate_bearings(ui::DfUiState::Disconnected, "Disconnected by operator");
+    }
     if (want_start) start_worker();
 
     const auto tracks = model.tracks();
     const auto packets = model.packets();
     const auto rf = model.rf_summary();
+    const auto df = model.df_status();
     const float dir_w = 380.0f;
     const float left_w = std::max(220.0f, ImGui::GetContentRegionAvail().x - dir_w - 8);
 
@@ -303,7 +369,16 @@ int run_window(UiModel& model, const Config& cfg) {
     ImGui::EndChild();
     ImGui::SameLine();
     ImGui::BeginChild("mid", ImVec2(0, 0), false);
-    draw_direction(tracks);
+    bool want_cal_splitter = false, want_cal_ota = false, want_cal_cancel = false;
+    draw_direction(tracks, df, want_cal_splitter, want_cal_ota, want_cal_cancel);
+    if (want_cal_cancel) {
+      model.invalidate_bearings(ui::DfUiState::Uncalibrated,
+                                "Calibration canceled/invalidated by operator");
+    } else if (want_cal_splitter || want_cal_ota) {
+      active_cfg.df_ref = want_cal_ota ? "ota_broadside" : "splitter";
+      if (active_cfg.df_cal_samples == 0) active_cfg.df_cal_samples = 4096;
+      start_worker();
+    }
     ImGui::EndChild();
 
     ImGui::End();
@@ -350,8 +425,11 @@ static void usage(const char* p) {
       "usage: %s [source] [--checklist progress.md] [--frames N] [--screenshot FILE.ppm] [--check]\n"
       "  replay source: --replay FILE --format sc16|cf32 --rate HZ [--auto-center]\n"
       "                 [--freq-offset HZ] [--secs S]\n"
+      "  paired DF replay: --pair-manifest FILE | (--replay CH0 --replay-ch1 CH1)\n"
+      "                    [--df-cal FILE | --df-cal-samples N] [--df-ref splitter|ota_broadside]\n"
+      "                    [--df-spacing-m M] [--df-jsonl FILE]\n"
       "  live source:   --device ARGS [--freq HZ] [--gain dB] [--ant NAME]  (needs a UHD build)\n"
-      "  direction find: --df --df-cal FILE  (disabled until same-session calibration is integrated)\n", p);
+      "  direction find: --df --df-cal FILE  (live hardware DF disabled until DF-5 bench approval)\n", p);
 }
 
 int main(int argc, char** argv) {
@@ -371,6 +449,8 @@ int main(int argc, char** argv) {
       return parsed;
     };
     if (a == "--replay") cfg.replay = next();
+    else if (a == "--replay-ch1") cfg.replay_ch1 = next();
+    else if (a == "--pair-manifest") cfg.pair_manifest = next();
     else if (a == "--format") { if (!parse_format(next(), cfg.fmt)) { usage(argv[0]); return 2; } }
     else if (a == "--rate") cfg.rate = number();
     else if (a == "--secs") cfg.secs = number();
@@ -382,6 +462,14 @@ int main(int argc, char** argv) {
     else if (a == "--ant") cfg.antenna = next();
     else if (a == "--df") cfg.df = true;
     else if (a == "--df-cal") cfg.df_cal = next();
+    else if (a == "--df-ref") cfg.df_ref = next();
+    else if (a == "--df-cal-samples") {
+      const double s = number();
+      if (s < 0 || s > 1e7 || std::floor(s) != s) throw std::invalid_argument("invalid --df-cal-samples");
+      cfg.df_cal_samples = static_cast<uint64_t>(s);
+    }
+    else if (a == "--df-spacing-m") cfg.df_spacing_m = number();
+    else if (a == "--df-jsonl") cfg.df_jsonl = next();
     else if (a == "--checklist") cfg.checklist = next();
     else if (a == "--frames") {
       const double frames = number();
@@ -398,8 +486,11 @@ int main(int argc, char** argv) {
       cfg.center_freq < 1e6 || cfg.center_freq > 6e9 ||
       (cfg.auto_center && cfg.freq_offset != 0) || (!cfg.screenshot.empty() && (cfg.frames < 1 || cfg.check)))
     throw std::invalid_argument("invalid rate, duration, frequency, centering or screenshot options");
-  if (cfg.check && cfg.device.empty() && cfg.replay.empty()) throw std::invalid_argument("--check requires a source");
-  if (cfg.df && (cfg.device.empty() || cfg.df_cal.empty())) throw std::invalid_argument("DF requires device and calibration");
+  if (cfg.check && cfg.device.empty() && cfg.replay.empty() && cfg.pair_manifest.empty())
+    throw std::invalid_argument("--check requires a source");
+  if (cfg.df && cfg.pair_manifest.empty() && cfg.replay_ch1.empty() &&
+      (cfg.device.empty() || cfg.df_cal.empty()))
+    throw std::invalid_argument("DF requires device and calibration, or paired replay input");
   UiModel model;
   model.load_checklist_file(cfg.checklist);
 
@@ -408,7 +499,9 @@ int main(int argc, char** argv) {
     // Headless self-check. Replay runs to completion; a live device is time-boxed (--secs, def 2 s).
     std::atomic<bool> stop{false};
     std::thread worker;
-    if (!cfg.device.empty()) {
+    if (!cfg.pair_manifest.empty() || !cfg.replay_ch1.empty()) {
+      worker = std::thread([&] { paired_replay_worker(model, cfg, stop); });
+    } else if (!cfg.device.empty()) {
 #ifdef DRONEID_HAVE_UHD
       if (cfg.df) worker = std::thread([&] { df_live_worker(model, cfg, stop); });
       else worker = std::thread([&] { live_worker(model, cfg, stop); });
@@ -427,13 +520,31 @@ int main(int argc, char** argv) {
                 static_cast<unsigned long long>(rf.bursts_total), model.checklist().size(),
                 static_cast<unsigned long long>(st.overflows), static_cast<unsigned long long>(st.samples_received),
                 static_cast<unsigned long long>(st.discontinuities), static_cast<unsigned long long>(st.dropped_windows));
-    for (const auto& track : model.tracks())
-      std::printf("  track: serial=%s count=%llu corr=%.3f\n", track.serial.c_str(),
+    for (const auto& track : model.tracks()) {
+      std::printf("  track: serial=%s count=%llu corr=%.3f", track.serial.c_str(),
                   static_cast<unsigned long long>(track.count), track.corr);
+      if (track.has_bearing) {
+        std::printf(" bearing_deg=%.4f mirrored_deg=%.4f uncertainty_deg=%.4f ambiguous=%s",
+                    track.bearing_deg, track.mirrored_deg, track.bearing_uncertainty_deg,
+                    track.bearing_ambiguous ? "true" : "false");
+      }
+      std::printf("\n");
+    }
     for (const auto& packet : model.packets())
       std::printf("  packet: telemetry=%s frame=%s format=%s inner_crc16=%s\n",
                   packet.telemetry_parsed ? "parsed" : "unsupported", packet.payload_hex.c_str(),
                   packet.payload_format.c_str(), packet.inner_crc16.c_str());
+    if (!cfg.pair_manifest.empty() || !cfg.replay_ch1.empty() || cfg.df) {
+      const auto df = model.df_status();
+      std::printf("  df_status: state=%s accepted=%llu rejected=%llu dropped_pairs=%llu reason=%s\n",
+                  ui::to_string(df.state),
+                  static_cast<unsigned long long>(df.accepted_bearings),
+                  static_cast<unsigned long long>(df.rejected_bearings),
+                  static_cast<unsigned long long>(df.dropped_pairs),
+                  df.reason.c_str());
+      for (const auto& ev : model.df_events())
+        std::fputs(("  df_event: " + ev.to_jsonl()).c_str(), stdout);
+    }
     if (!st.detail.empty()) std::printf("  detail: %s\n", st.detail.c_str());
     return st.state == UsrpStatus::State::Error ? 1 : 0;
   }

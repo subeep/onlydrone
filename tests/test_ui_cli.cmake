@@ -15,6 +15,7 @@ function(expect_failure)
 endfunction()
 
 expect_success("status=Disconnected packets=1 tracks=1" --replay "${FIXTURE}" --format cf32 --rate 50000000 --auto-center)
+expect_success("df_status: state=Valid accepted=[1-9]" --replay "${FIXTURE}" --replay-ch1 "${FIXTURE}" --format cf32 --rate 50000000 --auto-center --df-cal-samples 4096)
 set(metadata_fixture "${CMAKE_CURRENT_BINARY_DIR}/ui_cli_metadata.cf32")
 configure_file("${FIXTURE}" "${metadata_fixture}" COPYONLY)
 file(WRITE "${metadata_fixture}.meta" "sample_rate = 50000000\nformat = cf32\n")

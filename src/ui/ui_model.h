@@ -32,6 +32,68 @@ struct UsrpStatus {
 
 const char* to_string(UsrpStatus::State s);
 
+enum class DfUiState {
+  Disconnected,
+  Uncalibrated,
+  Calibrating,
+  Valid,
+  Stale,
+  Error
+};
+
+const char* to_string(DfUiState s);
+
+// DF-4: Thread-safe snapshot of DF calibration lifecycle, provenance, and rejection counters.
+struct DfUiStatus {
+  DfUiState state = DfUiState::Disconnected;
+  std::string reason = "single antenna / DF off";
+  std::string session_id;
+  std::uint64_t config_epoch = 0;
+  std::string rig_id;
+  std::string reference_method = "none";  // "splitter", "ota_broadside", or "none"
+  double center_hz = 0;
+  double passband_hz = 0;
+  double spacing_m = 0;
+  double orientation_deg = 0;
+  double cal_age_seconds = 0;
+  std::int64_t updated_ms = 0;
+  std::uint64_t accepted_bearings = 0;
+  std::uint64_t rejected_bearings = 0;
+  std::uint64_t rejected_uncalibrated = 0;
+  std::uint64_t rejected_coherence = 0;
+  std::uint64_t rejected_clipping = 0;
+  std::uint64_t rejected_dispersion = 0;
+  std::uint64_t rejected_snr = 0;
+  std::uint64_t rejected_passband = 0;
+  std::uint64_t rejected_overlap = 0;
+  std::uint64_t dropped_pairs = 0;
+};
+
+// DF-4: Operational JSONL bearing event (emitted for both accepted and rejected bursts).
+// Never derives a GPS coordinate from an angle alone.
+struct DfBearingEvent {
+  std::uint64_t burst_id = 0;
+  std::uint64_t start_sample = 0;
+  std::uint64_t end_sample = 0;
+  std::string session_id;
+  std::uint64_t config_epoch = 0;
+  std::string cal_id;
+  std::string classification = "unknown_rf";  // "decoded_droneid" or "unknown_rf"
+  std::string serial;
+  bool valid = false;
+  double broadside_deg = 0;
+  double mirrored_deg = 0;
+  double uncertainty_deg = 0;
+  double coherence = 0;
+  double phase_std_deg = 0;
+  double snr_db = 0;
+  bool ambiguous_front_back = true;
+  std::string rejection_reason;
+  std::int64_t time_ms = 0;
+
+  std::string to_jsonl() const;
+};
+
 // One decoded DroneID frame row for the packet log.
 struct PacketRow {
   std::int64_t time_ms = 0;        // wall-clock when added
@@ -62,8 +124,12 @@ struct DroneTrack {
   bool decoded = false;
   bool has_bearing = false;
   float bearing_deg = 0;
+  float mirrored_deg = 0;
+  float bearing_uncertainty_deg = 0;
   float bearing_quality = 0;
   bool bearing_ambiguous = true;
+  std::uint64_t bearing_start_sample = 0;
+  std::uint64_t bearing_end_sample = 0;
 };
 
 // Aggregate "unknown RF" activity — NOT a per-drone count (energy bursts incl. Wi-Fi/baseline).
@@ -101,11 +167,22 @@ class UiModel {
 
   void upsert_track(const DroneTrack& t);   // merges by key
   void set_bearing(const std::string& key, float deg, float quality, bool ambiguous);
+  void set_bearing_detailed(const std::string& key, float deg, float mirrored_deg,
+                            float uncertainty_deg, float quality, bool ambiguous,
+                            std::uint64_t start_sample = 0, std::uint64_t end_sample = 0);
   std::vector<DroneTrack> tracks() const;
 
   void record_rf_burst(double rssi_dbfs, double snr_db, double bw_hz, double center_hz,
                        std::int64_t ms);
   RfSummary rf_summary() const;
+
+  // --- DF-4 state & operational logging ---
+  void set_df_status(const DfUiStatus& s);
+  DfUiStatus df_status() const;
+  void invalidate_bearings(DfUiState new_state, const std::string& reason);
+  void record_df_event(const DfBearingEvent& event);
+  std::vector<DfBearingEvent> df_events() const;
+  std::string df_summary_jsonl() const;
 
   // --- checklist (progress.md style) ---
   // Parses GitHub-style task lists under "## " headings; keeps the raw lines so a save
@@ -121,7 +198,9 @@ class UiModel {
   mutable std::mutex m_;
   std::size_t packet_cap_;
   UsrpStatus status_;
+  DfUiStatus df_status_;
   std::deque<PacketRow> packets_;
+  std::deque<DfBearingEvent> df_events_;
   std::map<std::string, DroneTrack> tracks_;
   RfSummary rf_;
   std::vector<std::string> md_lines_;

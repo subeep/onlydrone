@@ -1,8 +1,11 @@
 #include "receiver_worker.h"
+#include "droneid/aoa.h"
 #include "droneid/dji.h"
+#include "droneid/file_source.h"
 #include "droneid/test/microtest.h"
 
 #include <algorithm>
+#include <cmath>
 #include <filesystem>
 #include <fstream>
 
@@ -123,4 +126,240 @@ TEST(UiWorker, UnsupportedCrcPayloadIsLoggedWithoutTelemetry) {
   }
 }
 
+TEST(UiWorker, PairedQueueDropsWholePairNeverSingleChannel) {
+  ui::BoundedPairedQueue queue(2);
+  for (uint64_t idx = 0; idx < 3; ++idx) {
+    ui::PairedSampleWindow win;
+    win.ch0.assign(64, cf32(static_cast<float>(idx + 1), 0));
+    win.ch1.assign(64, cf32(0, static_cast<float>(idx + 1)));
+    win.start_sample = idx * 64;
+    queue.push(std::move(win));
+  }
+  EXPECT_EQ(queue.dropped_pairs(), uint64_t(1));
+  ui::PairedSampleWindow first;
+  EXPECT_TRUE(queue.pop(first));
+  EXPECT_EQ(first.start_sample, uint64_t(64));
+  EXPECT_EQ(first.ch0.size(), first.ch1.size());
+  EXPECT_TRUE(first.after_drop_or_gap);
+}
+
+TEST(UiWorker, PairedReplayAssociatesDecodedAndUnknownRfBearingsAndRejectsMalformedPairs) {
+  const double pi = std::acos(-1.0);
+  const double rate = 15.36e6;
+  const double center_hz = 2459.5e6;
+  const double spacing_m = 0.05;
+  const double bias_rad = 0.72;
+  const double drone_angle_deg = -28.0;
+  const double rf_angle_deg = 35.0;
+
+  // Read real Mini 2 centered fixture.
+  FileSource real_src(std::string(DRONEID_TEST_DATA_DIR) + "/mini2_centered.sc16",
+                      SampleFormat::sc16, rate, center_hz);
+  std::vector<cf32> mini2(16384);
+  int64_t ts = 0;
+  mini2.resize(real_src.recv(mini2.data(), mini2.size(), ts));
+  EXPECT_TRUE(mini2.size() > 10000);
+
+  // Build paired stream: [4096 splitter cal] + [real Mini 2 @ -28 deg] + [quiet + unknown RF @ +35 deg].
+  const std::size_t cal_samples = 4096;
+  const std::size_t tail_samples = 8192;
+  std::vector<cf32> ch0(cal_samples + mini2.size() + tail_samples, cf32(0, 0));
+  std::vector<cf32> ch1(ch0.size(), cf32(0, 0));
+
+  for (std::size_t i = 0; i < cal_samples; ++i) {
+    ch0[i] = std::polar(0.35f, static_cast<float>(0.019 * i));
+    ch1[i] = ch0[i] * std::polar(1.0f, static_cast<float>(bias_rad));
+  }
+
+  const double drone_phase =
+      bias_rad + 2.0 * pi * spacing_m * (center_hz / 299792458.0) * std::sin(drone_angle_deg * pi / 180.0);
+  for (std::size_t i = 0; i < mini2.size(); ++i) {
+    ch0[cal_samples + i] = mini2[i];
+    ch1[cal_samples + i] = mini2[i] * std::polar(1.0f, static_cast<float>(drone_phase));
+  }
+
+  const double rf_phase =
+      bias_rad + 2.0 * pi * spacing_m * (center_hz / 299792458.0) * std::sin(rf_angle_deg * pi / 180.0);
+  const std::size_t rf_start = cal_samples + mini2.size() + 2048;
+  for (std::size_t i = 0; i < 2048; ++i) {
+    const cf32 s = std::polar(0.3f, static_cast<float>(0.031 * i));
+    ch0[rf_start + i] = s;
+    ch1[rf_start + i] = s * std::polar(1.0f, static_cast<float>(rf_phase));
+  }
+
+  const auto dir = std::filesystem::temp_directory_path();
+  const auto ch0_path = (dir / "punjdrone_paired_test.ch0.cf32").string();
+  const auto ch1_path = (dir / "punjdrone_paired_test.ch1.cf32").string();
+  const auto manifest_path = (dir / "punjdrone_paired_test.pair.toml").string();
+  const auto jsonl_path = (dir / "punjdrone_paired_test.df.jsonl").string();
+
+  {
+    std::ofstream f0(ch0_path, std::ios::binary);
+    std::ofstream f1(ch1_path, std::ios::binary);
+    f0.write(reinterpret_cast<const char*>(ch0.data()), ch0.size() * sizeof(cf32));
+    f1.write(reinterpret_cast<const char*>(ch1.data()), ch1.size() * sizeof(cf32));
+  }
+
+  PairManifest manifest;
+  manifest.complete = true;
+  manifest.status_reason = "ok";
+  manifest.session_id = "sess_paired_worker";
+  manifest.config_epoch = 1;
+  manifest.rig_id = "rig_worker";
+  manifest.sample_rate = rate;
+  manifest.center_hz = center_hz;
+  manifest.gain_ch0_db = 25;
+  manifest.gain_ch1_db = 25;
+  manifest.spacing_m = spacing_m;
+  manifest.first_device_timestamp_ns = 900000000LL;
+  manifest.capture_host_unix_ns = 1700000000000000000LL;
+  manifest.sample_count = ch0.size();
+  manifest.ch0_path = "punjdrone_paired_test.ch0.cf32";
+  manifest.ch1_path = "punjdrone_paired_test.ch1.cf32";
+  manifest.ch0_fnv1a64 = fnv1a64_file(ch0_path);
+  manifest.ch1_fnv1a64 = fnv1a64_file(ch1_path);
+  manifest.save(manifest_path);
+
+  ui::UiModel model;
+  ui::SourceConfig cfg;
+  cfg.pair_manifest = manifest_path;
+  cfg.fmt = SampleFormat::cf32;
+  cfg.df_cal_samples = cal_samples;
+  cfg.df_ref = "splitter";
+  cfg.df_jsonl = jsonl_path;
+  std::atomic<bool> stop{false};
+  ui::paired_replay_worker(model, cfg, stop);
+
+  EXPECT_TRUE(model.status().state == ui::UsrpStatus::State::Disconnected);
+  EXPECT_EQ(model.df_status().state, ui::DfUiState::Valid);
+  EXPECT_EQ(model.packets().size(), std::size_t(1));
+  EXPECT_TRUE(model.df_status().accepted_bearings >= 2);
+
+  bool found_decoded = false, found_unknown_rf = false;
+  for (const auto& track : model.tracks()) {
+    if (track.serial == "SysSecWasHere ") {
+      found_decoded = true;
+      EXPECT_TRUE(track.has_bearing);
+      EXPECT_NEAR(track.bearing_deg, drone_angle_deg, 0.2);
+      EXPECT_NEAR(track.mirrored_deg, -152.0, 0.2);
+      EXPECT_TRUE(track.bearing_ambiguous);
+    } else if (track.key == "unknown_rf") {
+      found_unknown_rf = true;
+      EXPECT_FALSE(track.decoded);
+      EXPECT_TRUE(track.serial.empty());
+      EXPECT_TRUE(track.has_bearing);
+      EXPECT_NEAR(track.bearing_deg, rf_angle_deg, 0.2);
+    }
+  }
+  EXPECT_TRUE(found_decoded);
+  EXPECT_TRUE(found_unknown_rf);
+  EXPECT_TRUE(std::filesystem::exists(jsonl_path));
+
+  // Malformed pair (truncated ch1 / unequal EOF) must fail closed without valid bearings.
+  {
+    std::ofstream f1(ch1_path, std::ios::binary | std::ios::trunc);
+    f1.write(reinterpret_cast<const char*>(ch1.data()), (ch1.size() - 10) * sizeof(cf32));
+  }
+  ui::UiModel bad_model;
+  ui::paired_replay_worker(bad_model, cfg, stop);
+  EXPECT_TRUE(bad_model.status().state == ui::UsrpStatus::State::Error);
+  EXPECT_EQ(bad_model.df_status().state, ui::DfUiState::Error);
+  EXPECT_EQ(bad_model.df_status().accepted_bearings, uint64_t(0));
+
+  std::filesystem::remove(ch0_path);
+  std::filesystem::remove(ch1_path);
+  std::filesystem::remove(manifest_path);
+  std::filesystem::remove(jsonl_path);
+}
+
+
+TEST(UiWorker, PairedChunkIndependenceAndPassbandRejection) {
+  const double pi = std::acos(-1.0);
+  const double rate = 15.36e6;
+  const double center_hz = 2459.5e6;
+  const double spacing_m = 0.05;
+  const double bias_rad = -0.45;
+  const double target_deg = 22.5;
+
+  const auto frame = dji::build_frame176(std::vector<uint8_t>(91, 0x35));
+  std::vector<uint8_t> bits;
+  EXPECT_TRUE(dji::turbo_encode_frame(frame, bits));
+  const auto scrambler = dji::generate_scrambler_seq(7200, dji::scrambler_x2_init());
+  for (std::size_t idx = 0; idx < bits.size(); ++idx) bits[idx] ^= scrambler[idx];
+  const auto burst = dji::synthesize_burst(bits, rate);
+
+  const std::size_t stride = 65536;
+  std::vector<cf32> ch0(2 * stride + 16000, cf32(0, 0));
+  std::vector<cf32> ch1(ch0.size(), cf32(0, 0));
+  const double geom_phase =
+      bias_rad + 2.0 * pi * spacing_m * (center_hz / 299792458.0) * std::sin(target_deg * pi / 180.0);
+  for (const auto start : {stride - 5000, 2 * stride - 5000}) {
+    for (std::size_t i = 0; i < burst.size(); ++i) {
+      ch0[start + i] = burst[i];
+      ch1[start + i] = burst[i] * std::polar(1.0f, static_cast<float>(geom_phase));
+    }
+  }
+
+  DfCalibrationService cal;
+  EXPECT_TRUE(cal.connect("sess_chunk", 1, "rig_chunk", center_hz, rate, 20.0));
+  PairedBlock ref;
+  ref.ch0.resize(2048);
+  ref.ch1.resize(2048);
+  for (std::size_t i = 0; i < ref.ch0.size(); ++i) {
+    ref.ch0[i] = std::polar(0.4f, static_cast<float>(0.015 * i));
+    ref.ch1[i] = ref.ch0[i] * std::polar(1.0f, static_cast<float>(bias_rad));
+  }
+  ref.first_device_timestamp_ns = 1000000LL;
+  ref.sample_rate = rate;
+  ref.center_hz = center_hz;
+  ref.session_id = "sess_chunk";
+  ref.config_epoch = 1;
+  ref.rig_id = "rig_chunk";
+  EXPECT_TRUE(cal.begin_calibration("splitter"));
+  EXPECT_TRUE(cal.complete_calibration(ref, spacing_m, 1000000000LL, 60.0, 10e6));
+
+  auto run_chunked = [&](std::size_t chunk_step) {
+    ui::PairedWindowAssembler assembler(stride, 12000);
+    std::vector<double> angles;
+    for (std::size_t pos = 0; pos < ch0.size(); pos += chunk_step) {
+      const auto n = std::min(chunk_step, ch0.size() - pos);
+      for (const auto& win : assembler.feed(ch0.data() + pos, ch1.data() + pos, n,
+                                            1000000LL, rate, pos + n == ch0.size())) {
+        for (const auto& pb : dji::decode_paired_samples(win.ch0, win.ch1, {})) {
+          if (!pb.decoded.crc_ok ||
+              static_cast<std::size_t>(pb.decoded.sample_index) >= win.accept_before)
+            continue;
+          PairedBlock blk = ref;
+          blk.ch0 = pb.ch0_window;
+          blk.ch1 = pb.ch1_window;
+          const auto b = cal.estimate_block_bearing(blk, 2000000000LL);
+          EXPECT_TRUE(b.valid);
+          angles.push_back(b.broadside_deg);
+        }
+      }
+    }
+    return angles;
+  };
+
+  const auto whole_angles = run_chunked(ch0.size());
+  const auto chunk_angles = run_chunked(4321);
+  EXPECT_EQ(whole_angles.size(), std::size_t(2));
+  EXPECT_EQ(chunk_angles.size(), std::size_t(2));
+  for (std::size_t i = 0; i < whole_angles.size(); ++i) {
+    EXPECT_NEAR(whole_angles[i], target_deg, 0.05);
+    EXPECT_NEAR(chunk_angles[i], whole_angles[i], 1e-4);
+  }
+
+  // Out-of-passband tone (+6.5 MHz > 5 MHz passband edge) must be rejected.
+  PairedBlock oob = ref;
+  for (std::size_t i = 0; i < oob.ch0.size(); ++i) {
+    oob.ch0[i] = std::polar(0.4f, static_cast<float>(2.0 * pi * 6.5e6 * i / rate));
+    oob.ch1[i] = oob.ch0[i] * std::polar(1.0f, static_cast<float>(geom_phase));
+  }
+  const auto oob_res = cal.estimate_block_bearing(oob, 2000000000LL);
+  EXPECT_FALSE(oob_res.valid);
+  EXPECT_TRUE(oob_res.reason.find("passband") != std::string::npos);
+}
+
 MICROTEST_MAIN
+

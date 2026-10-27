@@ -15,7 +15,10 @@ import time
 import xml.etree.ElementTree as ET
 import zipfile
 
-import h5py
+try:
+    import h5py
+except ImportError:
+    h5py = None
 import numpy as np
 
 
@@ -87,6 +90,8 @@ def inventory(root, repo, per_group):
     for path in sorted((root / "DRFF-R2").rglob("*.mat")):
         if path.parent.name not in {"dataset3-single_drone_hover", "dataset4-single_drone_dual_frequency"}:
             continue
+        if h5py is None:
+            raise RuntimeError("h5py is required to inventory HDF5 .mat files")
         with h5py.File(path) as handle:
             center = scalar(handle, "CenterFrequence", "CenterFreq")
         model = path.name.split("_")[0]
@@ -129,6 +134,8 @@ def load(case, seconds, temporary):
     path = Path(case["path"])
     kind = case["kind"]
     if kind == "zip_hdf":
+        if h5py is None:
+            raise RuntimeError("h5py is required to load zip_hdf cases")
         with zipfile.ZipFile(path) as archive:
             entries = sorted((entry for entry in archive.infolist() if entry.filename.endswith(".mat")), key=lambda entry: entry.filename)
             member = entries[0]
@@ -144,6 +151,8 @@ def load(case, seconds, temporary):
             iq = (values["real"] + 1j * values["imag"]).astype("<c8")
             return iq, 100e6, 2.44e9, member.filename, data.size / 100e6
     if kind == "hdf":
+        if h5py is None:
+            raise RuntimeError("h5py is required to load hdf cases")
         with h5py.File(path) as handle:
             rate = scalar(handle, "Fs")
             center = scalar(handle, "CenterFrequence", "CenterFreq")

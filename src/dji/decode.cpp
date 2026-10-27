@@ -273,6 +273,75 @@ std::vector<DecodedBurst> decode_samples(const std::vector<cf32>& iq_in, const D
   return results;
 }
 
+std::vector<PairedDecodedBurst> decode_paired_samples(const std::vector<cf32>& ch0,
+                                                      const std::vector<cf32>& ch1,
+                                                      const DecodeOptions& opt,
+                                                      std::vector<cf32>* resampled_ch0_out,
+                                                      std::vector<cf32>* resampled_ch1_out) {
+  validate_options(opt);
+  if (ch0.size() != ch1.size())
+    throw std::invalid_argument("decode_paired_samples requires equal-length channel vectors");
+  const size_t count = opt.max_samples ? std::min(ch0.size(), opt.max_samples) : ch0.size();
+  const std::vector<cf32> s0(ch0.begin(), ch0.begin() + count);
+  const std::vector<cf32> s1(ch1.begin(), ch1.begin() + count);
+
+  // DF-3: One frequency/centering decision on ch0; never run independent auto-centering on ch1.
+  double shift = opt.freq_offset;
+  if (opt.auto_center) {
+    const std::vector<cf32> preview(s0.begin(), s0.begin() + std::min<size_t>(count, 1u << 20));
+    shift = -dsp::estimate_channel_center(preview, opt.sample_rate);
+  }
+  dsp::ChannelResampler res0(opt.sample_rate, shift);
+  dsp::ChannelResampler res1(opt.sample_rate, shift);
+  const auto r0 = res0.process(s0, true);
+  const auto r1 = res1.process(s1, true);
+  if (resampled_ch0_out) *resampled_ch0_out = r0;
+  if (resampled_ch1_out) *resampled_ch1_out = r1;
+
+  auto options = opt;
+  options.sample_rate = kDecodeRate;
+  options.freq_offset = 0;
+
+  const int N = fft_size(kDecodeRate), L = long_cp_len(kDecodeRate), S = short_cp_len(kDecodeRate);
+  const int padding = 64;
+  const int burst_len = 2 * padding + 2 * L + 7 * S + 9 * N;
+
+  auto raw_bursts = detect_decode_buffer(r0, options, 0, -1);
+  std::vector<PairedDecodedBurst> paired_results;
+  paired_results.reserve(raw_bursts.size());
+
+  for (auto& b : raw_bursts) {
+    const int64_t r_start = b.sample_index;
+    if (r_start < 0 || static_cast<size_t>(r_start + burst_len) > r0.size() ||
+        static_cast<size_t>(r_start + burst_len) > r1.size()) {
+      continue;
+    }
+    PairedDecodedBurst pb;
+    pb.ch0_window.assign(r0.begin() + r_start, r0.begin() + r_start + burst_len);
+    pb.ch1_window.assign(r1.begin() + r_start, r1.begin() + r_start + burst_len);
+    if (opt.low_pass) {
+      constexpr int filter_order = 50;
+      constexpr int group_delay = filter_order / 2;
+      pb.ch0_window.resize(pb.ch0_window.size() + group_delay);
+      pb.ch0_window = dsp::fir_lowpass(pb.ch0_window, 10e6 / 2.0, kDecodeRate, filter_order);
+      pb.ch0_window.erase(pb.ch0_window.begin(), pb.ch0_window.begin() + group_delay);
+
+      pb.ch1_window.resize(pb.ch1_window.size() + group_delay);
+      pb.ch1_window = dsp::fir_lowpass(pb.ch1_window, 10e6 / 2.0, kDecodeRate, filter_order);
+      pb.ch1_window.erase(pb.ch1_window.begin(), pb.ch1_window.begin() + group_delay);
+    }
+    if (b.cfo_hz != 0.0) {
+      dsp::freq_shift(pb.ch0_window, -b.cfo_hz, kDecodeRate);
+      dsp::freq_shift(pb.ch1_window, -b.cfo_hz, kDecodeRate);
+    }
+    b.sample_index = std::llround(r_start * opt.sample_rate / kDecodeRate);
+    pb.end_sample_index = std::llround((r_start + burst_len) * opt.sample_rate / kDecodeRate);
+    pb.decoded = std::move(b);
+    paired_results.push_back(std::move(pb));
+  }
+  return paired_results;
+}
+
 std::vector<OffsetScore> scan_freq_offsets(const std::vector<cf32>& iq, double fs,
                                            double lo, double hi, double step) {
   if (!std::isfinite(lo) || !std::isfinite(hi) || !std::isfinite(step) || step <= 0 || lo > hi)

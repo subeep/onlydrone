@@ -1,8 +1,15 @@
-// src/dji/dsp.cpp — FFTW-backed DSP helpers for the DJI decoder.
+// src/dji/dsp.cpp — FFTW-backed DSP helpers for the DJI decoder (with portable radix-2/Bluestein fallback).
 // GPL-3.0-or-later.
 #include "dsp.hpp"
 
+#if __has_include(<fftw3.h>)
 #include <fftw3.h>
+#define DRONEID_USE_FFTW3 1
+#else
+#define DRONEID_USE_FFTW3 0
+#define FFTW_FORWARD (-1)
+#define FFTW_BACKWARD 1
+#endif
 
 #include <cmath>
 #include <complex>
@@ -13,9 +20,38 @@
 namespace droneid::dji::dsp {
 namespace {
 
+#if !DRONEID_USE_FFTW3
+void radix2_fft(std::vector<std::complex<double>>& a, int dir) {
+  const size_t n = a.size();
+  for (size_t i = 1, j = 0; i < n; ++i) {
+    size_t bit = n >> 1;
+    for (; j & bit; bit >>= 1) j ^= bit;
+    j ^= bit;
+    if (i < j) std::swap(a[i], a[j]);
+  }
+  const double sign = (dir < 0) ? -1.0 : 1.0;
+  for (size_t len = 2; len <= n; len <<= 1) {
+    const double ang = sign * 2.0 * M_PI / static_cast<double>(len);
+    const std::complex<double> wlen(std::cos(ang), std::sin(ang));
+    for (size_t i = 0; i < n; i += len) {
+      std::complex<double> w(1.0, 0.0);
+      for (size_t j = 0; j < len / 2; ++j) {
+        const std::complex<double> u = a[i + j];
+        const std::complex<double> v = a[i + j + len / 2] * w;
+        a[i + j] = u + v;
+        a[i + j + len / 2] = u - v;
+        w *= wlen;
+      }
+    }
+  }
+}
+#endif
+
 // One-shot FFT (dir = FFTW_FORWARD / FFTW_BACKWARD), no scaling.
 std::vector<cf32> run_fft(const std::vector<cf32>& x, int dir) {
   const int n = static_cast<int>(x.size());
+  if (n <= 0) return {};
+#if DRONEID_USE_FFTW3
   std::vector<cf32> out(n);
   auto* in = reinterpret_cast<fftwf_complex*>(const_cast<cf32*>(x.data()));
   auto* o = reinterpret_cast<fftwf_complex*>(out.data());
@@ -23,6 +59,39 @@ std::vector<cf32> run_fft(const std::vector<cf32>& x, int dir) {
   fftwf_execute(p);
   fftwf_destroy_plan(p);
   return out;
+#else
+  if ((n & (n - 1)) == 0) {
+    std::vector<std::complex<double>> a(n);
+    for (int i = 0; i < n; ++i) a[i] = std::complex<double>(x[i].real(), x[i].imag());
+    radix2_fft(a, dir);
+    std::vector<cf32> out(n);
+    for (int i = 0; i < n; ++i)
+      out[i] = cf32(static_cast<float>(a[i].real()), static_cast<float>(a[i].imag()));
+    return out;
+  }
+  size_t m = 1;
+  while (m < static_cast<size_t>(2 * n - 1)) m <<= 1;
+  const double sign = (dir < 0) ? -1.0 : 1.0;
+  std::vector<std::complex<double>> w(n), a(m, {0.0, 0.0}), b(m, {0.0, 0.0});
+  for (int k = 0; k < n; ++k) {
+    const double ang = sign * M_PI * static_cast<double>(1LL * k * k % (2LL * n)) / static_cast<double>(n);
+    w[k] = std::complex<double>(std::cos(ang), std::sin(ang));
+    a[k] = std::complex<double>(x[k].real(), x[k].imag()) * w[k];
+    b[k] = std::conj(w[k]);
+    if (k > 0) b[m - k] = b[k];
+  }
+  radix2_fft(a, -1);
+  radix2_fft(b, -1);
+  for (size_t i = 0; i < m; ++i) a[i] *= b[i];
+  radix2_fft(a, 1);
+  std::vector<cf32> out(n);
+  const double inv_m = 1.0 / static_cast<double>(m);
+  for (int k = 0; k < n; ++k) {
+    const std::complex<double> val = a[k] * inv_m * w[k];
+    out[k] = cf32(static_cast<float>(val.real()), static_cast<float>(val.imag()));
+  }
+  return out;
+#endif
 }
 
 }  // namespace

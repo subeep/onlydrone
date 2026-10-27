@@ -2,8 +2,11 @@
 // GPL-3.0-or-later.
 #include "ui_model.h"
 
-#include <fstream>
 #include <algorithm>
+#include <cmath>
+#include <cstdio>
+#include <fstream>
+#include <iomanip>
 #include <sstream>
 
 namespace droneid::ui {
@@ -16,6 +19,46 @@ const char* to_string(UsrpStatus::State s) {
     case UsrpStatus::State::Error:        return "Error";
   }
   return "?";
+}
+
+const char* to_string(DfUiState s) {
+  switch (s) {
+    case DfUiState::Disconnected: return "Disconnected";
+    case DfUiState::Uncalibrated: return "Uncalibrated";
+    case DfUiState::Calibrating:  return "Calibrating";
+    case DfUiState::Valid:        return "Valid";
+    case DfUiState::Stale:        return "Stale";
+    case DfUiState::Error:        return "Error";
+  }
+  return "?";
+}
+
+std::string DfBearingEvent::to_jsonl() const {
+  std::ostringstream os;
+  os << std::setprecision(9);
+  os << "{\"event\":\"df_bearing\",\"burst_id\":" << burst_id
+     << ",\"start_sample\":" << start_sample
+     << ",\"end_sample\":" << end_sample
+     << ",\"session_id\":\"" << session_id << "\""
+     << ",\"config_epoch\":" << config_epoch
+     << ",\"cal_id\":\"" << cal_id << "\""
+     << ",\"classification\":\"" << classification << "\""
+     << ",\"serial\":" << (serial.empty() ? "null" : ("\"" + serial + "\""))
+     << ",\"valid\":" << (valid ? "true" : "false");
+  if (valid) {
+    os << ",\"broadside_deg\":" << broadside_deg
+       << ",\"mirrored_deg\":" << mirrored_deg
+       << ",\"uncertainty_deg\":" << uncertainty_deg;
+  } else {
+    os << ",\"broadside_deg\":null,\"mirrored_deg\":null,\"uncertainty_deg\":null";
+  }
+  os << ",\"coherence\":" << coherence
+     << ",\"phase_std_deg\":" << phase_std_deg
+     << ",\"snr_db\":" << snr_db
+     << ",\"ambiguous_front_back\":" << (ambiguous_front_back ? "true" : "false")
+     << ",\"rejection_reason\":" << (rejection_reason.empty() ? "null" : ("\"" + rejection_reason + "\""))
+     << ",\"absolute_position\":null}\n";
+  return os.str();
 }
 
 void UiModel::set_status(const UsrpStatus& s) {
@@ -60,8 +103,12 @@ void UiModel::upsert_track(const DroneTrack& in) {
   const auto count = t.count;
   const bool had_bearing = t.has_bearing;
   const auto bearing = t.bearing_deg;
+  const auto mirrored = t.mirrored_deg;
+  const auto uncertainty = t.bearing_uncertainty_deg;
   const auto quality = t.bearing_quality;
   const auto ambiguous = t.bearing_ambiguous;
+  const auto start_sample = t.bearing_start_sample;
+  const auto end_sample = t.bearing_end_sample;
   t = in;
   t.key = key;
   t.decoded = had_decoded || in.decoded;
@@ -69,20 +116,35 @@ void UiModel::upsert_track(const DroneTrack& in) {
   if (had_bearing && !in.has_bearing) {
     t.has_bearing = true;
     t.bearing_deg = bearing;
+    t.mirrored_deg = mirrored;
+    t.bearing_uncertainty_deg = uncertainty;
     t.bearing_quality = quality;
     t.bearing_ambiguous = ambiguous;
+    t.bearing_start_sample = start_sample;
+    t.bearing_end_sample = end_sample;
   }
   if (in.serial.empty() && !had_serial.empty()) t.serial = had_serial;
 }
 
 void UiModel::set_bearing(const std::string& key, float deg, float quality, bool ambiguous) {
+  const float mirrored = static_cast<float>(std::remainder(180.0 - deg, 360.0));
+  set_bearing_detailed(key, deg, mirrored, 0.0f, quality, ambiguous, 0, 0);
+}
+
+void UiModel::set_bearing_detailed(const std::string& key, float deg, float mirrored_deg,
+                                   float uncertainty_deg, float quality, bool ambiguous,
+                                   std::uint64_t start_sample, std::uint64_t end_sample) {
   std::lock_guard<std::mutex> g(m_);
   auto it = tracks_.find(key);
   if (it == tracks_.end()) return;
   it->second.has_bearing = true;
   it->second.bearing_deg = deg;
+  it->second.mirrored_deg = mirrored_deg;
+  it->second.bearing_uncertainty_deg = uncertainty_deg;
   it->second.bearing_quality = quality;
   it->second.bearing_ambiguous = ambiguous;
+  it->second.bearing_start_sample = start_sample;
+  it->second.bearing_end_sample = end_sample;
 }
 
 std::vector<DroneTrack> UiModel::tracks() const {
@@ -108,6 +170,80 @@ void UiModel::record_rf_burst(double rssi_dbfs, double snr_db, double bw_hz, dou
 RfSummary UiModel::rf_summary() const {
   std::lock_guard<std::mutex> g(m_);
   return rf_;
+}
+
+void UiModel::set_df_status(const DfUiStatus& s) {
+  std::lock_guard<std::mutex> g(m_);
+  df_status_ = s;
+  if (s.state != DfUiState::Valid) {
+    for (auto& kv : tracks_) kv.second.has_bearing = false;
+  }
+}
+
+DfUiStatus UiModel::df_status() const {
+  std::lock_guard<std::mutex> g(m_);
+  return df_status_;
+}
+
+void UiModel::invalidate_bearings(DfUiState new_state, const std::string& reason) {
+  std::lock_guard<std::mutex> g(m_);
+  df_status_.state = new_state;
+  df_status_.reason = reason;
+  for (auto& kv : tracks_) kv.second.has_bearing = false;
+}
+
+void UiModel::record_df_event(const DfBearingEvent& event) {
+  std::lock_guard<std::mutex> g(m_);
+  df_events_.push_back(event);
+  while (df_events_.size() > packet_cap_) df_events_.pop_front();
+  if (event.valid) {
+    ++df_status_.accepted_bearings;
+  } else {
+    ++df_status_.rejected_bearings;
+    const auto& r = event.rejection_reason;
+    if (r.find("calibration") != std::string::npos || r.find("Uncalibrated") != std::string::npos ||
+        r.find("Stale") != std::string::npos || r.find("Disconnected") != std::string::npos)
+      ++df_status_.rejected_uncalibrated;
+    else if (r.find("coherence") != std::string::npos)
+      ++df_status_.rejected_coherence;
+    else if (r.find("clipping") != std::string::npos)
+      ++df_status_.rejected_clipping;
+    else if (r.find("dispersion") != std::string::npos)
+      ++df_status_.rejected_dispersion;
+    else if (r.find("SNR") != std::string::npos)
+      ++df_status_.rejected_snr;
+    else if (r.find("passband") != std::string::npos)
+      ++df_status_.rejected_passband;
+    else if (r.find("overlap") != std::string::npos || r.find("multipath") != std::string::npos)
+      ++df_status_.rejected_overlap;
+  }
+}
+
+std::vector<DfBearingEvent> UiModel::df_events() const {
+  std::lock_guard<std::mutex> g(m_);
+  return std::vector<DfBearingEvent>(df_events_.begin(), df_events_.end());
+}
+
+std::string UiModel::df_summary_jsonl() const {
+  std::lock_guard<std::mutex> g(m_);
+  std::ostringstream os;
+  os << "{\"event\":\"df_summary\",\"state\":\"" << to_string(df_status_.state) << "\""
+     << ",\"reason\":\"" << df_status_.reason << "\""
+     << ",\"session_id\":\"" << df_status_.session_id << "\""
+     << ",\"config_epoch\":" << df_status_.config_epoch
+     << ",\"reference_method\":\"" << df_status_.reference_method << "\""
+     << ",\"accepted_bearings\":" << df_status_.accepted_bearings
+     << ",\"rejected_bearings\":" << df_status_.rejected_bearings
+     << ",\"rejected_uncalibrated\":" << df_status_.rejected_uncalibrated
+     << ",\"rejected_coherence\":" << df_status_.rejected_coherence
+     << ",\"rejected_clipping\":" << df_status_.rejected_clipping
+     << ",\"rejected_dispersion\":" << df_status_.rejected_dispersion
+     << ",\"rejected_snr\":" << df_status_.rejected_snr
+     << ",\"rejected_passband\":" << df_status_.rejected_passband
+     << ",\"rejected_overlap\":" << df_status_.rejected_overlap
+     << ",\"dropped_pairs\":" << df_status_.dropped_pairs
+     << ",\"absolute_position\":null}\n";
+  return os.str();
 }
 
 // --- checklist ---
