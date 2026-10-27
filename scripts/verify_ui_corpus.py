@@ -32,10 +32,16 @@ def main():
         expected = {packet["payload_hex"] for packet in row["unique_payloads"]}
         cli_packets = re.findall(r"frame: ([0-9a-f]+)", decoded.stdout)
         ui_packets = re.findall(r"packet: telemetry=\w+ frame=([0-9a-f]+)", ui.stdout)
+        cli_envelopes = re.findall(r"frame: ([0-9a-f]+)\n  envelope: format=(\w+) logical_bytes=\d+ inner_crc16=(\w+)", decoded.stdout)
+        ui_envelopes = re.findall(r"packet: telemetry=\w+ frame=([0-9a-f]+) format=(\w+) inner_crc16=(\w+)", ui.stdout)
         passed = digest_ok and decoded.returncode == 0 and ui.returncode == 0 and bool(cli_packets)
         passed = passed and sorted(cli_packets) == sorted(ui_packets) and set(cli_packets) <= expected
+        envelope_match = len(cli_envelopes) == len(cli_packets) and sorted(cli_envelopes) == sorted(ui_envelopes)
+        passed = passed and envelope_match
         check = dict(id=row["id"], model=row["model"], sha256_matches=digest_ok,
                      cli_packets=len(cli_packets), ui_packets=len(ui_packets), passed=passed,
+                     envelopes_match=envelope_match,
+                     inner_crc16_valid=sum(checksum == "OK" for _, _, checksum in cli_envelopes),
                      telemetry_parsed=ui.stdout.count("telemetry=parsed"),
                      telemetry_unsupported=ui.stdout.count("telemetry=unsupported"))
         checks.append(check)

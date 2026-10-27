@@ -117,6 +117,10 @@ static int run(int argc, char** argv) {
     if (b.crc_ok) {
       ++crc_ok;
       std::printf("  frame: "); print_hex(b.payload);
+      const auto envelope = dji::inspect_packet(b.payload);
+      std::printf("  envelope: format=%s logical_bytes=%zu inner_crc16=%s\n",
+                  envelope.format.c_str(), envelope.logical_bytes,
+                  !envelope.length_valid ? "invalid_length" : envelope.crc16_ok ? "OK" : "fail");
       dji::Telemetry t;
       if (dji::parse_frame(b.payload, t)) {
         std::printf("  serial : %s\n", t.serial.c_str());

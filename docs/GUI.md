@@ -59,10 +59,22 @@ declaring live acceptance. Physical-button interaction and hardware recovery sti
 
 ## Direction finding
 
-The former GUI path reopened the radio and applied file calibration from another LO session.
-That is not a valid phase reference. `--df --df-cal FILE` now **fails closed without opening a radio**.
+The former GUI path reopened the radio and applied file calibration without verified phase-repeatability
+or session provenance. That is not a validated phase reference. `--df --df-cal FILE` now **fails closed without opening a radio**.
 Use paired-IQ tools described in `docs/PHASE456.md`; integrated same-session calibration,
 timestamp alignment and antenna-rig verification are still required before enabling GUI bearings.
+UBX/X310 timed LO synchronization is supported, but calibration reuse must be measured on this rig.
+The staged implementation and hardware acceptance gates are in `docs/DIRECTION_FINDING_PLAN.md`.
+
+## Packet diagnostics (2026-10-27)
+
+Packet rows distinguish `v2`, `v3`, `infp`, `cryp`, auxiliary type `0x11` and unknown envelopes.
+Hover the serial/format for raw bytes and inner CRC16 status. The row's `CRC24 OK` label refers
+only to the outer transport checksum. Supported v2 telemetry requires valid inner CRC16 and
+a recognized logical length (79 or 91 bytes); other formats or failed checks never create a track.
+The headless worker prints the same diagnostics. CRCs detect corruption, not spoofed identity.
+Nine retained real-IQ clips pass exact CLI/UI payload and envelope comparisons; all nine have
+valid inner CRC16. This is offline integration evidence, not O4 identification accuracy.
 
 ## Verified offline (2026-10-26)
 

@@ -110,7 +110,7 @@ void draw_drones(const std::vector<ui::DroneTrack>& tracks, const ui::RfSummary&
 void draw_packets(const std::vector<ui::PacketRow>& packets) {
   ImGui::BeginChild("packets", ImVec2(0, 0), true);
   ImGui::SeparatorText("Decoded packets");
-  ImGui::TextDisabled("CRC-valid payloads; hover serial for hex. Unsupported payloads have no telemetry.");
+  ImGui::TextDisabled("Outer-CRC-valid payloads; hover serial for format, inner CRC and hex. Unparsed rows have no telemetry.");
   if (ImGui::BeginTable("pkts", 6,
         ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg | ImGuiTableFlags_ScrollY)) {
     ImGui::TableSetupColumn("seq");
@@ -125,11 +125,12 @@ void draw_packets(const std::vector<ui::PacketRow>& packets) {
       ImGui::TableNextRow();
       ImGui::TableNextColumn();
       if (p.telemetry_parsed) ImGui::Text("%u", p.sequence);
-      else ImGui::TextDisabled("CRC OK");
-      ImGui::TableNextColumn(); ImGui::TextUnformatted(p.telemetry_parsed ? p.serial.c_str() : "(unparsed)");
+      else ImGui::TextDisabled("CRC24 OK");
+      ImGui::TableNextColumn(); ImGui::TextUnformatted(p.telemetry_parsed ? p.serial.c_str() : p.payload_format.c_str());
       if (ImGui::IsItemHovered() && !p.payload_hex.empty()) {
         ImGui::BeginTooltip();
         ImGui::PushTextWrapPos(560);
+        ImGui::Text("Format: %s; inner CRC16: %s", p.payload_format.c_str(), p.inner_crc16.c_str());
         ImGui::TextUnformatted(p.payload_hex.c_str());
         ImGui::PopTextWrapPos();
         ImGui::EndTooltip();
@@ -430,7 +431,9 @@ int main(int argc, char** argv) {
       std::printf("  track: serial=%s count=%llu corr=%.3f\n", track.serial.c_str(),
                   static_cast<unsigned long long>(track.count), track.corr);
     for (const auto& packet : model.packets())
-      std::printf("  packet: telemetry=%s frame=%s\n", packet.telemetry_parsed ? "parsed" : "unsupported", packet.payload_hex.c_str());
+      std::printf("  packet: telemetry=%s frame=%s format=%s inner_crc16=%s\n",
+                  packet.telemetry_parsed ? "parsed" : "unsupported", packet.payload_hex.c_str(),
+                  packet.payload_format.c_str(), packet.inner_crc16.c_str());
     if (!st.detail.empty()) std::printf("  detail: %s\n", st.detail.c_str());
     return st.state == UsrpStatus::State::Error ? 1 : 0;
   }

@@ -16,7 +16,14 @@
       Full-file CLI/UI payloads match exactly (120M samples, one track/count 1); native UI inspected.
       Evidence: `data/analysis/o1_followup_20261027/REPORT.md`; diagnostic tests 2/2 pass.
 - [ ] O4 identity accuracy: backend currently abstains (`unknown_rf`); energy activity is not O4 identification.
-- [ ] Live DF same-session calibration: file calibration across reopened LOs is not valid; GUI path fails closed.
+- [x] 2026-10-27 envelope audit: all 22 unique saved transport payloads also pass inner CRC16.
+      CLI/UI show format/checksum separately; supported v2 parsing requires inner CRC and valid length.
+      Nine real-IQ clips agree exactly across CLI/UI; release 12/12 and Python 6+2 tests pass.
+      Evidence: `data/analysis/envelopes_20261027/REPORT.md`. O3+ v3/INFP telemetry remains unsupported.
+- [x] Direction-finding completion plan: `docs/DIRECTION_FINDING_PLAN.md`, DF-1 through DF-6,
+      software-first milestones, calibrated paired pipeline, bench/field gates and proposed error targets.
+- [ ] Live DF same-session calibration: cross-session reuse lacks validated phase-repeatability/provenance;
+      GUI path fails closed. UBX/X310 timed LO synchronization is supported, not yet measured on this rig.
 
 Checklist shared between the operator and the coding agent. The checklist UI panel was removed;
 the agent updates this file as work lands. States:
@@ -136,7 +143,7 @@ See [`DRONEID_BUILD_PLAN.md`](DRONEID_BUILD_PLAN.md) for the detail behind each 
 - [x] RF metrics wired into the drones panel: `EnergyBurstDetector` + `measure_rf` over the sample
       stream → an **"unknown RF" activity line** (burst count, peak RSSI, last SNR/BW), honestly *not*
       a drone count. Verified offline; revised live path still needs hardware acceptance.
-- [ ] GUI DF disabled (fails closed): reopening/retuning invalidates file calibration. Integrate a
+- [ ] GUI DF disabled (fails closed): calibration-session/retune repeatability is unverified. Integrate a
       same-session phase reference before exposing bearings. Paired-IQ core tools remain available.
 - [ ] ImPlot polar view (deferred; compass currently drawn with ImDrawList)
 - [ ] **Accept:** live Mini 2 decode, zero overflows over 10 min on 1GbE budget; UI drives the radio
@@ -160,6 +167,7 @@ See [`DRONEID_BUILD_PLAN.md`](DRONEID_BUILD_PLAN.md) for the detail behind each 
 
 
 ## Phase 6 — Direction finding (core, both antennas)
+- [x] Detailed completion plan with dependencies and explicit acceptance gates: `docs/DIRECTION_FINDING_PLAN.md`.
 - [x] `iq_record_pair`: two-channel UHD RX, common timed tuning/start, sc8 wire/cf32 disk,
       sample continuity checks, paired metadata; compiled only, hardware coherence not yet verified.
 - [/] Dual coherent RX: common time configured; independent UBX LOs still require physical calibration.
@@ -173,5 +181,7 @@ See [`DRONEID_BUILD_PLAN.md`](DRONEID_BUILD_PLAN.md) for the detail behind each 
 
 Implementation/usage: `docs/PHASE456.md`. Phase numbering follows this checklist;
 wideband/Wi-Fi/SQLite (called Phase 6 in the original plan) is not included here.
-Release and no-UHD AddressSanitizer: 9/9 suites pass. Local RF smoke-check evidence:
-`data/analysis/phase456_rf_20261026/REPORT.md`. Phase 3 GUI and live-pipeline integration remain open.
+Initial Phase 4–6 release/no-UHD AddressSanitizer checks were 9/9; the integrated release now passes
+12/12 suites (earlier headless ASan: 11/11). Local RF smoke-check evidence:
+`data/analysis/phase456_rf_20261026/REPORT.md`. Phase 3 GUI/replay and live plumbing are implemented;
+live hardware and calibrated DF acceptance remain open.

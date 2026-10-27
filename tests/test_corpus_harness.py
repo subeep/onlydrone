@@ -49,6 +49,31 @@ class CorpusHarnessTests(unittest.TestCase):
             self.assertEqual(member, "../unsafe-member.mat")
             self.assertTrue((root / "member.mat").exists())
 
+    def test_envelope_boundaries_and_crc(self):
+        for payload in (b"", bytes([88]), bytes([0, 0x10, 2]), bytes([171]) + bytes(175)):
+            self.assertEqual(corpus.packet_envelope(payload)["inner_crc16"], "invalid_length")
+        for length, header, expected in [(79, b"\x10\x02", "v2"), (91, b"\x10\x02", "v2"),
+                                         (112, b"\x10\x03", "v3"), (131, b"\x10INFP", "infp"),
+                                         (138, b"\x10INFP", "infp"), (144, b"\x11\x02", "auxiliary_11"),
+                                         (173, b"\x13CRYP", "cryp")]:
+            payload = bytearray(176)
+            payload[0] = length - 3
+            payload[1:1 + len(header)] = header
+            payload[7:11] = b"TEST"
+            checksum = 0x3692
+            for value in payload[:length - 2]:
+                checksum ^= value
+                for _ in range(8):
+                    checksum = (checksum >> 1) ^ (0x8408 if checksum & 1 else 0)
+            payload[length - 2:length] = checksum.to_bytes(2, "little")
+            record = corpus.packet_record(payload.hex())
+            self.assertEqual(record["inner_crc16"], "OK")
+            self.assertEqual(record["packet_format"], expected)
+            self.assertEqual(record["serial"], "TEST" if expected == "v2" else None)
+            payload[7] ^= 1
+            self.assertEqual(corpus.packet_record(payload.hex())["inner_crc16"], "fail")
+            self.assertIsNone(corpus.packet_record(payload.hex())["serial"])
+
     def test_int16_scaling(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "samples.bin"

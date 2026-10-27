@@ -45,6 +45,9 @@ int main(int argc, char** argv) {
   user[2] = 2;
   user[3] = 0x34; user[4] = 0x12;
   for (size_t i = 0; i < serial.size() && i < 16; ++i) user[7 + i] = static_cast<uint8_t>(serial[i]);
+  const uint16_t checksum = dji::packet_crc16(user.data(), user.size() - 2);
+  user[user.size() - 2] = checksum & 0xff;
+  user[user.size() - 1] = checksum >> 8;
 
   const auto frame176 = dji::build_frame176(user);
   std::vector<uint8_t> bits7200;

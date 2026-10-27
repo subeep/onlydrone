@@ -53,6 +53,10 @@ still needs hardware acceptance. The operator deferred live tests because no rad
 The drones panel shows aggregate "unknown RF" activity, not O4 identity or a drone count.
 CRC-valid unsupported payloads are logged without invented telemetry. GUI `--df --df-cal FILE`
 currently fails closed: same-session LO calibration must be integrated before showing bearings.
+The [direction-finding completion plan](docs/DIRECTION_FINDING_PLAN.md) defines paired replay,
+calibration lifecycle, shared DSP, GUI integration, bench and field acceptance gates.
+CLI/UI packet diagnostics now distinguish envelope format and inner CRC16 from outer CRC24;
+unsupported formats remain unparsed and neither checksum authenticates identity.
 
 ## Try it (no radio)
 

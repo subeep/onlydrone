@@ -1,10 +1,11 @@
 burst 0: idx=24000 corr=0.836 cfo=-69222 Hz crc=OK
   frame: 581002ef01070f303852444533313030313032313800000000000000000000efff00000000000000000ac700000000000000000000000000000000000000000000000010133132373839363537343930383235373839343400d6c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008bcf96511770344fa91982b2c3b2f0a9ce9605455d2c432c5962ebc38cd23677c9e8
+  envelope: format=v2 logical_bytes=91 inner_crc16=OK
   serial : 08RDE310010218
   drone  : 0.000000, 0.000000  alt -17 m  height 0 m
   pilot  : 0.000000, 0.000000  home 0.000000, 0.000000
 == 1 burst candidate(s), 1 CRC-valid ==
-11:43:52 [INFO ] FileSource: loaded sidecar /home/sudeep/Music/punjdrone/data/analysis/o1_confirmed_20261027/036-5fbd4f6213.decoded.cf32.meta (format=cf32 rate=120000000 center=0)
-11:43:52 [INFO ] decoding /home/sudeep/Music/punjdrone/data/analysis/o1_confirmed_20261027/036-5fbd4f6213.decoded.cf32 (0.0 s, thresh 0.50, freq_offset -4570312 Hz, lpf on)
-11:43:52 [INFO ] FileSource: loaded sidecar /home/sudeep/Music/punjdrone/data/analysis/o1_confirmed_20261027/036-5fbd4f6213.decoded.cf32.meta (format=cf32 rate=120000000 center=0)
-11:43:52 [INFO ] decoder input 120.000 MSPS -> 15.360 MSPS, shift -4570312 Hz
+13:07:06 [INFO ] FileSource: loaded sidecar /home/sudeep/Music/punjdrone/data/analysis/o1_confirmed_20261027/036-5fbd4f6213.decoded.cf32.meta (format=cf32 rate=120000000 center=0)
+13:07:06 [INFO ] decoding /home/sudeep/Music/punjdrone/data/analysis/o1_confirmed_20261027/036-5fbd4f6213.decoded.cf32 (0.0 s, thresh 0.50, freq_offset -4570312 Hz, lpf on)
+13:07:06 [INFO ] FileSource: loaded sidecar /home/sudeep/Music/punjdrone/data/analysis/o1_confirmed_20261027/036-5fbd4f6213.decoded.cf32.meta (format=cf32 rate=120000000 center=0)
+13:07:06 [INFO ] decoder input 120.000 MSPS -> 15.360 MSPS, shift -4570312 Hz

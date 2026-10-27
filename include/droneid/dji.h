@@ -84,6 +84,16 @@ std::vector<OffsetScore> scan_freq_offsets(const std::vector<cf32>& iq, double f
 // Parse a CRC-valid 176-byte payload into telemetry.
 bool parse_frame(const std::vector<uint8_t>& payload, Telemetry& out);
 
+struct PacketEnvelope {
+  std::string format = "unknown";
+  size_t logical_bytes = 0;
+  bool length_valid = false;
+  bool crc16_ok = false;
+};
+
+PacketEnvelope inspect_packet(const std::vector<uint8_t>& payload);
+uint16_t packet_crc16(const uint8_t* bytes, size_t size);
+
 // --- lower-level pieces (exposed for tests / frame_gen) ---
 
 // LTE Gold scrambler sequence (3GPP 36.211 7.2). x2_init: 31 bits (LSB-first row as in ref).

@@ -21,7 +21,7 @@ Adapters verified against local acquisition code/metadata:
   Only that member is temporarily extracted, with a 512 MiB cap.
 - RFUAV: bounded IQ stream from the first selected member; Complex Float XML rate/center.
 - Tampere: little-endian interleaved int16, 120 MSPS at 2.4 GHz / 200 MSPS at 5.8 GHz.
-  Absolute centers are not established, so only auto-centering is used.
+  Absolute centers are not established; auto-centering and explicit documented offset hypotheses are used.
 - Recent local recordings: int16 IQ with sidecar metadata. RUB references: original 50 MSPS cf32.
 
 Decode attempts use auto-centering plus known DroneID channels fully within the capture passband.
@@ -57,7 +57,9 @@ Dataset redistribution licenses are not verified; these excerpts are not promote
 - Implement/validate an O4 identity classifier before claiming detection accuracy or drone count.
 - Mixed-drone, SNR, interference and longer-duration stress testing; exclude ambiguous labels.
 - Ten-minute live UI test with a transmitter: CRCs, receive gaps, drops, reconnect and shutdown.
-- Same-session phase calibration and calibrated two-antenna tests; no cross-session file cal.
+- Same-session phase calibration and calibrated two-antenna tests; no unverified cross-session file cal.
+  Complete DF-1–DF-6 in `docs/DIRECTION_FINDING_PLAN.md`: paired contract/replay, calibration lifecycle,
+  shared DSP/association, GUI, hardware bench, then measured field accuracy/hopping.
 
 Current results: `docs/VALIDATION_20261026.md`. CardRF remains excluded; do not download its large archive.
 
@@ -69,3 +71,18 @@ The same full-file packet reaches the UI, serial `08RDE310010218`. See
 `data/analysis/o1_followup_20261027/REPORT.md` for the exact payload/commands and search limitations.
 The corpus harness now accepts `--model-filter` and repeatable `--extra-offset` arguments for
 explicitly testing documented channel hypotheses; the decoder itself was not changed for this fix.
+
+## Envelope follow-up (27 October)
+
+```bash
+python scripts/audit_packet_envelopes.py data/analysis/corpus_20261026 data/analysis/corpus_deep_20261026 data/analysis/o1_confirmed_20261027 --output data/analysis/envelopes_20261027
+python scripts/verify_ui_corpus.py data/analysis/corpus_deep_20261026
+python scripts/verify_ui_corpus.py data/analysis/o1_confirmed_20261027
+```
+
+The audit uses saved hex only and deduplicates complete transport payloads. All 22 unique payloads
+pass inner CRC16. CLI/UI comparisons now include format and inner-checksum status (9/9 retained clips).
+CTest covers the real Mini 2 golden checksum, supported v2 lengths, unknown/unsupported formats,
+corrupted inner data and invalid logical lengths. Python envelope tests match those guards.
+INFP occurs in O3+ and O4+ labels: never use it alone as an O4 classifier. No payload decryption or
+v3 telemetry mapping is claimed. Decoder output remains raw transport evidence when parsing fails.

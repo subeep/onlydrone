@@ -44,6 +44,8 @@ struct PacketRow {
   bool crc_ok = true;
   bool telemetry_parsed = false;
   std::string payload_hex;
+  std::string payload_format = "unknown";
+  std::string inner_crc16 = "unchecked";
 };
 
 // One tracked source (decoded drone or raw RF emitter), keyed by serial or an RF id.

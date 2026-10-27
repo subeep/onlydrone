@@ -34,9 +34,12 @@ void process_window(UiModel& model, const SampleWindow& window, const dji::Decod
       packet.payload_hex += hex[byte >> 4];
       packet.payload_hex += hex[byte & 15];
     }
+    const auto envelope = dji::inspect_packet(burst.payload);
+    packet.payload_format = envelope.format;
+    packet.inner_crc16 = !envelope.length_valid ? "invalid_length" : envelope.crc16_ok ? "OK" : "fail";
     packet.telemetry_parsed = dji::parse_frame(burst.payload, telemetry);
     if (!packet.telemetry_parsed) {
-      packet.type = "Unsupported payload (CRC OK)";
+      packet.type = "Unparsed " + packet.payload_format + " (outer CRC OK; inner " + packet.inner_crc16 + ")";
       model.add_packet(packet);
       continue;
     }
@@ -268,7 +271,7 @@ void df_live_worker(UiModel& model, SourceConfig, std::atomic<bool>&) {
   UsrpStatus status;
   status.state = UsrpStatus::State::Error;
   status.label = "DF calibration required";
-  status.detail = "Live DF disabled: reopening/retuning invalidates file calibration. Use same-session paired IQ tooling.";
+  status.detail = "Live DF disabled: calibration session and phase repeatability are unverified. Use same-session paired IQ tooling.";
   model.set_status(status);
 }
 

@@ -5,9 +5,10 @@ Phase 5 is RF/O4 analysis, and Phase 6 is direction finding. The original build
 plan calls direction finding Phase 7 and calls wideband/Wi-Fi/outputs Phase 6.
 That separate wideband/Wi-Fi/SQLite work is **not implemented by this change**.
 
-These are headless tools, not the still-pending Phase 3 GUI/live pipeline. All
-radio operations are receive-only. No radio session was started during this
-implementation; hardware acceptance remains open.
+These headless tools complement the implemented Phase 3 GUI/replay and live
+single-channel pipeline. Live hardware acceptance remains open; no radio was
+accessed in the current offline validation. All radio operations are receive-only.
+The DF completion sequence is in `docs/DIRECTION_FINDING_PLAN.md`.
 
 ## Phase 4: scheduled dwell reception
 
@@ -85,12 +86,16 @@ This receives Radio#0 and Radio#1 through one multi-channel UHD stream, uses
 15.36 MSPS and sc8 on the wire, and writes **cf32** files plus per-channel metadata.
 On-wire traffic is approximately 61.44 MB/s plus overhead; disk traffic is
 approximately 245.76 MB/s. Check storage capacity and throughput. The tool
-rejects mismatched timestamps, overflows and unexpected rate; failed captures
-remain `.partial` rather than being published as completed captures.
+rejects mismatched timestamps, overflows and unexpected rate. Error paths leave
+incomplete artifacts; pair publication is not transactional yet, and interruption
+can publish a shorter capture. Inspect metadata/counts before use. Hardening this
+behavior is DF-1 in the completion plan.
 
-Timed start and common X310 time do **not** establish a shared RF LO: the UBX
-oscillators are independent. Hardware phase-repeatability and calibration are
-mandatory. Do not describe this software plumbing as measured RF coherence.
+Timed start alone does not establish RF phase alignment. X310/UBX also supports
+timed LO synchronization, with residual phase offsets requiring calibration.
+Actual clock compatibility and phase-repeatability must be measured on this rig;
+do not describe compiled software plumbing as measured RF coherence. See the
+official synchronization references in `docs/DIRECTION_FINDING_PLAN.md`.
 
 Calibration uses a splitter or a known broadside source with the same receiver
 gain, RF frequency, sample rate, antenna/cable setup and uninterrupted LO session:
@@ -118,10 +123,11 @@ For a later target window **within that same uninterrupted receiver/LO session**
 The start/sample counts are illustrative: select the same isolated burst in both
 files. `--aligned` is an explicit operator assertion of time-aligned, gap-free
 coherent inputs. Equal file lengths alone do not prove that. Do not use sequential
-single-channel recordings. Calibration applies to the RF chain, so reconnecting
-or retuning between a splitter capture and a target capture invalidates it even
-when the file's age/frequency checks would pass. Session identity and cable
-changes cannot be inferred from raw files; the operator must enforce this.
+single-channel recordings. Treat reconnects and retunes as invalidating calibration
+until timed-phase repeatability and configuration/session provenance are verified,
+even when file age/frequency checks pass. This is a conservative application policy,
+not a claim that UBX cannot synchronize its LOs. Session identity and cable changes
+cannot be inferred from raw files; the operator must enforce this.
 
 Bearing is `asin(wrapped_phase * wavelength / (2*pi*spacing))`, relative to antenna
 pair broadside. Positive phase means channel 1 leads channel 0 under this

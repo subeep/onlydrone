@@ -19,6 +19,24 @@ No large IQ files were downloaded. Existing external data was read without modif
 The external sda1 partition became unmounted after the sweeps completed, then was remounted by the
 operator on 27 October. O1 follow-up succeeded; see `data/analysis/o1_followup_20261027/REPORT.md`.
 
+## Envelope and DF follow-up — 27 October
+
+The saved quick/deep/O1 reports contain **22 unique transport payloads**, all of which also pass
+the inner CRC16 over the declared logical length. `data/analysis/envelopes_20261027/REPORT.md`
+lists per-model formats: v2 (79/91 bytes), v3 (112), INFP (131/138), auxiliary type 0x11 (144).
+INFP appears in Mavic 3/O3+ and Mini 5 Pro/O4+ data: it is not an O4-only marker.
+These checks strengthen corruption detection but neither authenticate identity nor establish flight truth.
+Unsupported formats still have no invented serial/GPS. No O3+ telemetry/decryption claim is added.
+
+CLI/UI now expose envelope format and inner-checksum status; v2 parsing requires a recognized
+logical length and valid inner checksum. Rebuilt release: 12/12 CTest; Python corpus/O1: 6/6 + 2/2.
+Nine retained clips (eight deep-corpus plus O1) match exact payloads and envelope diagnostics through
+both executables. This replays bounded retained IQ, not a new full-corpus sweep.
+
+`docs/DIRECTION_FINDING_PLAN.md` defines software, bench and field gates. It corrects the earlier
+overbroad retune statement: UBX/X310 supports timed LO synchronization, but reuse of calibration
+remains unverified on this rig. GUI DF stays disabled; no radio was accessed in this follow-up.
+
 ## Coverage and reproducibility
 
 - External inventory: **808 data/archive files, 593.18 GB decimal**. Inventory is not test coverage.

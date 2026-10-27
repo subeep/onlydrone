@@ -43,13 +43,39 @@ def scalar(handle, *names):
     raise ValueError(f"missing metadata field: {names}")
 
 
+def packet_envelope(raw):
+    length = raw[0] + 3 if raw else 0
+    result = dict(packet_format="unknown", logical_bytes=length, inner_crc16="invalid_length")
+    if not 5 <= length <= min(len(raw), 173):
+        return result
+    checksum = 0x3692
+    for value in raw[:length]:
+        checksum ^= value
+        for _ in range(8):
+            checksum = (checksum >> 1) ^ (0x8408 if checksum & 1 else 0)
+    result["inner_crc16"] = "OK" if checksum == 0 else "fail"
+    if raw[1] == 0x10 and raw[2] in (2, 3):
+        result["packet_format"] = f"v{raw[2]}"
+    elif length >= 8 and raw[1:6] == b"\x10INFP":
+        result["packet_format"] = "infp"
+    elif length >= 8 and raw[1:6] == b"\x13CRYP":
+        result["packet_format"] = "cryp"
+    elif raw[1] == 0x11:
+        result["packet_format"] = "auxiliary_11"
+    return result
+
+
 def packet_record(payload):
     raw = bytes.fromhex(payload)
+    envelope = packet_envelope(raw)
     serial_bytes = raw[7:23].split(b"\x00")[0]
-    parsed = len(raw) >= 91 and raw[2] == 2 and bool(serial_bytes) and all(32 <= value <= 126 for value in serial_bytes)
+    parsed = (envelope["packet_format"] == "v2" and envelope["inner_crc16"] == "OK" and
+              envelope["logical_bytes"] in (79, 91) and bool(serial_bytes) and
+              all(32 <= value <= 126 for value in serial_bytes))
     return dict(payload_hex=payload, serial=serial_bytes.decode("ascii") if parsed else None,
                 version=raw[2] if parsed else None, telemetry_status="v2_serial_parsed" if parsed else "unsupported_payload",
-                header_hex=raw[:6].hex(), validation="outer CRC-24; no dataset telemetry ground truth")
+                header_hex=raw[:6].hex(), **envelope,
+                validation="outer CRC-24 checked by decoder; inner CRC-16 checked here; neither authenticates identity; no dataset telemetry ground truth")
 
 
 def inventory(root, repo, per_group):

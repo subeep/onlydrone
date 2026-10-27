@@ -6,6 +6,7 @@
 // GPL-3.0-or-later.
 #include <cctype>
 #include <cstring>
+#include <algorithm>
 
 #include "droneid/dji.h"
 
@@ -20,9 +21,39 @@ uint16_t rd_u16(const uint8_t* p) { return static_cast<uint16_t>(p[0] | (p[1] <<
 
 }  // namespace
 
+uint16_t packet_crc16(const uint8_t* bytes, size_t size) {
+  uint16_t checksum = 0x3692;
+  for (size_t index = 0; index < size; ++index) {
+    checksum ^= bytes[index];
+    for (int bit = 0; bit < 8; ++bit)
+      checksum = static_cast<uint16_t>((checksum >> 1) ^ ((checksum & 1) ? 0x8408 : 0));
+  }
+  return checksum;
+}
+
+PacketEnvelope inspect_packet(const std::vector<uint8_t>& payload) {
+  PacketEnvelope result;
+  if (payload.empty()) return result;
+  result.logical_bytes = static_cast<size_t>(payload[0]) + 3;
+  result.length_valid = result.logical_bytes >= 5 &&
+                        result.logical_bytes <= std::min<size_t>(payload.size(), 173);
+  if (!result.length_valid) return result;
+  result.crc16_ok = packet_crc16(payload.data(), result.logical_bytes) == 0;
+  if (payload[1] == 0x10 && payload[2] == 2) result.format = "v2";
+  else if (payload[1] == 0x10 && payload[2] == 3) result.format = "v3";
+  else if (result.logical_bytes >= 8 && payload[1] == 0x10 &&
+           std::memcmp(payload.data() + 2, "INFP", 4) == 0) result.format = "infp";
+  else if (result.logical_bytes >= 8 && payload[1] == 0x13 &&
+           std::memcmp(payload.data() + 2, "CRYP", 4) == 0) result.format = "cryp";
+  else if (payload[1] == 0x11) result.format = "auxiliary_11";
+  return result;
+}
+
 bool parse_frame(const std::vector<uint8_t>& f, Telemetry& t) {
   t = Telemetry{};
-  if (f.size() < 91 || f[2] != 2) return false;
+  const auto envelope = inspect_packet(f);
+  if (!envelope.crc16_ok || envelope.format != "v2" ||
+      (envelope.logical_bytes != 79 && envelope.logical_bytes != 91)) return false;
 
   constexpr double kRadScale = 1e7;              // stored as radians * 1e7
   constexpr double kRadToDeg = 180.0 / 3.14159265358979323846;

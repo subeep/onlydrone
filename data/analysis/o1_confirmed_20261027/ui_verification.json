@@ -6,6 +6,8 @@
     "cli_packets": 1,
     "ui_packets": 1,
     "passed": true,
+    "envelopes_match": true,
+    "inner_crc16_valid": 1,
     "telemetry_parsed": 1,
     "telemetry_unsupported": 0
   }
