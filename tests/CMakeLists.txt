@@ -9,11 +9,47 @@ endfunction()
 droneid_test(test_ring_buffer)
 droneid_test(test_file_source)
 droneid_test(test_config)
+droneid_test(test_receiver)
+
+# Operator UI model (headless; no GPU/window needed).
+if(TARGET droneid_ui_model)
+  add_executable(test_ui_model test_ui_model.cpp)
+  target_link_libraries(test_ui_model PRIVATE droneid_ui_model)
+  target_include_directories(test_ui_model PRIVATE ${CMAKE_SOURCE_DIR}/include)
+  add_test(NAME test_ui_model COMMAND test_ui_model)
+endif()
 
 # DJI decoder tests (only when the decoder library was built).
 if(TARGET droneid_dji)
+  add_executable(test_ui_worker test_ui_worker.cpp)
+  target_link_libraries(test_ui_worker PRIVATE droneid_ui_worker)
+  target_compile_definitions(test_ui_worker PRIVATE DRONEID_TEST_DATA_DIR="${CMAKE_CURRENT_SOURCE_DIR}/data")
+  target_link_options(test_ui_worker PRIVATE -Wl,--allow-shlib-undefined)
+  add_test(NAME test_ui_worker COMMAND test_ui_worker)
+  if(TARGET droneid_ui)
+    add_test(NAME test_ui_cli COMMAND ${CMAKE_COMMAND}
+      -DUI=$<TARGET_FILE:droneid_ui>
+      -DFIXTURE=${CMAKE_CURRENT_SOURCE_DIR}/data/mini2_wideband.cf32
+      -P ${CMAKE_CURRENT_SOURCE_DIR}/test_ui_cli.cmake)
+  endif()
   add_executable(test_dji test_dji.cpp)
   target_link_libraries(test_dji PRIVATE droneid_dji)
   target_compile_definitions(test_dji PRIVATE DRONEID_TEST_DATA_DIR="${CMAKE_CURRENT_SOURCE_DIR}/data")
   add_test(NAME test_dji COMMAND test_dji)
+  add_executable(test_resampler test_resampler.cpp)
+  target_link_libraries(test_resampler PRIVATE droneid_dji)
+  add_test(NAME test_resampler COMMAND test_resampler)
+  add_executable(test_rf_metrics test_rf_metrics.cpp)
+  target_link_libraries(test_rf_metrics PRIVATE droneid_rf)
+  add_test(NAME test_rf_metrics COMMAND test_rf_metrics)
+  add_test(NAME test_receiver_cli COMMAND ${CMAKE_COMMAND}
+    -DHOP=$<TARGET_FILE:droneid_hop>
+    -DRF=$<TARGET_FILE:rf_analyze>
+    -DDF=$<TARGET_FILE:df_bearing>
+    -DFIXTURE=${CMAKE_CURRENT_SOURCE_DIR}/data/mini2_centered.sc16
+    -P ${CMAKE_CURRENT_SOURCE_DIR}/test_receiver_cli.cmake)
+  add_test(NAME test_decode_cli COMMAND ${CMAKE_COMMAND}
+    -DDECODER=$<TARGET_FILE:droneid_decode>
+    -DFIXTURE=${CMAKE_CURRENT_SOURCE_DIR}/data/mini2_wideband.cf32
+    -P ${CMAKE_CURRENT_SOURCE_DIR}/test_decode_cli.cmake)
 endif()

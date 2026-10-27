@@ -37,7 +37,7 @@ std::vector<cf32> create_zc(int fft_size, int symbol_index);
 
 // --- Decoded output ---
 struct DecodedBurst {
-  int64_t sample_index = 0;   // burst start in the (shifted) stream
+  int64_t sample_index = 0;   // padded burst-window start in original input-sample units
   double  cfo_hz = 0;         // CFO after CP estimate and joint-ZC integer-carrier correction
   float   corr = 0;           // ZC correlation score [0,1]
   bool    crc_ok = false;
@@ -65,14 +65,15 @@ struct DecodeOptions {
   double freq_offset = 0.0;    // Hz to shift the input before processing (to center a channel)
   float  corr_threshold = 0.5f;
   bool   low_pass = true;      // apply 10 MHz LPF after centering
-  size_t max_samples = 0;      // 0 = whole file; else scan only this many
+  size_t max_samples = 0;      // 0 = whole input; otherwise limit original input samples
+  bool auto_center = false;
 };
 
 // Decode every burst found in a capture file. `fmt` is the on-disk sample format.
 std::vector<DecodedBurst> decode_file(const std::string& path, SampleFormat fmt,
                                       const DecodeOptions& opt);
 
-// Decode bursts from an in-memory stream (already at baseband sample rate).
+// Decode an in-memory stream, centering/resampling to 15.36 MSPS before detection.
 std::vector<DecodedBurst> decode_samples(const std::vector<cf32>& iq, const DecodeOptions& opt);
 
 // Diagnostic: peak ZC (symbol-4) correlation at each frequency offset in [lo,hi] step.

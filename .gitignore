@@ -8,3 +8,8 @@ imgui.ini
 *.so
 *.a
 compile_commands.json
+data/**/*.cf32
+data/analysis/**/*.jsonl
+data/analysis/**/*.stderr
+__pycache__/
+*.pyc

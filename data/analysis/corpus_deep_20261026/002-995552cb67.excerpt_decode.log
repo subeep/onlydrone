@@ -1,0 +1,7 @@
+burst 0: idx=20000 corr=0.781 cfo=7786 Hz crc=OK
+  frame: 8010494e4650065b435c00c8afcf709226a36d00a4893ae9f826eed6448f458506172b78f3002c90baf45d425f67f7c5c7e955ed4d272508870875a1f486d374b9696a9c0e40e32703989572f595f8aa897c0ec52180b8da3206d118b82f7cf00ecd8d4cb4dab0f69bc21cf02449b8243eac2e4bd6843d984d8536032758a44d825d5c0099e40c9f725510db9e5e865aec8878e2c402a4a35a8179cbc9b83e4ddeb2698045fcfffffffffffffff3e5c8
+== 1 burst candidate(s), 1 CRC-valid ==
+11:27:53 [INFO ] FileSource: loaded sidecar /home/sudeep/Music/punjdrone/data/analysis/corpus_deep_20261026/002-995552cb67.decoded.cf32.meta (format=cf32 rate=100000000 center=5745000000)
+11:27:53 [INFO ] decoding /home/sudeep/Music/punjdrone/data/analysis/corpus_deep_20261026/002-995552cb67.decoded.cf32 (0.0 s, thresh 0.50, freq_offset -11500000 Hz, lpf on)
+11:27:53 [INFO ] FileSource: loaded sidecar /home/sudeep/Music/punjdrone/data/analysis/corpus_deep_20261026/002-995552cb67.decoded.cf32.meta (format=cf32 rate=100000000 center=5745000000)
+11:27:53 [INFO ] decoder input 100.000 MSPS -> 15.360 MSPS, shift -11500000 Hz

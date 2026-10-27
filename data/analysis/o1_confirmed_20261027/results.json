@@ -1,0 +1,56 @@
+[
+  {
+    "dataset": "Tampere",
+    "model": "DJI_mavic_pro_2G",
+    "family": "O1",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_mavic_pro_2G.bin",
+    "id": "036-5fbd4f6213",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 120000000,
+    "tested_seconds": 1.0,
+    "source_seconds": 1.0,
+    "clip_sha256": "9509efa9c1e87631bd533d3b8334128d37c483f88f41eb11dfa586edd0a7032b",
+    "rf_events": 61,
+    "noise_dbfs": -25.72325508057816,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "extra_offset_-4.57031e+06",
+        "candidates": 1,
+        "crc_valid": 1
+      }
+    ],
+    "retained_clip": {
+      "path": "data/analysis/o1_confirmed_20261027/036-5fbd4f6213.decoded.cf32",
+      "start_sample": 61171641,
+      "samples": 240000,
+      "sha256": "08495c3f012d1fff21d41b02b316baf521cdaa2b5b016bdf09961463342e5b5a",
+      "decode_flags": [
+        "--freq-offset",
+        "-4570312.5"
+      ],
+      "redistribution": "local evaluation only; dataset license not yet verified"
+    },
+    "unique_payloads": [
+      {
+        "payload_hex": "581002ef01070f303852444533313030313032313800000000000000000000efff00000000000000000ac700000000000000000000000000000000000000000000000010133132373839363537343930383235373839343400d6c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008bcf96511770344fa91982b2c3b2f0a9ce9605455d2c432c5962ebc38cd23677c9e8",
+        "serial": "08RDE310010218",
+        "version": 2,
+        "telemetry_status": "v2_serial_parsed",
+        "header_hex": "581002ef0107",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      }
+    ],
+    "status": "checked",
+    "elapsed_seconds": 29.341
+  }
+]

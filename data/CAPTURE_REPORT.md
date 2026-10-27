@@ -46,8 +46,8 @@ bursts by energy/visual means.
   resolves this ambiguity. Search covers ±16 carriers around the CP estimate.
 - A 64 kB excerpt is retained in `tests/data/mini2_centered.sc16`; its exact payload,
   serial, sequence, timestamp and phone coordinates are regression-tested. See
-  `tests/data/README.md` for provenance and hashes. This validates the prepared
-  reference; raw 50-MSPS ingestion/resampling remains pending.
+  `tests/data/README.md` for provenance and hashes. A second, unmodified 50-MSPS
+  excerpt now tests integrated preprocessing against the identical payload.
 - Corrected v2 parser offsets and phone latitude/longitude order. The reference
   has phone coordinates but zero drone/home coordinates. Nonzero altitude, speed
   and yaw units remain provisional; inner CRC-16 and legacy frame variants are pending.
@@ -57,10 +57,28 @@ bursts by energy/visual means.
   hypothesis, contradicted as a universal requirement by this public reference.
 
 ## Overall next step
-Integrate wideband centering/resampling and obtain a CRC-valid local Mini 2 capture.
-The existing ZC detector and decoder now have a real-data regression baseline.
+Obtain a CRC-valid local Mini 2 capture. Integrated wideband centering/resampling
+and the decoder now have a real-data regression baseline.
 The remaining local-capture acceptance work is distinct from the resolved reference
 CRC failure. Do not treat energy-only detections as proof of a DroneID beacon.
+
+## Integrated wideband follow-up (2026-10-26)
+- Restored the pinned, unmodified `mini2_sm` reference (SHA-256 and reproduction
+  command in `data/reference/README.md`). Direct cf32 input at 50 MSPS with
+  `--auto-center --secs 0` selects a -9,671,021 Hz shift and produces **10/10
+  CRC-valid candidates**, both with and without LPF. Explicit -9.6 MHz shift also
+  works. There is no preprocessing scratch binary in this path.
+- The resampler applies the frequency shift before anti-alias filtering and
+  conversion to 15.36 MSPS. Fractional phase and filter history persist across
+  reads. Detection indices map back to original input samples; `--secs` honors
+  the rate from sidecar metadata. `--secs 0` means the entire file.
+- Automatic centering selects the strongest 10 MHz band in a bounded prefix.
+  It is suitable for this isolated reference, not a signal classifier or a
+  hopping/multi-channel receiver. Explicit offsets remain preferable in clutter.
+- Re-ran all five files under `data/mini2/sweep_20261026T092618Z/`, **8 seconds
+  per channel**, using `--secs 0 --thresh 0.3`. Every channel (2399.5, 2414.5,
+  2429.5, 2444.5 and 2459.5 MHz) returned **0 candidates / 0 CRC-valid**.
+  These were offline replays; no new RF capture or live-radio validation was performed.
 
 ## Air 3S (O4) — captured 2026-10-26 (video link pinned manual to 5799–5809 MHz)
 Sweep: 5× 8 s slices on 2.4 GHz (2410–2470), 4× 8 s on 5.8 GHz (5745–5835). 0 overflows, 15.36 MSPS sc16.
@@ -91,6 +109,19 @@ validate that detector first.
 ## Two-channel coherent (DF baseline) — TODO
 - Splitter one source into RX0 (Radio#0) and RX1 (Radio#1), same center.
 - Measured inter-channel phase (stable? value): 
+
+## Complete local-data recheck (2026-10-26)
+
+Replayed all 21 local recordings: 11 Mini 2, 9 Air 3S, and one baseline.
+51 full-file decode passes plus 21 prefix frequency scans completed successfully.
+Mini 2 and baseline yielded no candidates at threshold 0.3. Air 3S yielded 183
+candidate hits summed across passes, but no CRC-valid payload; this count includes
+duplicate observations across passes. Two strong Air 3S examples poorly matched
+the required second ZC sequence. The reference control passed 10/10 during this run.
+
+See [the complete report](analysis/local_recheck_20261026/REPORT.md), including
+coverage limitations, per-file JSON results, and full decoder logs. The newest
+local IQ file found was modified at 14:57:16 IST on 26 October 2026.
 
 ## Decisions / plan updates
 - [ ] §2 constants confirmed, or updated to: 

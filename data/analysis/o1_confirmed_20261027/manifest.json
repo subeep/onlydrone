@@ -1,0 +1,13 @@
+[
+  {
+    "dataset": "Tampere",
+    "model": "DJI_mavic_pro_2G",
+    "family": "O1",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_mavic_pro_2G.bin",
+    "id": "036-5fbd4f6213",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  }
+]

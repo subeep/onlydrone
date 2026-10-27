@@ -6,6 +6,9 @@
 
 #include <cmath>
 #include <complex>
+#include <algorithm>
+#include <stdexcept>
+#include <limits>
 
 namespace droneid::dji::dsp {
 namespace {
@@ -121,24 +124,113 @@ std::vector<float> normalized_corr(const std::vector<cf32>& x, const std::vector
   // Running energy and sum over the M-window via prefix sums.
   std::vector<double> p2(N + 1, 0.0);
   std::vector<cf32> p1(N + 1, cf32(0, 0));
+  double peak_power = 0;
   for (int i = 0; i < N; ++i) {
     p2[i + 1] = p2[i] + std::norm(x[i]);
     p1[i + 1] = p1[i] + x[i];
+    peak_power = std::max(peak_power, static_cast<double>(std::norm(x[i])));
   }
+  const double precision = std::numeric_limits<float>::epsilon();
+  const double energy_floor = 64 * precision * precision * M * peak_power;
 
   const int outN = N - M + 1;
   std::vector<float> score(outN, 0.0f);
   for (int i = 0; i < outN; ++i) {
     const double E = p2[i + M] - p2[i];
+    if (E <= energy_floor) continue;
     const cf32 S = p1[i + M] - p1[i];
     double var_w = (E - std::norm(S) / M) / (M - 1);
     if (var_w <= 0) { score[i] = 0; continue; }
     const cf32 c = conv[i + M - 1];  // == corr[i]
     const double num = std::norm(c);
     const double den = static_cast<double>(M) * M * var_w * var_filter;
-    score[i] = den > 0 ? static_cast<float>(num / den) : 0.0f;
+    score[i] = den > 0 ? static_cast<float>(std::min(1.0, num / den)) : 0.0f;
   }
   return score;
+}
+
+double estimate_channel_center(const std::vector<cf32>& samples, double sample_rate) {
+  constexpr size_t transform_size = 8192;
+  if (samples.size() < transform_size) return 0;
+  const size_t band_bins = std::min(transform_size,
+      static_cast<size_t>(std::round(10e6 * transform_size / sample_rate)));
+  std::vector<double> power(transform_size, 0);
+  std::vector<cf32> window(transform_size);
+  for (size_t offset = 0; offset + transform_size <= samples.size(); offset += transform_size) {
+    for (size_t sample = 0; sample < transform_size; ++sample) {
+      const float weight = 0.5 - 0.5 * std::cos(2 * M_PI * sample / (transform_size - 1));
+      window[sample] = samples[offset + sample] * weight;
+    }
+    const auto spectrum = fftshift(fft(window));
+    for (size_t bin = 0; bin < transform_size; ++bin) power[bin] += std::norm(spectrum[bin]);
+  }
+  double energy = 0;
+  for (size_t bin = 0; bin < band_bins; ++bin) energy += power[bin];
+  double best_energy = energy;
+  size_t best_start = 0;
+  for (size_t start = 1; start + band_bins <= transform_size; ++start) {
+    energy += power[start + band_bins - 1] - power[start - 1];
+    if (energy > best_energy) { best_energy = energy; best_start = start; }
+  }
+  if (best_energy <= 0) return 0;
+  return (best_start + (band_bins - 1) / 2.0 - transform_size / 2.0) *
+         sample_rate / transform_size;
+}
+
+ChannelResampler::ChannelResampler(double input_rate, double frequency_shift, double output_rate)
+    : input_rate_(input_rate), output_rate_(output_rate), frequency_shift_(frequency_shift) {
+  if (!std::isfinite(input_rate) || !std::isfinite(output_rate) ||
+      input_rate < 10e6 || input_rate > 250e6 || output_rate < 10e6 || output_rate > 250e6 ||
+      !std::isfinite(frequency_shift) || std::abs(frequency_shift) >= input_rate / 2)
+    throw std::invalid_argument("resampler: rates must be 10–250 MSPS and shift inside input Nyquist");
+  radius_ = static_cast<int>(std::ceil(24 * std::max(1.0, input_rate / output_rate)));
+  if (input_rate == output_rate) return;
+  const double cutoff = 0.4 * std::min(input_rate, output_rate) / input_rate;
+  coefficients_.resize(1024, std::vector<float>(2 * radius_ + 1));
+  for (size_t phase = 0; phase < coefficients_.size(); ++phase) {
+    double sum = 0;
+    for (int tap = -radius_; tap <= radius_; ++tap) {
+      const double distance = tap - static_cast<double>(phase) / coefficients_.size();
+      const double sinc = std::abs(distance) < 1e-12 ? 2 * cutoff :
+          std::sin(2 * M_PI * cutoff * distance) / (M_PI * distance);
+      const double position = distance / (radius_ + 1);
+      const double window = 0.42 + 0.5 * std::cos(M_PI * position) +
+                            0.08 * std::cos(2 * M_PI * position);
+      const double weight = sinc * window;
+      coefficients_[phase][tap + radius_] = static_cast<float>(weight);
+      sum += weight;
+    }
+    for (float& weight : coefficients_[phase]) weight /= sum;
+  }
+}
+
+std::vector<cf32> ChannelResampler::process(const std::vector<cf32>& input, bool final) {
+  auto shifted = input;
+  if (frequency_shift_ != 0) freq_shift(shifted, frequency_shift_, input_rate_, received_);
+  received_ += static_cast<int64_t>(input.size());
+  if (input_rate_ == output_rate_) { emitted_ += input.size(); return shifted; }
+  buffer_.insert(buffer_.end(), shifted.begin(), shifted.end());
+  std::vector<cf32> output;
+  const double step = input_rate_ / output_rate_;
+  while (emitted_ * step < received_) {
+    const double position = emitted_ * step;
+    const int64_t center = static_cast<int64_t>(std::floor(position));
+    if (!final && center + radius_ >= received_) break;
+    const size_t phase = std::min<size_t>(1023, static_cast<size_t>((position - center) * 1024));
+    cf32 value(0, 0);
+    for (int tap = -radius_; tap <= radius_; ++tap) {
+      const int64_t index = center + tap;
+      if (index >= 0 && index < received_)
+        value += buffer_[index - buffer_start_] * coefficients_[phase][tap + radius_];
+    }
+    output.push_back(value);
+    ++emitted_;
+  }
+  const int64_t retain_from = std::max<int64_t>(0, static_cast<int64_t>(std::floor(emitted_ * step)) - radius_);
+  const int64_t discard = std::min<int64_t>(buffer_.size(), retain_from - buffer_start_);
+  buffer_.erase(buffer_.begin(), buffer_.begin() + discard);
+  buffer_start_ += discard;
+  return output;
 }
 
 }  // namespace droneid::dji::dsp

@@ -1,0 +1,1746 @@
+{
+  "started_utc": "2026-10-26T11:28:28.090244+00:00",
+  "captures": [
+    {
+      "path": "air3s/air3s_24_2410e6_20261026T074318Z.iq",
+      "bytes": 491520000,
+      "metadata": {
+        "format": "sc16",
+        "sample_rate": "15360000",
+        "center_freq": "2410000000",
+        "gain_db": "35.0",
+        "antenna": "RX2",
+        "wire_format": "sc16",
+        "overflows": "0",
+        "utc": "2026-10-26T07:43:29"
+      },
+      "seconds": 8.0,
+      "partial_sample_bytes": 0,
+      "fully_contained_known_channels_hz": [],
+      "runs": [
+        {
+          "mode": "centered",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_24_2410e6_20261026T074318Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_24_2410e6_20261026T074318Z.iq/centered.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 0,
+          "success": true
+        },
+        {
+          "mode": "auto",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_24_2410e6_20261026T074318Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--auto-center"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_24_2410e6_20261026T074318Z.iq/auto.log",
+          "candidates": 1,
+          "crc_valid": 0,
+          "applied_shift_hz": -2679375,
+          "success": true
+        },
+        {
+          "mode": "shift_-4500000",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_24_2410e6_20261026T074318Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--freq-offset",
+            "-4500000.0"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_24_2410e6_20261026T074318Z.iq/shift_-4500000.log",
+          "candidates": 1,
+          "crc_valid": 0,
+          "applied_shift_hz": -4500000,
+          "success": true
+        },
+        {
+          "mode": "scan_prefix",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_24_2410e6_20261026T074318Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--scan"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_24_2410e6_20261026T074318Z.iq/scan_prefix.log",
+          "peak_corr": 0.0276,
+          "peak_shift_mhz": 2.5,
+          "peak_sample": 56570,
+          "scanned_samples": 1048576,
+          "success": true
+        }
+      ],
+      "unchanged_during_check": true
+    },
+    {
+      "path": "air3s/air3s_24_2425e6_20261026T074318Z.iq",
+      "bytes": 491520000,
+      "metadata": {
+        "format": "sc16",
+        "sample_rate": "15360000",
+        "center_freq": "2425000000",
+        "gain_db": "35.0",
+        "antenna": "RX2",
+        "wire_format": "sc16",
+        "overflows": "0",
+        "utc": "2026-10-26T07:43:41"
+      },
+      "seconds": 8.0,
+      "partial_sample_bytes": 0,
+      "fully_contained_known_channels_hz": [],
+      "runs": [
+        {
+          "mode": "centered",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_24_2425e6_20261026T074318Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_24_2425e6_20261026T074318Z.iq/centered.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 0,
+          "success": true
+        },
+        {
+          "mode": "auto",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_24_2425e6_20261026T074318Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--auto-center"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_24_2425e6_20261026T074318Z.iq/auto.log",
+          "candidates": 72,
+          "crc_valid": 0,
+          "applied_shift_hz": 2681250,
+          "success": true
+        },
+        {
+          "mode": "shift_-4500000",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_24_2425e6_20261026T074318Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--freq-offset",
+            "-4500000.0"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_24_2425e6_20261026T074318Z.iq/shift_-4500000.log",
+          "candidates": 2,
+          "crc_valid": 0,
+          "applied_shift_hz": -4500000,
+          "success": true
+        },
+        {
+          "mode": "scan_prefix",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_24_2425e6_20261026T074318Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--scan"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_24_2425e6_20261026T074318Z.iq/scan_prefix.log",
+          "peak_corr": 0.5267,
+          "peak_shift_mhz": 2.5,
+          "peak_sample": 1031628,
+          "scanned_samples": 1048576,
+          "success": true
+        }
+      ],
+      "unchanged_during_check": true
+    },
+    {
+      "path": "air3s/air3s_24_2440e6_20261026T074318Z.iq",
+      "bytes": 491520000,
+      "metadata": {
+        "format": "sc16",
+        "sample_rate": "15360000",
+        "center_freq": "2440000000",
+        "gain_db": "35.0",
+        "antenna": "RX2",
+        "wire_format": "sc16",
+        "overflows": "0",
+        "utc": "2026-10-26T07:43:53"
+      },
+      "seconds": 8.0,
+      "partial_sample_bytes": 0,
+      "fully_contained_known_channels_hz": [],
+      "runs": [
+        {
+          "mode": "centered",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_24_2440e6_20261026T074318Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_24_2440e6_20261026T074318Z.iq/centered.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 0,
+          "success": true
+        },
+        {
+          "mode": "auto",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_24_2440e6_20261026T074318Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--auto-center"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_24_2440e6_20261026T074318Z.iq/auto.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 1987500,
+          "success": true
+        },
+        {
+          "mode": "shift_-4500000",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_24_2440e6_20261026T074318Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--freq-offset",
+            "-4500000.0"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_24_2440e6_20261026T074318Z.iq/shift_-4500000.log",
+          "candidates": 1,
+          "crc_valid": 0,
+          "applied_shift_hz": -4500000,
+          "success": true
+        },
+        {
+          "mode": "scan_prefix",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_24_2440e6_20261026T074318Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--scan"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_24_2440e6_20261026T074318Z.iq/scan_prefix.log",
+          "peak_corr": 0.0347,
+          "peak_shift_mhz": 1.5,
+          "peak_sample": 1709,
+          "scanned_samples": 1048576,
+          "success": true
+        }
+      ],
+      "unchanged_during_check": true
+    },
+    {
+      "path": "air3s/air3s_24_2455e6_20261026T074318Z.iq",
+      "bytes": 491520000,
+      "metadata": {
+        "format": "sc16",
+        "sample_rate": "15360000",
+        "center_freq": "2455000000",
+        "gain_db": "35.0",
+        "antenna": "RX2",
+        "wire_format": "sc16",
+        "overflows": "0",
+        "utc": "2026-10-26T07:44:04"
+      },
+      "seconds": 8.0,
+      "partial_sample_bytes": 0,
+      "fully_contained_known_channels_hz": [],
+      "runs": [
+        {
+          "mode": "centered",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_24_2455e6_20261026T074318Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_24_2455e6_20261026T074318Z.iq/centered.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 0,
+          "success": true
+        },
+        {
+          "mode": "auto",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_24_2455e6_20261026T074318Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--auto-center"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_24_2455e6_20261026T074318Z.iq/auto.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 2677500,
+          "success": true
+        },
+        {
+          "mode": "shift_-4500000",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_24_2455e6_20261026T074318Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--freq-offset",
+            "-4500000.0"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_24_2455e6_20261026T074318Z.iq/shift_-4500000.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": -4500000,
+          "success": true
+        },
+        {
+          "mode": "scan_prefix",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_24_2455e6_20261026T074318Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--scan"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_24_2455e6_20261026T074318Z.iq/scan_prefix.log",
+          "peak_corr": 0.0381,
+          "peak_shift_mhz": 1.0,
+          "peak_sample": 420584,
+          "scanned_samples": 1048576,
+          "success": true
+        }
+      ],
+      "unchanged_during_check": true
+    },
+    {
+      "path": "air3s/air3s_24_2470e6_20261026T074318Z.iq",
+      "bytes": 491520000,
+      "metadata": {
+        "format": "sc16",
+        "sample_rate": "15360000",
+        "center_freq": "2470000000",
+        "gain_db": "35.0",
+        "antenna": "RX2",
+        "wire_format": "sc16",
+        "overflows": "0",
+        "utc": "2026-10-26T07:44:16"
+      },
+      "seconds": 8.0,
+      "partial_sample_bytes": 0,
+      "fully_contained_known_channels_hz": [],
+      "runs": [
+        {
+          "mode": "centered",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_24_2470e6_20261026T074318Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_24_2470e6_20261026T074318Z.iq/centered.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 0,
+          "success": true
+        },
+        {
+          "mode": "auto",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_24_2470e6_20261026T074318Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--auto-center"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_24_2470e6_20261026T074318Z.iq/auto.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 2681250,
+          "success": true
+        },
+        {
+          "mode": "scan_prefix",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_24_2470e6_20261026T074318Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--scan"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_24_2470e6_20261026T074318Z.iq/scan_prefix.log",
+          "peak_corr": 0.0295,
+          "peak_shift_mhz": 2.5,
+          "peak_sample": 481619,
+          "scanned_samples": 1048576,
+          "success": true
+        }
+      ],
+      "unchanged_during_check": true
+    },
+    {
+      "path": "air3s/air3s_58_5745e6_20261026T074519Z.iq",
+      "bytes": 491520000,
+      "metadata": {
+        "format": "sc16",
+        "sample_rate": "15360000",
+        "center_freq": "5745000000",
+        "gain_db": "40.0",
+        "antenna": "RX2",
+        "wire_format": "sc16",
+        "overflows": "0",
+        "utc": "2026-10-26T07:45:30"
+      },
+      "seconds": 8.0,
+      "partial_sample_bytes": 0,
+      "fully_contained_known_channels_hz": [],
+      "runs": [
+        {
+          "mode": "centered",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_58_5745e6_20261026T074519Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_58_5745e6_20261026T074519Z.iq/centered.log",
+          "candidates": 70,
+          "crc_valid": 0,
+          "applied_shift_hz": 0,
+          "success": true
+        },
+        {
+          "mode": "auto",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_58_5745e6_20261026T074519Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--auto-center"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_58_5745e6_20261026T074519Z.iq/auto.log",
+          "candidates": 31,
+          "crc_valid": 0,
+          "applied_shift_hz": 1567500,
+          "success": true
+        },
+        {
+          "mode": "scan_prefix",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_58_5745e6_20261026T074519Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--scan"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_58_5745e6_20261026T074519Z.iq/scan_prefix.log",
+          "peak_corr": 0.0181,
+          "peak_shift_mhz": 0.5,
+          "peak_sample": 875836,
+          "scanned_samples": 1048576,
+          "success": true
+        }
+      ],
+      "unchanged_during_check": true
+    },
+    {
+      "path": "air3s/air3s_58_5775e6_20261026T074519Z.iq",
+      "bytes": 491520000,
+      "metadata": {
+        "format": "sc16",
+        "sample_rate": "15360000",
+        "center_freq": "5775000000",
+        "gain_db": "40.0",
+        "antenna": "RX2",
+        "wire_format": "sc16",
+        "overflows": "0",
+        "utc": "2026-10-26T07:45:42"
+      },
+      "seconds": 8.0,
+      "partial_sample_bytes": 0,
+      "fully_contained_known_channels_hz": [
+        5776500000.0
+      ],
+      "runs": [
+        {
+          "mode": "centered",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_58_5775e6_20261026T074519Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_58_5775e6_20261026T074519Z.iq/centered.log",
+          "candidates": 2,
+          "crc_valid": 0,
+          "applied_shift_hz": 0,
+          "success": true
+        },
+        {
+          "mode": "auto",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_58_5775e6_20261026T074519Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--auto-center"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_58_5775e6_20261026T074519Z.iq/auto.log",
+          "candidates": 1,
+          "crc_valid": 0,
+          "applied_shift_hz": 990000,
+          "success": true
+        },
+        {
+          "mode": "shift_-1500000",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_58_5775e6_20261026T074519Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--freq-offset",
+            "-1500000.0"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_58_5775e6_20261026T074519Z.iq/shift_-1500000.log",
+          "candidates": 2,
+          "crc_valid": 0,
+          "applied_shift_hz": -1500000,
+          "success": true
+        },
+        {
+          "mode": "scan_prefix",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_58_5775e6_20261026T074519Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--scan"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_58_5775e6_20261026T074519Z.iq/scan_prefix.log",
+          "peak_corr": 0.0151,
+          "peak_shift_mhz": -2.5,
+          "peak_sample": 335407,
+          "scanned_samples": 1048576,
+          "success": true
+        }
+      ],
+      "unchanged_during_check": true
+    },
+    {
+      "path": "air3s/air3s_58_5805e6_20261026T074519Z.iq",
+      "bytes": 491520000,
+      "metadata": {
+        "format": "sc16",
+        "sample_rate": "15360000",
+        "center_freq": "5805000000",
+        "gain_db": "40.0",
+        "antenna": "RX2",
+        "wire_format": "sc16",
+        "overflows": "0",
+        "utc": "2026-10-26T07:45:54"
+      },
+      "seconds": 8.0,
+      "partial_sample_bytes": 0,
+      "fully_contained_known_channels_hz": [],
+      "runs": [
+        {
+          "mode": "centered",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_58_5805e6_20261026T074519Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_58_5805e6_20261026T074519Z.iq/centered.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 0,
+          "success": true
+        },
+        {
+          "mode": "auto",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_58_5805e6_20261026T074519Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--auto-center"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_58_5805e6_20261026T074519Z.iq/auto.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 950625,
+          "success": true
+        },
+        {
+          "mode": "scan_prefix",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_58_5805e6_20261026T074519Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--scan"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_58_5805e6_20261026T074519Z.iq/scan_prefix.log",
+          "peak_corr": 0.0218,
+          "peak_shift_mhz": 1.0,
+          "peak_sample": 583305,
+          "scanned_samples": 1048576,
+          "success": true
+        }
+      ],
+      "unchanged_during_check": true
+    },
+    {
+      "path": "air3s/air3s_58_5835e6_20261026T074519Z.iq",
+      "bytes": 491520000,
+      "metadata": {
+        "format": "sc16",
+        "sample_rate": "15360000",
+        "center_freq": "5835000000",
+        "gain_db": "40.0",
+        "antenna": "RX2",
+        "wire_format": "sc16",
+        "overflows": "0",
+        "utc": "2026-10-26T07:46:06"
+      },
+      "seconds": 8.0,
+      "partial_sample_bytes": 0,
+      "fully_contained_known_channels_hz": [],
+      "runs": [
+        {
+          "mode": "centered",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_58_5835e6_20261026T074519Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_58_5835e6_20261026T074519Z.iq/centered.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 0,
+          "success": true
+        },
+        {
+          "mode": "auto",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_58_5835e6_20261026T074519Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--auto-center"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_58_5835e6_20261026T074519Z.iq/auto.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": -1704375,
+          "success": true
+        },
+        {
+          "mode": "scan_prefix",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/air3s/air3s_58_5835e6_20261026T074519Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--scan"
+          ],
+          "returncode": 0,
+          "log": "logs/air3s/air3s_58_5835e6_20261026T074519Z.iq/scan_prefix.log",
+          "peak_corr": 0.0212,
+          "peak_shift_mhz": 1.0,
+          "peak_sample": 364804,
+          "scanned_samples": 1048576,
+          "success": true
+        }
+      ],
+      "unchanged_during_check": true
+    },
+    {
+      "path": "baseline/baseline_24_073340Z.iq",
+      "bytes": 184549376,
+      "metadata": {
+        "format": "sc16",
+        "sample_rate": "15360000",
+        "center_freq": "2459500000",
+        "gain_db": "20.0",
+        "antenna": "RX2",
+        "wire_format": "sc16",
+        "overflows": "0",
+        "utc": "2026-10-26T07:33:46"
+      },
+      "seconds": 3.0037333333333334,
+      "partial_sample_bytes": 0,
+      "fully_contained_known_channels_hz": [
+        2459500000.0
+      ],
+      "runs": [
+        {
+          "mode": "centered",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/baseline/baseline_24_073340Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3"
+          ],
+          "returncode": 0,
+          "log": "logs/baseline/baseline_24_073340Z.iq/centered.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 0,
+          "success": true
+        },
+        {
+          "mode": "auto",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/baseline/baseline_24_073340Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--auto-center"
+          ],
+          "returncode": 0,
+          "log": "logs/baseline/baseline_24_073340Z.iq/auto.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 2681250,
+          "success": true
+        },
+        {
+          "mode": "scan_prefix",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/baseline/baseline_24_073340Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--scan"
+          ],
+          "returncode": 0,
+          "log": "logs/baseline/baseline_24_073340Z.iq/scan_prefix.log",
+          "peak_corr": 0.0291,
+          "peak_shift_mhz": -2.5,
+          "peak_sample": 630550,
+          "scanned_samples": 1048576,
+          "success": true
+        }
+      ],
+      "unchanged_during_check": true
+    },
+    {
+      "path": "mini2/mini2_24_2410e6_20261026T075349Z.iq",
+      "bytes": 491520000,
+      "metadata": {
+        "format": "sc16",
+        "sample_rate": "15360000",
+        "center_freq": "2410000000",
+        "gain_db": "35.0",
+        "antenna": "RX2",
+        "wire_format": "sc16",
+        "overflows": "0",
+        "utc": "2026-10-26T07:54:00"
+      },
+      "seconds": 8.0,
+      "partial_sample_bytes": 0,
+      "fully_contained_known_channels_hz": [],
+      "runs": [
+        {
+          "mode": "centered",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/mini2_24_2410e6_20261026T075349Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/mini2_24_2410e6_20261026T075349Z.iq/centered.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 0,
+          "success": true
+        },
+        {
+          "mode": "auto",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/mini2_24_2410e6_20261026T075349Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--auto-center"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/mini2_24_2410e6_20261026T075349Z.iq/auto.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": -2679375,
+          "success": true
+        },
+        {
+          "mode": "shift_-4500000",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/mini2_24_2410e6_20261026T075349Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--freq-offset",
+            "-4500000.0"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/mini2_24_2410e6_20261026T075349Z.iq/shift_-4500000.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": -4500000,
+          "success": true
+        },
+        {
+          "mode": "scan_prefix",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/mini2_24_2410e6_20261026T075349Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--scan"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/mini2_24_2410e6_20261026T075349Z.iq/scan_prefix.log",
+          "peak_corr": 0.0245,
+          "peak_shift_mhz": 0.0,
+          "peak_sample": 513502,
+          "scanned_samples": 1048576,
+          "success": true
+        }
+      ],
+      "unchanged_during_check": true
+    },
+    {
+      "path": "mini2/mini2_24_2425e6_20261026T075349Z.iq",
+      "bytes": 491520000,
+      "metadata": {
+        "format": "sc16",
+        "sample_rate": "15360000",
+        "center_freq": "2425000000",
+        "gain_db": "35.0",
+        "antenna": "RX2",
+        "wire_format": "sc16",
+        "overflows": "0",
+        "utc": "2026-10-26T07:54:11"
+      },
+      "seconds": 8.0,
+      "partial_sample_bytes": 0,
+      "fully_contained_known_channels_hz": [],
+      "runs": [
+        {
+          "mode": "centered",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/mini2_24_2425e6_20261026T075349Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/mini2_24_2425e6_20261026T075349Z.iq/centered.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 0,
+          "success": true
+        },
+        {
+          "mode": "auto",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/mini2_24_2425e6_20261026T075349Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--auto-center"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/mini2_24_2425e6_20261026T075349Z.iq/auto.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": -2677500,
+          "success": true
+        },
+        {
+          "mode": "shift_-4500000",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/mini2_24_2425e6_20261026T075349Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--freq-offset",
+            "-4500000.0"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/mini2_24_2425e6_20261026T075349Z.iq/shift_-4500000.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": -4500000,
+          "success": true
+        },
+        {
+          "mode": "scan_prefix",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/mini2_24_2425e6_20261026T075349Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--scan"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/mini2_24_2425e6_20261026T075349Z.iq/scan_prefix.log",
+          "peak_corr": 0.0354,
+          "peak_shift_mhz": 2.5,
+          "peak_sample": 688983,
+          "scanned_samples": 1048576,
+          "success": true
+        }
+      ],
+      "unchanged_during_check": true
+    },
+    {
+      "path": "mini2/mini2_24_2440e6_20261026T075349Z.iq",
+      "bytes": 491520000,
+      "metadata": {
+        "format": "sc16",
+        "sample_rate": "15360000",
+        "center_freq": "2440000000",
+        "gain_db": "35.0",
+        "antenna": "RX2",
+        "wire_format": "sc16",
+        "overflows": "0",
+        "utc": "2026-10-26T07:54:23"
+      },
+      "seconds": 8.0,
+      "partial_sample_bytes": 0,
+      "fully_contained_known_channels_hz": [],
+      "runs": [
+        {
+          "mode": "centered",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/mini2_24_2440e6_20261026T075349Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/mini2_24_2440e6_20261026T075349Z.iq/centered.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 0,
+          "success": true
+        },
+        {
+          "mode": "auto",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/mini2_24_2440e6_20261026T075349Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--auto-center"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/mini2_24_2440e6_20261026T075349Z.iq/auto.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 1087500,
+          "success": true
+        },
+        {
+          "mode": "shift_-4500000",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/mini2_24_2440e6_20261026T075349Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--freq-offset",
+            "-4500000.0"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/mini2_24_2440e6_20261026T075349Z.iq/shift_-4500000.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": -4500000,
+          "success": true
+        },
+        {
+          "mode": "scan_prefix",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/mini2_24_2440e6_20261026T075349Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--scan"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/mini2_24_2440e6_20261026T075349Z.iq/scan_prefix.log",
+          "peak_corr": 0.0232,
+          "peak_shift_mhz": -0.5,
+          "peak_sample": 15817,
+          "scanned_samples": 1048576,
+          "success": true
+        }
+      ],
+      "unchanged_during_check": true
+    },
+    {
+      "path": "mini2/mini2_24_2455e6_20261026T075349Z.iq",
+      "bytes": 491520000,
+      "metadata": {
+        "format": "sc16",
+        "sample_rate": "15360000",
+        "center_freq": "2455000000",
+        "gain_db": "35.0",
+        "antenna": "RX2",
+        "wire_format": "sc16",
+        "overflows": "0",
+        "utc": "2026-10-26T07:54:35"
+      },
+      "seconds": 8.0,
+      "partial_sample_bytes": 0,
+      "fully_contained_known_channels_hz": [],
+      "runs": [
+        {
+          "mode": "centered",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/mini2_24_2455e6_20261026T075349Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/mini2_24_2455e6_20261026T075349Z.iq/centered.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 0,
+          "success": true
+        },
+        {
+          "mode": "auto",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/mini2_24_2455e6_20261026T075349Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--auto-center"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/mini2_24_2455e6_20261026T075349Z.iq/auto.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 2679375,
+          "success": true
+        },
+        {
+          "mode": "shift_-4500000",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/mini2_24_2455e6_20261026T075349Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--freq-offset",
+            "-4500000.0"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/mini2_24_2455e6_20261026T075349Z.iq/shift_-4500000.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": -4500000,
+          "success": true
+        },
+        {
+          "mode": "scan_prefix",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/mini2_24_2455e6_20261026T075349Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--scan"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/mini2_24_2455e6_20261026T075349Z.iq/scan_prefix.log",
+          "peak_corr": 0.0537,
+          "peak_shift_mhz": 1.0,
+          "peak_sample": 669204,
+          "scanned_samples": 1048576,
+          "success": true
+        }
+      ],
+      "unchanged_during_check": true
+    },
+    {
+      "path": "mini2/mini2_24_2470e6_20261026T075349Z.iq",
+      "bytes": 491520000,
+      "metadata": {
+        "format": "sc16",
+        "sample_rate": "15360000",
+        "center_freq": "2470000000",
+        "gain_db": "35.0",
+        "antenna": "RX2",
+        "wire_format": "sc16",
+        "overflows": "0",
+        "utc": "2026-10-26T07:54:47"
+      },
+      "seconds": 8.0,
+      "partial_sample_bytes": 0,
+      "fully_contained_known_channels_hz": [],
+      "runs": [
+        {
+          "mode": "centered",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/mini2_24_2470e6_20261026T075349Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/mini2_24_2470e6_20261026T075349Z.iq/centered.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 0,
+          "success": true
+        },
+        {
+          "mode": "auto",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/mini2_24_2470e6_20261026T075349Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--auto-center"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/mini2_24_2470e6_20261026T075349Z.iq/auto.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 2371875,
+          "success": true
+        },
+        {
+          "mode": "scan_prefix",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/mini2_24_2470e6_20261026T075349Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--scan"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/mini2_24_2470e6_20261026T075349Z.iq/scan_prefix.log",
+          "peak_corr": 0.0383,
+          "peak_shift_mhz": -2.0,
+          "peak_sample": 645682,
+          "scanned_samples": 1048576,
+          "success": true
+        }
+      ],
+      "unchanged_during_check": true
+    },
+    {
+      "path": "mini2/mini2_droneid_2459500000_20261026T090845Z.iq",
+      "bytes": 1843396608,
+      "metadata": {
+        "format": "sc16",
+        "sample_rate": "15360000",
+        "center_freq": "2459500000",
+        "gain_db": "35.0",
+        "antenna": "RX2",
+        "wire_format": "sc16",
+        "overflows": "0",
+        "utc": "2026-10-26T09:09:17"
+      },
+      "seconds": 30.0032,
+      "partial_sample_bytes": 0,
+      "fully_contained_known_channels_hz": [
+        2459500000.0
+      ],
+      "runs": [
+        {
+          "mode": "centered",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/mini2_droneid_2459500000_20261026T090845Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/mini2_droneid_2459500000_20261026T090845Z.iq/centered.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 0,
+          "success": true
+        },
+        {
+          "mode": "auto",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/mini2_droneid_2459500000_20261026T090845Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--auto-center"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/mini2_droneid_2459500000_20261026T090845Z.iq/auto.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 2681250,
+          "success": true
+        },
+        {
+          "mode": "scan_prefix",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/mini2_droneid_2459500000_20261026T090845Z.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--scan"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/mini2_droneid_2459500000_20261026T090845Z.iq/scan_prefix.log",
+          "peak_corr": 0.0382,
+          "peak_shift_mhz": -1.5,
+          "peak_sample": 26188,
+          "scanned_samples": 1048576,
+          "success": true
+        }
+      ],
+      "unchanged_during_check": true
+    },
+    {
+      "path": "mini2/sweep_20261026T092618Z/mini2_2399500000.iq",
+      "bytes": 491520000,
+      "metadata": {
+        "format": "sc16",
+        "sample_rate": "15360000",
+        "center_freq": "2399500000",
+        "gain_db": "35.0",
+        "antenna": "RX2",
+        "wire_format": "sc16",
+        "overflows": "0",
+        "utc": "2026-10-26T09:26:29"
+      },
+      "seconds": 8.0,
+      "partial_sample_bytes": 0,
+      "fully_contained_known_channels_hz": [
+        2399500000.0
+      ],
+      "runs": [
+        {
+          "mode": "centered",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/sweep_20261026T092618Z/mini2_2399500000.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/sweep_20261026T092618Z/mini2_2399500000.iq/centered.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 0,
+          "success": true
+        },
+        {
+          "mode": "auto",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/sweep_20261026T092618Z/mini2_2399500000.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--auto-center"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/sweep_20261026T092618Z/mini2_2399500000.iq/auto.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": -1648125,
+          "success": true
+        },
+        {
+          "mode": "scan_prefix",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/sweep_20261026T092618Z/mini2_2399500000.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--scan"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/sweep_20261026T092618Z/mini2_2399500000.iq/scan_prefix.log",
+          "peak_corr": 0.043,
+          "peak_shift_mhz": 1.5,
+          "peak_sample": 988311,
+          "scanned_samples": 1048576,
+          "success": true
+        }
+      ],
+      "unchanged_during_check": true
+    },
+    {
+      "path": "mini2/sweep_20261026T092618Z/mini2_2414500000.iq",
+      "bytes": 491520000,
+      "metadata": {
+        "format": "sc16",
+        "sample_rate": "15360000",
+        "center_freq": "2414500000",
+        "gain_db": "35.0",
+        "antenna": "RX2",
+        "wire_format": "sc16",
+        "overflows": "0",
+        "utc": "2026-10-26T09:26:41"
+      },
+      "seconds": 8.0,
+      "partial_sample_bytes": 0,
+      "fully_contained_known_channels_hz": [
+        2414500000.0
+      ],
+      "runs": [
+        {
+          "mode": "centered",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/sweep_20261026T092618Z/mini2_2414500000.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/sweep_20261026T092618Z/mini2_2414500000.iq/centered.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 0,
+          "success": true
+        },
+        {
+          "mode": "auto",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/sweep_20261026T092618Z/mini2_2414500000.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--auto-center"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/sweep_20261026T092618Z/mini2_2414500000.iq/auto.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 352500,
+          "success": true
+        },
+        {
+          "mode": "scan_prefix",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/sweep_20261026T092618Z/mini2_2414500000.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--scan"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/sweep_20261026T092618Z/mini2_2414500000.iq/scan_prefix.log",
+          "peak_corr": 0.0337,
+          "peak_shift_mhz": 0.5,
+          "peak_sample": 974701,
+          "scanned_samples": 1048576,
+          "success": true
+        }
+      ],
+      "unchanged_during_check": true
+    },
+    {
+      "path": "mini2/sweep_20261026T092618Z/mini2_2429500000.iq",
+      "bytes": 491520000,
+      "metadata": {
+        "format": "sc16",
+        "sample_rate": "15360000",
+        "center_freq": "2429500000",
+        "gain_db": "35.0",
+        "antenna": "RX2",
+        "wire_format": "sc16",
+        "overflows": "0",
+        "utc": "2026-10-26T09:26:53"
+      },
+      "seconds": 8.0,
+      "partial_sample_bytes": 0,
+      "fully_contained_known_channels_hz": [
+        2429500000.0
+      ],
+      "runs": [
+        {
+          "mode": "centered",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/sweep_20261026T092618Z/mini2_2429500000.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/sweep_20261026T092618Z/mini2_2429500000.iq/centered.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 0,
+          "success": true
+        },
+        {
+          "mode": "auto",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/sweep_20261026T092618Z/mini2_2429500000.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--auto-center"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/sweep_20261026T092618Z/mini2_2429500000.iq/auto.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 2681250,
+          "success": true
+        },
+        {
+          "mode": "scan_prefix",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/sweep_20261026T092618Z/mini2_2429500000.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--scan"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/sweep_20261026T092618Z/mini2_2429500000.iq/scan_prefix.log",
+          "peak_corr": 0.0501,
+          "peak_shift_mhz": -1.0,
+          "peak_sample": 953103,
+          "scanned_samples": 1048576,
+          "success": true
+        }
+      ],
+      "unchanged_during_check": true
+    },
+    {
+      "path": "mini2/sweep_20261026T092618Z/mini2_2444500000.iq",
+      "bytes": 491520000,
+      "metadata": {
+        "format": "sc16",
+        "sample_rate": "15360000",
+        "center_freq": "2444500000",
+        "gain_db": "35.0",
+        "antenna": "RX2",
+        "wire_format": "sc16",
+        "overflows": "0",
+        "utc": "2026-10-26T09:27:05"
+      },
+      "seconds": 8.0,
+      "partial_sample_bytes": 0,
+      "fully_contained_known_channels_hz": [
+        2444500000.0
+      ],
+      "runs": [
+        {
+          "mode": "centered",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/sweep_20261026T092618Z/mini2_2444500000.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/sweep_20261026T092618Z/mini2_2444500000.iq/centered.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 0,
+          "success": true
+        },
+        {
+          "mode": "auto",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/sweep_20261026T092618Z/mini2_2444500000.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--auto-center"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/sweep_20261026T092618Z/mini2_2444500000.iq/auto.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": -1353750,
+          "success": true
+        },
+        {
+          "mode": "scan_prefix",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/sweep_20261026T092618Z/mini2_2444500000.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--scan"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/sweep_20261026T092618Z/mini2_2444500000.iq/scan_prefix.log",
+          "peak_corr": 0.1036,
+          "peak_shift_mhz": -1.0,
+          "peak_sample": 399860,
+          "scanned_samples": 1048576,
+          "success": true
+        }
+      ],
+      "unchanged_during_check": true
+    },
+    {
+      "path": "mini2/sweep_20261026T092618Z/mini2_2459500000.iq",
+      "bytes": 491520000,
+      "metadata": {
+        "format": "sc16",
+        "sample_rate": "15360000",
+        "center_freq": "2459500000",
+        "gain_db": "35.0",
+        "antenna": "RX2",
+        "wire_format": "sc16",
+        "overflows": "0",
+        "utc": "2026-10-26T09:27:16"
+      },
+      "seconds": 8.0,
+      "partial_sample_bytes": 0,
+      "fully_contained_known_channels_hz": [
+        2459500000.0
+      ],
+      "runs": [
+        {
+          "mode": "centered",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/sweep_20261026T092618Z/mini2_2459500000.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/sweep_20261026T092618Z/mini2_2459500000.iq/centered.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": 0,
+          "success": true
+        },
+        {
+          "mode": "auto",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/sweep_20261026T092618Z/mini2_2459500000.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--auto-center"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/sweep_20261026T092618Z/mini2_2459500000.iq/auto.log",
+          "candidates": 0,
+          "crc_valid": 0,
+          "applied_shift_hz": -2092500,
+          "success": true
+        },
+        {
+          "mode": "scan_prefix",
+          "command": [
+            "/home/sudeep/Music/punjdrone/build/droneid_decode",
+            "/home/sudeep/Music/punjdrone/data/mini2/sweep_20261026T092618Z/mini2_2459500000.iq",
+            "--secs",
+            "0",
+            "--thresh",
+            "0.3",
+            "--scan"
+          ],
+          "returncode": 0,
+          "log": "logs/mini2/sweep_20261026T092618Z/mini2_2459500000.iq/scan_prefix.log",
+          "peak_corr": 0.07,
+          "peak_shift_mhz": 0.0,
+          "peak_sample": 907294,
+          "scanned_samples": 1048576,
+          "success": true
+        }
+      ],
+      "unchanged_during_check": true
+    }
+  ]
+}

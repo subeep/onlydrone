@@ -327,6 +327,11 @@ fastest path and lowest risk on the fiddly FEC. Requirements:
 
 ## 11. Operator UI (native C++ desktop app)
 
+> **Status (2026-10-26): implemented as `droneid_ui`** (`-DDRONEID_WITH_UI=ON`), see `docs/GUI.md`.
+> Shell, all five panels, checklist in-place edit, worker/render threading, and offline `--replay`
+> decoding are working (10/10 CTest, real-frame render verified). Still open: wiring Connect/Disconnect
+> to `UsrpSource` with a live streaming-decode loop, RF-metric/DF panels, and ImPlot. Spec below stands.
+
 A **native desktop GUI in the same process** as the pipeline — no browser, no web server, no network. The
 UI runs on its own render thread at ~30–60 fps, reading a thread-safe snapshot of state; the DSP runs on
 worker threads. Closing the window does not stop capture (headless keeps running) and vice-versa.

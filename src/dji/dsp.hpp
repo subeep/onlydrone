@@ -3,6 +3,7 @@
 #pragma once
 
 #include <vector>
+#include <cstdint>
 
 #include "droneid/types.h"
 
@@ -24,5 +25,20 @@ std::vector<cf32> fir_lowpass(const std::vector<cf32>& x, double cutoff_hz, doub
 // Normalized cross-correlation score (0..1) of x against template zc, via FFT overlap-add.
 // Returns length x.size()-zc.size()+1; score[i] corresponds to zc starting at x[i].
 std::vector<float> normalized_corr(const std::vector<cf32>& x, const std::vector<cf32>& zc);
+
+double estimate_channel_center(const std::vector<cf32>& samples, double sample_rate);
+
+class ChannelResampler {
+ public:
+  ChannelResampler(double input_rate, double frequency_shift, double output_rate = 15.36e6);
+  std::vector<cf32> process(const std::vector<cf32>& input, bool final = false);
+
+ private:
+  double input_rate_, output_rate_, frequency_shift_;
+  int radius_;
+  int64_t received_ = 0, emitted_ = 0, buffer_start_ = 0;
+  std::vector<cf32> buffer_;
+  std::vector<std::vector<float>> coefficients_;
+};
 
 }  // namespace droneid::dji::dsp

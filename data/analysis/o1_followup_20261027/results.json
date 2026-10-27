@@ -1,0 +1,34 @@
+[
+  {
+    "id": "mavic_pro",
+    "dataset": "Tampere",
+    "model": "DJI_mavic_pro_2G",
+    "family": "O1",
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_mavic_pro_2G.bin",
+    "rate": 120000000.0,
+    "center": null,
+    "status": "checked",
+    "tested_seconds": 1.0,
+    "unique_payloads": [
+      {
+        "payload_hex": "581002ef01070f303852444533313030313032313800000000000000000000efff00000000000000000ac700000000000000000000000000000000000000000000000010133132373839363537343930383235373839343400d6c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008bcf96511770344fa91982b2c3b2f0a9ce9605455d2c432c5962ebc38cd23677c9e8",
+        "serial": "08RDE310010218",
+        "version": 2,
+        "telemetry_status": "v2_serial_parsed",
+        "header_hex": "581002ef0107",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      }
+    ],
+    "retained_clip": {
+      "path": "data/analysis/o1_followup_20261027/mavic_pro.decoded.cf32",
+      "start_sample": 61155200,
+      "samples": 167679,
+      "sha256": "e0c79009d13be06a53d16a5e4dcf6a09d42813fe57708029ef8313954cb4e8df",
+      "decode_flags": [
+        "--freq-offset",
+        "-5070312.5"
+      ],
+      "redistribution": "local evaluation only; dataset license not yet verified"
+    }
+  }
+]

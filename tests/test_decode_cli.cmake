@@ -1,0 +1,31 @@
+function(expect_decode expected)
+  execute_process(COMMAND "${DECODER}" ${ARGN}
+    RESULT_VARIABLE result OUTPUT_VARIABLE output ERROR_VARIABLE errors)
+  if(NOT result EQUAL 0 OR NOT output MATCHES "${expected}")
+    message(FATAL_ERROR "Unexpected decoder result ${result}: ${output}\n${errors}")
+  endif()
+endfunction()
+
+function(expect_failure)
+  execute_process(COMMAND "${DECODER}" "${FIXTURE}" ${ARGN}
+    RESULT_VARIABLE result OUTPUT_VARIABLE output ERROR_VARIABLE errors)
+  if(result EQUAL 0)
+    message(FATAL_ERROR "Invalid arguments were accepted: ${ARGN}\n${output}")
+  endif()
+endfunction()
+
+expect_decode("1 CRC-valid" "${FIXTURE}" --format cf32 --rate 50000000 --auto-center --secs 0)
+set(metadata_fixture "${CMAKE_CURRENT_BINARY_DIR}/decode_cli_metadata.cf32")
+configure_file("${FIXTURE}" "${metadata_fixture}" COPYONLY)
+file(WRITE "${metadata_fixture}.meta" "sample_rate = 50000000\nformat = cf32\n")
+expect_decode("1 CRC-valid" "${metadata_fixture}" --auto-center --secs 0.001)
+expect_decode("0 CRC-valid" "${metadata_fixture}" --auto-center --secs 0.0002)
+file(REMOVE "${metadata_fixture}" "${metadata_fixture}.meta")
+
+expect_failure(--rate nan)
+expect_failure(--rate 50e6junk)
+expect_failure(--secs -1)
+expect_failure(--secs)
+expect_failure(--format cf32 --rate 50000000 --freq-offset 25000000)
+expect_failure(--format cf32 --rate 50000000 --auto-center --freq-offset -9600000)
+expect_failure(--scan --auto-center)

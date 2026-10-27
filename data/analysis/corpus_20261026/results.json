@@ -1,0 +1,3003 @@
+[
+  {
+    "dataset": "DroneRFa",
+    "model": "mavic3C",
+    "family": "O3+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3C_1_hover_c1_u1_d2.mat",
+    "id": "000-19869eac30",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.4,
+    "clip_sha256": "1acb15ae674db9872ef22fd3128b13e47584d8e30154fc9c344e02b9f2eb477e",
+    "rf_events": 24,
+    "noise_dbfs": -56.06986566877648,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 1,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 8.315
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mavic3C",
+    "family": "O3+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3C_1_hover_c1_u2_d1.mat",
+    "id": "001-fe729753a8",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.4,
+    "clip_sha256": "5b11f3b6d8b5da356d4cd5d23b2151bfca266b658a4e36cc97f675f1e28382a4",
+    "rf_events": 25,
+    "noise_dbfs": -40.346998635987596,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 8.338
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mavic3S",
+    "family": "unverified/other",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3S_1_hover_c1_u1_d2.mat",
+    "id": "002-b5005e668b",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.4,
+    "clip_sha256": "a33fc131cd26efa891e74d152742df0bd3da11f5b037f53fea7e3eea75a5a561",
+    "rf_events": 45,
+    "noise_dbfs": -62.70502697958389,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 4.963
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mavic3S",
+    "family": "unverified/other",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3S_1_hover_c1_u2_d1.mat",
+    "id": "003-563fc1af71",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.4,
+    "clip_sha256": "a7677368c4a282f69872a9bb7ec461eb55dd8c1810d12e32c6090f61c2b18fbd",
+    "rf_events": 43,
+    "noise_dbfs": -55.62238100883751,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 4.947
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mavic3",
+    "family": "O3+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3_1_hover_c1_u1_d2.mat",
+    "id": "004-995552cb67",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.4,
+    "clip_sha256": "3fbe299ec260726bfb077d8024f8600df70e2d76f4b7b868ca8d99dd822acf05",
+    "rf_events": 24,
+    "noise_dbfs": -56.08931260310678,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 2,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 4.875
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mavic3",
+    "family": "O3+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3_1_hover_c1_u2_d1.mat",
+    "id": "005-4fd54eb4ba",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.4,
+    "clip_sha256": "a2f524a7cd7dcba6fc97ea1ff7dba22e00f8e87beb0cb47e2c411b29e4f6b05e",
+    "rf_events": 23,
+    "noise_dbfs": -44.35038330302475,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 4.723
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mavicAir2",
+    "family": "O2",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_1_hover_c1_u1_d2.mat",
+    "id": "006-bd11bb7db6",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.4,
+    "clip_sha256": "c1c6f234bd59bff969c71dc013c1fe8fc44026991a50b487455832271e4690b1",
+    "rf_events": 25,
+    "noise_dbfs": -42.91767530782482,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 4.561
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mavicAir2",
+    "family": "O2",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_1_hover_c1_u2_d1.mat",
+    "id": "007-bcb2383e59",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.4,
+    "clip_sha256": "94de51e42442c0bba7690e0a6df0ee0c1c06168c66ad089e5f726cc380a5b78a",
+    "rf_events": 5,
+    "noise_dbfs": -37.225237336771066,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 4.518
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mavicAir2s",
+    "family": "O3",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_1_hover_c1_u1_d2.mat",
+    "id": "008-5818baaf25",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.4,
+    "clip_sha256": "e721f613b36e79e3b267cc469ca57e5a3a222a9f1fec7f445ee229771f007c6a",
+    "rf_events": 106,
+    "noise_dbfs": -38.3091042122684,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 4.693
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mavicAir2s",
+    "family": "O3",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_1_hover_c1_u2_d1.mat",
+    "id": "009-f7f09e0c0b",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.4,
+    "clip_sha256": "90a41f219bfdcea67d89f1bfbb96d8cdfdeee885851f5ab18b3b742f71825bf8",
+    "rf_events": 28,
+    "noise_dbfs": -40.96727064332594,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 4.702
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mini3pro",
+    "family": "O3",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini3pro_1_hover_c1_u2_d1.mat",
+    "id": "010-773f5cbbe7",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.4,
+    "clip_sha256": "8bbaeadc7c3572b2dc3a7128126703ebabe16346f5a62cdfa6d33a902ecbc86f",
+    "rf_events": 40,
+    "noise_dbfs": -60.67469259139227,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 4.635
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mini3pro",
+    "family": "O3",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini3pro_1_hover_c1_u2_d2.mat",
+    "id": "011-3d7bea4bca",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.4,
+    "clip_sha256": "997394e8fdc2446e4086b2b49505f16d5998a89097928b8e1b60b2a213dbb4b4",
+    "rf_events": 38,
+    "noise_dbfs": -63.60923420656413,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 4.549
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mini4PRO",
+    "family": "O4",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_1_hover_c1_u1_d2.mat",
+    "id": "012-b6a089cc05",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.4,
+    "clip_sha256": "bcb51c150cca246a2d691e0bd883fc51fe8a4e9da578bb0c1f85ecfabc536654",
+    "rf_events": 70,
+    "noise_dbfs": -56.02709137365828,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 4.685
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mini4PRO",
+    "family": "O4",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_1_hover_c1_u2_d1.mat",
+    "id": "013-dd5d008112",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.4,
+    "clip_sha256": "7b4312378fda414e66fff9e153f7146006462b03744ee6fddb5faf249b1a1ba6",
+    "rf_events": 59,
+    "noise_dbfs": -59.95133559270782,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 4.781
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mini5PRO",
+    "family": "O4+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini5PRO_1_hover_c1_u1_d2.mat",
+    "id": "014-ee3601e8d6",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.4,
+    "clip_sha256": "4158311989a458cbbdd4b47505c12832b40f3a36662557080a7ccbd46aae4ed8",
+    "rf_events": 51,
+    "noise_dbfs": -57.88543182327096,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 4.552
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mini5PRO",
+    "family": "O4+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini5PRO_1_hover_c1_u2_d1.mat",
+    "id": "015-28034a3345",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.4,
+    "clip_sha256": "aaeded7a16fd4d974976f333b889a308bc1b988f5480b570ee15326fdd3e28a5",
+    "rf_events": 30,
+    "noise_dbfs": -60.456012908145446,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 4.581
+  },
+  {
+    "dataset": "RFUAV",
+    "model": "DJI AVATA2",
+    "family": "O4",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI AVATA2.rar",
+    "id": "016-b0e0cd552f",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5760000000.0,
+    "member": "DJI AVATA2/VTSBW=10/pack1_0-1s.iq",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": null,
+    "clip_sha256": "5f391ae5f67da35a7c3b65921717094caa238dd5cd7064b132f2572b7267b874",
+    "rf_events": 44,
+    "noise_dbfs": -60.45699602265931,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5796500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 6.341
+  },
+  {
+    "dataset": "RFUAV",
+    "model": "DJI FPV COMBO",
+    "family": "unverified/other",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI FPV COMBO.rar",
+    "id": "017-59669911f3",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5760000000.0,
+    "member": "DJI FPV COMBO/VTSBW=10/pack1_0-1s.iq",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": null,
+    "clip_sha256": "513a5f812fe068b4196e6f3d8185da4736c9f35d96af6b38b27ab8c7dcb7bd6c",
+    "rf_events": 21,
+    "noise_dbfs": -48.03050057410311,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5796500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 6.951
+  },
+  {
+    "dataset": "RFUAV",
+    "model": "DJI MAVIC3 PRO",
+    "family": "O3+",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI MAVIC3 PRO.rar",
+    "id": "018-6b166822bb",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5800000000.0,
+    "member": "DJI MAVIC3 PRO/VTSBW=10/pack1_0-1s.iq",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": null,
+    "clip_sha256": "17e97ec63f34abf309f52b4b43475f783af8c075d137c9131f59e1d8b79088e7",
+    "rf_events": 51,
+    "noise_dbfs": -60.25894073115368,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5796500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 5.778
+  },
+  {
+    "dataset": "RFUAV",
+    "model": "DJI MINI3",
+    "family": "O2",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI MINI3.rar",
+    "id": "019-351f3c57bc",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2470000000.0,
+    "member": "DJI MINI3/VTSBW=10/pack2_0-1s.iq",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": null,
+    "clip_sha256": "79dbdb288427314150d20941d8208eeb1114777c19f6974105b03ca4de82b7ea",
+    "rf_events": 83,
+    "noise_dbfs": -59.538576709608144,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 5.624
+  },
+  {
+    "dataset": "RFUAV",
+    "model": "DJI MINI4 PRO",
+    "family": "O4",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI MINI4 PRO.rar",
+    "id": "020-ad37063f67",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2450000000.0,
+    "member": "DJI MINI4 PRO/VTSBW=10/pack1_0-1s.iq",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": null,
+    "clip_sha256": "e9975262117ec286740f15461214704e1d8641d9df1f7c0c5d7c5037ed6409e4",
+    "rf_events": 84,
+    "noise_dbfs": -60.13735645401803,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 6.81
+  },
+  {
+    "dataset": "RFUAV",
+    "model": "FRSKY X14",
+    "family": "non-DJI",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/FRSKY X14.rar",
+    "id": "021-818f1cb0e6",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "FRSKY X14/pack1_0-1s.iq",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": null,
+    "clip_sha256": "7d656e108cda30f1c305f3e4ffc6c12577e17b27f78ebe80eabfb8bc67acf647",
+    "rf_events": 12,
+    "noise_dbfs": -60.30927650386609,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 8.074
+  },
+  {
+    "dataset": "RFUAV",
+    "model": "FUTABA T18SZ",
+    "family": "non-DJI",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/FUTABA T18SZ.rar",
+    "id": "022-cfb541ed1f",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "FUTABA T18SZ/pack1_0-1s.iq",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": null,
+    "clip_sha256": "5d1b5b30acc2f2d7ed03ffb785a203141f9c162b8de3db95c81733eb0bdbb64e",
+    "rf_events": 8,
+    "noise_dbfs": -60.72402070258194,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 7.937
+  },
+  {
+    "dataset": "RFUAV",
+    "model": "Herelink Hx4",
+    "family": "non-DJI",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/Herelink Hx4.rar",
+    "id": "023-fccfb1f511",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "Herelink Hx4/pack1_0-1s.iq",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": null,
+    "clip_sha256": "b038b0be4770ae10b6977858e45d010a8ac649002fe61a5cf95dd9f66f68df42",
+    "rf_events": 50,
+    "noise_dbfs": -54.18132564371863,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 7.965
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "Frysky",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/Frysky.zip",
+    "id": "024-53e597c9c0",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "Frysky/Frysky_0.mat",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.1,
+    "clip_sha256": "11600a8ce50a9acf150c55d95bf031096ad6b95e7bc71d71fb64ab5dddd6ac01",
+    "rf_events": 9,
+    "noise_dbfs": -66.10840926827338,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 8.87
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "MavicRC1",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/MavicRC1.zip",
+    "id": "025-e06cc19786",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "MavicRC1/Mavic_0.mat",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.0,
+    "clip_sha256": "8d9eae745e2f21d82cc4b8118c4e220ec3422dcd8e8b4796afa316efc28f508b",
+    "rf_events": 21,
+    "noise_dbfs": -67.4809372495541,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 11.181
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "MavicVid1",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/MavicVid1.zip",
+    "id": "026-948a7ab1cb",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "MavicVid1/Mavic_0.mat",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.0,
+    "clip_sha256": "225cd6a9c0fb5aec232b11b60bb443c9b88f7281ea844585c3953a0cfbc69f69",
+    "rf_events": 25,
+    "noise_dbfs": -62.194211679711714,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 14.316
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "NineEagles",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/NineEagles.zip",
+    "id": "027-a665e67551",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "NineEagles/NineEagles_0.mat",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.1,
+    "clip_sha256": "f5abd289e2f78a22c3c1edc118cc535fcf62bfea5b49fbe7c01702eae5940789",
+    "rf_events": 24,
+    "noise_dbfs": -67.29937738070251,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 10.872
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "Q205",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/Q205.zip",
+    "id": "028-61f0135eaa",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "Q205/Q205_0.mat",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.1,
+    "clip_sha256": "134470530d22259f716d060ffb1f7632387677850afedd26b120829b2cc0e6a1",
+    "rf_events": 0,
+    "noise_dbfs": -66.07398001585648,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 8.668
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "SJRC_pro",
+    "family": "non-DJI",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/SJRC_pro.zip",
+    "id": "029-3960a9089a",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "SJRC_pro/sjrc__0.mat",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.1,
+    "clip_sha256": "c619d7d2e445e363e331e0c48f54b15624bff2c73a008e5fdfafa4d357cc7e8f",
+    "rf_events": 14,
+    "noise_dbfs": -67.31025003809536,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 9.043
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "Spektrum_DX4e",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/Spektrum_DX4e.zip",
+    "id": "030-1923dda10d",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "Spektrum_DX4e/DX4e_0.mat",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.1,
+    "clip_sha256": "5b66f4974fd591c9f95319b54d72e7416902e9b8ca63f8e64e120c1faef907b0",
+    "rf_events": 10,
+    "noise_dbfs": -67.32797636808884,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 8.761
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "inspire2RC",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/inspire2RC.zip",
+    "id": "031-6654492ecb",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "inspire2RC/inspire2_0.mat",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.1,
+    "clip_sha256": "9c0658f75c9e5880c2c0e11029a948810bae0ef3aa0f08fd65c15b28ce94ed3d",
+    "rf_events": 7,
+    "noise_dbfs": -64.4487548753246,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 9.086
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "inspire2Vid",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/inspire2Vid.zip",
+    "id": "032-b3781a8622",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "inspire2Vid/inspire2_0.mat",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.2,
+    "clip_sha256": "70f40b3427a78dd4aaa07ead31f97014266043a110e090adc8faab1e3b1efe3c",
+    "rf_events": 8,
+    "noise_dbfs": -66.34537039109402,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 9.548
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "matriceRC",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/matriceRC.zip",
+    "id": "033-0fec8637dd",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "matriceRC/matrice_0.mat",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.1,
+    "clip_sha256": "bc99e160d01b30e646bb7171bc02b9a113f763dbe5b1c6154cdcad73bcc2b111",
+    "rf_events": 22,
+    "noise_dbfs": -65.51252591150049,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 3,
+        "crc_valid": 1
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [
+      {
+        "payload_hex": "4c10024501030f315a4e424843343030433030514e00000000000000000000313e000000000000000042400000000000000000000000000000000000000000000000003c000000000000000000e940fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0742ba",
+        "serial": "1ZNBHC400C00QN",
+        "version": 2,
+        "telemetry_status": "v2_serial_parsed",
+        "header_hex": "4c1002450103",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      }
+    ],
+    "status": "checked",
+    "elapsed_seconds": 8.853
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "matricevid",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/matricevid.zip",
+    "id": "034-8d35080888",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "matricevid/matrice_0.mat",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.1,
+    "clip_sha256": "2bc6743e5a942ac500f5dbc86bc1b3e00396efda166c1a74cd0c1c45c3fb9ab2",
+    "rf_events": 21,
+    "noise_dbfs": -66.01349446523918,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 9.749
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "mini2RC",
+    "family": "O2",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/mini2RC.zip",
+    "id": "035-94648086a2",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "mini2RC/mini2_0.mat",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.1,
+    "clip_sha256": "b218ae06b4d850539fcad6e579bf99a5b2bd3b282ff058170825485c5b3c791a",
+    "rf_events": 36,
+    "noise_dbfs": -67.26288183132218,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 1,
+        "crc_valid": 1
+      }
+    ],
+    "unique_payloads": [
+      {
+        "payload_hex": "5810024102071f334e5a434a3446303034444b50540000000000000000000000000000000000000000c52fa8d067f47f010000e26787006fb20b0000000000000000003f13313431343539353136303835303531333932300053450000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002796c2caf5486f00c35c24d8fcfc6fc48201287654db907d414ce9aef244919c3d77",
+        "serial": "3NZCJ4F004DKPT",
+        "version": 2,
+        "telemetry_status": "v2_serial_parsed",
+        "header_hex": "581002410207",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      }
+    ],
+    "status": "checked",
+    "elapsed_seconds": 9.059
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "mini2vid",
+    "family": "O2",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/mini2vid.zip",
+    "id": "036-4cf991393b",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "mini2vid/mini2_0.mat",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.2,
+    "clip_sha256": "65297b7b79f330d119bdd97df6870548c87ef7fccda2db9c05e7f62d89021582",
+    "rf_events": 22,
+    "noise_dbfs": -67.28447178322847,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 9.048
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "wltoys",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/wltoys.zip",
+    "id": "037-e70eb1e733",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "wltoys/wltoys_0.mat",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.1,
+    "clip_sha256": "aa3f21bd0b2a2ec88a8d75629f6cf24e5e8c4b351a33f18ced236ba6fb910238",
+    "rf_events": 63,
+    "noise_dbfs": -67.13685595797793,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 8.938
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_inspire_2_2G",
+    "family": "unverified/other",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_inspire_2_2G.bin",
+    "id": "038-200a7274b3",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 12000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.0,
+    "clip_sha256": "0095b0a453557eb1ce03cc6d3265afae77eab92bc6b65b12c9467a7ff4e5c96c",
+    "rf_events": 48,
+    "noise_dbfs": -22.60791543070836,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 2.958
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_inspire_2_5G_1of2",
+    "family": "unverified/other",
+    "kind": "sc16",
+    "rate": 200000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_inspire_2_5G_1of2.bin",
+    "id": "039-5714789d8a",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 20000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.5,
+    "clip_sha256": "20df724afb6ebfc7b7620a1e65de3d705901e683e9f6ab7324571ef5a4a88918",
+    "rf_events": 35,
+    "noise_dbfs": -34.46071336642988,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 6.604
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_matrice_100_2G",
+    "family": "unverified/other",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_matrice_100_2G.bin",
+    "id": "040-b1a4c6b19d",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 12000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.0,
+    "clip_sha256": "e67d23d87932769d963dfa3593b4e7c898a1c4162aa949c135e202f3fb7ecfd2",
+    "rf_events": 29,
+    "noise_dbfs": -23.926093856107286,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 3.742
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_matrice_210_2G",
+    "family": "unverified/other",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_matrice_210_2G.bin",
+    "id": "041-5d62f774d9",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 12000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.0,
+    "clip_sha256": "12dc7a6d5a4f11677b95ae7cc0dc1180a83de50ad2e17a68a877a743b0ca87ee",
+    "rf_events": 36,
+    "noise_dbfs": -34.75303256345938,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 4.783
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_matrice_210_5G_1of2",
+    "family": "unverified/other",
+    "kind": "sc16",
+    "rate": 200000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_matrice_210_5G_1of2.bin",
+    "id": "042-6a1d7f257e",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 20000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.5,
+    "clip_sha256": "7169bb9dd273650c0304bcef089941fbbcc7a12efa3454682dbad4f43f285ece",
+    "rf_events": 31,
+    "noise_dbfs": -39.86957190865708,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 7.196
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_mavic_mini_2G",
+    "family": "O2",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_mavic_mini_2G.bin",
+    "id": "043-6c66fa47a2",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 12000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.0,
+    "clip_sha256": "d3ec4558f33c7813a7ae30f10e8163148432b8c0a0f77b9ff239f58564a15327",
+    "rf_events": 80,
+    "noise_dbfs": -64.20972131579761,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 3.763
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_mavic_pro_2G",
+    "family": "O1",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_mavic_pro_2G.bin",
+    "id": "044-5fbd4f6213",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 12000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.0,
+    "clip_sha256": "1f68cecad3789bbfbe9ba8caac60f35a9aebc3bf574f630255b994f60dc44af5",
+    "rf_events": 7,
+    "noise_dbfs": -25.450239841293406,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 4.143
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_phantom_4_2G",
+    "family": "unverified/other",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_phantom_4_2G.bin",
+    "id": "045-e9d00920cd",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 12000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.0,
+    "clip_sha256": "ce6c7edf207e908b3c7b1934d55636ea279b8980cd9bdad5412d103bf58d788b",
+    "rf_events": 342,
+    "noise_dbfs": -24.842664089054093,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 4.002
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_phantom_4_pro_plus_2G",
+    "family": "unverified/other",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_phantom_4_pro_plus_2G.bin",
+    "id": "046-133ffc88a0",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 12000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.0,
+    "clip_sha256": "0d4f0d7187f571e767fba2823f3493078115ab7358c23bcaaf242966c3e9d73b",
+    "rf_events": 12,
+    "noise_dbfs": -33.28649707616391,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 4.861
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_phantom_4_pro_plus_5G_1of2",
+    "family": "unverified/other",
+    "kind": "sc16",
+    "rate": 200000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_phantom_4_pro_plus_5G_1of2.bin",
+    "id": "047-04147edd96",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 20000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.5,
+    "clip_sha256": "82859b2aa7b5ecad99016cf14c444f5af378572ee78b92a9e9db8aba7faf98cc",
+    "rf_events": 17,
+    "noise_dbfs": -38.13442576411892,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 7.031
+  },
+  {
+    "dataset": "Tampere",
+    "model": "Parrot_disco_2G",
+    "family": "non-DJI",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/Parrot_disco_2G.bin",
+    "id": "048-36b87ad385",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 12000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.0,
+    "clip_sha256": "d76fab1c7df7f2a44dc17f97069fc8001674700d6c129c61e13d19749531ba26",
+    "rf_events": 10,
+    "noise_dbfs": -64.35748244225488,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 3.773
+  },
+  {
+    "dataset": "Tampere",
+    "model": "Parrot_mambo_control_2G",
+    "family": "non-DJI",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/Parrot_mambo_control_2G.bin",
+    "id": "049-d4b0f579b1",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 12000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.0,
+    "clip_sha256": "2a7a91970554bf964335c845f686c7a7ad795b699c76599acec5f5664b5ca68f",
+    "rf_events": 34,
+    "noise_dbfs": -64.47311482965344,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 4.244
+  },
+  {
+    "dataset": "Tampere",
+    "model": "Parrot_mambo_video_2G",
+    "family": "non-DJI",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/Parrot_mambo_video_2G.bin",
+    "id": "050-283230770a",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 12000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.0,
+    "clip_sha256": "93847ce379c33dd4de3436bed9704b8788fa867f7a7b0089da5efa4ccfb27e57",
+    "rf_events": 121,
+    "noise_dbfs": -64.46851481434193,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 3.722
+  },
+  {
+    "dataset": "Tampere",
+    "model": "Yuneec_typhoon_h_2G_1of2",
+    "family": "non-DJI",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/Yuneec_typhoon_h_2G_1of2.bin",
+    "id": "051-000f90fdaa",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 12000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 1.0,
+    "clip_sha256": "0762ff91303109ea7ceebbb39ffe2a15a1a93abfdc15b4c2d8f7d75265607d75",
+    "rf_events": 16,
+    "noise_dbfs": -64.3238293449255,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 6.577
+  },
+  {
+    "dataset": "Tampere",
+    "model": "Yuneec_typhoon_h_5G",
+    "family": "non-DJI",
+    "kind": "sc16",
+    "rate": 200000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/Yuneec_typhoon_h_5G.bin",
+    "id": "052-cd80e94237",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 20000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.5,
+    "clip_sha256": "44b60d4f921d4ba968e8e7d2852dd1ba54d51183c0d7c673e0ab7eab5320aa88",
+    "rf_events": 10,
+    "noise_dbfs": -53.20652891904019,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 7.115
+  },
+  {
+    "dataset": "RUB-reference",
+    "model": "mavic_air_2",
+    "family": "O2",
+    "kind": "cf32",
+    "rate": 50000000.0,
+    "center": null,
+    "path": "/home/sudeep/Music/punjdrone/data/iq_samples/mavic_air_2/mavic_air_2.cf32",
+    "id": "053-bcabb34102",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 225280,
+    "tested_seconds": 0.0045056,
+    "source_seconds": 0.0045056,
+    "clip_sha256": "623fa40f190d3fd859ec2fd62b379ad9a01a0485db3179ae29ac2e3c7a070450",
+    "rf_events": 4,
+    "noise_dbfs": -38.40845341806998,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 1,
+        "crc_valid": 1
+      }
+    ],
+    "unique_payloads": [
+      {
+        "payload_hex": "5810024f02f71f31574e4248333930303230314e310000915a13008b0289008d002a00feff02001a0011cc129ef84b80010000750289007d5a1300a95a13007e0289003a13313134333633353533323137313533343333360048b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ee7c02d8a8ffe1dcf7f72451238407e1b27afcf71e50502a6b1b44f0f5fe6f53452e",
+        "serial": "1WNBH3900201N1",
+        "version": 2,
+        "telemetry_status": "v2_serial_parsed",
+        "header_hex": "5810024f02f7",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      }
+    ],
+    "status": "checked",
+    "elapsed_seconds": 0.136
+  },
+  {
+    "dataset": "RUB-reference",
+    "model": "mini2",
+    "family": "O2",
+    "kind": "cf32",
+    "rate": 50000000.0,
+    "center": null,
+    "path": "/home/sudeep/Music/punjdrone/data/iq_samples/mini2/mini2_sm.cf32",
+    "id": "054-7fd6f26a9e",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 727500,
+    "tested_seconds": 0.01455,
+    "source_seconds": 0.01455,
+    "clip_sha256": "5a17913cb11cde2919347054700345c9e5595eaff7818980d332b8ac8910bc55",
+    "rf_events": 13,
+    "noise_dbfs": -56.67213400767595,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 10,
+        "crc_valid": 10
+      }
+    ],
+    "unique_payloads": [
+      {
+        "payload_hex": "5810021203131f5379735365635761734865726520000000000000000000000000000000000000000067255429bad57f0100001e038900195a130000000000000000003f00000000000000000000000000000000000000000057f5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d47823eb1cbb5444fd8e17117cf818ff920a0da56c06721c83596d5c464239c5f36d",
+        "serial": "SysSecWasHere ",
+        "version": 2,
+        "telemetry_status": "v2_serial_parsed",
+        "header_hex": "581002120313",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      },
+      {
+        "payload_hex": "5810021303131f537973536563576173486572652000000000000000000000000000000000000000006a25e23cbad57f0100001e038900195a130000000000000000003f000000000000000000000000000000000000000000fa8f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d47823eb1cbb5444fd8e17117cf818ff920a0da56c06721c83596d5c464239100f2e",
+        "serial": "SysSecWasHere ",
+        "version": 2,
+        "telemetry_status": "v2_serial_parsed",
+        "header_hex": "581002130313",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      },
+      {
+        "payload_hex": "5810021403131f537973536563576173486572652000000000000000000000000000000000000000006525e23cbad57f0100001e038900195a130000000000000000003f00000000000000000000000000000000000000000075fd000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d47823eb1cbb5444fd8e17117cf818ff920a0da56c06721c83596d5c464239bfaf66",
+        "serial": "SysSecWasHere ",
+        "version": 2,
+        "telemetry_status": "v2_serial_parsed",
+        "header_hex": "581002140313",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      },
+      {
+        "payload_hex": "5810021503131f537973536563576173486572652000000000000000000000000000000000000000006b25e23cbad57f0100001e038900195a130000000000000000003f00000000000000000000000000000000000000000059b2000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d47823eb1cbb5444fd8e17117cf818ff920a0da56c06721c83596d5c46423988728c",
+        "serial": "SysSecWasHere ",
+        "version": 2,
+        "telemetry_status": "v2_serial_parsed",
+        "header_hex": "581002150313",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      },
+      {
+        "payload_hex": "5810022003131f537973536563576173486572652000000000000000000000000000000000000000006f25dc63bad57f0100001e038900195a130000000000000000003f0000000000000000000000000000000000000000002ac8000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d47823eb1cbb5444fd8e17117cf818ff920a0da56c06721c83596d5c4642390a64d7",
+        "serial": "SysSecWasHere ",
+        "version": 2,
+        "telemetry_status": "v2_serial_parsed",
+        "header_hex": "581002200313",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      },
+      {
+        "payload_hex": "5810022403131f537973536563576173486572652000000000000000000000000000000000000000006d256a77bad57f0100001e038900195a130000000000000000003f00000000000000000000000000000000000000000084d9000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d47823eb1cbb5444fd8e17117cf818ff920a0da56c06721c83596d5c4642397bf53b",
+        "serial": "SysSecWasHere ",
+        "version": 2,
+        "telemetry_status": "v2_serial_parsed",
+        "header_hex": "581002240313",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      },
+      {
+        "payload_hex": "5810022503131f537973536563576173486572652000000000000000000000000000000000000000006b256a77bad57f0100001e038900195a130000000000000000003f0000000000000000000000000000000000000000005aed000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d47823eb1cbb5444fd8e17117cf818ff920a0da56c06721c83596d5c464239426a61",
+        "serial": "SysSecWasHere ",
+        "version": 2,
+        "telemetry_status": "v2_serial_parsed",
+        "header_hex": "581002250313",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      },
+      {
+        "payload_hex": "5810022603131f537973536563576173486572652000000000000000000000000000000000000000006c256a77bad57f0100001e038900195a130000000000000000003f00000000000000000000000000000000000000000049bb000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d47823eb1cbb5444fd8e17117cf818ff920a0da56c06721c83596d5c4642397f48af",
+        "serial": "SysSecWasHere ",
+        "version": 2,
+        "telemetry_status": "v2_serial_parsed",
+        "header_hex": "581002260313",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      }
+    ],
+    "status": "checked",
+    "elapsed_seconds": 0.973
+  },
+  {
+    "dataset": "Local",
+    "model": "baseline",
+    "family": "negative-no-drone",
+    "kind": "sc16",
+    "rate": 15360000.0,
+    "center": 2459500000.0,
+    "path": "/home/sudeep/Music/punjdrone/data/baseline/baseline_24_073340Z.iq",
+    "id": "055-05be9aa040",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 1536000,
+    "tested_seconds": 0.1,
+    "source_seconds": 3.0037333333333334,
+    "clip_sha256": "3336ddf4de50243e1d9d358c1df4f5f233799832d8d8a0f28496e72e732f7a1a",
+    "rf_events": 42,
+    "noise_dbfs": -59.22423625583984,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 0.31
+  },
+  {
+    "dataset": "Local",
+    "model": "air3s",
+    "family": "O4",
+    "kind": "sc16",
+    "rate": 15360000.0,
+    "center": 2410000000.0,
+    "path": "/home/sudeep/Music/punjdrone/data/air3s/air3s_24_2410e6_20261026T074318Z.iq",
+    "id": "056-a61d54cb89",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 1536000,
+    "tested_seconds": 0.1,
+    "source_seconds": 8.0,
+    "clip_sha256": "28c3e66997376a2db3d18b8a183dbf07e41bf518c18b38abe717500351182718",
+    "rf_events": 26,
+    "noise_dbfs": -51.432069824818285,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 0.191
+  },
+  {
+    "dataset": "Local",
+    "model": "air3s",
+    "family": "O4",
+    "kind": "sc16",
+    "rate": 15360000.0,
+    "center": 2425000000.0,
+    "path": "/home/sudeep/Music/punjdrone/data/air3s/air3s_24_2425e6_20261026T074318Z.iq",
+    "id": "057-e1f9a2d087",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 1536000,
+    "tested_seconds": 0.1,
+    "source_seconds": 8.0,
+    "clip_sha256": "7fd8a26d48efd5001927c487548410b82d353f163d21ee3714daa4cd8a38a21a",
+    "rf_events": 44,
+    "noise_dbfs": -51.021095392049574,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 2,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 0.399
+  },
+  {
+    "dataset": "Local",
+    "model": "air3s",
+    "family": "O4",
+    "kind": "sc16",
+    "rate": 15360000.0,
+    "center": 2440000000.0,
+    "path": "/home/sudeep/Music/punjdrone/data/air3s/air3s_24_2440e6_20261026T074318Z.iq",
+    "id": "058-c3f316bef7",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 1536000,
+    "tested_seconds": 0.1,
+    "source_seconds": 8.0,
+    "clip_sha256": "7bb4702c8cbcfc2c1d1705083cb6729af5e4e34e4d0ec77898754e5559ae5a0c",
+    "rf_events": 51,
+    "noise_dbfs": -36.77034468269891,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 0.23
+  },
+  {
+    "dataset": "Local",
+    "model": "air3s",
+    "family": "O4",
+    "kind": "sc16",
+    "rate": 15360000.0,
+    "center": 2455000000.0,
+    "path": "/home/sudeep/Music/punjdrone/data/air3s/air3s_24_2455e6_20261026T074318Z.iq",
+    "id": "059-668ef40f06",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 1536000,
+    "tested_seconds": 0.1,
+    "source_seconds": 8.0,
+    "clip_sha256": "9c69a899db187d86f9d5e36773d5705f972d2456c1c49aa48df5ae24db5f5f68",
+    "rf_events": 37,
+    "noise_dbfs": -48.508629449051064,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 0.216
+  },
+  {
+    "dataset": "Local",
+    "model": "air3s",
+    "family": "O4",
+    "kind": "sc16",
+    "rate": 15360000.0,
+    "center": 2470000000.0,
+    "path": "/home/sudeep/Music/punjdrone/data/air3s/air3s_24_2470e6_20261026T074318Z.iq",
+    "id": "060-8b33f20ca5",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 1536000,
+    "tested_seconds": 0.1,
+    "source_seconds": 8.0,
+    "clip_sha256": "809d5ec6e5b14b2097e8c1a73215ff8acc09b024784f3e96d0b55202ebca1df3",
+    "rf_events": 74,
+    "noise_dbfs": -48.82688161835901,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 0.217
+  },
+  {
+    "dataset": "Local",
+    "model": "air3s",
+    "family": "O4",
+    "kind": "sc16",
+    "rate": 15360000.0,
+    "center": 5745000000.0,
+    "path": "/home/sudeep/Music/punjdrone/data/air3s/air3s_58_5745e6_20261026T074519Z.iq",
+    "id": "061-b1db36a150",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 1536000,
+    "tested_seconds": 0.1,
+    "source_seconds": 8.0,
+    "clip_sha256": "9e189d3ecefe67a900bc2917f5cc53012f9605d22203f4b5a63b0fbfebcae045",
+    "rf_events": 116,
+    "noise_dbfs": -62.68324463162052,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 0.215
+  },
+  {
+    "dataset": "Local",
+    "model": "air3s",
+    "family": "O4",
+    "kind": "sc16",
+    "rate": 15360000.0,
+    "center": 5775000000.0,
+    "path": "/home/sudeep/Music/punjdrone/data/air3s/air3s_58_5775e6_20261026T074519Z.iq",
+    "id": "062-ca630c8179",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 1536000,
+    "tested_seconds": 0.1,
+    "source_seconds": 8.0,
+    "clip_sha256": "40b9f3693d7453a8097d58ad7f00cd66c7310eae38917d1cb541551bfa0346f7",
+    "rf_events": 67,
+    "noise_dbfs": -59.287020714709286,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 0.349
+  },
+  {
+    "dataset": "Local",
+    "model": "air3s",
+    "family": "O4",
+    "kind": "sc16",
+    "rate": 15360000.0,
+    "center": 5805000000.0,
+    "path": "/home/sudeep/Music/punjdrone/data/air3s/air3s_58_5805e6_20261026T074519Z.iq",
+    "id": "063-6face76bab",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 1536000,
+    "tested_seconds": 0.1,
+    "source_seconds": 8.0,
+    "clip_sha256": "e081b5f68ad5fda8651f59ad598d8d6600955bef2707a69e659b2587f197a1e9",
+    "rf_events": 74,
+    "noise_dbfs": -60.63316818737298,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 0.217
+  },
+  {
+    "dataset": "Local",
+    "model": "air3s",
+    "family": "O4",
+    "kind": "sc16",
+    "rate": 15360000.0,
+    "center": 5835000000.0,
+    "path": "/home/sudeep/Music/punjdrone/data/air3s/air3s_58_5835e6_20261026T074519Z.iq",
+    "id": "064-f7e84f0eb6",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 1536000,
+    "tested_seconds": 0.1,
+    "source_seconds": 8.0,
+    "clip_sha256": "5124fcb9449fd82a7b6e1abd9fa0f4a374d5af79af7ba6ae41e7ac96b392c2f0",
+    "rf_events": 69,
+    "noise_dbfs": -59.48943059933011,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 0.217
+  },
+  {
+    "dataset": "Local",
+    "model": "mini2",
+    "family": "O2",
+    "kind": "sc16",
+    "rate": 15360000.0,
+    "center": 2410000000.0,
+    "path": "/home/sudeep/Music/punjdrone/data/mini2/mini2_24_2410e6_20261026T075349Z.iq",
+    "id": "065-6c6bc276b1",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 1536000,
+    "tested_seconds": 0.1,
+    "source_seconds": 8.0,
+    "clip_sha256": "317a611b8ec1e498a7b5b40290e787abb5a94ba0cbaad75cebd09765d95189c1",
+    "rf_events": 35,
+    "noise_dbfs": -49.999203490891944,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 0.216
+  },
+  {
+    "dataset": "Local",
+    "model": "mini2",
+    "family": "O2",
+    "kind": "sc16",
+    "rate": 15360000.0,
+    "center": 2425000000.0,
+    "path": "/home/sudeep/Music/punjdrone/data/mini2/mini2_24_2425e6_20261026T075349Z.iq",
+    "id": "066-c7bbc3a294",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 1536000,
+    "tested_seconds": 0.1,
+    "source_seconds": 8.0,
+    "clip_sha256": "a2f773345220a4fd13b5423fc708070a3e47d38ce43498381ebfaeca157f00a6",
+    "rf_events": 36,
+    "noise_dbfs": -49.679068165816396,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 0.217
+  },
+  {
+    "dataset": "Local",
+    "model": "mini2",
+    "family": "O2",
+    "kind": "sc16",
+    "rate": 15360000.0,
+    "center": 2440000000.0,
+    "path": "/home/sudeep/Music/punjdrone/data/mini2/mini2_24_2440e6_20261026T075349Z.iq",
+    "id": "067-aad3f000ff",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 1536000,
+    "tested_seconds": 0.1,
+    "source_seconds": 8.0,
+    "clip_sha256": "dbf9a8b6561ef0f6230e8dcf754c4455ffc42a7fe6c8dac4039ad3ef610c4869",
+    "rf_events": 62,
+    "noise_dbfs": -44.36872363509696,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 0.209
+  },
+  {
+    "dataset": "Local",
+    "model": "mini2",
+    "family": "O2",
+    "kind": "sc16",
+    "rate": 15360000.0,
+    "center": 2455000000.0,
+    "path": "/home/sudeep/Music/punjdrone/data/mini2/mini2_24_2455e6_20261026T075349Z.iq",
+    "id": "068-81046711a5",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 1536000,
+    "tested_seconds": 0.1,
+    "source_seconds": 8.0,
+    "clip_sha256": "a7ed13512cc81e23ab8fa936d286664f99734b2c7010e3848e1ca11d899e049c",
+    "rf_events": 72,
+    "noise_dbfs": -49.352082335461006,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 0.219
+  },
+  {
+    "dataset": "Local",
+    "model": "mini2",
+    "family": "O2",
+    "kind": "sc16",
+    "rate": 15360000.0,
+    "center": 2470000000.0,
+    "path": "/home/sudeep/Music/punjdrone/data/mini2/mini2_24_2470e6_20261026T075349Z.iq",
+    "id": "069-e8e170eed2",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 1536000,
+    "tested_seconds": 0.1,
+    "source_seconds": 8.0,
+    "clip_sha256": "33809f0357ea7429d2ed34d725ddfa3f3e1f27a66256eecf116aca0c70cf6f19",
+    "rf_events": 56,
+    "noise_dbfs": -49.58536219333911,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 0.202
+  },
+  {
+    "dataset": "Local",
+    "model": "mini2",
+    "family": "O2",
+    "kind": "sc16",
+    "rate": 15360000.0,
+    "center": 2459500000.0,
+    "path": "/home/sudeep/Music/punjdrone/data/mini2/mini2_droneid_2459500000_20261026T090845Z.iq",
+    "id": "070-5ea9382a15",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 1536000,
+    "tested_seconds": 0.1,
+    "source_seconds": 30.0032,
+    "clip_sha256": "1685299ab2c2e377e40d030fc5c830365a06d81ef2001aa1a73835463d891a83",
+    "rf_events": 55,
+    "noise_dbfs": -47.94818993935843,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 0.309
+  },
+  {
+    "dataset": "Local",
+    "model": "mini2",
+    "family": "O2",
+    "kind": "sc16",
+    "rate": 15360000.0,
+    "center": 2399500000.0,
+    "path": "/home/sudeep/Music/punjdrone/data/mini2/sweep_20261026T092618Z/mini2_2399500000.iq",
+    "id": "071-2d59b06bb2",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 1536000,
+    "tested_seconds": 0.1,
+    "source_seconds": 8.0,
+    "clip_sha256": "8a96ed8b1ab0a400ece59430a06255338b34865e5845eeb2425431857f4e7af9",
+    "rf_events": 33,
+    "noise_dbfs": -33.23474429541528,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 0.292
+  },
+  {
+    "dataset": "Local",
+    "model": "mini2",
+    "family": "O2",
+    "kind": "sc16",
+    "rate": 15360000.0,
+    "center": 2414500000.0,
+    "path": "/home/sudeep/Music/punjdrone/data/mini2/sweep_20261026T092618Z/mini2_2414500000.iq",
+    "id": "072-7afc487aeb",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 1536000,
+    "tested_seconds": 0.1,
+    "source_seconds": 8.0,
+    "clip_sha256": "e065bb9842be9ead62325ae9457bdc57a5616114842532425061c15be2471670",
+    "rf_events": 34,
+    "noise_dbfs": -49.437131755181625,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 0.306
+  },
+  {
+    "dataset": "Local",
+    "model": "mini2",
+    "family": "O2",
+    "kind": "sc16",
+    "rate": 15360000.0,
+    "center": 2429500000.0,
+    "path": "/home/sudeep/Music/punjdrone/data/mini2/sweep_20261026T092618Z/mini2_2429500000.iq",
+    "id": "073-602472ab5c",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 1536000,
+    "tested_seconds": 0.1,
+    "source_seconds": 8.0,
+    "clip_sha256": "d8c02682ed2168ba1e294efd8de28c594b33b2662e1e4d02016140694a41c079",
+    "rf_events": 78,
+    "noise_dbfs": -46.3543532414821,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 0.3
+  },
+  {
+    "dataset": "Local",
+    "model": "mini2",
+    "family": "O2",
+    "kind": "sc16",
+    "rate": 15360000.0,
+    "center": 2444500000.0,
+    "path": "/home/sudeep/Music/punjdrone/data/mini2/sweep_20261026T092618Z/mini2_2444500000.iq",
+    "id": "074-ce00087efd",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 1536000,
+    "tested_seconds": 0.1,
+    "source_seconds": 8.0,
+    "clip_sha256": "b41363259542e88aaedc549f58cfb644394b1988a634ab2739e8a6de6762c251",
+    "rf_events": 62,
+    "noise_dbfs": -47.229276628695935,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 0.332
+  },
+  {
+    "dataset": "Local",
+    "model": "mini2",
+    "family": "O2",
+    "kind": "sc16",
+    "rate": 15360000.0,
+    "center": 2459500000.0,
+    "path": "/home/sudeep/Music/punjdrone/data/mini2/sweep_20261026T092618Z/mini2_2459500000.iq",
+    "id": "075-f2025c7fd6",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 1536000,
+    "tested_seconds": 0.1,
+    "source_seconds": 8.0,
+    "clip_sha256": "ebcea19315f216a988ab7ba61825b724b66cba61a3d258db10bdc57cda332ca2",
+    "rf_events": 21,
+    "noise_dbfs": -23.813459717038064,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 0.298
+  }
+]

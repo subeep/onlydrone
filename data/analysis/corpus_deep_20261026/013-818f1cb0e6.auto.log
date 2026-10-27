@@ -1,0 +1,3 @@
+== 0 burst candidate(s), 0 CRC-valid ==
+23:46:41 [INFO ] decoding /tmp/corpus-nn07as88/clip.cf32 (0.0 s, thresh 0.30, freq_offset 0 Hz, lpf on)
+23:46:41 [INFO ] decoder input 100.000 MSPS -> 15.360 MSPS, shift +4919434 Hz (auto)

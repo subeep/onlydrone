@@ -19,11 +19,11 @@ This project is **GPL-3.0-or-later**. Vendored components:
   `src/dji/` and `src/fec/` is ported from its `matlab/updated_scripts` and `cpp/*.cc`.
   Credits in that repo to RUB-SysSec / CISPA for the DroneID reverse engineering.
 
-## Real-IQ test fixture — `tests/data/mini2_centered.sc16`
+## Real-IQ test fixtures — `tests/data/mini2_centered.sc16`, `mini2_wideband.cf32`
 - Source: RUB-SysSec [DroneSecurity](https://github.com/RUB-SysSec/DroneSecurity),
   revision `9ff819843bee48fb140a0704ec78aff757896dea`, `samples/mini2_sm`.
 - Upstream license: **AGPL-3.0**, retained in `tests/data/LICENSE.DroneSecurity`.
-- Use: centered/resampled excerpt for decoder regression testing; provenance,
+- Use: centered/resampled and raw 50-MSPS excerpts for decoder regression testing; provenance,
   transformation and checksums are in `tests/data/README.md`.
 - The upstream packed record layout was also consulted to verify v2 field
   boundaries against the decoded bytes. Motion units still require validation.

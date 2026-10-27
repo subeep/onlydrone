@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <cmath>
 #include <complex>
+#include <stdexcept>
 #include <vector>
 
 #include "droneid/dji.h"
@@ -16,6 +17,24 @@ namespace droneid::dji {
 namespace {
 
 using dsp::cf32;
+
+constexpr double kDecodeRate = 15.36e6;
+
+void validate_options(const DecodeOptions& options) {
+  if (!std::isfinite(options.sample_rate) || options.sample_rate < 10e6 || options.sample_rate > 250e6)
+    throw std::invalid_argument("decoder input rate must be between 10 and 250 MSPS");
+  if (!std::isfinite(options.corr_threshold) || options.corr_threshold <= 0 || options.corr_threshold > 1)
+    throw std::invalid_argument("correlation threshold must be in (0, 1]");
+  if (!std::isfinite(options.freq_offset) || std::abs(options.freq_offset) >= options.sample_rate / 2)
+    throw std::invalid_argument("frequency shift must be inside input Nyquist");
+  if (options.auto_center && options.freq_offset != 0)
+    throw std::invalid_argument("choose auto-centering or an explicit frequency shift, not both");
+}
+
+void restore_input_indices(std::vector<DecodedBurst>& bursts, double input_rate) {
+  for (auto& burst : bursts)
+    burst.sample_index = std::llround(burst.sample_index * input_rate / kDecodeRate);
+}
 
 std::vector<int> cp_schedule(double fs) {
   const int L = long_cp_len(fs), S = short_cp_len(fs);
@@ -114,7 +133,7 @@ bool align_zc_pair(const std::vector<cf32>& samples, double sample_rate,
   const auto first_reference = create_zc(transform_size, 4);
   const auto second_reference = create_zc(transform_size, 6);
   float best_score = 0;
-  for (int carrier_shift = -16; carrier_shift <= 16; ++carrier_shift) {
+  for (int carrier_shift = -64; carrier_shift <= 64; ++carrier_shift) {
     const double candidate_cfo = coarse_cfo + carrier_shift * 15e3;
     auto first_shifted = first;
     auto second_shifted = second;
@@ -140,7 +159,13 @@ bool decode_burst_window(const std::vector<cf32>& win_in, double fs, DecodedBurs
   const int N = fft_size(fs);
   std::vector<cf32> b = win_in;
 
-  if (low_pass) b = dsp::fir_lowpass(b, 10e6 / 2.0 * (fs / 15.36e6), fs, 50);
+  if (low_pass) {
+    constexpr int filter_order = 50;
+    constexpr int group_delay = filter_order / 2;
+    b.resize(b.size() + group_delay);
+    b = dsp::fir_lowpass(b, 10e6 / 2.0 * (fs / 15.36e6), fs, filter_order);
+    b.erase(b.begin(), b.begin() + group_delay);
+  }
 
   int start = find_sto_cp(b, fs);
 
@@ -231,22 +256,38 @@ static std::vector<DecodedBurst> detect_decode_buffer(const std::vector<cf32>& i
 }
 
 std::vector<DecodedBurst> decode_samples(const std::vector<cf32>& iq_in, const DecodeOptions& opt) {
-  return detect_decode_buffer(iq_in, opt, 0, -1);
+  validate_options(opt);
+  const size_t count = opt.max_samples ? std::min(iq_in.size(), opt.max_samples) : iq_in.size();
+  const std::vector<cf32> samples(iq_in.begin(), iq_in.begin() + count);
+  double shift = opt.freq_offset;
+  if (opt.auto_center) {
+    const std::vector<cf32> preview(samples.begin(), samples.begin() + std::min<size_t>(count, 1u << 20));
+    shift = -dsp::estimate_channel_center(preview, opt.sample_rate);
+  }
+  dsp::ChannelResampler resampler(opt.sample_rate, shift);
+  auto options = opt;
+  options.sample_rate = kDecodeRate;
+  options.freq_offset = 0;
+  auto results = detect_decode_buffer(resampler.process(samples, true), options, 0, -1);
+  restore_input_indices(results, opt.sample_rate);
+  return results;
 }
 
 std::vector<OffsetScore> scan_freq_offsets(const std::vector<cf32>& iq, double fs,
                                            double lo, double hi, double step) {
-  const int N = fft_size(fs);
+  if (!std::isfinite(lo) || !std::isfinite(hi) || !std::isfinite(step) || step <= 0 || lo > hi)
+    throw std::invalid_argument("invalid frequency scan range or step");
+  const int N = fft_size(kDecodeRate);
   const auto zc = create_zc(N, 4);
   std::vector<OffsetScore> out;
   for (double f = lo; f <= hi + 1e-6; f += step) {
-    std::vector<cf32> x = iq;
-    if (f != 0.0) dsp::freq_shift(x, f, fs);
+    dsp::ChannelResampler resampler(fs, f);
+    const auto x = resampler.process(iq, true);
     const auto sc = dsp::normalized_corr(x, zc);
     float mx = 0; int64_t at = 0;
     for (int i = 0; i < static_cast<int>(sc.size()); ++i)
       if (sc[i] > mx) { mx = sc[i]; at = i; }
-    out.push_back({f, mx, at});
+    out.push_back({f, mx, std::llround(at * fs / kDecodeRate)});
   }
   return out;
 }
@@ -287,7 +328,11 @@ std::vector<DecodedBurst> decode_file(const std::string& path, SampleFormat fmt,
                                       const DecodeOptions& opt) {
   FileSource src(path, fmt, opt.sample_rate);
   DecodeOptions o = opt;
-  o.sample_rate = src.sample_rate();
+  const double input_rate = src.sample_rate();
+  o.sample_rate = input_rate;
+  validate_options(o);
+  o.sample_rate = kDecodeRate;
+  o.freq_offset = 0;
   const double fs = o.sample_rate;
   const int N = fft_size(fs), L = long_cp_len(fs), S = short_cp_len(fs);
 
@@ -298,22 +343,40 @@ std::vector<DecodedBurst> decode_file(const std::string& path, SampleFormat fmt,
   const size_t cap = opt.max_samples ? opt.max_samples : static_cast<size_t>(-1);
 
   std::vector<DecodedBurst> results;
-  std::vector<cf32> window, blk(1u << 16);
+  std::vector<cf32> window, blk(1u << 16), preview;
   int64_t window_start = 0, t = 0;
   size_t total = 0;
   bool eof = false;
 
-  while (!eof) {
-    while (window.size() < chunk + overlap && total < cap) {
-      const size_t request = std::min({blk.size(), chunk + overlap - window.size(), cap - total});
-      size_t got = src.recv(blk.data(), request, t);
-      if (got == 0) { eof = true; break; }
-      window.insert(window.end(), blk.begin(), blk.begin() + got);
+  if (opt.auto_center) {
+    const size_t preview_size = std::min<size_t>(cap, 1u << 20);
+    while (preview.size() < preview_size) {
+      const size_t got = src.recv(blk.data(), std::min(blk.size(), preview_size - preview.size()), t);
+      if (!got) { eof = true; break; }
+      preview.insert(preview.end(), blk.begin(), blk.begin() + got);
       total += got;
+    }
+  }
+  const double shift = opt.auto_center ? -dsp::estimate_channel_center(preview, input_rate) : opt.freq_offset;
+  dsp::ChannelResampler resampler(input_rate, shift);
+  LOG_INFO("decoder input %.3f MSPS -> %.3f MSPS, shift %+.0f Hz%s",
+           input_rate / 1e6, kDecodeRate / 1e6, shift, opt.auto_center ? " (auto)" : "");
+  bool finished = eof || total >= cap;
+  window = resampler.process(preview, finished);
+
+  for (;;) {
+    while (window.size() < chunk + overlap && !finished) {
+      const size_t request = std::min(blk.size(), cap - total);
+      size_t got = src.recv(blk.data(), request, t);
+      total += got;
+      finished = got == 0 || total >= cap;
+      const std::vector<cf32> input(blk.begin(), blk.begin() + got);
+      const auto converted = resampler.process(input, finished);
+      window.insert(window.end(), converted.begin(), converted.end());
     }
     if (window.size() < static_cast<size_t>(burst_len)) break;
 
-    const bool final_window = eof || total >= cap;
+    const bool final_window = finished;
     const long accept = final_window ? -1 : static_cast<long>(chunk);
     auto part = detect_decode_buffer(window, o, window_start, accept);
     results.insert(results.end(), part.begin(), part.end());
@@ -322,6 +385,7 @@ std::vector<DecodedBurst> decode_file(const std::string& path, SampleFormat fmt,
     window_start += static_cast<int64_t>(chunk);
     window.erase(window.begin(), window.begin() + chunk);
   }
+  restore_input_indices(results, input_rate);
   return results;
 }
 

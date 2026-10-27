@@ -1,0 +1,13 @@
+burst 0: idx=17702 corr=0.490 cfo=467979 Hz crc=fail
+burst 1: idx=24837 corr=0.471 cfo=-72420 Hz crc=fail
+burst 2: idx=110017552 corr=0.754 cfo=100702 Hz crc=fail
+burst 3: idx=110024688 corr=0.755 cfo=565811 Hz crc=fail
+burst 4: idx=112017552 corr=0.874 cfo=-64179 Hz crc=fail
+burst 5: idx=112024688 corr=0.893 cfo=-304229 Hz crc=fail
+burst 6: idx=126017533 corr=0.879 cfo=145718 Hz crc=fail
+burst 7: idx=126024668 corr=0.885 cfo=370735 Hz crc=fail
+burst 8: idx=128017533 corr=0.784 cfo=445709 Hz crc=fail
+burst 9: idx=128024668 corr=0.785 cfo=-469281 Hz crc=fail
+== 10 burst candidate(s), 0 CRC-valid ==
+23:41:44 [INFO ] decoding /tmp/corpus-x6gnt44q/clip.cf32 (0.0 s, thresh 0.30, freq_offset 0 Hz, lpf on)
+23:41:44 [INFO ] decoder input 100.000 MSPS -> 15.360 MSPS, shift -1062012 Hz (auto)

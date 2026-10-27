@@ -1,0 +1,2084 @@
+[
+  {
+    "dataset": "DroneRFa",
+    "model": "mavic3C",
+    "family": "O3+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3C_1_hover_c1_u1_d2.mat",
+    "id": "000-19869eac30",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "tested_samples": 140000000,
+    "tested_seconds": 1.4,
+    "source_seconds": 1.4,
+    "clip_sha256": "c92d0039d1441f9cbee03314244353be8cb8db20cc871a688132684da6f95404",
+    "rf_events": 356,
+    "noise_dbfs": -63.10042447785429,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 4,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 75.449
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mavic3S",
+    "family": "unverified/other",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3S_1_hover_c1_u1_d2.mat",
+    "id": "001-b5005e668b",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "tested_samples": 140000000,
+    "tested_seconds": 1.4,
+    "source_seconds": 1.4,
+    "clip_sha256": "1bbab56f7190ebd3c4d59ef6576834ebdac1ee00bdd755310c314bebce691ff2",
+    "rf_events": 690,
+    "noise_dbfs": -62.48333561980472,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 18,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 68.044
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mavic3",
+    "family": "O3+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3_1_hover_c1_u1_d2.mat",
+    "id": "002-995552cb67",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "tested_samples": 140000000,
+    "tested_seconds": 1.4,
+    "source_seconds": 1.4,
+    "clip_sha256": "55e36227455ba9e0a1fc2938521e0e1135755d744d8c157e9e916f8048e236ce",
+    "rf_events": 381,
+    "noise_dbfs": -59.425711542381094,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 10,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 2,
+        "crc_valid": 2
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "retained_clip": {
+      "path": "data/analysis/corpus_deep_20261026/002-995552cb67.decoded.cf32",
+      "start_sample": 62385417,
+      "samples": 200000,
+      "sha256": "1642f6941426807672178105442444f5cc3f3f2f0b5f9e7b5ccfafd191979df8",
+      "decode_flags": [
+        "--freq-offset",
+        "-11500000.0"
+      ],
+      "redistribution": "local evaluation only; dataset license not yet verified"
+    },
+    "unique_payloads": [
+      {
+        "payload_hex": "8010494e4650065b435c00c8afcf709226a36d00a4893ae9f826eed6448f458506172b78f3002c90baf45d425f67f7c5c7e955ed4d272508870875a1f486d374b9696a9c0e40e32703989572f595f8aa897c0ec52180b8da3206d118b82f7cf00ecd8d4cb4dab0f69bc21cf02449b8243eac2e4bd6843d984d8536032758a44d825d5c0099e40c9f725510db9e5e865aec8878e2c402a4a35a8179cbc9b83e4ddeb2698045fcfffffffffffffff3e5c8",
+        "serial": null,
+        "version": null,
+        "telemetry_status": "unsupported_payload",
+        "header_hex": "8010494e4650",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      },
+      {
+        "payload_hex": "8010494e4650065b435c58b44aaa55ad157a6d0036f421598bd1e2eec15bd43318725eaa519f93256088119dca6d93b896655078a2570ad1120fdddad0c9373b4586c32fefda2b927c25f70206d0dc08820ab9eff0bfc6e8264b34540a563b89b176daefea3f0df83f5c9bdd0214d0ecf811bf7b9d0a185cbfda36b50b0efd1f3f5d4f00992730f94eaa08db797a615a37111e47234025c55a819ed3931d7cb27b4d9601a23fffffffffffffff337ee8",
+        "serial": null,
+        "version": null,
+        "telemetry_status": "unsupported_payload",
+        "header_hex": "8010494e4650",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      }
+    ],
+    "status": "checked",
+    "elapsed_seconds": 59.975
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mavicAir2",
+    "family": "O2",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_1_hover_c1_u1_d2.mat",
+    "id": "003-bd11bb7db6",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "tested_samples": 140000000,
+    "tested_seconds": 1.4,
+    "source_seconds": 1.4,
+    "clip_sha256": "8913545516bb539e7b1083b483d14cdc8fa26ed62241c34e420529b5aff0fc9f",
+    "rf_events": 421,
+    "noise_dbfs": -42.48913305096244,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 57.186
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mavicAir2s",
+    "family": "O3",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_1_hover_c1_u1_d2.mat",
+    "id": "004-5818baaf25",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "tested_samples": 140000000,
+    "tested_seconds": 1.4,
+    "source_seconds": 1.4,
+    "clip_sha256": "63aae14ef910267e49605b2d6ae638a276b85cb7f5dbd79c55ee0263b4fec788",
+    "rf_events": 357,
+    "noise_dbfs": -57.42505356609406,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 2,
+        "crc_valid": 2
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "retained_clip": {
+      "path": "data/analysis/corpus_deep_20261026/004-5818baaf25.decoded.cf32",
+      "start_sample": 48277298,
+      "samples": 200000,
+      "sha256": "1b80561650d79c132ca3418d8a0405cd47546ffb404dbe94a374a00e999da28b",
+      "decode_flags": [
+        "--freq-offset",
+        "-11500000.0"
+      ],
+      "redistribution": "local evaluation only; dataset license not yet verified"
+    },
+    "unique_payloads": [
+      {
+        "payload_hex": "5810028400f71f335954424a3351303033304a32580000d26b3c018fec54001a006b000100feff0100ca01ed01a68b9a0100008eec5400d16b3c01d36b3c018fec54004213313938393631303033333234313330353038380002a4000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000aa33ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7554d3",
+        "serial": "3YTBJ3Q0030J2X",
+        "version": 2,
+        "telemetry_status": "v2_serial_parsed",
+        "header_hex": "5810028400f7",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      },
+      {
+        "payload_hex": "5810028500f71f335954424a3351303033304a32580000d26b3c018fec54001a006b00010000000000d001df05a68b9a0100008eec5400d16b3c01d36b3c018fec540042133139383936313030333332343133303530383800fe7600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000055ccffffffffffffffffffffffffffffffffffffffffffffffffffffffffff87a046",
+        "serial": "3YTBJ3Q0030J2X",
+        "version": 2,
+        "telemetry_status": "v2_serial_parsed",
+        "header_hex": "5810028500f7",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      }
+    ],
+    "status": "checked",
+    "elapsed_seconds": 63.528
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mini3pro",
+    "family": "O3",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini3pro_1_hover_c1_u2_d1.mat",
+    "id": "005-773f5cbbe7",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "tested_samples": 140000000,
+    "tested_seconds": 1.4,
+    "source_seconds": 1.4,
+    "clip_sha256": "8c9644b8c1935e66e5b3fb0a79be18fcfd6dac1e20a047c53e6242341a880067",
+    "rf_events": 612,
+    "noise_dbfs": -60.915881545211974,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 58.813
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mini4PRO",
+    "family": "O4",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_1_hover_c1_u1_d2.mat",
+    "id": "006-b6a089cc05",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "tested_samples": 140000000,
+    "tested_seconds": 1.4,
+    "source_seconds": 1.4,
+    "clip_sha256": "7bb03af6b638b44d37fa60ecd70c28008bdc6d8c6c81f64cc54581eabdedc4cc",
+    "rf_events": 1088,
+    "noise_dbfs": -63.36679624802212,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 8,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 61.207
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mini5PRO",
+    "family": "O4+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini5PRO_1_hover_c1_u1_d2.mat",
+    "id": "007-ee3601e8d6",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "tested_samples": 140000000,
+    "tested_seconds": 1.4,
+    "source_seconds": 1.4,
+    "clip_sha256": "2ebf0bd08fde59e8be033ea9ac33264e5ae1134b1d7a35dc12ee71d0a09ae94d",
+    "rf_events": 652,
+    "noise_dbfs": -61.981050850697116,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 18,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 1,
+        "crc_valid": 1
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "retained_clip": {
+      "path": "data/analysis/corpus_deep_20261026/007-ee3601e8d6.decoded.cf32",
+      "start_sample": 123070319,
+      "samples": 200000,
+      "sha256": "b0462edb2e37299ba2ac5406019279734c15c6c0d833b537a761f10abd400c99",
+      "decode_flags": [
+        "--freq-offset",
+        "-11500000.0"
+      ],
+      "redistribution": "local evaluation only; dataset license not yet verified"
+    },
+    "unique_payloads": [
+      {
+        "payload_hex": "8710494e4650bf4c8ea26d5d88e00ca3bd376d002b53c5091a273f90803ff806c0a80e8db450ec70367ab9a5a5f276b4dc2aa7f2aaf5f4b63566cddb7dbc4fac62f3fe4ce472c0c5d032343ae43e3807f69c1d91dfb61f100033d8abd269569f03bf41f7f0f73554e8ec07b2dc5b268959279df3e542700f556e71773f9487d7339720000c1b71b7b6e5000000000000000000000000000000000000000000000000000000000000007a38bbd3ab48ce",
+        "serial": null,
+        "version": null,
+        "telemetry_status": "unsupported_payload",
+        "header_hex": "8710494e4650",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      }
+    ],
+    "status": "checked",
+    "elapsed_seconds": 65.434
+  },
+  {
+    "dataset": "RFUAV",
+    "model": "DJI AVATA2",
+    "family": "O4",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI AVATA2.rar",
+    "id": "008-b0e0cd552f",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5760000000.0,
+    "member": "DJI AVATA2/VTSBW=10/pack1_0-1s.iq",
+    "tested_samples": 100000000,
+    "tested_seconds": 1.0,
+    "source_seconds": null,
+    "clip_sha256": "3b0c9cdab0b460fbb152cfc86200afcf179556900e499af70c6d28cb5e025b24",
+    "rf_events": 434,
+    "noise_dbfs": -60.55743262794452,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5796500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 54.202
+  },
+  {
+    "dataset": "RFUAV",
+    "model": "DJI FPV COMBO",
+    "family": "unverified/other",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI FPV COMBO.rar",
+    "id": "009-59669911f3",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5760000000.0,
+    "member": "DJI FPV COMBO/VTSBW=10/pack1_0-1s.iq",
+    "tested_samples": 100000000,
+    "tested_seconds": 1.0,
+    "source_seconds": null,
+    "clip_sha256": "7d833a161684b637edef844c7ca925e449043c6d052797cd91f656dc930e3c80",
+    "rf_events": 332,
+    "noise_dbfs": -50.63521298805428,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5796500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 55.857
+  },
+  {
+    "dataset": "RFUAV",
+    "model": "DJI MAVIC3 PRO",
+    "family": "O3+",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI MAVIC3 PRO.rar",
+    "id": "010-6b166822bb",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 5800000000.0,
+    "member": "DJI MAVIC3 PRO/VTSBW=10/pack1_0-1s.iq",
+    "tested_samples": 100000000,
+    "tested_seconds": 1.0,
+    "source_seconds": null,
+    "clip_sha256": "5f0cb893e31c3e4a20521a328eee4257594b9446575740c9369f5e7d7e3d84e1",
+    "rf_events": 474,
+    "noise_dbfs": -60.42816289389749,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 2,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5756500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5776500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_5796500000",
+        "candidates": 2,
+        "crc_valid": 2
+      }
+    ],
+    "retained_clip": {
+      "path": "data/analysis/corpus_deep_20261026/010-6b166822bb.decoded.cf32",
+      "start_sample": 17071243,
+      "samples": 200000,
+      "sha256": "e3b8cfefbd750d3ea824b84018654f2f4c57baece7da758731bbb26f9d154af7",
+      "decode_flags": [
+        "--freq-offset",
+        "3500000.0"
+      ],
+      "redistribution": "local evaluation only; dataset license not yet verified"
+    },
+    "unique_payloads": [
+      {
+        "payload_hex": "6d10036323063f463637514332334342303134325938370000000000000000420000000000000000002bef142955db910100008ae25300cd184201000000000000000054133133313331313434383734353037313832303800000000000000000000000000000000000000000000866800000000000000000000000000000000000000000000000000000000000029deffffffffffffffffffffffffffffffffffffffffffffffffffffffffff9dc649",
+        "serial": null,
+        "version": null,
+        "telemetry_status": "unsupported_payload",
+        "header_hex": "6d1003632306",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      },
+      {
+        "payload_hex": "6d10036423063f463637514332334342303134325938370000000000000000430000000000000000002aef142955db910100008ae25300cd1842010000000000000000541331333133313134343837343530373138323038000000000000000000000000000000000000000000006c5e000000000000000000000000000000000000000000000000000000000000947bffffffffffffffffffffffffffffffffffffffffffffffffffffffffffcd4611",
+        "serial": null,
+        "version": null,
+        "telemetry_status": "unsupported_payload",
+        "header_hex": "6d1003642306",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      }
+    ],
+    "status": "checked",
+    "elapsed_seconds": 55.621
+  },
+  {
+    "dataset": "RFUAV",
+    "model": "DJI MINI3",
+    "family": "O2",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI MINI3.rar",
+    "id": "011-351f3c57bc",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2470000000.0,
+    "member": "DJI MINI3/VTSBW=10/pack2_0-1s.iq",
+    "tested_samples": 100000000,
+    "tested_seconds": 1.0,
+    "source_seconds": null,
+    "clip_sha256": "2570147a5a9c426487ef19e32f11047a582fe143f74a7109e12a4d24e2759ecb",
+    "rf_events": 594,
+    "noise_dbfs": -59.71594020599642,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 2,
+        "crc_valid": 2
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "retained_clip": {
+      "path": "data/analysis/corpus_deep_20261026/011-351f3c57bc.decoded.cf32",
+      "start_sample": 34436348,
+      "samples": 200000,
+      "sha256": "0cb4ac33ca58304e65024cab898c1da155243b761051cb8c57f8dc32b7f156ae",
+      "decode_flags": [
+        "--freq-offset",
+        "40500000.0"
+      ],
+      "redistribution": "local evaluation only; dataset license not yet verified"
+    },
+    "unique_payloads": [
+      {
+        "payload_hex": "5810025f0cc71f363837584d3741303032303331390000e01842019ce2530023000000000001000000dc05421399da91010000b0e25300dd184201e718420189e253005713313331333131343438373435303731383230380019c600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000026abd211f31f336d2351a06ca2e6873125f3a1f83ffb56f6827b1041fc6b5a706b5c",
+        "serial": "687XM7A0020319",
+        "version": 2,
+        "telemetry_status": "v2_serial_parsed",
+        "header_hex": "5810025f0cc7",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      },
+      {
+        "payload_hex": "8d11363837584d3741303032303331390000ccaa020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000026abd211f31f336d2351a06ca2e6873125f3a1f83ffb56f6827b1041fc6b5a717c9b",
+        "serial": null,
+        "version": null,
+        "telemetry_status": "unsupported_payload",
+        "header_hex": "8d1136383758",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      }
+    ],
+    "status": "checked",
+    "elapsed_seconds": 54.748
+  },
+  {
+    "dataset": "RFUAV",
+    "model": "DJI MINI4 PRO",
+    "family": "O4",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI MINI4 PRO.rar",
+    "id": "012-ad37063f67",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2450000000.0,
+    "member": "DJI MINI4 PRO/VTSBW=10/pack1_0-1s.iq",
+    "tested_samples": 100000000,
+    "tested_seconds": 1.0,
+    "source_seconds": null,
+    "clip_sha256": "99f5fd1c3627c1dccad49a4c5bf80ef5e279d483a2a4c999d59e435003a4cb74",
+    "rf_events": 894,
+    "noise_dbfs": -60.2130292360496,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 1,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 64.944
+  },
+  {
+    "dataset": "RFUAV",
+    "model": "FRSKY X14",
+    "family": "non-DJI",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/FRSKY X14.rar",
+    "id": "013-818f1cb0e6",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "FRSKY X14/pack1_0-1s.iq",
+    "tested_samples": 100000000,
+    "tested_seconds": 1.0,
+    "source_seconds": null,
+    "clip_sha256": "214e6c9eb990ebde5d6cb5528f9795e124bd38727fcd4b61c9c590cb1316ed36",
+    "rf_events": 112,
+    "noise_dbfs": -60.396334401941765,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 76.91
+  },
+  {
+    "dataset": "RFUAV",
+    "model": "FUTABA T18SZ",
+    "family": "non-DJI",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/FUTABA T18SZ.rar",
+    "id": "014-cfb541ed1f",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "FUTABA T18SZ/pack1_0-1s.iq",
+    "tested_samples": 100000000,
+    "tested_seconds": 1.0,
+    "source_seconds": null,
+    "clip_sha256": "1114984f890bc9c51f48c78e27eac8d0ed3c82aa166c041fbbf476d8a9e7cec4",
+    "rf_events": 66,
+    "noise_dbfs": -60.847436332272,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 75.592
+  },
+  {
+    "dataset": "RFUAV",
+    "model": "Herelink Hx4",
+    "family": "non-DJI",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/Herelink Hx4.rar",
+    "id": "015-fccfb1f511",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "Herelink Hx4/pack1_0-1s.iq",
+    "tested_samples": 100000000,
+    "tested_seconds": 1.0,
+    "source_seconds": null,
+    "clip_sha256": "e3a10d9ee0deeaef58f39f6dd8fe30efc8240661fd8a31c283b756a582499ed2",
+    "rf_events": 499,
+    "noise_dbfs": -54.307815732482666,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 78.307
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "Frysky",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/Frysky.zip",
+    "id": "016-53e597c9c0",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "Frysky/Frysky_0.mat",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.1,
+    "clip_sha256": "11600a8ce50a9acf150c55d95bf031096ad6b95e7bc71d71fb64ab5dddd6ac01",
+    "rf_events": 9,
+    "noise_dbfs": -66.10840926827338,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 7.823
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "MavicRC1",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/MavicRC1.zip",
+    "id": "017-e06cc19786",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "MavicRC1/Mavic_0.mat",
+    "tested_samples": 100000000,
+    "tested_seconds": 1.0,
+    "source_seconds": 1.0,
+    "clip_sha256": "da38ec3833d193623e2b2407315f2b4eae6cc624c04cd2fbaeede2c2025b9258",
+    "rf_events": 211,
+    "noise_dbfs": -67.47527961016868,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 1,
+        "crc_valid": 1
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "retained_clip": {
+      "path": "data/analysis/corpus_deep_20261026/017-e06cc19786.decoded.cf32",
+      "start_sample": 50648770,
+      "samples": 200000,
+      "sha256": "59bbae146a21a66c5ae33ccd8dd54ffe7ec65a0792761a1b9352b364a688975a",
+      "decode_flags": [
+        "--freq-offset",
+        "25500000.0"
+      ],
+      "redistribution": "local evaluation only; dataset license not yet verified"
+    },
+    "unique_payloads": [
+      {
+        "payload_hex": "581002c600030d344743434a4246523042303043310000000000000000000000000000000000000000e9e900000000000000000000000000000000000000000000000045000000000000000000000000000000000000000000dc23000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a67d96511770344fa91982b2c3b2f0a9ce9605455d2c432c5962ebc38cd23696a522",
+        "serial": "4GCCJBFR0B00C1",
+        "version": 2,
+        "telemetry_status": "v2_serial_parsed",
+        "header_hex": "581002c60003",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      }
+    ],
+    "status": "checked",
+    "elapsed_seconds": 76.837
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "MavicVid1",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/MavicVid1.zip",
+    "id": "018-948a7ab1cb",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "MavicVid1/Mavic_0.mat",
+    "tested_samples": 100000000,
+    "tested_seconds": 1.0,
+    "source_seconds": 1.0,
+    "clip_sha256": "31854a1f5ce19956f42bcaecad7eb21245b8de2caa01418ee89aee31a9c284c9",
+    "rf_events": 240,
+    "noise_dbfs": -61.31506898469261,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 79.721
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "NineEagles",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/NineEagles.zip",
+    "id": "019-a665e67551",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "NineEagles/NineEagles_0.mat",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.1,
+    "clip_sha256": "f5abd289e2f78a22c3c1edc118cc535fcf62bfea5b49fbe7c01702eae5940789",
+    "rf_events": 24,
+    "noise_dbfs": -67.29937738070251,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 7.811
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "Q205",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/Q205.zip",
+    "id": "020-61f0135eaa",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "Q205/Q205_0.mat",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.1,
+    "clip_sha256": "134470530d22259f716d060ffb1f7632387677850afedd26b120829b2cc0e6a1",
+    "rf_events": 0,
+    "noise_dbfs": -66.07398001585648,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 7.747
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "SJRC_pro",
+    "family": "non-DJI",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/SJRC_pro.zip",
+    "id": "021-3960a9089a",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "SJRC_pro/sjrc__0.mat",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.1,
+    "clip_sha256": "c619d7d2e445e363e331e0c48f54b15624bff2c73a008e5fdfafa4d357cc7e8f",
+    "rf_events": 14,
+    "noise_dbfs": -67.31025003809536,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 7.776
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "Spektrum_DX4e",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/Spektrum_DX4e.zip",
+    "id": "022-1923dda10d",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "Spektrum_DX4e/DX4e_0.mat",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.1,
+    "clip_sha256": "5b66f4974fd591c9f95319b54d72e7416902e9b8ca63f8e64e120c1faef907b0",
+    "rf_events": 10,
+    "noise_dbfs": -67.32797636808884,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 7.751
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "inspire2RC",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/inspire2RC.zip",
+    "id": "023-6654492ecb",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "inspire2RC/inspire2_0.mat",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.1,
+    "clip_sha256": "9c0658f75c9e5880c2c0e11029a948810bae0ef3aa0f08fd65c15b28ce94ed3d",
+    "rf_events": 7,
+    "noise_dbfs": -64.4487548753246,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 7.804
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "inspire2Vid",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/inspire2Vid.zip",
+    "id": "024-b3781a8622",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "inspire2Vid/inspire2_0.mat",
+    "tested_samples": 20000000,
+    "tested_seconds": 0.2,
+    "source_seconds": 0.2,
+    "clip_sha256": "7f83deba3d671c3b774ed223f385350fc2c24dbadee53cba74460b9282050327",
+    "rf_events": 15,
+    "noise_dbfs": -66.38642681721399,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 15.785
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "matriceRC",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/matriceRC.zip",
+    "id": "025-0fec8637dd",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "matriceRC/matrice_0.mat",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.1,
+    "clip_sha256": "bc99e160d01b30e646bb7171bc02b9a113f763dbe5b1c6154cdcad73bcc2b111",
+    "rf_events": 22,
+    "noise_dbfs": -65.51252591150049,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 3,
+        "crc_valid": 1
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "retained_clip": {
+      "path": "data/analysis/corpus_deep_20261026/025-0fec8637dd.decoded.cf32",
+      "start_sample": 7508053,
+      "samples": 200000,
+      "sha256": "41254afb161afdbf2351bbd3f21feff25e77fd9c345ac93d2df2843cceabf566",
+      "decode_flags": [
+        "--freq-offset",
+        "25500000.0"
+      ],
+      "redistribution": "local evaluation only; dataset license not yet verified"
+    },
+    "unique_payloads": [
+      {
+        "payload_hex": "4c10024501030f315a4e424843343030433030514e00000000000000000000313e000000000000000042400000000000000000000000000000000000000000000000003c000000000000000000e940fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0742ba",
+        "serial": "1ZNBHC400C00QN",
+        "version": 2,
+        "telemetry_status": "v2_serial_parsed",
+        "header_hex": "4c1002450103",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      }
+    ],
+    "status": "checked",
+    "elapsed_seconds": 7.996
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "matricevid",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/matricevid.zip",
+    "id": "026-8d35080888",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "matricevid/matrice_0.mat",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.1,
+    "clip_sha256": "2bc6743e5a942ac500f5dbc86bc1b3e00396efda166c1a74cd0c1c45c3fb9ab2",
+    "rf_events": 21,
+    "noise_dbfs": -66.01349446523918,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 8.003
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "mini2RC",
+    "family": "O2",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/mini2RC.zip",
+    "id": "027-94648086a2",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "mini2RC/mini2_0.mat",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.1,
+    "clip_sha256": "b218ae06b4d850539fcad6e579bf99a5b2bd3b282ff058170825485c5b3c791a",
+    "rf_events": 36,
+    "noise_dbfs": -67.26288183132218,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 1,
+        "crc_valid": 1
+      }
+    ],
+    "retained_clip": {
+      "path": "data/analysis/corpus_deep_20261026/027-94648086a2.decoded.cf32",
+      "start_sample": 5297096,
+      "samples": 200000,
+      "sha256": "7f5a182ea97797cc2acdee5ef7bee7ee66062b4b986aec89d37895900b0365ce",
+      "decode_flags": [
+        "--freq-offset",
+        "-19500000.0"
+      ],
+      "redistribution": "local evaluation only; dataset license not yet verified"
+    },
+    "unique_payloads": [
+      {
+        "payload_hex": "5810024102071f334e5a434a3446303034444b50540000000000000000000000000000000000000000c52fa8d067f47f010000e26787006fb20b0000000000000000003f13313431343539353136303835303531333932300053450000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002796c2caf5486f00c35c24d8fcfc6fc48201287654db907d414ce9aef244919c3d77",
+        "serial": "3NZCJ4F004DKPT",
+        "version": 2,
+        "telemetry_status": "v2_serial_parsed",
+        "header_hex": "581002410207",
+        "validation": "outer CRC-24; no dataset telemetry ground truth"
+      }
+    ],
+    "status": "checked",
+    "elapsed_seconds": 7.831
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "mini2vid",
+    "family": "O2",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/mini2vid.zip",
+    "id": "028-4cf991393b",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "mini2vid/mini2_0.mat",
+    "tested_samples": 20000000,
+    "tested_seconds": 0.2,
+    "source_seconds": 0.2,
+    "clip_sha256": "c7443429ba1b12462eb7582dbf7025c63f832d24df16cb028f8a81a133361f58",
+    "rf_events": 42,
+    "noise_dbfs": -67.28244315968718,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 15.599
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "wltoys",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/wltoys.zip",
+    "id": "029-e70eb1e733",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "rate": 100000000.0,
+    "center": 2440000000.0,
+    "member": "wltoys/wltoys_0.mat",
+    "tested_samples": 10000000,
+    "tested_seconds": 0.1,
+    "source_seconds": 0.1,
+    "clip_sha256": "aa3f21bd0b2a2ec88a8d75629f6cf24e5e8c4b351a33f18ced236ba6fb910238",
+    "rf_events": 63,
+    "noise_dbfs": -67.13685595797793,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2399500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2414500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2429500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2444500000",
+        "candidates": 0,
+        "crc_valid": 0
+      },
+      {
+        "mode": "channel_2459500000",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 8.214
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_inspire_2_2G",
+    "family": "unverified/other",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_inspire_2_2G.bin",
+    "id": "030-200a7274b3",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 120000000,
+    "tested_seconds": 1.0,
+    "source_seconds": 1.0,
+    "clip_sha256": "53c79be4ba11b1475ceef03116b073c9af8fe9d47cd4250e299718908dca7966",
+    "rf_events": 519,
+    "noise_dbfs": -22.756641257417765,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 35.181
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_inspire_2_5G_1of2",
+    "family": "unverified/other",
+    "kind": "sc16",
+    "rate": 200000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_inspire_2_5G_1of2.bin",
+    "id": "031-5714789d8a",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 100000000,
+    "tested_seconds": 0.5,
+    "source_seconds": 0.5,
+    "clip_sha256": "d25fe8b555e9a675d0b599b5ebbcfb1e8c1c607d7bed458b9e6b98cdeb621899",
+    "rf_events": 131,
+    "noise_dbfs": -34.54583899899016,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 29.69
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_matrice_100_2G",
+    "family": "unverified/other",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_matrice_100_2G.bin",
+    "id": "032-b1a4c6b19d",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 120000000,
+    "tested_seconds": 1.0,
+    "source_seconds": 1.0,
+    "clip_sha256": "0de1df6df5e1da2cc3d666a9b637cd2ee3ed3db89ebb1db897b3d8a05abdd29e",
+    "rf_events": 1254,
+    "noise_dbfs": -23.15114062070428,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 44.835
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_matrice_210_2G",
+    "family": "unverified/other",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_matrice_210_2G.bin",
+    "id": "033-5d62f774d9",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 120000000,
+    "tested_seconds": 1.0,
+    "source_seconds": 1.0,
+    "clip_sha256": "721b9873a224f12eb3687a31eaf5e8ce3bbd58bef1d9e5945e2d7ddf178ef67c",
+    "rf_events": 303,
+    "noise_dbfs": -39.23421385519656,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 45.739
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_matrice_210_5G_1of2",
+    "family": "unverified/other",
+    "kind": "sc16",
+    "rate": 200000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_matrice_210_5G_1of2.bin",
+    "id": "034-6a1d7f257e",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 100000000,
+    "tested_seconds": 0.5,
+    "source_seconds": 0.5,
+    "clip_sha256": "630f9bddab485bc7c7c9f1f3488bb1f8b392e99e33f768da6888497634c76f77",
+    "rf_events": 180,
+    "noise_dbfs": -40.21336510874643,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 31.944
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_mavic_mini_2G",
+    "family": "O2",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_mavic_mini_2G.bin",
+    "id": "035-6c66fa47a2",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 120000000,
+    "tested_seconds": 1.0,
+    "source_seconds": 1.0,
+    "clip_sha256": "c41451bc564deabd2d3d42e8f5982488da872347b45a81d684548d66d59273c5",
+    "rf_events": 818,
+    "noise_dbfs": -64.17619771117253,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 38.584
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_mavic_pro_2G",
+    "family": "O1",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_mavic_pro_2G.bin",
+    "id": "036-5fbd4f6213",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 120000000,
+    "tested_seconds": 1.0,
+    "source_seconds": 1.0,
+    "clip_sha256": "9509efa9c1e87631bd533d3b8334128d37c483f88f41eb11dfa586edd0a7032b",
+    "rf_events": 61,
+    "noise_dbfs": -25.72325508057816,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 37.925
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_phantom_4_2G",
+    "family": "unverified/other",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_phantom_4_2G.bin",
+    "id": "037-e9d00920cd",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 120000000,
+    "tested_seconds": 1.0,
+    "source_seconds": 1.0,
+    "clip_sha256": "75e0383739345bb0d49da99d7180756624ce2ebb73b2dc761be9e934f4f2168f",
+    "rf_events": 2631,
+    "noise_dbfs": -24.709082487302947,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 37.312
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_phantom_4_pro_plus_2G",
+    "family": "unverified/other",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_phantom_4_pro_plus_2G.bin",
+    "id": "038-133ffc88a0",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 120000000,
+    "tested_seconds": 1.0,
+    "source_seconds": 1.0,
+    "clip_sha256": "3ecbc88eac0cefb1ecc82dd3b7653e96199e760a2720913f333c34a29b912e9c",
+    "rf_events": 84,
+    "noise_dbfs": -33.059845527263235,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 34.576
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_phantom_4_pro_plus_5G_1of2",
+    "family": "unverified/other",
+    "kind": "sc16",
+    "rate": 200000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_phantom_4_pro_plus_5G_1of2.bin",
+    "id": "039-04147edd96",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 100000000,
+    "tested_seconds": 0.5,
+    "source_seconds": 0.5,
+    "clip_sha256": "9daf868120c9f0cf74c8731c0c48760a14bfe3db5ec9ccb352a2c2a3b30f5a6b",
+    "rf_events": 83,
+    "noise_dbfs": -38.09436809296971,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 29.877
+  },
+  {
+    "dataset": "Tampere",
+    "model": "Parrot_disco_2G",
+    "family": "non-DJI",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/Parrot_disco_2G.bin",
+    "id": "040-36b87ad385",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 120000000,
+    "tested_seconds": 1.0,
+    "source_seconds": 1.0,
+    "clip_sha256": "c86aa7fa860f81a3abcd727b4b147b2718b320e37501982778b6c2224156fe41",
+    "rf_events": 135,
+    "noise_dbfs": -64.31938468540373,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 49.21
+  },
+  {
+    "dataset": "Tampere",
+    "model": "Parrot_mambo_control_2G",
+    "family": "non-DJI",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/Parrot_mambo_control_2G.bin",
+    "id": "041-d4b0f579b1",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 120000000,
+    "tested_seconds": 1.0,
+    "source_seconds": 1.0,
+    "clip_sha256": "ac20a9ec3b0cbb2a0ee31d3efecffc570854e005eee47aec135f974502cd6f9a",
+    "rf_events": 315,
+    "noise_dbfs": -64.47488536448127,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 47.359
+  },
+  {
+    "dataset": "Tampere",
+    "model": "Parrot_mambo_video_2G",
+    "family": "non-DJI",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/Parrot_mambo_video_2G.bin",
+    "id": "042-283230770a",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 120000000,
+    "tested_seconds": 1.0,
+    "source_seconds": 1.0,
+    "clip_sha256": "f306a2a172d632ceabfe60bec7cac3f3f8955a50d343908b632771b267810ef8",
+    "rf_events": 876,
+    "noise_dbfs": -64.51616571452797,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 30.108
+  },
+  {
+    "dataset": "Tampere",
+    "model": "Yuneec_typhoon_h_2G_1of2",
+    "family": "non-DJI",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/Yuneec_typhoon_h_2G_1of2.bin",
+    "id": "043-000f90fdaa",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 120000000,
+    "tested_seconds": 1.0,
+    "source_seconds": 1.0,
+    "clip_sha256": "637fbc75be57577fee1ed1ddde28e6d88e58cbbe838b25552b35b3a72bcee733",
+    "rf_events": 122,
+    "noise_dbfs": -64.4105494729473,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 34.966
+  },
+  {
+    "dataset": "Tampere",
+    "model": "Yuneec_typhoon_h_5G",
+    "family": "non-DJI",
+    "kind": "sc16",
+    "rate": 200000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/Yuneec_typhoon_h_5G.bin",
+    "id": "044-cd80e94237",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification",
+    "member": null,
+    "tested_samples": 100000000,
+    "tested_seconds": 0.5,
+    "source_seconds": 0.5,
+    "clip_sha256": "04ffe0e19bb604d05118d1a1f460eec572b59f8703d9f0b1448aefa98d599eb5",
+    "rf_events": 51,
+    "noise_dbfs": -53.20578844751533,
+    "o4_identification": "abstain_unknown_rf",
+    "passes": [
+      {
+        "mode": "auto",
+        "candidates": 0,
+        "crc_valid": 0
+      }
+    ],
+    "unique_payloads": [],
+    "status": "checked",
+    "elapsed_seconds": 24.115
+  }
+]

@@ -7,6 +7,7 @@
 #include <cstdint>
 #include <memory>
 #include <string>
+#include <vector>
 
 #include "droneid/iq_source.h"
 
@@ -24,6 +25,8 @@ struct UsrpParams {
   std::size_t channel           = 0;          // Radio#0 = single antenna
   std::string clock_source      = "internal"; // internal | external | gpsdo
   std::string time_source       = "internal";
+  std::vector<std::size_t> channels;
+  bool auto_start = true;
 };
 
 class UsrpSource : public IqSource {
@@ -34,6 +37,10 @@ class UsrpSource : public IqSource {
   // Begin continuous streaming. Called by the ctor already; exposed for restart.
   void start();
   void stop();
+  void start_at(double device_seconds);
+  double device_time() const;
+  void tune_at(double center_hz, double device_seconds);
+  std::size_t recv_channels(const std::vector<cf32*>& buffers, std::size_t count, int64_t& t_ns);
 
   // IqSource. Blocks up to ~a few hundred ms; returns 0 only on a hard error/stop.
   std::size_t recv(cf32* buf, std::size_t n, int64_t& t_ns) override;

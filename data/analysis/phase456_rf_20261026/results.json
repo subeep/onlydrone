@@ -1,0 +1,86 @@
+[
+  {
+    "file": "data/baseline/baseline_24_073340Z.iq",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/rf_analyze",
+      "data/baseline/baseline_24_073340Z.iq",
+      "--noise-dbfs",
+      "-59.41513661866912"
+    ],
+    "estimated_noise_dbfs": -59.41513661866912,
+    "noise_method": "20th percentile of 32-sample powers in first 1048576 samples",
+    "events": 1450,
+    "truncated_events": 44,
+    "classification": "unknown_rf",
+    "summary": {
+      "event": "summary",
+      "samples": 46137344,
+      "rf_events": 1450,
+      "identified_drones": null
+    },
+    "input_bytes": 184549376
+  },
+  {
+    "file": "data/air3s/air3s_24_2425e6_20261026T074318Z.iq",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/rf_analyze",
+      "data/air3s/air3s_24_2425e6_20261026T074318Z.iq",
+      "--noise-dbfs",
+      "-51.17374097968721"
+    ],
+    "estimated_noise_dbfs": -51.17374097968721,
+    "noise_method": "20th percentile of 32-sample powers in first 1048576 samples",
+    "events": 4617,
+    "truncated_events": 60,
+    "classification": "unknown_rf",
+    "summary": {
+      "event": "summary",
+      "samples": 122880000,
+      "rf_events": 4617,
+      "identified_drones": null
+    },
+    "input_bytes": 491520000
+  },
+  {
+    "file": "data/air3s/air3s_58_5745e6_20261026T074519Z.iq",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/rf_analyze",
+      "data/air3s/air3s_58_5745e6_20261026T074519Z.iq",
+      "--noise-dbfs",
+      "-62.43527963665201"
+    ],
+    "estimated_noise_dbfs": -62.43527963665201,
+    "noise_method": "20th percentile of 32-sample powers in first 1048576 samples",
+    "events": 7026,
+    "truncated_events": 2,
+    "classification": "unknown_rf",
+    "summary": {
+      "event": "summary",
+      "samples": 122880000,
+      "rf_events": 7026,
+      "identified_drones": null
+    },
+    "input_bytes": 491520000
+  },
+  {
+    "file": "data/mini2/sweep_20261026T092618Z/mini2_2459500000.iq",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/rf_analyze",
+      "data/mini2/sweep_20261026T092618Z/mini2_2459500000.iq",
+      "--noise-dbfs",
+      "-23.80763979240024"
+    ],
+    "estimated_noise_dbfs": -23.80763979240024,
+    "noise_method": "20th percentile of 32-sample powers in first 1048576 samples",
+    "events": 289,
+    "truncated_events": 0,
+    "classification": "unknown_rf",
+    "summary": {
+      "event": "summary",
+      "samples": 122880000,
+      "rf_events": 289,
+      "identified_drones": null
+    },
+    "input_bytes": 491520000
+  }
+]

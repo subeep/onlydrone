@@ -1,0 +1,3234 @@
+[
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Ascend_c17_u1_d2.mat",
+    "bytes": 717911457
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Ascend_c18_u1_d2.mat",
+    "bytes": 565508121
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Cruise_c10_u1_d2.mat",
+    "bytes": 471550464
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Cruise_c11_u1_d2.mat",
+    "bytes": 526285539
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Cruise_c12_u1_d2.mat",
+    "bytes": 499905356
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Cruise_c13_u1_d2.mat",
+    "bytes": 553866657
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Cruise_c14_u1_d2.mat",
+    "bytes": 492899390
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Cruise_c15_u1_d2.mat",
+    "bytes": 463937953
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Cruise_c1_u1_d2.mat",
+    "bytes": 550936449
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Cruise_c2_u1_d2.mat",
+    "bytes": 525635353
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Cruise_c3_u1_d2.mat",
+    "bytes": 523600130
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Cruise_c4_u1_d2.mat",
+    "bytes": 541711448
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Cruise_c5_u1_d2.mat",
+    "bytes": 507974922
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Cruise_c6_u1_d2.mat",
+    "bytes": 513536047
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Cruise_c7_u1_d2.mat",
+    "bytes": 528456395
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Cruise_c8_u1_d2.mat",
+    "bytes": 517828813
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Cruise_c9_u1_d2.mat",
+    "bytes": 533361436
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Descend_c19_u1_d2.mat",
+    "bytes": 513034599
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Descend_c20_u1_d2.mat",
+    "bytes": 554575220
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Landing_c21_u1_d2.mat",
+    "bytes": 778140286
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Shading_c22_u1_d2.mat",
+    "bytes": 403462127
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Shading_c23_u1_d2.mat",
+    "bytes": 399211628
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Shading_c24_u1_d2.mat",
+    "bytes": 395879048
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Shading_c25_u1_d2.mat",
+    "bytes": 393730704
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Shading_c26_u1_d2.mat",
+    "bytes": 396967291
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_TakeOff_c16_u1_d2.mat",
+    "bytes": 777039257
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Ascend_c17_u1_d2.mat",
+    "bytes": 661056886
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Ascend_c18_u1_d2.mat",
+    "bytes": 495177113
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Cruise_c10_u1_d2.mat",
+    "bytes": 541731542
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Cruise_c11_u1_d2.mat",
+    "bytes": 516880799
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Cruise_c12_u1_d2.mat",
+    "bytes": 467577986
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Cruise_c13_u1_d2.mat",
+    "bytes": 606377472
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Cruise_c14_u1_d2.mat",
+    "bytes": 474873094
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Cruise_c15_u1_d2.mat",
+    "bytes": 457034799
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Cruise_c1_u1_d2.mat",
+    "bytes": 447396349
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Cruise_c2_u1_d2.mat",
+    "bytes": 525483570
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Cruise_c3_u1_d2.mat",
+    "bytes": 419649691
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Cruise_c4_u1_d2.mat",
+    "bytes": 510238296
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Cruise_c5_u1_d2.mat",
+    "bytes": 483950800
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Cruise_c6_u1_d2.mat",
+    "bytes": 466318412
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Cruise_c7_u1_d2.mat",
+    "bytes": 587966557
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Cruise_c8_u1_d2.mat",
+    "bytes": 540274108
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Cruise_c9_u1_d2.mat",
+    "bytes": 450830034
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Descend_c19_u1_d2.mat",
+    "bytes": 487107016
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Descend_c20_u1_d2.mat",
+    "bytes": 512660460
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Landing_c21_u1_d2.mat",
+    "bytes": 694022688
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Shading_c22_u1_d2.mat",
+    "bytes": 616487416
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Shading_c23_u1_d2.mat",
+    "bytes": 491411579
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Shading_c24_u1_d2.mat",
+    "bytes": 481997198
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Shading_c25_u1_d2.mat",
+    "bytes": 529743983
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Shading_c26_u1_d2.mat",
+    "bytes": 454550745
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_TakeOff_c16_u1_d2.mat",
+    "bytes": 691690899
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Ascend_c17_u1_d2.mat",
+    "bytes": 648123272
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Ascend_c18_u1_d2.mat",
+    "bytes": 495552416
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Cruise_c10_u1_d2.mat",
+    "bytes": 517173882
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Cruise_c11_u1_d2.mat",
+    "bytes": 490683861
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Cruise_c12_u1_d2.mat",
+    "bytes": 493718834
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Cruise_c13_u1_d2.mat",
+    "bytes": 618561162
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Cruise_c14_u1_d2.mat",
+    "bytes": 526846814
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Cruise_c15_u1_d2.mat",
+    "bytes": 492319094
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Cruise_c1_u1_d2.mat",
+    "bytes": 536186247
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Cruise_c2_u1_d2.mat",
+    "bytes": 596856659
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Cruise_c3_u1_d2.mat",
+    "bytes": 481916222
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Cruise_c4_u1_d2.mat",
+    "bytes": 482956863
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Cruise_c5_u1_d2.mat",
+    "bytes": 493718119
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Cruise_c6_u1_d2.mat",
+    "bytes": 494904112
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Cruise_c7_u1_d2.mat",
+    "bytes": 521041121
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Cruise_c8_u1_d2.mat",
+    "bytes": 498022453
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Cruise_c9_u1_d2.mat",
+    "bytes": 480970803
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Descend_c19_u1_d2.mat",
+    "bytes": 469725732
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Descend_c20_u1_d2.mat",
+    "bytes": 490713567
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Landing_c21_u1_d2.mat",
+    "bytes": 670233059
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Shading_c22_u1_d2.mat",
+    "bytes": 484573073
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Shading_c23_u1_d2.mat",
+    "bytes": 454758005
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Shading_c24_u1_d2.mat",
+    "bytes": 424897958
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Shading_c25_u1_d2.mat",
+    "bytes": 439400156
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Shading_c26_u1_d2.mat",
+    "bytes": 453474767
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_TakeOff_c16_u1_d2.mat",
+    "bytes": 688114992
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Ascend_c17_u1_d2.mat",
+    "bytes": 648190556
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Ascend_c18_u1_d2.mat",
+    "bytes": 533143841
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Cruise_c10_u1_d2.mat",
+    "bytes": 539703184
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Cruise_c11_u1_d2.mat",
+    "bytes": 505264182
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Cruise_c12_u1_d2.mat",
+    "bytes": 490157442
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Cruise_c13_u1_d2.mat",
+    "bytes": 543259766
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Cruise_c14_u1_d2.mat",
+    "bytes": 486626780
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Cruise_c15_u1_d2.mat",
+    "bytes": 464685556
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Cruise_c1_u1_d2.mat",
+    "bytes": 629189399
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Cruise_c2_u1_d2.mat",
+    "bytes": 538812858
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Cruise_c3_u1_d2.mat",
+    "bytes": 477060168
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Cruise_c4_u1_d2.mat",
+    "bytes": 512807302
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Cruise_c5_u1_d2.mat",
+    "bytes": 491115326
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Cruise_c6_u1_d2.mat",
+    "bytes": 464497986
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Cruise_c7_u1_d2.mat",
+    "bytes": 524670369
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Cruise_c8_u1_d2.mat",
+    "bytes": 583488929
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Cruise_c9_u1_d2.mat",
+    "bytes": 465038727
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Descend_c19_u1_d2.mat",
+    "bytes": 500807565
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Descend_c20_u1_d2.mat",
+    "bytes": 521746751
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Landing_c21_u1_d2.mat",
+    "bytes": 718175423
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Shading_c22_u1_d2.mat",
+    "bytes": 547821914
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Shading_c23_u1_d2.mat",
+    "bytes": 508458857
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Shading_c24_u1_d2.mat",
+    "bytes": 463208650
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Shading_c25_u1_d2.mat",
+    "bytes": 555134842
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Shading_c26_u1_d2.mat",
+    "bytes": 563289314
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_TakeOff_c16_u1_d2.mat",
+    "bytes": 755826621
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Ascend_c17_u1_d2.mat",
+    "bytes": 687315756
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Ascend_c18_u1_d2.mat",
+    "bytes": 548094022
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Cruise_c10_u1_d2.mat",
+    "bytes": 507720905
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Cruise_c11_u1_d2.mat",
+    "bytes": 526713175
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Cruise_c12_u1_d2.mat",
+    "bytes": 482791992
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Cruise_c13_u1_d2.mat",
+    "bytes": 625281117
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Cruise_c14_u1_d2.mat",
+    "bytes": 526200157
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Cruise_c15_u1_d2.mat",
+    "bytes": 490669922
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Cruise_c1_u1_d2.mat",
+    "bytes": 574873291
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Cruise_c2_u1_d2.mat",
+    "bytes": 519338467
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Cruise_c3_u1_d2.mat",
+    "bytes": 500458958
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Cruise_c4_u1_d2.mat",
+    "bytes": 528116787
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Cruise_c5_u1_d2.mat",
+    "bytes": 479945376
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Cruise_c6_u1_d2.mat",
+    "bytes": 500608500
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Cruise_c7_u1_d2.mat",
+    "bytes": 531431450
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Cruise_c8_u1_d2.mat",
+    "bytes": 553809932
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Cruise_c9_u1_d2.mat",
+    "bytes": 506131567
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Descend_c19_u1_d2.mat",
+    "bytes": 520697363
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Descend_c20_u1_d2.mat",
+    "bytes": 636874026
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Landing_c21_u1_d2.mat",
+    "bytes": 765758617
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Shading_c22_u1_d2.mat",
+    "bytes": 419965250
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Shading_c23_u1_d2.mat",
+    "bytes": 424851254
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Shading_c24_u1_d2.mat",
+    "bytes": 474460088
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Shading_c25_u1_d2.mat",
+    "bytes": 417232261
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Shading_c26_u1_d2.mat",
+    "bytes": 417391083
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_TakeOff_c16_u1_d2.mat",
+    "bytes": 744124933
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Ascend_c17_u1_d2.mat",
+    "bytes": 493309398
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Ascend_c18_u1_d2.mat",
+    "bytes": 493179711
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Cruise_c10_u1_d2.mat",
+    "bytes": 492285399
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Cruise_c11_u1_d2.mat",
+    "bytes": 496752238
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Cruise_c12_u1_d2.mat",
+    "bytes": 534492311
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Cruise_c13_u1_d2.mat",
+    "bytes": 510795164
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Cruise_c14_u1_d2.mat",
+    "bytes": 488286953
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Cruise_c15_u1_d2.mat",
+    "bytes": 511985255
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Cruise_c1_u1_d2.mat",
+    "bytes": 576635194
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Cruise_c2_u1_d2.mat",
+    "bytes": 547354348
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Cruise_c3_u1_d2.mat",
+    "bytes": 458733992
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Cruise_c4_u1_d2.mat",
+    "bytes": 487536608
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Cruise_c5_u1_d2.mat",
+    "bytes": 500867802
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Cruise_c6_u1_d2.mat",
+    "bytes": 480889956
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Cruise_c7_u1_d2.mat",
+    "bytes": 460381503
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Cruise_c8_u1_d2.mat",
+    "bytes": 456315701
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Cruise_c9_u1_d2.mat",
+    "bytes": 457696068
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Descend_c19_u1_d2.mat",
+    "bytes": 489755493
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Descend_c20_u1_d2.mat",
+    "bytes": 514174904
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Landing_c21_u1_d2.mat",
+    "bytes": 569829158
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Shading_c22_u1_d2.mat",
+    "bytes": 484740426
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Shading_c23_u1_d2.mat",
+    "bytes": 488871566
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Shading_c24_u1_d2.mat",
+    "bytes": 502282900
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Shading_c25_u1_d2.mat",
+    "bytes": 472204421
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Shading_c26_u1_d2.mat",
+    "bytes": 483469453
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_TakeOff_c16_u1_d2.mat",
+    "bytes": 509556510
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Ascend_c17_u1_d2.mat",
+    "bytes": 640573913
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Ascend_c18_u1_d2.mat",
+    "bytes": 479955073
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Cruise_c10_u1_d2.mat",
+    "bytes": 527829994
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Cruise_c11_u1_d2.mat",
+    "bytes": 475147508
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Cruise_c12_u1_d2.mat",
+    "bytes": 494352333
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Cruise_c13_u1_d2.mat",
+    "bytes": 529694490
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Cruise_c14_u1_d2.mat",
+    "bytes": 435080857
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Cruise_c15_u1_d2.mat",
+    "bytes": 471666303
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Cruise_c1_u1_d2.mat",
+    "bytes": 483617944
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Cruise_c2_u1_d2.mat",
+    "bytes": 545534998
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Cruise_c3_u1_d2.mat",
+    "bytes": 478427397
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Cruise_c4_u1_d2.mat",
+    "bytes": 507178019
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Cruise_c5_u1_d2.mat",
+    "bytes": 472532574
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Cruise_c6_u1_d2.mat",
+    "bytes": 465012940
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Cruise_c7_u1_d2.mat",
+    "bytes": 506028078
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Cruise_c8_u1_d2.mat",
+    "bytes": 579645731
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Cruise_c9_u1_d2.mat",
+    "bytes": 465591025
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Descend_c19_u1_d2.mat",
+    "bytes": 477756129
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Descend_c20_u1_d2.mat",
+    "bytes": 497172865
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Landing_c21_u1_d2.mat",
+    "bytes": 538178273
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Shading_c22_u1_d2.mat",
+    "bytes": 498495455
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Shading_c23_u1_d2.mat",
+    "bytes": 463528578
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Shading_c24_u1_d2.mat",
+    "bytes": 443007764
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Shading_c25_u1_d2.mat",
+    "bytes": 512307043
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Shading_c26_u1_d2.mat",
+    "bytes": 487374103
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_TakeOff_c16_u1_d2.mat",
+    "bytes": 522476208
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Ascend_c17_u1_d2.mat",
+    "bytes": 514682824
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Ascend_c18_u1_d2.mat",
+    "bytes": 479865533
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Cruise_c10_u1_d2.mat",
+    "bytes": 472419440
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Cruise_c11_u1_d2.mat",
+    "bytes": 488472236
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Cruise_c12_u1_d2.mat",
+    "bytes": 458145675
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Cruise_c13_u1_d2.mat",
+    "bytes": 497093246
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Cruise_c14_u1_d2.mat",
+    "bytes": 496452467
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Cruise_c15_u1_d2.mat",
+    "bytes": 454530661
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Cruise_c1_u1_d2.mat",
+    "bytes": 485651126
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Cruise_c2_u1_d2.mat",
+    "bytes": 465510278
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Cruise_c3_u1_d2.mat",
+    "bytes": 441122099
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Cruise_c4_u1_d2.mat",
+    "bytes": 501439255
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Cruise_c5_u1_d2.mat",
+    "bytes": 484419648
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Cruise_c6_u1_d2.mat",
+    "bytes": 466680830
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Cruise_c7_u1_d2.mat",
+    "bytes": 478569149
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Cruise_c8_u1_d2.mat",
+    "bytes": 482506797
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Cruise_c9_u1_d2.mat",
+    "bytes": 448912988
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Descend_c19_u1_d2.mat",
+    "bytes": 492185150
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Descend_c20_u1_d2.mat",
+    "bytes": 458550667
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Landing_c21_u1_d2.mat",
+    "bytes": 551152506
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Shading_c22_u1_d2.mat",
+    "bytes": 514413499
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Shading_c23_u1_d2.mat",
+    "bytes": 451464739
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Shading_c24_u1_d2.mat",
+    "bytes": 423805137
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Shading_c25_u1_d2.mat",
+    "bytes": 464923776
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Shading_c26_u1_d2.mat",
+    "bytes": 487641472
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_TakeOff_c16_u1_d2.mat",
+    "bytes": 535336541
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic3_1 & mavic3S_1/mavic3_1_mixed_c1.mat",
+    "bytes": 697188114
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic3_1 & mavic3S_1/mavic3_1_mixed_c10.mat",
+    "bytes": 591578416
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic3_1 & mavic3S_1/mavic3_1_mixed_c11.mat",
+    "bytes": 666730118
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic3_1 & mavic3S_1/mavic3_1_mixed_c12.mat",
+    "bytes": 580537347
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic3_1 & mavic3S_1/mavic3_1_mixed_c13.mat",
+    "bytes": 590931358
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic3_1 & mavic3S_1/mavic3_1_mixed_c14.mat",
+    "bytes": 557889800
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic3_1 & mavic3S_1/mavic3_1_mixed_c15.mat",
+    "bytes": 567117840
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic3_1 & mavic3S_1/mavic3_1_mixed_c2.mat",
+    "bytes": 610384219
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic3_1 & mavic3S_1/mavic3_1_mixed_c3.mat",
+    "bytes": 556744304
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic3_1 & mavicAir2_1 & mavicAir2s_1/mavic3_1_mixed_c1.mat",
+    "bytes": 655980052
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic3_1 & mavicAir2_1 & mavicAir2s_1/mavic3_1_mixed_c10.mat",
+    "bytes": 613042723
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic3_1 & mavicAir2_1 & mavicAir2s_1/mavic3_1_mixed_c11.mat",
+    "bytes": 663212405
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic3_1 & mavicAir2_1 & mavicAir2s_1/mavic3_1_mixed_c12.mat",
+    "bytes": 586512960
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic3_1 & mavicAir2_1 & mavicAir2s_1/mavic3_1_mixed_c13.mat",
+    "bytes": 606090872
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic3_1 & mavicAir2_1 & mavicAir2s_1/mavic3_1_mixed_c14.mat",
+    "bytes": 558769794
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic3_1 & mavicAir2_1 & mavicAir2s_1/mavic3_1_mixed_c15.mat",
+    "bytes": 566260582
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic3_1 & mavicAir2_1 & mavicAir2s_1/mavic3_1_mixed_c2.mat",
+    "bytes": 604617608
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic3_1 & mavicAir2_1 & mavicAir2s_1/mavic3_1_mixed_c3.mat",
+    "bytes": 535685145
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mavic3_1/mavicAir2_1_mixed_c1.mat",
+    "bytes": 693848337
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mavic3_1/mavicAir2_1_mixed_c10.mat",
+    "bytes": 632164585
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mavic3_1/mavicAir2_1_mixed_c11.mat",
+    "bytes": 633627620
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mavic3_1/mavicAir2_1_mixed_c12.mat",
+    "bytes": 571816739
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mavic3_1/mavicAir2_1_mixed_c13.mat",
+    "bytes": 563908793
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mavic3_1/mavicAir2_1_mixed_c14.mat",
+    "bytes": 541269980
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mavic3_1/mavicAir2_1_mixed_c15.mat",
+    "bytes": 538786837
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mavic3_1/mavicAir2_1_mixed_c2.mat",
+    "bytes": 557589806
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mavic3_1/mavicAir2_1_mixed_c3.mat",
+    "bytes": 551192394
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mavicAir2_2 & mavicAir2s_3/mavicAir2s_1_mixed_c1.mat",
+    "bytes": 675301225
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mavicAir2_2 & mavicAir2s_3/mavicAir2s_1_mixed_c10.mat",
+    "bytes": 599960893
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mavicAir2_2 & mavicAir2s_3/mavicAir2s_1_mixed_c11.mat",
+    "bytes": 656610333
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mavicAir2_2 & mavicAir2s_3/mavicAir2s_1_mixed_c12.mat",
+    "bytes": 574576313
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mavicAir2_2 & mavicAir2s_3/mavicAir2s_1_mixed_c13.mat",
+    "bytes": 590869476
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mavicAir2_2 & mavicAir2s_3/mavicAir2s_1_mixed_c14.mat",
+    "bytes": 546925411
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mavicAir2_2 & mavicAir2s_3/mavicAir2s_1_mixed_c15.mat",
+    "bytes": 552516976
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mavicAir2_2 & mavicAir2s_3/mavicAir2s_1_mixed_c2.mat",
+    "bytes": 589748770
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mavicAir2_2 & mavicAir2s_3/mavicAir2s_1_mixed_c3.mat",
+    "bytes": 550271691
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini3PRO_1/mavicAir2_1_mixed_c1.mat",
+    "bytes": 732493089
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini3PRO_1/mavicAir2_1_mixed_c10.mat",
+    "bytes": 641851801
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini3PRO_1/mavicAir2_1_mixed_c11.mat",
+    "bytes": 619739512
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini3PRO_1/mavicAir2_1_mixed_c12.mat",
+    "bytes": 605829204
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini3PRO_1/mavicAir2_1_mixed_c13.mat",
+    "bytes": 589846506
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini3PRO_1/mavicAir2_1_mixed_c14.mat",
+    "bytes": 537321226
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini3PRO_1/mavicAir2_1_mixed_c15.mat",
+    "bytes": 516892871
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini3PRO_1/mavicAir2_1_mixed_c2.mat",
+    "bytes": 575983239
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini3PRO_1/mavicAir2_1_mixed_c3.mat",
+    "bytes": 557972904
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini4PRO_1/mavicAir2_1_mixed_c1.mat",
+    "bytes": 646565000
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini4PRO_1/mavicAir2_1_mixed_c10.mat",
+    "bytes": 638318174
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini4PRO_1/mavicAir2_1_mixed_c11.mat",
+    "bytes": 700373234
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini4PRO_1/mavicAir2_1_mixed_c12.mat",
+    "bytes": 557280346
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini4PRO_1/mavicAir2_1_mixed_c13.mat",
+    "bytes": 576726396
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini4PRO_1/mavicAir2_1_mixed_c14.mat",
+    "bytes": 554906517
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini4PRO_1/mavicAir2_1_mixed_c15.mat",
+    "bytes": 552904546
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini4PRO_1/mavicAir2_1_mixed_c2.mat",
+    "bytes": 552285662
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini4PRO_1/mavicAir2_1_mixed_c3.mat",
+    "bytes": 540661846
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini5PRO_1/mavicAir2_1_mixed_c1.mat",
+    "bytes": 597924306
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini5PRO_1/mavicAir2_1_mixed_c10.mat",
+    "bytes": 572504357
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini5PRO_1/mavicAir2_1_mixed_c11.mat",
+    "bytes": 569796091
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini5PRO_1/mavicAir2_1_mixed_c12.mat",
+    "bytes": 549092749
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini5PRO_1/mavicAir2_1_mixed_c13.mat",
+    "bytes": 545795432
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini5PRO_1/mavicAir2_1_mixed_c14.mat",
+    "bytes": 523079949
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini5PRO_1/mavicAir2_1_mixed_c15.mat",
+    "bytes": 550495326
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini5PRO_1/mavicAir2_1_mixed_c2.mat",
+    "bytes": 535094214
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_1 & mini5PRO_1/mavicAir2_1_mixed_c3.mat",
+    "bytes": 552544454
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_2_mix_mavicAir2_3/mavicAir2_2_mixed_c1.mat",
+    "bytes": 608127159
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_2_mix_mavicAir2_3/mavicAir2_2_mixed_c10.mat",
+    "bytes": 629946717
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_2_mix_mavicAir2_3/mavicAir2_2_mixed_c11.mat",
+    "bytes": 625973402
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_2_mix_mavicAir2_3/mavicAir2_2_mixed_c12.mat",
+    "bytes": 568077700
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_2_mix_mavicAir2_3/mavicAir2_2_mixed_c13.mat",
+    "bytes": 569651126
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_2_mix_mavicAir2_3/mavicAir2_2_mixed_c14.mat",
+    "bytes": 543260634
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_2_mix_mavicAir2_3/mavicAir2_2_mixed_c15.mat",
+    "bytes": 543600931
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_2_mix_mavicAir2_3/mavicAir2_2_mixed_c2.mat",
+    "bytes": 591287147
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2_2_mix_mavicAir2_3/mavicAir2_2_mixed_c3.mat",
+    "bytes": 531790534
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2s_1 & mavic3_1/mavicAir2s_1_mixed_c1.mat",
+    "bytes": 703292039
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2s_1 & mavic3_1/mavicAir2s_1_mixed_c10.mat",
+    "bytes": 658859631
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2s_1 & mavic3_1/mavicAir2s_1_mixed_c11.mat",
+    "bytes": 628655989
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2s_1 & mavic3_1/mavicAir2s_1_mixed_c12.mat",
+    "bytes": 605499600
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2s_1 & mavic3_1/mavicAir2s_1_mixed_c13.mat",
+    "bytes": 600165474
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2s_1 & mavic3_1/mavicAir2s_1_mixed_c14.mat",
+    "bytes": 565912958
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2s_1 & mavic3_1/mavicAir2s_1_mixed_c15.mat",
+    "bytes": 574187470
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2s_1 & mavic3_1/mavicAir2s_1_mixed_c2.mat",
+    "bytes": 621155924
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2s_1 & mavic3_1/mavicAir2s_1_mixed_c3.mat",
+    "bytes": 570912070
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2s_1 & mini3pro_1/mavicAir2s_1_mixed_c1.mat",
+    "bytes": 728553213
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2s_1 & mini3pro_1/mavicAir2s_1_mixed_c10.mat",
+    "bytes": 651150682
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2s_1 & mini3pro_1/mavicAir2s_1_mixed_c11.mat",
+    "bytes": 673633020
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2s_1 & mini3pro_1/mavicAir2s_1_mixed_c12.mat",
+    "bytes": 596171523
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2s_1 & mini3pro_1/mavicAir2s_1_mixed_c13.mat",
+    "bytes": 619523621
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2s_1 & mini3pro_1/mavicAir2s_1_mixed_c14.mat",
+    "bytes": 560304250
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2s_1 & mini3pro_1/mavicAir2s_1_mixed_c15.mat",
+    "bytes": 589659971
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2s_1 & mini3pro_1/mavicAir2s_1_mixed_c2.mat",
+    "bytes": 616824842
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavicAir2s_1 & mini3pro_1/mavicAir2s_1_mixed_c3.mat",
+    "bytes": 544443138
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic_air2s_2_&_mavic_air2s_3/mavicAir2s_2_mixed_c1.mat",
+    "bytes": 714328022
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic_air2s_2_&_mavic_air2s_3/mavicAir2s_2_mixed_c10.mat",
+    "bytes": 633925779
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic_air2s_2_&_mavic_air2s_3/mavicAir2s_2_mixed_c11.mat",
+    "bytes": 646341754
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic_air2s_2_&_mavic_air2s_3/mavicAir2s_2_mixed_c12.mat",
+    "bytes": 586643789
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic_air2s_2_&_mavic_air2s_3/mavicAir2s_2_mixed_c13.mat",
+    "bytes": 586717255
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic_air2s_2_&_mavic_air2s_3/mavicAir2s_2_mixed_c14.mat",
+    "bytes": 578336514
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic_air2s_2_&_mavic_air2s_3/mavicAir2s_2_mixed_c15.mat",
+    "bytes": 593454163
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic_air2s_2_&_mavic_air2s_3/mavicAir2s_2_mixed_c2.mat",
+    "bytes": 598199557
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mavic_air2s_2_&_mavic_air2s_3/mavicAir2s_2_mixed_c3.mat",
+    "bytes": 604148368
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mavic3_1/mini3pro_1_mixed_c1.mat",
+    "bytes": 540352457
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mavic3_1/mini3pro_1_mixed_c10.mat",
+    "bytes": 494897123
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mavic3_1/mini3pro_1_mixed_c11.mat",
+    "bytes": 527006605
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mavic3_1/mini3pro_1_mixed_c12.mat",
+    "bytes": 570614907
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mavic3_1/mini3pro_1_mixed_c13.mat",
+    "bytes": 533920835
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mavic3_1/mini3pro_1_mixed_c14.mat",
+    "bytes": 519857542
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mavic3_1/mini3pro_1_mixed_c15.mat",
+    "bytes": 507870434
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mavic3_1/mini3pro_1_mixed_c2.mat",
+    "bytes": 507562678
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mavic3_1/mini3pro_1_mixed_c3.mat",
+    "bytes": 519027037
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mavic3_1 & mavicAir2s_1/mini3pro_1_mixed_c1.mat",
+    "bytes": 648973580
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mavic3_1 & mavicAir2s_1/mini3pro_1_mixed_c10.mat",
+    "bytes": 674291874
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mavic3_1 & mavicAir2s_1/mini3pro_1_mixed_c11.mat",
+    "bytes": 646767553
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mavic3_1 & mavicAir2s_1/mini3pro_1_mixed_c12.mat",
+    "bytes": 609404733
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mavic3_1 & mavicAir2s_1/mini3pro_1_mixed_c13.mat",
+    "bytes": 606602803
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mavic3_1 & mavicAir2s_1/mini3pro_1_mixed_c14.mat",
+    "bytes": 556232150
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mavic3_1 & mavicAir2s_1/mini3pro_1_mixed_c15.mat",
+    "bytes": 546177108
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mavic3_1 & mavicAir2s_1/mini3pro_1_mixed_c2.mat",
+    "bytes": 610492131
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mavic3_1 & mavicAir2s_1/mini3pro_1_mixed_c3.mat",
+    "bytes": 565815002
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1/mini3pro_1_mixed_c1.mat",
+    "bytes": 649429989
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1/mini3pro_1_mixed_c10.mat",
+    "bytes": 639131629
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1/mini3pro_1_mixed_c11.mat",
+    "bytes": 629112375
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1/mini3pro_1_mixed_c12.mat",
+    "bytes": 594105023
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1/mini3pro_1_mixed_c13.mat",
+    "bytes": 611761372
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1/mini3pro_1_mixed_c14.mat",
+    "bytes": 564201873
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1/mini3pro_1_mixed_c15.mat",
+    "bytes": 555809471
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1/mini3pro_1_mixed_c2.mat",
+    "bytes": 585711537
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1/mini3pro_1_mixed_c3.mat",
+    "bytes": 532797238
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavic3_1/mini3pro_1_mixed_c1.mat",
+    "bytes": 624132279
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavic3_1/mini3pro_1_mixed_c10.mat",
+    "bytes": 650081578
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavic3_1/mini3pro_1_mixed_c11.mat",
+    "bytes": 664513005
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavic3_1/mini3pro_1_mixed_c12.mat",
+    "bytes": 615428604
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavic3_1/mini3pro_1_mixed_c13.mat",
+    "bytes": 606999559
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavic3_1/mini3pro_1_mixed_c14.mat",
+    "bytes": 591236575
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavic3_1/mini3pro_1_mixed_c15.mat",
+    "bytes": 575116132
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavic3_1/mini3pro_1_mixed_c2.mat",
+    "bytes": 568276909
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavic3_1/mini3pro_1_mixed_c3.mat",
+    "bytes": 598075363
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavicAir2_1/mini3pro_1_mixed_c1.mat",
+    "bytes": 667320943
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavicAir2_1/mini3pro_1_mixed_c10.mat",
+    "bytes": 627749643
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavicAir2_1/mini3pro_1_mixed_c11.mat",
+    "bytes": 673093860
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavicAir2_1/mini3pro_1_mixed_c12.mat",
+    "bytes": 623746006
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavicAir2_1/mini3pro_1_mixed_c13.mat",
+    "bytes": 633415259
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavicAir2_1/mini3pro_1_mixed_c14.mat",
+    "bytes": 562675623
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavicAir2_1/mini3pro_1_mixed_c15.mat",
+    "bytes": 580191561
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavicAir2_1/mini3pro_1_mixed_c2.mat",
+    "bytes": 617431142
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavicAir2_1/mini3pro_1_mixed_c3.mat",
+    "bytes": 580301754
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavicAir2s_1/mini3pro_1_mixed_c1.mat",
+    "bytes": 689324365
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavicAir2s_1/mini3pro_1_mixed_c10.mat",
+    "bytes": 607538737
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavicAir2s_1/mini3pro_1_mixed_c11.mat",
+    "bytes": 632879343
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavicAir2s_1/mini3pro_1_mixed_c12.mat",
+    "bytes": 623616562
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavicAir2s_1/mini3pro_1_mixed_c13.mat",
+    "bytes": 591799644
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavicAir2s_1/mini3pro_1_mixed_c14.mat",
+    "bytes": 567075391
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavicAir2s_1/mini3pro_1_mixed_c15.mat",
+    "bytes": 544187390
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavicAir2s_1/mini3pro_1_mixed_c2.mat",
+    "bytes": 605309828
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mavicAir2s_1/mini3pro_1_mixed_c3.mat",
+    "bytes": 583970110
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mini5PRO_1/mini3pro_1_mixed_c1.mat",
+    "bytes": 648452383
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mini5PRO_1/mini3pro_1_mixed_c10.mat",
+    "bytes": 609347413
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mini5PRO_1/mini3pro_1_mixed_c11.mat",
+    "bytes": 627662519
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mini5PRO_1/mini3pro_1_mixed_c12.mat",
+    "bytes": 585824119
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mini5PRO_1/mini3pro_1_mixed_c13.mat",
+    "bytes": 549265907
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mini5PRO_1/mini3pro_1_mixed_c14.mat",
+    "bytes": 573109386
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mini5PRO_1/mini3pro_1_mixed_c15.mat",
+    "bytes": 543297795
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mini5PRO_1/mini3pro_1_mixed_c2.mat",
+    "bytes": 577157014
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini3pro_1 & mini4PRO_1 & mini5PRO_1/mini3pro_1_mixed_c3.mat",
+    "bytes": 564103545
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini4PRO_1 & mini4PRO_2 & mini4PRO_3/mini4PRO_1_mixed_c1.mat",
+    "bytes": 724573710
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini4PRO_1 & mini4PRO_2 & mini4PRO_3/mini4PRO_1_mixed_c10.mat",
+    "bytes": 715607261
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini4PRO_1 & mini4PRO_2 & mini4PRO_3/mini4PRO_1_mixed_c11.mat",
+    "bytes": 695550466
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini4PRO_1 & mini4PRO_2 & mini4PRO_3/mini4PRO_1_mixed_c12.mat",
+    "bytes": 619242382
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini4PRO_1 & mini4PRO_2 & mini4PRO_3/mini4PRO_1_mixed_c13.mat",
+    "bytes": 589742363
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini4PRO_1 & mini4PRO_2 & mini4PRO_3/mini4PRO_1_mixed_c14.mat",
+    "bytes": 548025550
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini4PRO_1 & mini4PRO_2 & mini4PRO_3/mini4PRO_1_mixed_c15.mat",
+    "bytes": 557472441
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini4PRO_1 & mini4PRO_2 & mini4PRO_3/mini4PRO_1_mixed_c2.mat",
+    "bytes": 579013166
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini4PRO_1 & mini4PRO_2 & mini4PRO_3/mini4PRO_1_mixed_c3.mat",
+    "bytes": 555091303
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini4PRO_2 & mini4PRO_1/mini4PRO_2_mixed_c1.mat",
+    "bytes": 634701372
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini4PRO_2 & mini4PRO_1/mini4PRO_2_mixed_c10.mat",
+    "bytes": 581822897
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini4PRO_2 & mini4PRO_1/mini4PRO_2_mixed_c11.mat",
+    "bytes": 607462581
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini4PRO_2 & mini4PRO_1/mini4PRO_2_mixed_c12.mat",
+    "bytes": 579860015
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini4PRO_2 & mini4PRO_1/mini4PRO_2_mixed_c13.mat",
+    "bytes": 579422507
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini4PRO_2 & mini4PRO_1/mini4PRO_2_mixed_c14.mat",
+    "bytes": 526848218
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini4PRO_2 & mini4PRO_1/mini4PRO_2_mixed_c15.mat",
+    "bytes": 564851003
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini4PRO_2 & mini4PRO_1/mini4PRO_2_mixed_c2.mat",
+    "bytes": 569247440
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini4PRO_2 & mini4PRO_1/mini4PRO_2_mixed_c3.mat",
+    "bytes": 550182475
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini5PRO_1 & mavic3_1 & mavicAir2s_1/mini5PRO_1_mixed_c1.mat",
+    "bytes": 656414474
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini5PRO_1 & mavic3_1 & mavicAir2s_1/mini5PRO_1_mixed_c10.mat",
+    "bytes": 625675495
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini5PRO_1 & mavic3_1 & mavicAir2s_1/mini5PRO_1_mixed_c11.mat",
+    "bytes": 620967614
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini5PRO_1 & mavic3_1 & mavicAir2s_1/mini5PRO_1_mixed_c12.mat",
+    "bytes": 608179053
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini5PRO_1 & mavic3_1 & mavicAir2s_1/mini5PRO_1_mixed_c13.mat",
+    "bytes": 596910095
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini5PRO_1 & mavic3_1 & mavicAir2s_1/mini5PRO_1_mixed_c14.mat",
+    "bytes": 533069889
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini5PRO_1 & mavic3_1 & mavicAir2s_1/mini5PRO_1_mixed_c15.mat",
+    "bytes": 562162622
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini5PRO_1 & mavic3_1 & mavicAir2s_1/mini5PRO_1_mixed_c2.mat",
+    "bytes": 581016773
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini5PRO_1 & mavic3_1 & mavicAir2s_1/mini5PRO_1_mixed_c3.mat",
+    "bytes": 560360010
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini5PRO_1 & mavicAir2_1 & mavicAir2s_1/mini5PRO_1_mixed_c1.mat",
+    "bytes": 665139083
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini5PRO_1 & mavicAir2_1 & mavicAir2s_1/mini5PRO_1_mixed_c10.mat",
+    "bytes": 680269086
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini5PRO_1 & mavicAir2_1 & mavicAir2s_1/mini5PRO_1_mixed_c11.mat",
+    "bytes": 655394709
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini5PRO_1 & mavicAir2_1 & mavicAir2s_1/mini5PRO_1_mixed_c12.mat",
+    "bytes": 587062627
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini5PRO_1 & mavicAir2_1 & mavicAir2s_1/mini5PRO_1_mixed_c13.mat",
+    "bytes": 598312597
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini5PRO_1 & mavicAir2_1 & mavicAir2s_1/mini5PRO_1_mixed_c14.mat",
+    "bytes": 574250110
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini5PRO_1 & mavicAir2_1 & mavicAir2s_1/mini5PRO_1_mixed_c15.mat",
+    "bytes": 562418434
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini5PRO_1 & mavicAir2_1 & mavicAir2s_1/mini5PRO_1_mixed_c2.mat",
+    "bytes": 607255199
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset2-drone_mixed/mini5PRO_1 & mavicAir2_1 & mavicAir2s_1/mini5PRO_1_mixed_c3.mat",
+    "bytes": 564780377
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3C_1_hover_c1_u1_d2.mat",
+    "bytes": 576237150
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3C_1_hover_c1_u2_d1.mat",
+    "bytes": 636770527
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3C_1_hover_c1_u2_d2.mat",
+    "bytes": 622440878
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3C_1_hover_c1_u2_d3.mat",
+    "bytes": 664084982
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3C_1_hover_c2_u1_d2.mat",
+    "bytes": 542548142
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3C_1_hover_c2_u2_d1.mat",
+    "bytes": 559725263
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3C_1_hover_c2_u2_d2.mat",
+    "bytes": 498387095
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3C_1_hover_c2_u2_d3.mat",
+    "bytes": 509309265
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3C_1_hover_c3_u1_d2.mat",
+    "bytes": 514032640
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3C_1_hover_c3_u2_d1.mat",
+    "bytes": 565982263
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3C_1_hover_c3_u2_d2.mat",
+    "bytes": 473854010
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3C_1_hover_c3_u2_d3.mat",
+    "bytes": 518373435
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3S_1_hover_c1_u1_d2.mat",
+    "bytes": 588098483
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3S_1_hover_c1_u2_d1.mat",
+    "bytes": 602701069
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3S_1_hover_c1_u2_d2.mat",
+    "bytes": 535053556
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3S_1_hover_c1_u2_d3.mat",
+    "bytes": 527346755
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3S_1_hover_c2_u1_d2.mat",
+    "bytes": 500605468
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3S_1_hover_c2_u2_d1.mat",
+    "bytes": 494551938
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3S_1_hover_c2_u2_d2.mat",
+    "bytes": 443674794
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3S_1_hover_c2_u2_d3.mat",
+    "bytes": 501192210
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3S_1_hover_c3_u1_d2.mat",
+    "bytes": 479855971
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3S_1_hover_c3_u2_d1.mat",
+    "bytes": 501464149
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3S_1_hover_c3_u2_d2.mat",
+    "bytes": 450734624
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3S_1_hover_c3_u2_d3.mat",
+    "bytes": 451363197
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3_1_hover_c1_u1_d2.mat",
+    "bytes": 539070501
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3_1_hover_c1_u2_d1.mat",
+    "bytes": 617367002
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3_1_hover_c1_u2_d2.mat",
+    "bytes": 542393032
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3_1_hover_c1_u2_d3.mat",
+    "bytes": 626494840
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3_1_hover_c2_u1_d2.mat",
+    "bytes": 512430882
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3_1_hover_c2_u2_d1.mat",
+    "bytes": 560776894
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3_1_hover_c2_u2_d2.mat",
+    "bytes": 526549499
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3_1_hover_c2_u2_d3.mat",
+    "bytes": 529070003
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3_1_hover_c3_u1_d2.mat",
+    "bytes": 500343356
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3_1_hover_c3_u2_d1.mat",
+    "bytes": 524439861
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3_1_hover_c3_u2_d2.mat",
+    "bytes": 480100956
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3_1_hover_c3_u2_d3.mat",
+    "bytes": 504504144
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_1_hover_c1_u1_d2.mat",
+    "bytes": 548485297
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_1_hover_c1_u2_d1.mat",
+    "bytes": 567100258
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_1_hover_c1_u2_d2.mat",
+    "bytes": 560317542
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_1_hover_c1_u2_d3.mat",
+    "bytes": 594698268
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_1_hover_c2_u1_d2.mat",
+    "bytes": 498880235
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_1_hover_c2_u2_d1.mat",
+    "bytes": 501585153
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_1_hover_c2_u2_d2.mat",
+    "bytes": 511834029
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_1_hover_c2_u2_d3.mat",
+    "bytes": 494959916
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_1_hover_c3_u1_d2.mat",
+    "bytes": 496240494
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_1_hover_c3_u2_d1.mat",
+    "bytes": 475969266
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_1_hover_c3_u2_d2.mat",
+    "bytes": 454495108
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_1_hover_c3_u2_d3.mat",
+    "bytes": 502048001
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_2_hover_c1_u2_d1.mat",
+    "bytes": 534101308
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_2_hover_c1_u2_d2.mat",
+    "bytes": 476799209
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_2_hover_c1_u2_d3.mat",
+    "bytes": 659725838
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_2_hover_c2_u2_d1.mat",
+    "bytes": 491993818
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_2_hover_c2_u2_d2.mat",
+    "bytes": 493645525
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_2_hover_c2_u2_d3.mat",
+    "bytes": 541025074
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_2_hover_c3_u2_d1.mat",
+    "bytes": 476506557
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_2_hover_c3_u2_d2.mat",
+    "bytes": 473366585
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_2_hover_c3_u2_d3.mat",
+    "bytes": 505328530
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_3_hover_c1_u2_d1.mat",
+    "bytes": 580226892
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_3_hover_c1_u2_d2.mat",
+    "bytes": 476773500
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_3_hover_c1_u2_d3.mat",
+    "bytes": 585630397
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_3_hover_c2_u2_d1.mat",
+    "bytes": 514788664
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_3_hover_c2_u2_d2.mat",
+    "bytes": 485938826
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_3_hover_c2_u2_d3.mat",
+    "bytes": 540316231
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_3_hover_c3_u2_d1.mat",
+    "bytes": 525242093
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_3_hover_c3_u2_d2.mat",
+    "bytes": 473154075
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_3_hover_c3_u2_d3.mat",
+    "bytes": 494378729
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_4_hover_c1_u2_d1.mat",
+    "bytes": 504460235
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_4_hover_c2_u2_d1.mat",
+    "bytes": 535850276
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_4_hover_c3_u2_d1.mat",
+    "bytes": 482924602
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_5_hover_c1_u2_d1.mat",
+    "bytes": 568034771
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_5_hover_c2_u2_d1.mat",
+    "bytes": 525948904
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_5_hover_c3_u2_d1.mat",
+    "bytes": 479803310
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_6_hover_c1_u2_d1.mat",
+    "bytes": 499264850
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_6_hover_c2_u2_d1.mat",
+    "bytes": 501342767
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_6_hover_c3_u2_d1.mat",
+    "bytes": 465686370
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_7_hover_c1_u2_d1.mat",
+    "bytes": 551289045
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_7_hover_c2_u2_d1.mat",
+    "bytes": 524295202
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_7_hover_c3_u2_d1.mat",
+    "bytes": 516147054
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_8_hover_c1_u2_d1.mat",
+    "bytes": 573562663
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_8_hover_c2_u2_d1.mat",
+    "bytes": 525056345
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_8_hover_c3_u2_d1.mat",
+    "bytes": 513845408
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_1_hover_c1_u1_d2.mat",
+    "bytes": 599443556
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_1_hover_c1_u2_d1.mat",
+    "bytes": 606264028
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_1_hover_c1_u2_d2.mat",
+    "bytes": 543157328
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_1_hover_c1_u2_d3.mat",
+    "bytes": 665457064
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_1_hover_c2_u1_d2.mat",
+    "bytes": 494543518
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_1_hover_c2_u2_d1.mat",
+    "bytes": 554303394
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_1_hover_c2_u2_d2.mat",
+    "bytes": 499486902
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_1_hover_c2_u2_d3.mat",
+    "bytes": 560054920
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_1_hover_c3_u1_d2.mat",
+    "bytes": 493361383
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_1_hover_c3_u2_d1.mat",
+    "bytes": 502656949
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_1_hover_c3_u2_d2.mat",
+    "bytes": 453023410
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_2_hover_c1_u2_d1.mat",
+    "bytes": 604855351
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_2_hover_c1_u2_d2.mat",
+    "bytes": 585010621
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_2_hover_c1_u2_d3.mat",
+    "bytes": 635360384
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_2_hover_c2_u2_d1.mat",
+    "bytes": 568237666
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_2_hover_c2_u2_d2.mat",
+    "bytes": 460906192
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_2_hover_c2_u2_d3.mat",
+    "bytes": 544186010
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_2_hover_c3_u2_d1.mat",
+    "bytes": 518416278
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_2_hover_c3_u2_d2.mat",
+    "bytes": 463984708
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_2_hover_c3_u2_d3.mat",
+    "bytes": 512653978
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_3_hover_c1_u2_d1.mat",
+    "bytes": 523353458
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_3_hover_c1_u2_d2.mat",
+    "bytes": 557956381
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_3_hover_c1_u2_d3.mat",
+    "bytes": 670485038
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_3_hover_c2_u2_d1.mat",
+    "bytes": 524395679
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_3_hover_c2_u2_d2.mat",
+    "bytes": 457183325
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_3_hover_c2_u2_d3.mat",
+    "bytes": 533582282
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_3_hover_c3_u2_d1.mat",
+    "bytes": 500428856
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_3_hover_c3_u2_d2.mat",
+    "bytes": 445350640
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_3_hover_c3_u2_d3.mat",
+    "bytes": 514327850
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_4_hover_c1_u2_d1.mat",
+    "bytes": 608356496
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_4_hover_c2_u2_d1.mat",
+    "bytes": 537351991
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_4_hover_c3_u2_d1.mat",
+    "bytes": 493934394
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_5_hover_c1_u2_d1.mat",
+    "bytes": 608540724
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_5_hover_c2_u2_d1.mat",
+    "bytes": 585764366
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_5_hover_c3_u2_d1.mat",
+    "bytes": 533159323
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_6_hover_c1_u2_d1.mat",
+    "bytes": 621095683
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_6_hover_c2_u2_d1.mat",
+    "bytes": 528480940
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_6_hover_c3_u2_d1.mat",
+    "bytes": 521087794
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_7_hover_c1_u2_d1.mat",
+    "bytes": 641158220
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_7_hover_c2_u2_d1.mat",
+    "bytes": 550230928
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_7_hover_c3_u2_d1.mat",
+    "bytes": 529915067
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini3pro_1_hover_c1_u2_d1.mat",
+    "bytes": 510812804
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini3pro_1_hover_c1_u2_d2.mat",
+    "bytes": 429543989
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini3pro_1_hover_c1_u2_d3.mat",
+    "bytes": 512394674
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini3pro_1_hover_c2_u2_d1.mat",
+    "bytes": 578249550
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini3pro_1_hover_c2_u2_d2.mat",
+    "bytes": 435420688
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini3pro_1_hover_c2_u2_d3.mat",
+    "bytes": 528449540
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini3pro_1_hover_c3_u2_d1.mat",
+    "bytes": 498680354
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini3pro_1_hover_c3_u2_d2.mat",
+    "bytes": 457172141
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini3pro_1_hover_c3_u2_d3.mat",
+    "bytes": 487522118
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini3pro_2_hover_c1_u1_d2.mat",
+    "bytes": 473173027
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini3pro_2_hover_c1_u2_d1.mat",
+    "bytes": 520915122
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini3pro_2_hover_c2_u1_d2.mat",
+    "bytes": 462053349
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini3pro_2_hover_c2_u2_d1.mat",
+    "bytes": 584258374
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini3pro_2_hover_c3_u1_d2.mat",
+    "bytes": 453831982
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini3pro_2_hover_c3_u2_d1.mat",
+    "bytes": 545442109
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_1_hover_c1_u1_d2.mat",
+    "bytes": 591342430
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_1_hover_c1_u2_d1.mat",
+    "bytes": 553906161
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_1_hover_c1_u2_d2.mat",
+    "bytes": 484339781
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_1_hover_c1_u2_d3.mat",
+    "bytes": 576940377
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_1_hover_c2_u1_d2.mat",
+    "bytes": 493540717
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_1_hover_c2_u2_d1.mat",
+    "bytes": 458583784
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_1_hover_c2_u2_d2.mat",
+    "bytes": 453045830
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_1_hover_c2_u2_d3.mat",
+    "bytes": 487201041
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_1_hover_c3_u1_d2.mat",
+    "bytes": 469921801
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_1_hover_c3_u2_d1.mat",
+    "bytes": 430378464
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_1_hover_c3_u2_d2.mat",
+    "bytes": 427669362
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_1_hover_c3_u2_d3.mat",
+    "bytes": 477253277
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_2_hover_c1_u2_d1.mat",
+    "bytes": 538806091
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_2_hover_c1_u2_d2.mat",
+    "bytes": 577391979
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_2_hover_c1_u2_d3.mat",
+    "bytes": 646347446
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_2_hover_c2_u2_d1.mat",
+    "bytes": 422223203
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_2_hover_c2_u2_d2.mat",
+    "bytes": 479118896
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_2_hover_c2_u2_d3.mat",
+    "bytes": 493067854
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_2_hover_c3_u2_d1.mat",
+    "bytes": 426628499
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_2_hover_c3_u2_d2.mat",
+    "bytes": 442950846
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_2_hover_c3_u2_d3.mat",
+    "bytes": 468838791
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_3_hover_c1_u2_d1.mat",
+    "bytes": 496839590
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_3_hover_c2_u2_d1.mat",
+    "bytes": 477621419
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_3_hover_c3_u2_d1.mat",
+    "bytes": 451481453
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_4_hover_c1_u2_d1.mat",
+    "bytes": 582297708
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_4_hover_c2_u2_d1.mat",
+    "bytes": 453508183
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_4_hover_c3_u2_d1.mat",
+    "bytes": 427676537
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_5_hover_c1_u2_d1.mat",
+    "bytes": 546983786
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_5_hover_c2_u2_d1.mat",
+    "bytes": 477816052
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_5_hover_c3_u2_d1.mat",
+    "bytes": 446377547
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini5PRO_1_hover_c1_u1_d2.mat",
+    "bytes": 504382196
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini5PRO_1_hover_c1_u2_d1.mat",
+    "bytes": 473632269
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini5PRO_1_hover_c1_u2_d2.mat",
+    "bytes": 446153111
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini5PRO_1_hover_c1_u2_d3.mat",
+    "bytes": 521049806
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini5PRO_1_hover_c2_u1_d2.mat",
+    "bytes": 481743102
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini5PRO_1_hover_c2_u2_d1.mat",
+    "bytes": 452012554
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini5PRO_1_hover_c2_u2_d2.mat",
+    "bytes": 438999611
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini5PRO_1_hover_c2_u2_d3.mat",
+    "bytes": 496370295
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini5PRO_1_hover_c3_u1_d2.mat",
+    "bytes": 466860376
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini5PRO_1_hover_c3_u2_d1.mat",
+    "bytes": 445124526
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini5PRO_1_hover_c3_u2_d2.mat",
+    "bytes": 424778614
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini5PRO_1_hover_c3_u2_d3.mat",
+    "bytes": 466647067
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavic3C_1_hover_c1_u2_d2.mat",
+    "bytes": 518909035
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavic3C_1_hover_c2_u2_d2.mat",
+    "bytes": 507630633
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavic3C_1_hover_c3_u2_d2.mat",
+    "bytes": 402732609
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavic3S_1_hover_c1_u2_d2.mat",
+    "bytes": 471574139
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavic3S_1_hover_c2_u2_d2.mat",
+    "bytes": 450455735
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavic3S_1_hover_c3_u2_d2.mat",
+    "bytes": 434741711
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavic3_1_hover_c1_u2_d2.mat",
+    "bytes": 398325602
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavic3_1_hover_c2_u2_d2.mat",
+    "bytes": 405499519
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavic3_1_hover_c3_u2_d2.mat",
+    "bytes": 412900504
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavicAir2_1_hover_c1_u2_d2.mat",
+    "bytes": 429544560
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavicAir2_1_hover_c2_u2_d2.mat",
+    "bytes": 429320878
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavicAir2_1_hover_c3_u2_d2.mat",
+    "bytes": 437145516
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavicAir2_2_hover_c1_u2_d2.mat",
+    "bytes": 455313244
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavicAir2_2_hover_c2_u2_d2.mat",
+    "bytes": 415824512
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavicAir2_2_hover_c3_u2_d2.mat",
+    "bytes": 411139831
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavicAir2_3_hover_c1_u2_d2.mat",
+    "bytes": 416298406
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavicAir2_3_hover_c2_u2_d2.mat",
+    "bytes": 429885527
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavicAir2_3_hover_c3_u2_d2.mat",
+    "bytes": 417726414
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavicAir2s_1_hover_c1_u2_d2.mat",
+    "bytes": 402453164
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavicAir2s_1_hover_c2_u2_d2.mat",
+    "bytes": 393924130
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavicAir2s_1_hover_c3_u2_d2.mat",
+    "bytes": 393432883
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavicAir2s_2_hover_c1_u2_d2.mat",
+    "bytes": 580142712
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavicAir2s_2_hover_c2_u2_d2.mat",
+    "bytes": 394175803
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavicAir2s_2_hover_c3_u2_d2.mat",
+    "bytes": 392351395
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavicAir2s_3_hover_c1_u2_d2.mat",
+    "bytes": 407239769
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavicAir2s_3_hover_c2_u2_d2.mat",
+    "bytes": 411531082
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavicAir2s_3_hover_c3_u2_d2.mat",
+    "bytes": 404205177
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mini3pro_1_hover_c1_u2_d2.mat",
+    "bytes": 396638242
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mini3pro_1_hover_c2_u2_d2.mat",
+    "bytes": 400919150
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mini3pro_1_hover_c3_u2_d2.mat",
+    "bytes": 464436941
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mini4PRO_1_hover_c1_u2_d2.mat",
+    "bytes": 401353584
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mini4PRO_1_hover_c2_u2_d2.mat",
+    "bytes": 401383868
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mini4PRO_1_hover_c3_u2_d2.mat",
+    "bytes": 404613260
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mini4PRO_2_hover_c1_u2_d2.mat",
+    "bytes": 467083652
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mini4PRO_2_hover_c2_u2_d2.mat",
+    "bytes": 436676394
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mini4PRO_2_hover_c3_u2_d2.mat",
+    "bytes": 407069689
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mini5PRO_1_hover_c1_u2_d2.mat",
+    "bytes": 465954864
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mini5PRO_1_hover_c2_u2_d2.mat",
+    "bytes": 429749981
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mini5PRO_1_hover_c3_u2_d2.mat",
+    "bytes": 451366906
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/dataset7-environment/indoor_environment.mat",
+    "bytes": 510786297
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/dataset7-environment/outdoor_environment.mat",
+    "bytes": 401454452
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/dual_frequency_5.745&2.755/mavic3C_1_hover_c1_u2_d2.mat",
+    "bytes": 614871145
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/dual_frequency_5.745&2.755/mavic3S_1_hover_c1_u2_d2.mat",
+    "bytes": 546271032
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/dual_frequency_5.745&2.755/mavic3_1_hover_c1_u2_d2.mat",
+    "bytes": 628739225
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/dual_frequency_5.745&2.755/mavicAir2_1_hover_c1_u2_d2.mat",
+    "bytes": 488233530
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/dual_frequency_5.745&2.755/mavicAir2_2_hover_c1_u2_d2.mat",
+    "bytes": 830975627
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/dual_frequency_5.745&2.755/mavicAir2_3_hover_c1_u2_d2.mat",
+    "bytes": 824910322
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/dual_frequency_5.745&2.755/mavicAir2s_1_hover_c1_u2_d2.mat",
+    "bytes": 457639416
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/dual_frequency_5.745&2.755/mavicAir2s_2_hover_c1_u2_d2.mat",
+    "bytes": 440643894
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/dual_frequency_5.745&2.755/mavicAir2s_3_hover_c1_u2_d2.mat",
+    "bytes": 470177056
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/dual_frequency_5.745&2.755/mini3pro_1_hover_c1_u2_d2.mat",
+    "bytes": 412528405
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/dual_frequency_5.745&2.755/mini4PRO_1_hover_c1_u2_d2.mat",
+    "bytes": 441146616
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/dual_frequency_5.745&2.755/mini4PRO_2_hover_c1_u2_d2.mat",
+    "bytes": 410773596
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/dual_frequency_5.745&2.755/mini5PRO_1_hover_c1_u2_d2.mat",
+    "bytes": 469253039
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/sigal_frequency_5.745/mavic3C_1_hover_c1_u2_d2.mat",
+    "bytes": 602788947
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/sigal_frequency_5.745/mavic3S_1_hover_c1_u2_d2.mat",
+    "bytes": 598840507
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/sigal_frequency_5.745/mavic3_1_hover_c1_u2_d2.mat",
+    "bytes": 617073713
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/sigal_frequency_5.745/mavicAir2_1_hover_c1_u2_d2.mat",
+    "bytes": 736265833
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/sigal_frequency_5.745/mavicAir2_2_hover_c1_u2_d2.mat",
+    "bytes": 825918002
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/sigal_frequency_5.745/mavicAir2_3_hover_c1_u2_d2.mat",
+    "bytes": 856151736
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/sigal_frequency_5.745/mavicAir2s_1_hover_c1_u2_d2.mat",
+    "bytes": 620544748
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/sigal_frequency_5.745/mavicAir2s_2_hover_c1_u2_d2.mat",
+    "bytes": 617791886
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/sigal_frequency_5.745/mavicAir2s_3_hover_c1_u2_d2.mat",
+    "bytes": 651128552
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/sigal_frequency_5.745/mini3pro_1_hover_c1_u2_d2.mat",
+    "bytes": 458350133
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/sigal_frequency_5.745/mini4PRO_1_hover_c1_u2_d2.mat",
+    "bytes": 516431756
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/sigal_frequency_5.745/mini4PRO_2_hover_c1_u2_d2.mat",
+    "bytes": 505147045
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset5-single_drone_inside_absorbent_cotton/sigal_frequency_5.745/mini5PRO_1_hover_c1_u2_d2.mat",
+    "bytes": 543372744
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavic3C_1_c1.mat",
+    "bytes": 704462655
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavic3C_1_c2.mat",
+    "bytes": 730137962
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavic3C_1_c4.mat",
+    "bytes": 691003951
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavic3C_1_c6.mat",
+    "bytes": 737549386
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavic3S_1_c1.mat",
+    "bytes": 783385657
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavic3S_1_c2.mat",
+    "bytes": 705041051
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavic3S_1_c4.mat",
+    "bytes": 738234940
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavic3S_1_c6.mat",
+    "bytes": 701628137
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavic3_1_c1.mat",
+    "bytes": 782053315
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavic3_1_c2.mat",
+    "bytes": 649351112
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavic3_1_c4.mat",
+    "bytes": 721128165
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavic3_1_c6.mat",
+    "bytes": 686718377
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2_1_c1.mat",
+    "bytes": 731959685
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2_1_c2.mat",
+    "bytes": 691923537
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2_1_c4.mat",
+    "bytes": 748436073
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2_1_c6.mat",
+    "bytes": 689939210
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2_2_c1.mat",
+    "bytes": 727679524
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2_2_c2.mat",
+    "bytes": 646435580
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2_2_c4.mat",
+    "bytes": 726966827
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2_2_c6.mat",
+    "bytes": 663910356
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2_3_c1.mat",
+    "bytes": 807616323
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2_3_c2.mat",
+    "bytes": 674094439
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2_3_c4.mat",
+    "bytes": 742755809
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2_3_c6.mat",
+    "bytes": 688215273
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2_4_c1.mat",
+    "bytes": 820871704
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2_4_c2.mat",
+    "bytes": 749365394
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2_4_c4.mat",
+    "bytes": 747449372
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2_4_c6.mat",
+    "bytes": 728326245
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2s_1_c1.mat",
+    "bytes": 779259366
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2s_1_c2.mat",
+    "bytes": 721184313
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2s_1_c4.mat",
+    "bytes": 759483139
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2s_1_c6.mat",
+    "bytes": 674693355
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2s_2_c1.mat",
+    "bytes": 737229889
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2s_2_c2.mat",
+    "bytes": 726544207
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2s_2_c4.mat",
+    "bytes": 746558729
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2s_2_c6.mat",
+    "bytes": 704871418
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2s_3_c1.mat",
+    "bytes": 765263129
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2s_3_c2.mat",
+    "bytes": 707102639
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2s_3_c4.mat",
+    "bytes": 720732742
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2s_3_c6.mat",
+    "bytes": 726487683
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2s_4_c1.mat",
+    "bytes": 718738753
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2s_4_c2.mat",
+    "bytes": 679493325
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2s_4_c4.mat",
+    "bytes": 702159583
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2s_4_c6.mat",
+    "bytes": 714657804
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini3pro_1_c1.mat",
+    "bytes": 690812315
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini3pro_1_c2.mat",
+    "bytes": 672194624
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini3pro_1_c4.mat",
+    "bytes": 656468736
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini3pro_1_c6.mat",
+    "bytes": 650878718
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini3pro_2_c1.mat",
+    "bytes": 661814289
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini3pro_2_c2.mat",
+    "bytes": 601430171
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini3pro_2_c4.mat",
+    "bytes": 694894833
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini3pro_2_c6.mat",
+    "bytes": 622889167
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini4PRO_1_c1.mat",
+    "bytes": 719422751
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini4PRO_1_c2.mat",
+    "bytes": 691769977
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini4PRO_1_c4.mat",
+    "bytes": 782630118
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini4PRO_1_c6.mat",
+    "bytes": 712046709
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini4PRO_2_c1.mat",
+    "bytes": 773155921
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini4PRO_2_c2.mat",
+    "bytes": 696697080
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini4PRO_2_c4.mat",
+    "bytes": 767662869
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini4PRO_2_c6.mat",
+    "bytes": 721481048
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini4PRO_3_c1.mat",
+    "bytes": 551504383
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini4PRO_3_c2.mat",
+    "bytes": 562446752
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini4PRO_3_c4.mat",
+    "bytes": 557986669
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini4PRO_3_c6.mat",
+    "bytes": 560408464
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini4PRO_4_c1.mat",
+    "bytes": 704142767
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini4PRO_4_c2.mat",
+    "bytes": 663723183
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini4PRO_4_c4.mat",
+    "bytes": 693652677
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini4PRO_4_c6.mat",
+    "bytes": 672154033
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini5PRO_1_c1.mat",
+    "bytes": 651323281
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini5PRO_1_c2.mat",
+    "bytes": 614634489
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini5PRO_1_c4.mat",
+    "bytes": 624538395
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini5PRO_1_c6.mat",
+    "bytes": 624876023
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset7-environment/indoor_environment.mat",
+    "bytes": 510786297
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset7-environment/outdoor_environment.mat",
+    "bytes": 401454452
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/FPV_Analog_Video/chunk1.zip",
+    "bytes": 3250275694
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/FPV_Analog_Video/chunk10.zip",
+    "bytes": 994844043
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/FPV_Analog_Video/chunk2.zip",
+    "bytes": 3263215328
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/FPV_Analog_Video/chunk3.zip",
+    "bytes": 3268314700
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/FPV_Analog_Video/chunk4.zip",
+    "bytes": 3349749849
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/FPV_Analog_Video/chunk5.zip",
+    "bytes": 3325871542
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/FPV_Analog_Video/chunk6.zip",
+    "bytes": 3366122855
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/FPV_Analog_Video/chunk7.zip",
+    "bytes": 2684272111
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/FPV_Analog_Video/chunk8.zip",
+    "bytes": 1654613517
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/FPV_Analog_Video/chunk9.zip",
+    "bytes": 1635713423
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/Frysky.zip",
+    "bytes": 1707367398
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/MavicRC1.zip",
+    "bytes": 3704871299
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/MavicRC2.zip",
+    "bytes": 4081485570
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/MavicVid1.zip",
+    "bytes": 5000491830
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/MavicVid2.zip",
+    "bytes": 5354223933
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/NineEagles.zip",
+    "bytes": 1491713902
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/Q205.zip",
+    "bytes": 1531075910
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/SJRC_pro.zip",
+    "bytes": 1444331879
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/Spektrum_DX4e.zip",
+    "bytes": 2026208466
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/inspire2RC.zip",
+    "bytes": 2229675553
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/inspire2Vid.zip",
+    "bytes": 5316321318
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/matriceRC.zip",
+    "bytes": 2083914364
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/matricevid.zip",
+    "bytes": 2807063609
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/mini2RC.zip",
+    "bytes": 2078132999
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/mini2vid.zip",
+    "bytes": 4326090329
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/wltoys.zip",
+    "bytes": 1513957160
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DAUTEL EVO NANO.rar",
+    "bytes": 3365041319
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DEVENTION DEVO.rar",
+    "bytes": 1533575359
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI AVATA2.rar",
+    "bytes": 11409316020
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI FPV COMBO.rar",
+    "bytes": 14998447951
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI MAVIC3 PRO.rar",
+    "bytes": 5159757084
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI MINI3.rar",
+    "bytes": 6484836469
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI MINI4 PRO.rar",
+    "bytes": 4945879172
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/FLYSKY EL 18.rar",
+    "bytes": 1844761951
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/FLYSKY FS I6X.rar",
+    "bytes": 1570515514
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/FLYSKY NV 14.rar",
+    "bytes": 1638149540
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/FRSKY X14.rar",
+    "bytes": 2077960978
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/FRSKY X20R.rar",
+    "bytes": 2114468194
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/FRSKY X9DP2019.rar",
+    "bytes": 2093868123
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/FUTABA T10J.rar",
+    "bytes": 1667532867
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/FUTABA T14SG.rar",
+    "bytes": 2652247245
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/FUTABA T16IZ.rar",
+    "bytes": 1768232721
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/FUTABA T18SZ.rar",
+    "bytes": 1836666748
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/Herelink Hx4.rar",
+    "bytes": 2257795602
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/JR PROPO XG14.rar",
+    "bytes": 2076272358
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/JR PROPO XG7.rar",
+    "bytes": 1978144584
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/JUMPER T14.rar",
+    "bytes": 2013127064
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/JUMPER TProV2.rar",
+    "bytes": 1939207275
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/RadioMaster BOXER.rar",
+    "bytes": 2711906589
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/RadioMaster TX16S.rar",
+    "bytes": 2130292472
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/Radiolink AT10 II.rar",
+    "bytes": 2023097802
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/Radiolink AT9S Pro.rar",
+    "bytes": 2152712010
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/SIYI FT24.rar",
+    "bytes": 1798948769
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/SIYI MK15.rar",
+    "bytes": 2997519110
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/SIYI MK32.rar",
+    "bytes": 1883051535
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/SKYDROID H12.rar",
+    "bytes": 2175153488
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/SKYDROID T10.rar",
+    "bytes": 2331164701
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/WFLY ET10.rar",
+    "bytes": 2478681312
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/WFLY ET16S.rar",
+    "bytes": 2535636967
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/WFLY WFT09SII.rar",
+    "bytes": 2689452650
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/YUNZHUO H12.rar",
+    "bytes": 1359595895
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/YUNZHUO H16.rar",
+    "bytes": 1215588647
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/RFUAV/YUNZHUO H30.rar",
+    "bytes": 1288399478
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_inspire_2_2G.bin",
+    "bytes": 480000000
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_inspire_2_5G_1of2.bin",
+    "bytes": 400000000
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_inspire_2_5G_2of2.bin",
+    "bytes": 400000000
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_matrice_100_2G.bin",
+    "bytes": 480000000
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_matrice_210_2G.bin",
+    "bytes": 480000000
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_matrice_210_5G_1of2.bin",
+    "bytes": 400000000
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_matrice_210_5G_2of2.bin",
+    "bytes": 400000000
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_mavic_mini_2G.bin",
+    "bytes": 480000000
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_mavic_pro_2G.bin",
+    "bytes": 480000000
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_phantom_4_2G.bin",
+    "bytes": 480000000
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_phantom_4_pro_plus_2G.bin",
+    "bytes": 480000000
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_phantom_4_pro_plus_5G_1of2.bin",
+    "bytes": 400000000
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_phantom_4_pro_plus_5G_2of2.bin",
+    "bytes": 400000000
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/Parrot_disco_2G.bin",
+    "bytes": 480000000
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/Parrot_mambo_control_2G.bin",
+    "bytes": 480000000
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/Parrot_mambo_video_2G.bin",
+    "bytes": 480000000
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/Yuneec_typhoon_h_2G_1of2.bin",
+    "bytes": 480000000
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/Yuneec_typhoon_h_2G_2of2.bin",
+    "bytes": 480000000
+  },
+  {
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/Yuneec_typhoon_h_5G.bin",
+    "bytes": 400000000
+  }
+]

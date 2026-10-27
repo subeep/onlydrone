@@ -1,0 +1,37 @@
+[
+  {
+    "candidate": 0,
+    "shift_hz": -5570312.5,
+    "returncode": 0,
+    "log": "candidate_000_-1000000.log",
+    "crc_valid": 0
+  },
+  {
+    "candidate": 0,
+    "shift_hz": -5070312.5,
+    "returncode": 0,
+    "log": "candidate_000_-500000.log",
+    "crc_valid": 1
+  },
+  {
+    "candidate": 0,
+    "shift_hz": -4570312.5,
+    "returncode": 0,
+    "log": "candidate_000_0.log",
+    "crc_valid": 1
+  },
+  {
+    "candidate": 0,
+    "shift_hz": -4070312.5,
+    "returncode": 0,
+    "log": "candidate_000_500000.log",
+    "crc_valid": 1
+  },
+  {
+    "candidate": 0,
+    "shift_hz": -3570312.5,
+    "returncode": 0,
+    "log": "candidate_000_1000000.log",
+    "crc_valid": 0
+  }
+]

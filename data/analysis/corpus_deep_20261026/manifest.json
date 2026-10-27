@@ -1,0 +1,437 @@
+[
+  {
+    "dataset": "DroneRFa",
+    "model": "mavic3C",
+    "family": "O3+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3C_1_hover_c1_u1_d2.mat",
+    "id": "000-19869eac30",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mavic3S",
+    "family": "unverified/other",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3S_1_hover_c1_u1_d2.mat",
+    "id": "001-b5005e668b",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mavic3",
+    "family": "O3+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3_1_hover_c1_u1_d2.mat",
+    "id": "002-995552cb67",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mavicAir2",
+    "family": "O2",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_1_hover_c1_u1_d2.mat",
+    "id": "003-bd11bb7db6",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mavicAir2s",
+    "family": "O3",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_1_hover_c1_u1_d2.mat",
+    "id": "004-5818baaf25",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mini3pro",
+    "family": "O3",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini3pro_1_hover_c1_u2_d1.mat",
+    "id": "005-773f5cbbe7",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mini4PRO",
+    "family": "O4",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_1_hover_c1_u1_d2.mat",
+    "id": "006-b6a089cc05",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "DroneRFa",
+    "model": "mini5PRO",
+    "family": "O4+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini5PRO_1_hover_c1_u1_d2.mat",
+    "id": "007-ee3601e8d6",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "RFUAV",
+    "model": "DJI AVATA2",
+    "family": "O4",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI AVATA2.rar",
+    "id": "008-b0e0cd552f",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "RFUAV",
+    "model": "DJI FPV COMBO",
+    "family": "unverified/other",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI FPV COMBO.rar",
+    "id": "009-59669911f3",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "RFUAV",
+    "model": "DJI MAVIC3 PRO",
+    "family": "O3+",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI MAVIC3 PRO.rar",
+    "id": "010-6b166822bb",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "RFUAV",
+    "model": "DJI MINI3",
+    "family": "O2",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI MINI3.rar",
+    "id": "011-351f3c57bc",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "RFUAV",
+    "model": "DJI MINI4 PRO",
+    "family": "O4",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI MINI4 PRO.rar",
+    "id": "012-ad37063f67",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "RFUAV",
+    "model": "FRSKY X14",
+    "family": "non-DJI",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/FRSKY X14.rar",
+    "id": "013-818f1cb0e6",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "RFUAV",
+    "model": "FUTABA T18SZ",
+    "family": "non-DJI",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/FUTABA T18SZ.rar",
+    "id": "014-cfb541ed1f",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "RFUAV",
+    "model": "Herelink Hx4",
+    "family": "non-DJI",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/Herelink Hx4.rar",
+    "id": "015-fccfb1f511",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "Frysky",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/Frysky.zip",
+    "id": "016-53e597c9c0",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "MavicRC1",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/MavicRC1.zip",
+    "id": "017-e06cc19786",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "MavicVid1",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/MavicVid1.zip",
+    "id": "018-948a7ab1cb",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "NineEagles",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/NineEagles.zip",
+    "id": "019-a665e67551",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "Q205",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/Q205.zip",
+    "id": "020-61f0135eaa",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "SJRC_pro",
+    "family": "non-DJI",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/SJRC_pro.zip",
+    "id": "021-3960a9089a",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "Spektrum_DX4e",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/Spektrum_DX4e.zip",
+    "id": "022-1923dda10d",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "inspire2RC",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/inspire2RC.zip",
+    "id": "023-6654492ecb",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "inspire2Vid",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/inspire2Vid.zip",
+    "id": "024-b3781a8622",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "matriceRC",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/matriceRC.zip",
+    "id": "025-0fec8637dd",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "matricevid",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/matricevid.zip",
+    "id": "026-8d35080888",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "mini2RC",
+    "family": "O2",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/mini2RC.zip",
+    "id": "027-94648086a2",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "mini2vid",
+    "family": "O2",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/mini2vid.zip",
+    "id": "028-4cf991393b",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "KULeuven",
+    "model": "wltoys",
+    "family": "unverified/other",
+    "kind": "zip_hdf",
+    "path": "/media/sudeep/Storage/datasets/KULeuven_DroneRF/wltoys.zip",
+    "id": "029-e70eb1e733",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_inspire_2_2G",
+    "family": "unverified/other",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_inspire_2_2G.bin",
+    "id": "030-200a7274b3",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_inspire_2_5G_1of2",
+    "family": "unverified/other",
+    "kind": "sc16",
+    "rate": 200000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_inspire_2_5G_1of2.bin",
+    "id": "031-5714789d8a",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_matrice_100_2G",
+    "family": "unverified/other",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_matrice_100_2G.bin",
+    "id": "032-b1a4c6b19d",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_matrice_210_2G",
+    "family": "unverified/other",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_matrice_210_2G.bin",
+    "id": "033-5d62f774d9",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_matrice_210_5G_1of2",
+    "family": "unverified/other",
+    "kind": "sc16",
+    "rate": 200000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_matrice_210_5G_1of2.bin",
+    "id": "034-6a1d7f257e",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_mavic_mini_2G",
+    "family": "O2",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_mavic_mini_2G.bin",
+    "id": "035-6c66fa47a2",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_mavic_pro_2G",
+    "family": "O1",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_mavic_pro_2G.bin",
+    "id": "036-5fbd4f6213",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_phantom_4_2G",
+    "family": "unverified/other",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_phantom_4_2G.bin",
+    "id": "037-e9d00920cd",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_phantom_4_pro_plus_2G",
+    "family": "unverified/other",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_phantom_4_pro_plus_2G.bin",
+    "id": "038-133ffc88a0",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "Tampere",
+    "model": "DJI_phantom_4_pro_plus_5G_1of2",
+    "family": "unverified/other",
+    "kind": "sc16",
+    "rate": 200000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/DJI_phantom_4_pro_plus_5G_1of2.bin",
+    "id": "039-04147edd96",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "Tampere",
+    "model": "Parrot_disco_2G",
+    "family": "non-DJI",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/Parrot_disco_2G.bin",
+    "id": "040-36b87ad385",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "Tampere",
+    "model": "Parrot_mambo_control_2G",
+    "family": "non-DJI",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/Parrot_mambo_control_2G.bin",
+    "id": "041-d4b0f579b1",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "Tampere",
+    "model": "Parrot_mambo_video_2G",
+    "family": "non-DJI",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/Parrot_mambo_video_2G.bin",
+    "id": "042-283230770a",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "Tampere",
+    "model": "Yuneec_typhoon_h_2G_1of2",
+    "family": "non-DJI",
+    "kind": "sc16",
+    "rate": 120000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/Yuneec_typhoon_h_2G_1of2.bin",
+    "id": "043-000f90fdaa",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  },
+  {
+    "dataset": "Tampere",
+    "model": "Yuneec_typhoon_h_5G",
+    "family": "non-DJI",
+    "kind": "sc16",
+    "rate": 200000000.0,
+    "center": null,
+    "path": "/media/sudeep/Storage/datasets/Tampere_DroneRF/Yuneec_typhoon_h_5G.bin",
+    "id": "044-cd80e94237",
+    "family_provenance": "dataset model label + docs/MODEL_FAMILIES.md; not a PHY identification"
+  }
+]

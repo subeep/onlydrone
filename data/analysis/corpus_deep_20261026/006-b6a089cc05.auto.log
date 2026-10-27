@@ -1,0 +1,11 @@
+burst 0: idx=15416868 corr=0.604 cfo=255562 Hz crc=fail
+burst 1: idx=15424004 corr=0.570 cfo=311922 Hz crc=fail
+burst 2: idx=34416829 corr=0.607 cfo=285753 Hz crc=fail
+burst 3: idx=34423965 corr=0.575 cfo=-62543 Hz crc=fail
+burst 4: idx=48416803 corr=0.599 cfo=225678 Hz crc=fail
+burst 5: idx=48423939 corr=0.578 cfo=12030 Hz crc=fail
+burst 6: idx=63416771 corr=0.594 cfo=312488 Hz crc=fail
+burst 7: idx=63423906 corr=0.566 cfo=-513422 Hz crc=fail
+== 8 burst candidate(s), 0 CRC-valid ==
+23:43:50 [INFO ] decoding /tmp/corpus-405nuo84/clip.cf32 (0.0 s, thresh 0.30, freq_offset 0 Hz, lpf on)
+23:43:50 [INFO ] decoder input 100.000 MSPS -> 15.360 MSPS, shift +854492 Hz (auto)

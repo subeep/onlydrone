@@ -1,0 +1,14 @@
+{
+  "o4_labeled_windows": 3,
+  "non_o4_labeled_windows": 20,
+  "o4_plus_windows_excluded": 1,
+  "activity_true_positive": 3,
+  "activity_false_negative": 0,
+  "activity_false_positive": 20,
+  "activity_true_negative": 0,
+  "activity_recall": 1.0,
+  "activity_false_positive_rate": 1.0,
+  "activity_precision": 0.13043478260869565,
+  "o4_classifier_accuracy": null,
+  "reason": "No O4 classifier: all identities abstain. RF activity is not O4 detection."
+}

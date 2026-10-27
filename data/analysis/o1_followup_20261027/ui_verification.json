@@ -1,0 +1,12 @@
+[
+  {
+    "id": "mavic_pro",
+    "model": "DJI_mavic_pro_2G",
+    "sha256_matches": true,
+    "cli_packets": 1,
+    "ui_packets": 1,
+    "passed": true,
+    "telemetry_parsed": 1,
+    "telemetry_unsupported": 0
+  }
+]

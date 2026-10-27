@@ -1,0 +1,5 @@
+burst 0: idx=17088359 corr=0.373 cfo=118163 Hz crc=fail
+burst 1: idx=81088379 corr=0.361 cfo=121699 Hz crc=fail
+== 2 burst candidate(s), 0 CRC-valid ==
+23:45:41 [INFO ] decoding /tmp/corpus-i8mgf8ff/clip.cf32 (0.0 s, thresh 0.30, freq_offset 0 Hz, lpf on)
+23:45:41 [INFO ] decoder input 100.000 MSPS -> 15.360 MSPS, shift -402832 Hz (auto)

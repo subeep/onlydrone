@@ -12,7 +12,11 @@ video link. See [`DRONEID_BUILD_PLAN.md`](DRONEID_BUILD_PLAN.md) for the full de
 **Phase 2 — offline decoder.** UHD capture, ZC detection, OFDM demodulation,
 turbo decoding and CRC-24 validation are implemented. The saved, centered Mini 2
 reference capture now yields **10/10 CRC-valid detected bursts**. A short real-IQ
-fixture is included in the tests. Live decoding and the UI are still pending.
+fixture is included in the tests. Headless phase 4–6 tools now provide timed dwell
+reception, streaming RF metrics and paired-channel calibration/bearing workflows.
+The native UI and offline backend are verified; live hardware acceptance and O4 identification
+remain pending. See [`docs/PHASE456.md`](docs/PHASE456.md) for commands and limits, and
+[`docs/VALIDATION_20261026.md`](docs/VALIDATION_20261026.md) for local corpus results.
 
 ## Build
 
@@ -24,8 +28,31 @@ ctest --test-dir build --output-on-failure
 
 Core tools need CMake and a C++17 compiler. The decoder requires `pkg-config` and
 FFTW3f; the bundled turbo decoder requires x86 SSE. Enable
-`-DDRONEID_WITH_UHD=ON` for radio capture (UHD and Boost required). UI, SQLite and
-GoogleTest switches are placeholders; tests currently use the bundled harness.
+`-DDRONEID_WITH_UHD=ON` for radio capture (UHD and Boost required). Enable
+`-DDRONEID_WITH_UI=ON` for the native operator UI (Dear ImGui + GLFW/OpenGL3; needs
+GLFW and OpenGL). SQLite and GoogleTest switches are placeholders; tests use the bundled harness.
+
+## Operator UI (`droneid_ui`)
+
+Native Dear ImGui app (`-DDRONEID_WITH_UI=ON`): source/USRP bar (Connect/Disconnect/Reconnect
+drive the source), drones table, decoded-packets log, and a direction compass. It reads the
+decoder backend only; the render thread draws from a thread-safe snapshot while a worker thread
+decodes. See [`docs/GUI.md`](docs/GUI.md).
+
+```bash
+cmake -S . -B build -G Ninja -DDRONEID_WITH_UI=ON -DDRONEID_WITH_UHD=ON && cmake --build build
+# replay source (offline, no radio):
+./build/droneid_ui --replay tests/data/mini2_centered.sc16 --format sc16 --rate 15360000
+# live radio source (Connect drives UsrpSource; needs the UHD build):
+./build/droneid_ui --device addr=192.168.10.2 --freq 2459500000 --gain 30
+```
+
+Connect/Disconnect/Reconnect start/stop/restart the chosen source. The live streaming-decode loop is
+wired to `UsrpSource` with separate RX/DSP threads and visible gap/drop counters; the revised path
+still needs hardware acceptance. The operator deferred live tests because no radio/drone is available.
+The drones panel shows aggregate "unknown RF" activity, not O4 identity or a drone count.
+CRC-valid unsupported payloads are logged without invented telemetry. GUI `--df --df-cal FILE`
+currently fails closed: same-session LO calibration must be integrated before showing bearings.
 
 ## Try it (no radio)
 
@@ -36,12 +63,25 @@ GoogleTest switches are placeholders; tests currently use the bundled harness.
 ./build/droneid_decode tests/data/mini2_centered.sc16 --rate 15360000 --format sc16
 ```
 
-The decoder expects a centered signal at an OFDM-compatible sample rate, normally
-15.36 MSPS. It resolves residual integer-carrier offsets within ±240 kHz of the CP
-estimate by jointly matching both ZC symbols. Automatic wideband centering and
-50-MSPS resampling remain pending. `--freq-offset` performs an explicit frequency
-shift before detection. Telemetry field boundaries and phone coordinates are
+The decoder runs its OFDM chain at 15.36 MSPS. Input rates from 10 to 250 MSPS are converted with a streaming
+anti-alias FIR resampler; 50 MSPS real data and 61.44/92.16 MSPS synthetic data are tested.
+It searches residual integer-carrier offsets within ±960 kHz of the CP estimate by
+jointly matching both ZC symbols. `--freq-offset` shifts a known channel before
+resampling. `--auto-center` instead selects the strongest 10 MHz band in the first
+1,048,576 input samples and holds that choice for the file. This is useful for an
+isolated reference signal; it does not distinguish DroneID from stronger interference
+or follow hopping signals. Telemetry field boundaries and phone coordinates are
 checked against the reference; altitude, speed and yaw units still need flight validation.
+
+```bash
+./build/droneid_decode data/reference/mini2_sm.cf32 --format cf32 --rate 50000000 --auto-center --secs 0
+```
+
+See `data/reference/README.md` for the pinned public sample and checksum.
+`--secs 0` reads the whole file; positive durations use the input rate, including
+sidecar overrides. Reported sample indices are in original input-sample units;
+reported CFO is the residual after the chosen frequency shift. `--scan` is a
+diagnostic over at most the first 1,048,576 input samples.
 
 ## Host setup for live capture (Phase 1+)
 

@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "droneid/dji.h"
+#include "droneid/file_source.h"
 #include "droneid/test/microtest.h"
 
 using namespace droneid;
@@ -80,7 +81,7 @@ TEST(DjiEndToEnd, IntegerCarrierOffset) {
   for (size_t bit = 0; bit < bits.size(); ++bit) bits[bit] ^= scrambler[bit];
   const auto burst = dji::synthesize_burst(bits, 15.36e6);
 
-  for (double offset : {-57470.0, 62530.0}) {
+  for (double offset : {-485940.0, -57470.0, 62530.0, 485940.0}) {
     for (bool low_pass : {false, true}) {
       std::vector<cf32> stream(4096, cf32(0, 0));
       for (size_t sample = 0; sample < burst.size(); ++sample) {
@@ -98,6 +99,7 @@ TEST(DjiEndToEnd, IntegerCarrierOffset) {
           EXPECT_NEAR(result.cfo_hz, offset, 100.0);
         }
       }
+      if (!found) std::fprintf(stderr, "offset %.0f Hz, low_pass %d: no matching payload\n", offset, low_pass);
       EXPECT_TRUE(found);
     }
   }
@@ -184,6 +186,95 @@ TEST(DjiFrame, RejectsTruncatedAndUnsupportedRecords) {
   payload[2] = 2;
   payload[7] = 1;
   EXPECT_FALSE(dji::parse_frame(payload, telemetry));
+}
+
+TEST(DjiEndToEnd, RawWidebandMini2) {
+  const std::string directory = DRONEID_TEST_DATA_DIR;
+  const auto expected = dji::decode_file(directory + "/mini2_centered.sc16", SampleFormat::sc16, {});
+  EXPECT_EQ(expected.size(), size_t(1));
+  if (expected.size() != 1) return;
+  const std::string path = directory + "/mini2_wideband.cf32";
+  FileSource source(path, SampleFormat::cf32, 50e6);
+  std::vector<cf32> samples(60000);
+  int64_t timestamp = 0;
+  samples.resize(source.recv(samples.data(), samples.size(), timestamp));
+  for (bool automatic : {false, true}) {
+    dji::DecodeOptions options;
+    options.sample_rate = 50e6;
+    options.auto_center = automatic;
+    options.freq_offset = automatic ? 0 : -9.6e6;
+    const auto decoded_file = dji::decode_file(path, SampleFormat::cf32, options);
+    const auto decoded_memory = dji::decode_samples(samples, options);
+    EXPECT_EQ(decoded_file.size(), size_t(1));
+    EXPECT_EQ(decoded_memory.size(), size_t(1));
+    if (decoded_file.size() != 1 || decoded_memory.size() != 1) continue;
+    EXPECT_TRUE(decoded_file[0].crc_ok);
+    EXPECT_TRUE(decoded_file[0].payload == expected[0].payload);
+    EXPECT_TRUE(decoded_memory[0].payload == expected[0].payload);
+    EXPECT_EQ(decoded_memory[0].sample_index, decoded_file[0].sample_index);
+    EXPECT_NEAR(decoded_file[0].sample_index, 7760, 150);
+    options.max_samples = 5000;
+    EXPECT_TRUE(dji::decode_file(path, SampleFormat::cf32, options).empty());
+    EXPECT_TRUE(dji::decode_samples(samples, options).empty());
+  }
+}
+
+TEST(DjiEndToEnd, NativeWidebandSynthetic) {
+  const auto frame = dji::build_frame176(std::vector<uint8_t>(91, 0x53));
+  std::vector<uint8_t> bits;
+  EXPECT_TRUE(dji::turbo_encode_frame(frame, bits));
+  const auto scrambler = dji::generate_scrambler_seq(7200, dji::scrambler_x2_init());
+  for (size_t bit = 0; bit < bits.size(); ++bit) bits[bit] ^= scrambler[bit];
+  for (double rate : {61.44e6, 92.16e6}) {
+    const auto burst = dji::synthesize_burst(bits, rate);
+    std::vector<cf32> samples(16384, cf32(0, 0));
+    samples.insert(samples.end(), burst.begin(), burst.end());
+    samples.resize(samples.size() + 16384);
+    for (size_t sample = 0; sample < samples.size(); ++sample)
+      samples[sample] *= std::polar(1.0f, static_cast<float>(2 * std::acos(-1.0) * 12e6 * sample / rate));
+    dji::DecodeOptions options;
+    options.sample_rate = rate;
+    options.freq_offset = -12e6;
+    const auto decoded = dji::decode_samples(samples, options);
+    EXPECT_EQ(decoded.size(), size_t(1));
+    if (decoded.size() != 1) continue;
+    EXPECT_TRUE(decoded[0].crc_ok);
+    EXPECT_TRUE(decoded[0].payload == frame);
+    EXPECT_NEAR(decoded[0].sample_index, 16384 - 64 * rate / 15.36e6, 10);
+  }
+}
+
+TEST(DjiFile, WidebandStreamingMatchesMemory) {
+  FileSource source(std::string(DRONEID_TEST_DATA_DIR) + "/mini2_wideband.cf32", SampleFormat::cf32, 50e6);
+  std::vector<cf32> capture(60000);
+  int64_t timestamp = 0;
+  capture.resize(source.recv(capture.data(), capture.size(), timestamp));
+  std::vector<cf32> input(230000, cf32(0, 0));
+  for (size_t offset : {size_t(65500), size_t(150007)})
+    std::copy(capture.begin(), capture.end(), input.begin() + offset);
+  const auto path = (std::filesystem::temp_directory_path() / "droneid_test_wideband.cf32").string();
+  std::FILE* output = std::fopen(path.c_str(), "wb");
+  EXPECT_TRUE(output != nullptr);
+  if (!output) return;
+  EXPECT_EQ(std::fwrite(input.data(), sizeof(cf32), input.size(), output), input.size());
+  std::fclose(output);
+  for (size_t limit : {size_t(0), size_t(140000)}) {
+    dji::DecodeOptions options;
+    options.sample_rate = 50e6;
+    options.freq_offset = -9.6e6;
+    options.max_samples = limit;
+    const auto file_results = dji::decode_file(path, SampleFormat::cf32, options);
+    const auto memory_results = dji::decode_samples(input, options);
+    EXPECT_EQ(file_results.size(), limit ? size_t(1) : size_t(2));
+    EXPECT_EQ(file_results.size(), memory_results.size());
+    if (file_results.size() != memory_results.size()) continue;
+    for (size_t index = 0; index < file_results.size(); ++index) {
+      EXPECT_TRUE(file_results[index].crc_ok);
+      EXPECT_TRUE(file_results[index].payload == memory_results[index].payload);
+      EXPECT_EQ(file_results[index].sample_index, memory_results[index].sample_index);
+    }
+  }
+  std::remove(path.c_str());
 }
 
 MICROTEST_MAIN

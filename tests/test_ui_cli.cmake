@@ -1,0 +1,33 @@
+function(expect_success expected)
+  execute_process(COMMAND "${UI}" --check ${ARGN}
+    RESULT_VARIABLE result OUTPUT_VARIABLE output ERROR_VARIABLE errors TIMEOUT 30)
+  if(NOT result EQUAL 0 OR NOT output MATCHES "${expected}")
+    message(FATAL_ERROR "Unexpected UI result ${result}: ${output}\n${errors}")
+  endif()
+endfunction()
+
+function(expect_failure)
+  execute_process(COMMAND "${UI}" --check ${ARGN}
+    RESULT_VARIABLE result OUTPUT_VARIABLE output ERROR_VARIABLE errors TIMEOUT 30)
+  if(result EQUAL 0)
+    message(FATAL_ERROR "Invalid input accepted: ${ARGN}\n${output}")
+  endif()
+endfunction()
+
+expect_success("status=Disconnected packets=1 tracks=1" --replay "${FIXTURE}" --format cf32 --rate 50000000 --auto-center)
+set(metadata_fixture "${CMAKE_CURRENT_BINARY_DIR}/ui_cli_metadata.cf32")
+configure_file("${FIXTURE}" "${metadata_fixture}" COPYONLY)
+file(WRITE "${metadata_fixture}.meta" "sample_rate = 50000000\nformat = cf32\n")
+expect_success("samples=50000" --replay "${metadata_fixture}" --auto-center --secs 0.001)
+expect_success("packets=0 tracks=0" --replay "${metadata_fixture}" --auto-center --secs 0.0002)
+file(REMOVE "${metadata_fixture}" "${metadata_fixture}.meta")
+
+expect_failure()
+expect_failure(--replay /nonexistent-punjdrone-fixture)
+expect_failure(--replay "${FIXTURE}" --rate nan)
+expect_failure(--replay "${FIXTURE}" --rate 50e6junk)
+expect_failure(--replay "${FIXTURE}" --secs -1)
+expect_failure(--replay "${FIXTURE}" --secs)
+expect_failure(--replay "${FIXTURE}" --auto-center --freq-offset -9600000)
+expect_failure(--replay "${FIXTURE}" --frames 1.5)
+expect_failure(--replay "${FIXTURE}" --screenshot /tmp/unused.ppm)

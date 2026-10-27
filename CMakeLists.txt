@@ -23,6 +23,8 @@ find_package(PkgConfig)
 # --- core library (Phase 0) ---
 add_library(droneid_core
   src/core/config.cpp
+  src/core/hop.cpp
+  src/o4/aoa.cpp
   src/sdr/file_source.cpp)
 target_include_directories(droneid_core PUBLIC include)
 target_link_libraries(droneid_core PUBLIC Threads::Threads)
@@ -97,6 +99,19 @@ if(PkgConfig_FOUND)
 
     add_executable(frame_gen tools/frame_gen.cpp)
     target_link_libraries(frame_gen PRIVATE droneid_dji)
+
+    add_library(droneid_rf src/o4/rf_metrics.cpp)
+    target_include_directories(droneid_rf PUBLIC include)
+    target_link_libraries(droneid_rf PUBLIC droneid_dji)
+    add_executable(rf_analyze tools/rf_analyze.cpp)
+    target_link_libraries(rf_analyze PRIVATE droneid_rf)
+    add_executable(droneid_hop tools/droneid_hop.cpp)
+    target_link_libraries(droneid_hop PRIVATE droneid_dji)
+    if(TARGET droneid_sdr)
+      target_compile_definitions(droneid_hop PRIVATE DRONEID_HAVE_UHD=1)
+      target_link_libraries(droneid_hop PRIVATE droneid_sdr)
+      target_link_options(droneid_hop PRIVATE -Wl,--allow-shlib-undefined)
+    endif()
   endif()
 endif()
 
@@ -120,7 +135,70 @@ if(PkgConfig_FOUND)
   endif()
 endif()
 
+# --- operator UI (Phase 3) ---
+# Backend-independent model library is always built so its unit test runs in CI without a GPU.
+add_library(droneid_ui_model src/ui/ui_model.cpp)
+target_include_directories(droneid_ui_model PUBLIC src/ui)
+
+if(TARGET droneid_rf)
+  add_library(droneid_ui_worker src/ui/receiver_worker.cpp)
+  target_include_directories(droneid_ui_worker PUBLIC src/ui)
+  target_link_libraries(droneid_ui_worker PUBLIC droneid_ui_model droneid_rf Threads::Threads)
+  if(TARGET droneid_sdr)
+    target_compile_definitions(droneid_ui_worker PRIVATE DRONEID_HAVE_UHD=1)
+    target_link_libraries(droneid_ui_worker PRIVATE droneid_sdr)
+  endif()
+endif()
+
+if(DRONEID_WITH_UI)
+  if(NOT TARGET droneid_dji)
+    message(FATAL_ERROR "DRONEID_WITH_UI needs the decoder library (FFTW3f) which was not found")
+  endif()
+  find_package(OpenGL REQUIRED)
+  if(NOT PkgConfig_FOUND)
+    message(FATAL_ERROR "DRONEID_WITH_UI needs pkg-config to locate GLFW")
+  endif()
+  pkg_check_modules(GLFW REQUIRED glfw3)
+
+  # Vendored Dear ImGui (docking) + GLFW/OpenGL3 backends. Upstream code: silence its warnings.
+  add_library(imgui STATIC
+    third_party/imgui/imgui.cpp
+    third_party/imgui/imgui_draw.cpp
+    third_party/imgui/imgui_tables.cpp
+    third_party/imgui/imgui_widgets.cpp
+    third_party/imgui/backends/imgui_impl_glfw.cpp
+    third_party/imgui/backends/imgui_impl_opengl3.cpp)
+  target_include_directories(imgui PUBLIC
+    third_party/imgui third_party/imgui/backends ${GLFW_INCLUDE_DIRS})
+  target_compile_options(imgui PRIVATE -w)
+  set_target_properties(imgui PROPERTIES POSITION_INDEPENDENT_CODE ON)
+
+  add_executable(droneid_ui src/ui/app.cpp)
+  target_include_directories(droneid_ui PRIVATE src/ui ${GLFW_INCLUDE_DIRS})
+  target_link_libraries(droneid_ui PRIVATE
+    droneid_ui_worker droneid_dji imgui ${GLFW_LIBRARIES} OpenGL::GL ${CMAKE_DL_LIBS})
+  target_link_directories(droneid_ui PRIVATE ${GLFW_LIBRARY_DIRS})
+  if(TARGET droneid_rf)   # RF metrics (EnergyBurstDetector / measure_rf) for the drones panel
+    target_link_libraries(droneid_ui PRIVATE droneid_rf)
+  endif()
+  if(TARGET droneid_sdr)  # live radio source (Connect drives UsrpSource) when UHD is built
+    target_compile_definitions(droneid_ui PRIVATE DRONEID_HAVE_UHD=1)
+    target_link_libraries(droneid_ui PRIVATE droneid_sdr)
+  endif()
+  # GLFW's X11 deps and GLVND dispatch symbols resolve at runtime via their NEEDED libs;
+  # let the (linuxbrew) linker defer them, as the UHD targets already do.
+  target_link_options(droneid_ui PRIVATE -Wl,--allow-shlib-undefined)
+  message(STATUS "droneid: UI enabled (GLFW ${GLFW_VERSION})")
+endif()
+
 # --- tests ---
+add_executable(df_bearing tools/df_bearing.cpp)
+target_link_libraries(df_bearing PRIVATE droneid_core)
+if(TARGET droneid_sdr)
+  add_executable(iq_record_pair tools/iq_record_pair.cpp)
+  target_link_libraries(iq_record_pair PRIVATE droneid_sdr)
+  target_link_options(iq_record_pair PRIVATE -Wl,--allow-shlib-undefined)
+endif()
 enable_testing()
 add_subdirectory(tests)
 

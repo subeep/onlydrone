@@ -1,0 +1,21 @@
+burst 0: idx=11674915 corr=0.393 cfo=-126449 Hz crc=fail
+burst 1: idx=11682051 corr=0.364 cfo=53929 Hz crc=fail
+burst 2: idx=27674896 corr=0.411 cfo=-180370 Hz crc=fail
+burst 3: idx=27682031 corr=0.364 cfo=-270311 Hz crc=fail
+burst 4: idx=42674876 corr=0.400 cfo=164305 Hz crc=fail
+burst 5: idx=42682012 corr=0.352 cfo=255235 Hz crc=fail
+burst 6: idx=59674850 corr=0.437 cfo=158635 Hz crc=fail
+burst 7: idx=59681986 corr=0.389 cfo=-318157 Hz crc=fail
+burst 8: idx=75674831 corr=0.430 cfo=492709 Hz crc=fail
+burst 9: idx=75681966 corr=0.373 cfo=567553 Hz crc=fail
+burst 10: idx=90674811 corr=0.439 cfo=371790 Hz crc=fail
+burst 11: idx=90681947 corr=0.386 cfo=-106077 Hz crc=fail
+burst 12: idx=108674785 corr=0.414 cfo=42551 Hz crc=fail
+burst 13: idx=108681921 corr=0.361 cfo=196311 Hz crc=fail
+burst 14: idx=124674766 corr=0.429 cfo=59600 Hz crc=fail
+burst 15: idx=124681901 corr=0.380 cfo=-60951 Hz crc=fail
+burst 16: idx=138674746 corr=0.428 cfo=254859 Hz crc=fail
+burst 17: idx=138681882 corr=0.372 cfo=238622 Hz crc=fail
+== 18 burst candidate(s), 0 CRC-valid ==
+23:40:44 [INFO ] decoding /tmp/corpus-i22dnxab/clip.cf32 (0.0 s, thresh 0.30, freq_offset 0 Hz, lpf on)
+23:40:44 [INFO ] decoder input 100.000 MSPS -> 15.360 MSPS, shift +2392578 Hz (auto)
