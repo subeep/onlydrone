@@ -1,5 +1,31 @@
 # punjdrone — build progress
 
+## X310 bench update — 2026-10-28
+- [x] Detailed step-by-step bench/field verification runbook: `docs/X310_DF_VERIFICATION_RUNBOOK.md`.
+- [x] X310 `326CF02`, dual UBX-160 v2, UHD 4.1.0.5-3 / FPGA 38.0 inventoried.
+- [x] Dual 11.52 MSPS sc16 transport: 600 seconds, zero drops/overruns/sequence errors/timeouts.
+- [x] Bounded paired recording with measured board IDs, LO/reference locks and RF/DSP tunes.
+- [x] GUI live backend: three seconds at its fixed 15.36 MSPS, zero overflows/gaps/queue drops.
+- [x] New hardware paired replay without calibration accepts zero bearings; release 13/13 suites pass.
+- [ ] Split-reference phase stability, retune repeatability, integrated paired live service/soak and field accuracy.
+
+Evidence and operating profile: `docs/X310_BENCH_20261028.md`. No drone or known reference was used.
+
+## DF integration review — 2026-10-27
+- [x] Reviewed user integration `d63b8e7`; preserved paired capture/replay and lifecycle architecture.
+- [x] Corrected manifest/calibration validation, replay time/expiry, original-rate bearing slices,
+      passband occupancy checks, queue invalidation, stale arrows and JSONL escaping.
+- [x] Added regression cases reproducing missed failures; release 13/13 CTest and Python 12/12 pass
+      (four Python CLI cases are also one CTest suite). Nine retained packet clips still match CLI/UI.
+- [x] Separate ASan+UBSan no-UHD build: 11/11 suites pass (leak detection disabled).
+      Logs: `data/analysis/df_review_20261027/`.
+- [/] DF-1–DF-4 are integrated but not fully accepted: recorder fault injection, full rig
+      fingerprint, wideband calibration, multi-emitter rejection and paired live service remain.
+- [ ] Next hardware need: split-source phase bench. X310 inventory and timed paired capture
+      are now checked; drone access is needed later for live decoding and field acceptance.
+
+Review/fixes and remaining gates: `docs/DF_REVIEW_20261027.md`.
+
 ## Verification run — 2026-10-26–27 (offline checks completed; acceptance gaps remain)
 - [x] Operator confirmed no X310/drone access: live hardware tests are deferred, not counted as passed.
 - [x] Fixed UI track-count resets and verified Mini 2 (10 packets) / Mavic Air 2 (1 packet) through UI workers.
@@ -168,15 +194,15 @@ See [`DRONEID_BUILD_PLAN.md`](DRONEID_BUILD_PLAN.md) for the detail behind each 
 
 ## Phase 6 — Direction finding (core, both antennas)
 - [x] Detailed completion plan with dependencies and explicit acceptance gates: `docs/DIRECTION_FINDING_PLAN.md`.
-- [x] `iq_record_pair`: two-channel UHD RX, common timed tuning/start, sc8 wire/cf32 disk,
-      sample continuity checks, paired metadata; compiled only, hardware coherence not yet verified.
+- [x] `iq_record_pair`: two-channel UHD RX, common timed tuning/start, 11.52 MSPS sc16 wire/cf32 disk,
+      sample continuity and hardware metadata checked; RF phase coherence not yet verified.
 - [/] Dual coherent RX: common time configured; independent UBX LOs still require physical calibration.
 - [x] Calibrated phase-difference bearing API + `df_bearing` CLI, coherence/spacing/freshness guards,
       front/back ambiguity explicit; synthetic-angle and CLI calibration roundtrip tests.
 - [/] Splitter/known-source calibration file workflow and `config/x310_df.toml` added;
       actual same-session physical calibration and measured angular error remain pending.
 - [ ] Bearings for both O2/O3 (decoded) and O4 (raw burst)
-- [ ] Direction panel live; sc8 on 1GbE / sc16 on 10GbE
+- [ ] Direction panel live; tested 11.52 MSPS sc16 transport on 1GbE, wider bandwidth needs another profile
 - [ ] **Accept:** repeatable bearing to Mini 2 and Air 3S after cal, with measured error envelope
 
 Implementation/usage: `docs/PHASE456.md`. Phase numbering follows this checklist;

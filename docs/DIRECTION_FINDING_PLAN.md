@@ -1,9 +1,24 @@
 # Direction-finding completion plan
 
-Updated 2026-10-27. Phase 6 follows `progress.md`, not the original build-plan numbering.
+For the detailed equipment, commands, measurements and pass/fail sequence, use
+[the X310 DF verification runbook](X310_DF_VERIFICATION_RUNBOOK.md).
+
+Updated 2026-10-28. Phase 6 follows `progress.md`, not the original build-plan numbering.
 This is an implementation and acceptance plan, **not a claim of hardware completion**.
-The operator has deferred X310/drone access. Work through the software gates now;
-do not enable live bearings until the hardware gates pass.
+The X310 is connected. Inventory, bounded paired recording and a ten-minute
+transport soak are verified; see `X310_BENCH_20261028.md`. The operator has antennas
+or no reference signal attached, so phase calibration and angular accuracy remain
+unverified. Do not enable live bearings until the hardware gates pass.
+
+## Implementation review status
+
+User commit `d63b8e7` integrated paired manifests/recording, calibration lifecycle,
+paired replay and UI/event logging. Follow-up review corrected validation, timing
+and signal-processing errors; see `DF_REVIEW_20261027.md` for current evidence and
+remaining work. DF-1–DF-4 are **partial acceptance**, not fully complete. The design
+checklists below remain acceptance requirements; the original code-inventory table
+is the pre-integration baseline. The next physical bench step needs an attenuated
+known signal split into both RX2 ports, before operational live bearings are enabled.
 
 ## Deliverable and limits
 
@@ -57,7 +72,7 @@ See [Ettus synchronization guidance, UHD 4.1](https://files.ettus.com/manual_arc
 
 Audit installed UHD 4.1.0.5/FPGA and actual daughterboard/master-clock settings
 before relying on timed UBX synchronization. The current configuration is
-184.32 MHz master clock / 15.36 MSPS. Check the UBX driver's clock constraints and
+184.32 MHz master clock / 11.52 MSPS for paired sc16 reception on 1GbE. Check the UBX driver's clock constraints and
 the actual achieved RF/DSP tunes; do not assume that integer sample-rate decimation
 alone proves LO synchronization. If a different supported clock/rate is needed,
 resample both channels together using identical phase/state. Do not silently
@@ -155,7 +170,7 @@ count toward measured RF angular accuracy.
 **Gate:** headless CLI/UI output agrees for paired replay; native display shows
 invalid/ambiguous states honestly. DF-1 through DF-4 are the next coding sequence.
 
-### DF-5 — Hardware synchronization and calibration bench (deferred)
+### DF-5 — Hardware synchronization and calibration bench (partial)
 
 Required: X310 with two supported UBX RX chains, known rig/cables, suitable
 splitter/reference source and attenuators, and safe measured input levels.
@@ -165,8 +180,8 @@ verify splitter/attenuator losses and avoid overload. Confirm `lo_locked` for
 both channels rather than treating an internal reference setting as RF lock.
 See [UBX specifications](https://kb.ettus.com/UBX).
 
-- [ ] Record configuration/version/sensor inventory; measure supported clock and
-  timed-sync behavior before selecting the DF operating profile.
+- [x] Record configuration/version/sensor inventory and test paired transport at
+  184.32 MHz / 11.52 MSPS, sc16. RF phase synchronization is not yet measured.
 - [ ] With a split off-center tone, measure residual differential phase mean and
   standard deviation over time, warmup and gain settings. Start with a proposed
   ≤1° phase standard-deviation gate on a clean high-SNR reference, not an angular
@@ -180,12 +195,14 @@ See [UBX specifications](https://kb.ettus.com/UBX).
   gaps or paired queue drops. Stress disk/backpressure separately and verify
   visible invalidation, never a silent plausible bearing.
 
-At 15.36 MSPS, two sc8 channels require **61.44 MB/s (491.52 Mb/s)** before network
-overhead; two sc16 channels require 122.88 MB/s (983.04 Mb/s), too close to 1GbE
-capacity once overhead is included. Host cf32 pairs are 245.76 MB/s; ten minutes
-of continuous disk capture is **147.456 GB**. Use bounded diagnostic snippets and
-summary logs for the soak, not mandatory full-rate archival. Actual throughput
-and CPU capacity must be measured. 10GbE/wider-band work is a later profile.
+The installed UHD/RFNoC path rejected sc8 (`sc8_chdr` to `fc32` converter missing).
+The tested profile uses **11.52 MSPS per channel, sc16**, requiring **92.16 MB/s
+(737.28 Mb/s)** before overhead. Two-channel 15.36 MSPS sc16 requires 983.04 Mb/s
+before overhead and is not the 1GbE profile. Host cf32 pairs at 11.52 MSPS require
+184.32 MB/s; ten minutes on disk would be **110.592 GB**. The completed 600-second
+UHD transport benchmark discarded IQ and reported zero drops/overruns/timeouts;
+it does not replace the integrated paired DSP/UI soak above. Use bounded snippets
+and summary logs. 10GbE/wider-band work is a later profile.
 
 **Gate:** documented stable calibration and continuity on the actual rig. Any
 failed clock/synchronization/thermal condition blocks live bearing acceptance.

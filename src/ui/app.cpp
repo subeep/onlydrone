@@ -172,15 +172,14 @@ void draw_direction(const std::vector<ui::DroneTrack>& tracks, const ui::DfUiSta
   else if (df.state == ui::DfUiState::Stale || df.state == ui::DfUiState::Error)
     state_col = ImVec4(0.9f, 0.25f, 0.25f, 1.0f);
 
+  ImGui::PushTextWrapPos(0.0f);
   ImGui::TextColored(state_col, "Cal: %s", ui::to_string(df.state));
-  ImGui::SameLine();
-  ImGui::TextDisabled("| ref: %s | age: %.0fs", df.reference_method.c_str(), df.cal_age_seconds);
+  ImGui::TextDisabled("Reference: %s | age: %.0fs", df.reference_method.c_str(), df.cal_age_seconds);
   if (!df.reason.empty()) ImGui::TextDisabled("%s", df.reason.c_str());
 
   if (ImGui::SmallButton("Calibrate (Splitter)")) want_cal_splitter = true;
   ImGui::SameLine();
   if (ImGui::SmallButton("Calibrate (OTA)")) want_cal_ota = true;
-  ImGui::SameLine();
   if (ImGui::SmallButton("Cancel/Invalidate")) want_cal_cancel = true;
 
   ImGui::TextDisabled("Rig: %s (epoch %llu) | %.3f GHz | orient %.0f deg",
@@ -194,6 +193,7 @@ void draw_direction(const std::vector<ui::DroneTrack>& tracks, const ui::DfUiSta
                       static_cast<unsigned long long>(df.rejected_dispersion),
                       static_cast<unsigned long long>(df.rejected_clipping),
                       static_cast<unsigned long long>(df.rejected_overlap));
+  ImGui::PopTextWrapPos();
 
   ImDrawList* dl = ImGui::GetWindowDrawList();
   const ImVec2 p0 = ImGui::GetCursorScreenPos();
@@ -264,7 +264,7 @@ int run_window(UiModel& model, const Config& cfg) {
     if (!active_cfg.pair_manifest.empty() || !active_cfg.replay_ch1.empty()) {
       stop.store(false);
       worker_done.store(false);
-      worker = std::thread([&] { paired_replay_worker(model, active_cfg, stop); worker_done.store(true); });
+      worker = std::thread([&, source_cfg = active_cfg] { paired_replay_worker(model, source_cfg, stop); worker_done.store(true); });
       running = true;
       return;
     }
@@ -372,10 +372,13 @@ int run_window(UiModel& model, const Config& cfg) {
     bool want_cal_splitter = false, want_cal_ota = false, want_cal_cancel = false;
     draw_direction(tracks, df, want_cal_splitter, want_cal_ota, want_cal_cancel);
     if (want_cal_cancel) {
+      restart_requested = false;
+      stop_worker();
       model.invalidate_bearings(ui::DfUiState::Uncalibrated,
                                 "Calibration canceled/invalidated by operator");
     } else if (want_cal_splitter || want_cal_ota) {
       active_cfg.df_ref = want_cal_ota ? "ota_broadside" : "splitter";
+      active_cfg.df_cal.clear();
       if (active_cfg.df_cal_samples == 0) active_cfg.df_cal_samples = 4096;
       start_worker();
     }
@@ -425,7 +428,7 @@ static void usage(const char* p) {
       "usage: %s [source] [--checklist progress.md] [--frames N] [--screenshot FILE.ppm] [--check]\n"
       "  replay source: --replay FILE --format sc16|cf32 --rate HZ [--auto-center]\n"
       "                 [--freq-offset HZ] [--secs S]\n"
-      "  paired DF replay: --pair-manifest FILE | (--replay CH0 --replay-ch1 CH1)\n"
+      "  paired DF replay: --pair-manifest FILE [--replay CH0 --replay-ch1 CH1]\n"
       "                    [--df-cal FILE | --df-cal-samples N] [--df-ref splitter|ota_broadside]\n"
       "                    [--df-spacing-m M] [--df-jsonl FILE]\n"
       "  live source:   --device ARGS [--freq HZ] [--gain dB] [--ant NAME]  (needs a UHD build)\n"

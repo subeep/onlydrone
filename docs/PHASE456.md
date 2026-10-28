@@ -6,8 +6,8 @@ plan calls direction finding Phase 7 and calls wideband/Wi-Fi/outputs Phase 6.
 That separate wideband/Wi-Fi/SQLite work is **not implemented by this change**.
 
 These headless tools complement the implemented Phase 3 GUI/replay and live
-single-channel pipeline. Live hardware acceptance remains open; no radio was
-accessed in the current offline validation. All radio operations are receive-only.
+single-channel pipeline. Initial X310 transport/capture checks are now recorded in
+`X310_BENCH_20261028.md`; full live acceptance remains open. All radio operations are receive-only.
 The DF completion sequence is in `docs/DIRECTION_FINDING_PLAN.md`.
 
 ## Phase 4: scheduled dwell reception
@@ -83,13 +83,14 @@ source association and GUI integration remain pending labeled, controlled data.
 ```
 
 This receives Radio#0 and Radio#1 through one multi-channel UHD stream, uses
-15.36 MSPS and sc8 on the wire, and writes **cf32** files plus per-channel metadata.
-On-wire traffic is approximately 61.44 MB/s plus overhead; disk traffic is
-approximately 245.76 MB/s. Check storage capacity and throughput. The tool
-rejects mismatched timestamps, overflows and unexpected rate. Error paths leave
-incomplete artifacts; pair publication is not transactional yet, and interruption
-can publish a shorter capture. Inspect metadata/counts before use. Hardening this
-behavior is DF-1 in the completion plan.
+11.52 MSPS and sc16 on the wire with `config/x310_df.toml`, and writes **cf32** files plus per-channel metadata.
+On-wire traffic is approximately 92.16 MB/s plus overhead; disk traffic is
+approximately 184.32 MB/s. The installed stack rejected sc8 conversion. The tool
+rejects mismatched timestamps, overflows and unexpected rate. The integrated recorder
+now uses a bounded writer queue and manifest-last publication: interrupted captures
+remain incomplete. Hardware versions, board serials, rates, tuning, bandwidth and
+LO/reference locks are queried before and after capture. Continuous lock monitoring
+and recorder fault-injection tests remain pending; see `docs/X310_BENCH_20261028.md`.
 
 Timed start alone does not establish RF phase alignment. X310/UBX also supports
 timed LO synchronization, with residual phase offsets requiring calibration.

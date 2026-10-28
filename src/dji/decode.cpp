@@ -317,25 +317,11 @@ std::vector<PairedDecodedBurst> decode_paired_samples(const std::vector<cf32>& c
       continue;
     }
     PairedDecodedBurst pb;
-    pb.ch0_window.assign(r0.begin() + r_start, r0.begin() + r_start + burst_len);
-    pb.ch1_window.assign(r1.begin() + r_start, r1.begin() + r_start + burst_len);
-    if (opt.low_pass) {
-      constexpr int filter_order = 50;
-      constexpr int group_delay = filter_order / 2;
-      pb.ch0_window.resize(pb.ch0_window.size() + group_delay);
-      pb.ch0_window = dsp::fir_lowpass(pb.ch0_window, 10e6 / 2.0, kDecodeRate, filter_order);
-      pb.ch0_window.erase(pb.ch0_window.begin(), pb.ch0_window.begin() + group_delay);
-
-      pb.ch1_window.resize(pb.ch1_window.size() + group_delay);
-      pb.ch1_window = dsp::fir_lowpass(pb.ch1_window, 10e6 / 2.0, kDecodeRate, filter_order);
-      pb.ch1_window.erase(pb.ch1_window.begin(), pb.ch1_window.begin() + group_delay);
-    }
-    if (b.cfo_hz != 0.0) {
-      dsp::freq_shift(pb.ch0_window, -b.cfo_hz, kDecodeRate);
-      dsp::freq_shift(pb.ch1_window, -b.cfo_hz, kDecodeRate);
-    }
     b.sample_index = std::llround(r_start * opt.sample_rate / kDecodeRate);
     pb.end_sample_index = std::llround((r_start + burst_len) * opt.sample_rate / kDecodeRate);
+    if (static_cast<size_t>(pb.end_sample_index) > count) continue;
+    pb.ch0_window.assign(s0.begin() + b.sample_index, s0.begin() + pb.end_sample_index);
+    pb.ch1_window.assign(s1.begin() + b.sample_index, s1.begin() + pb.end_sample_index);
     pb.decoded = std::move(b);
     paired_results.push_back(std::move(pb));
   }

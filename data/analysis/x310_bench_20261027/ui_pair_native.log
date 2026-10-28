@@ -1,0 +1,2 @@
+12:06:44 [INFO ] FileSource: loaded sidecar data/analysis/x310_bench_20261027/paired_observed_bw.ch0.cf32.meta (format=cf32 rate=11520000 center=2459500000)
+12:06:44 [INFO ] FileSource: loaded sidecar data/analysis/x310_bench_20261027/paired_observed_bw.ch1.cf32.meta (format=cf32 rate=11520000 center=2459500000)

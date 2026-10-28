@@ -2,4 +2,4 @@ check: status=Disconnected packets=1 tracks=1 rf_bursts=2 checklist_groups=8 ove
   track: serial=1ZNBHC400C00QN count=1 corr=0.924
   packet: telemetry=parsed frame=4c10024501030f315a4e424843343030433030514e00000000000000000000313e000000000000000042400000000000000000000000000000000000000000000000003c000000000000000000e940fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0742ba format=v2 inner_crc16=OK
   detail: Replay complete (not live reception)
-13:07:06 [INFO ] FileSource: loaded sidecar /home/sudeep/Music/punjdrone/data/analysis/corpus_deep_20261026/025-0fec8637dd.decoded.cf32.meta (format=cf32 rate=100000000 center=2440000000)
+18:24:56 [INFO ] FileSource: loaded sidecar /home/sudeep/Music/punjdrone/data/analysis/corpus_deep_20261026/025-0fec8637dd.decoded.cf32.meta (format=cf32 rate=100000000 center=2440000000)

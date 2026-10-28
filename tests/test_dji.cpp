@@ -235,16 +235,17 @@ TEST(DjiEndToEnd, NativeWidebandSynthetic) {
   EXPECT_TRUE(dji::turbo_encode_frame(frame, bits));
   const auto scrambler = dji::generate_scrambler_seq(7200, dji::scrambler_x2_init());
   for (size_t bit = 0; bit < bits.size(); ++bit) bits[bit] ^= scrambler[bit];
-  for (double rate : {61.44e6, 92.16e6}) {
+  for (double rate : {11.52e6, 61.44e6, 92.16e6}) {
+    const double offset = rate < 15.36e6 ? 0.4e6 : 12e6;
     const auto burst = dji::synthesize_burst(bits, rate);
     std::vector<cf32> samples(16384, cf32(0, 0));
     samples.insert(samples.end(), burst.begin(), burst.end());
     samples.resize(samples.size() + 16384);
     for (size_t sample = 0; sample < samples.size(); ++sample)
-      samples[sample] *= std::polar(1.0f, static_cast<float>(2 * std::acos(-1.0) * 12e6 * sample / rate));
+      samples[sample] *= std::polar(1.0f, static_cast<float>(2 * std::acos(-1.0) * offset * sample / rate));
     dji::DecodeOptions options;
     options.sample_rate = rate;
-    options.freq_offset = -12e6;
+    options.freq_offset = -offset;
     const auto decoded = dji::decode_samples(samples, options);
     EXPECT_EQ(decoded.size(), size_t(1));
     if (decoded.size() != 1) continue;
@@ -350,6 +351,28 @@ TEST(DjiEnvelope, InvalidLengths) {
   payload.assign(176, 0);
   payload[0] = 171;
   EXPECT_FALSE(dji::inspect_packet(payload).length_valid);
+}
+
+TEST(DjiPairedReview, BearingWindowsRemainInOriginalSampleDomain) {
+  FileSource source(std::string(DRONEID_TEST_DATA_DIR) + "/mini2_wideband.cf32", SampleFormat::cf32, 50e6);
+  std::vector<cf32> first(60000);
+  int64_t timestamp = 0;
+  first.resize(source.recv(first.data(), first.size(), timestamp));
+  auto second = first;
+  for (auto& sample : second) sample *= std::polar(0.8f, 0.4f);
+  dji::DecodeOptions options;
+  options.sample_rate = 50e6;
+  options.freq_offset = -9.6e6;
+  const auto decoded = dji::decode_paired_samples(first, second, options);
+  EXPECT_EQ(decoded.size(), size_t(1));
+  for (const auto& burst : decoded) {
+    EXPECT_TRUE(burst.decoded.crc_ok);
+    const auto start = static_cast<size_t>(burst.decoded.sample_index);
+    const auto end = static_cast<size_t>(burst.end_sample_index);
+    EXPECT_EQ(burst.ch0_window.size(), end - start);
+    EXPECT_TRUE(burst.ch0_window == std::vector<cf32>(first.begin() + start, first.begin() + end));
+    EXPECT_TRUE(burst.ch1_window == std::vector<cf32>(second.begin() + start, second.begin() + end));
+  }
 }
 
 MICROTEST_MAIN

@@ -1,0 +1,130 @@
+[INFO] [UHD] linux; GNU C++ version 11.2.0; Boost_107400; UHD_4.1.0.5-3
+[INFO] [X300] X300 initialization sequence...
+[INFO] [X300] Maximum frame size: 1472 bytes.
+[INFO] [GPS] No GPSDO found
+[INFO] [X300] Radio 1x clock: 184.32 MHz
+  _____________________________________________________
+ /
+|       Device: X-Series Device
+|     _____________________________________________________
+|    /
+|   |       Mboard: X310
+|   |   revision: 12
+|   |   revision_compat: 7
+|   |   product: 30818
+|   |   mac-addr0: 00:80:2f:36:45:0e
+|   |   mac-addr1: 00:80:2f:36:45:0f
+|   |   gateway: 192.168.10.1
+|   |   ip-addr0: 192.168.10.2
+|   |   subnet0: 255.255.255.0
+|   |   ip-addr1: 192.168.20.2
+|   |   subnet1: 255.255.255.0
+|   |   ip-addr2: 192.168.30.2
+|   |   subnet2: 255.255.255.0
+|   |   ip-addr3: 192.168.40.2
+|   |   subnet3: 255.255.255.0
+|   |   serial: 326CF02
+|   |   name: Avgarde
+|   |   FW Version: 6.0
+|   |   FPGA Version: 38.0
+|   |   FPGA git hash: 26793b8
+|   |   
+|   |   Time sources:  internal, external, gpsdo
+|   |   Clock sources: internal, external, gpsdo
+|   |   Sensors: ref_locked
+|     _____________________________________________________
+|    /
+|   |       RFNoC blocks on this device:
+|   |   
+|   |   * 0/DDC#0
+|   |   * 0/DDC#1
+|   |   * 0/DUC#0
+|   |   * 0/DUC#1
+|   |   * 0/Radio#0
+|   |   * 0/Radio#1
+|   |   * 0/Replay#0
+|     _____________________________________________________
+|    /
+|   |       Static connections on this device:
+|   |   
+|   |   * 0/SEP#0:0==>0/DUC#0:0
+|   |   * 0/DUC#0:0==>0/Radio#0:0
+|   |   * 0/Radio#0:0==>0/DDC#0:0
+|   |   * 0/DDC#0:0==>0/SEP#0:0
+|   |   * 0/Radio#0:1==>0/DDC#0:1
+|   |   * 0/DDC#0:1==>0/SEP#1:0
+|   |   * 0/SEP#2:0==>0/DUC#1:0
+|   |   * 0/DUC#1:0==>0/Radio#1:0
+|   |   * 0/Radio#1:0==>0/DDC#1:0
+|   |   * 0/DDC#1:0==>0/SEP#2:0
+|   |   * 0/Radio#1:1==>0/DDC#1:1
+|   |   * 0/DDC#1:1==>0/SEP#3:0
+|   |   * 0/SEP#4:0==>0/Replay#0:0
+|   |   * 0/Replay#0:0==>0/SEP#4:0
+|   |   * 0/SEP#5:0==>0/Replay#0:1
+|   |   * 0/Replay#0:1==>0/SEP#5:0
+|     _____________________________________________________
+|    /
+|   |       TX Dboard: 0/Radio#0
+|   |   ID: UBX-160 v2 (0x007d)
+|   |   Serial: 325B957
+|   |     _____________________________________________________
+|   |    /
+|   |   |       TX Frontend: 0
+|   |   |   Name: UBX TX
+|   |   |   Antennas: TX/RX, CAL
+|   |   |   Sensors: lo_locked
+|   |   |   Freq range: 10.000 to 6000.000 MHz
+|   |   |   Gain range PGA0: 0.0 to 31.5 step 0.5 dB
+|   |   |   Bandwidth range: 160000000.0 to 160000000.0 step 0.0 Hz
+|   |   |   Connection Type: QI
+|   |   |   Uses LO offset: No
+|     _____________________________________________________
+|    /
+|   |       RX Dboard: 0/Radio#0
+|   |   ID: UBX-160 v2 (0x007e)
+|   |   Serial: 325B957
+|   |     _____________________________________________________
+|   |    /
+|   |   |       RX Frontend: 0
+|   |   |   Name: UBX RX
+|   |   |   Antennas: TX/RX, RX2, CAL
+|   |   |   Sensors: lo_locked
+|   |   |   Freq range: 10.000 to 6000.000 MHz
+|   |   |   Gain range PGA0: 0.0 to 31.5 step 0.5 dB
+|   |   |   Bandwidth range: 160000000.0 to 160000000.0 step 0.0 Hz
+|   |   |   Connection Type: IQ
+|   |   |   Uses LO offset: No
+|     _____________________________________________________
+|    /
+|   |       TX Dboard: 0/Radio#1
+|   |   ID: UBX-160 v2 (0x007d)
+|   |   Serial: 325B9BA
+|   |     _____________________________________________________
+|   |    /
+|   |   |       TX Frontend: 0
+|   |   |   Name: UBX TX
+|   |   |   Antennas: TX/RX, CAL
+|   |   |   Sensors: lo_locked
+|   |   |   Freq range: 10.000 to 6000.000 MHz
+|   |   |   Gain range PGA0: 0.0 to 31.5 step 0.5 dB
+|   |   |   Bandwidth range: 160000000.0 to 160000000.0 step 0.0 Hz
+|   |   |   Connection Type: QI
+|   |   |   Uses LO offset: No
+|     _____________________________________________________
+|    /
+|   |       RX Dboard: 0/Radio#1
+|   |   ID: UBX-160 v2 (0x007e)
+|   |   Serial: 325B9BA
+|   |     _____________________________________________________
+|   |    /
+|   |   |       RX Frontend: 0
+|   |   |   Name: UBX RX
+|   |   |   Antennas: TX/RX, RX2, CAL
+|   |   |   Sensors: lo_locked
+|   |   |   Freq range: 10.000 to 6000.000 MHz
+|   |   |   Gain range PGA0: 0.0 to 31.5 step 0.5 dB
+|   |   |   Bandwidth range: 160000000.0 to 160000000.0 step 0.0 Hz
+|   |   |   Connection Type: IQ
+|   |   |   Uses LO offset: No
+

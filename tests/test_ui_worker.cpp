@@ -231,7 +231,7 @@ TEST(UiWorker, PairedReplayAssociatesDecodedAndUnknownRfBearingsAndRejectsMalfor
   ui::paired_replay_worker(model, cfg, stop);
 
   EXPECT_TRUE(model.status().state == ui::UsrpStatus::State::Disconnected);
-  EXPECT_EQ(model.df_status().state, ui::DfUiState::Valid);
+  EXPECT_EQ(model.df_status().state, ui::DfUiState::Disconnected);
   EXPECT_EQ(model.packets().size(), std::size_t(1));
   EXPECT_TRUE(model.df_status().accepted_bearings >= 2);
 
@@ -239,7 +239,7 @@ TEST(UiWorker, PairedReplayAssociatesDecodedAndUnknownRfBearingsAndRejectsMalfor
   for (const auto& track : model.tracks()) {
     if (track.serial == "SysSecWasHere ") {
       found_decoded = true;
-      EXPECT_TRUE(track.has_bearing);
+      EXPECT_FALSE(track.has_bearing);
       EXPECT_NEAR(track.bearing_deg, drone_angle_deg, 0.2);
       EXPECT_NEAR(track.mirrored_deg, -152.0, 0.2);
       EXPECT_TRUE(track.bearing_ambiguous);
@@ -247,13 +247,55 @@ TEST(UiWorker, PairedReplayAssociatesDecodedAndUnknownRfBearingsAndRejectsMalfor
       found_unknown_rf = true;
       EXPECT_FALSE(track.decoded);
       EXPECT_TRUE(track.serial.empty());
-      EXPECT_TRUE(track.has_bearing);
+      EXPECT_FALSE(track.has_bearing);
       EXPECT_NEAR(track.bearing_deg, rf_angle_deg, 0.2);
     }
   }
   EXPECT_TRUE(found_decoded);
   EXPECT_TRUE(found_unknown_rf);
   EXPECT_TRUE(std::filesystem::exists(jsonl_path));
+
+  const auto calibration_path = (dir / "punjdrone_paired_test.cal.toml").string();
+  PhaseCal expired;
+  expired.session_id = manifest.session_id;
+  expired.config_epoch = manifest.config_epoch;
+  expired.rig_id = manifest.rig_id;
+  expired.center_hz = center_hz;
+  expired.sample_rate = rate;
+  expired.spacing_m = spacing_m;
+  expired.gain_db = 25;
+  expired.cal_samples = 4096;
+  expired.measured_unix_ns = manifest.capture_host_unix_ns - 2000000000;
+  expired.max_age_seconds = 1;
+  {
+    std::ofstream output(calibration_path);
+    output << expired.serialize();
+  }
+  auto expired_config = cfg;
+  expired_config.df_cal_samples = 0;
+  expired_config.df_cal = calibration_path;
+  ui::UiModel expired_model;
+  ui::paired_replay_worker(expired_model, expired_config, stop);
+  EXPECT_TRUE(expired_model.status().state == ui::UsrpStatus::State::Error);
+  EXPECT_EQ(expired_model.df_status().accepted_bearings, uint64_t(0));
+  std::filesystem::remove(calibration_path);
+
+  auto uncalibrated_config = cfg;
+  uncalibrated_config.df_cal_samples = 0;
+  uncalibrated_config.df_jsonl.clear();
+  ui::UiModel uncalibrated_model;
+  ui::paired_replay_worker(uncalibrated_model, uncalibrated_config, stop);
+  EXPECT_EQ(uncalibrated_model.df_status().accepted_bearings, uint64_t(0));
+  EXPECT_EQ(uncalibrated_model.df_status().reference_method, std::string("none"));
+
+  auto unverified_config = cfg;
+  unverified_config.pair_manifest.clear();
+  unverified_config.replay = ch0_path;
+  unverified_config.replay_ch1 = ch1_path;
+  ui::UiModel unverified_model;
+  ui::paired_replay_worker(unverified_model, unverified_config, stop);
+  EXPECT_TRUE(unverified_model.status().state == ui::UsrpStatus::State::Error);
+  EXPECT_EQ(unverified_model.df_status().accepted_bearings, uint64_t(0));
 
   // Malformed pair (truncated ch1 / unequal EOF) must fail closed without valid bearings.
   {

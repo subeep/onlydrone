@@ -5,7 +5,7 @@ burst 0: idx=20000 corr=0.953 cfo=7440 Hz crc=OK
   drone  : 31.888442, 118.814132  alt 26 m  height 107 m
   pilot  : 31.888436, 118.814126  home 31.888442, 118.814138
 == 1 burst candidate(s), 1 CRC-valid ==
-13:07:04 [INFO ] FileSource: loaded sidecar /home/sudeep/Music/punjdrone/data/analysis/corpus_deep_20261026/004-5818baaf25.decoded.cf32.meta (format=cf32 rate=100000000 center=5745000000)
-13:07:04 [INFO ] decoding /home/sudeep/Music/punjdrone/data/analysis/corpus_deep_20261026/004-5818baaf25.decoded.cf32 (0.0 s, thresh 0.50, freq_offset -11500000 Hz, lpf on)
-13:07:04 [INFO ] FileSource: loaded sidecar /home/sudeep/Music/punjdrone/data/analysis/corpus_deep_20261026/004-5818baaf25.decoded.cf32.meta (format=cf32 rate=100000000 center=5745000000)
-13:07:04 [INFO ] decoder input 100.000 MSPS -> 15.360 MSPS, shift -11500000 Hz
+18:24:55 [INFO ] FileSource: loaded sidecar /home/sudeep/Music/punjdrone/data/analysis/corpus_deep_20261026/004-5818baaf25.decoded.cf32.meta (format=cf32 rate=100000000 center=5745000000)
+18:24:55 [INFO ] decoding /home/sudeep/Music/punjdrone/data/analysis/corpus_deep_20261026/004-5818baaf25.decoded.cf32 (0.0 s, thresh 0.50, freq_offset -11500000 Hz, lpf on)
+18:24:55 [INFO ] FileSource: loaded sidecar /home/sudeep/Music/punjdrone/data/analysis/corpus_deep_20261026/004-5818baaf25.decoded.cf32.meta (format=cf32 rate=100000000 center=5745000000)
+18:24:55 [INFO ] decoder input 100.000 MSPS -> 15.360 MSPS, shift -11500000 Hz

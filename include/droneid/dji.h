@@ -44,8 +44,6 @@ struct DecodedBurst {
   std::vector<uint8_t> payload;  // 176 raw frame bytes (valid if crc_ok)
 };
 
-// DF-3: Paired decoded burst carrying both the decoded packet and the exact
-// time-aligned, identically filtered/shifted burst window from both channels.
 struct PairedDecodedBurst {
   DecodedBurst decoded;
   int64_t end_sample_index = 0;

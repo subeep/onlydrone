@@ -11,6 +11,25 @@
 
 namespace droneid::ui {
 
+namespace {
+std::string json_string(const std::string& value) {
+  std::string result = "\"";
+  for (const unsigned char byte : value) {
+    if (byte == '"' || byte == '\\') {
+      result += '\\';
+      result += static_cast<char>(byte);
+    } else if (byte < 0x20) {
+      char encoded[7];
+      std::snprintf(encoded, sizeof(encoded), "\\u%04x", byte);
+      result += encoded;
+    } else {
+      result += static_cast<char>(byte);
+    }
+  }
+  return result + "\"";
+}
+}
+
 const char* to_string(UsrpStatus::State s) {
   switch (s) {
     case UsrpStatus::State::Disconnected: return "Disconnected";
@@ -37,13 +56,14 @@ std::string DfBearingEvent::to_jsonl() const {
   std::ostringstream os;
   os << std::setprecision(9);
   os << "{\"event\":\"df_bearing\",\"burst_id\":" << burst_id
+     << ",\"time_ms\":" << time_ms
      << ",\"start_sample\":" << start_sample
      << ",\"end_sample\":" << end_sample
-     << ",\"session_id\":\"" << session_id << "\""
+     << ",\"session_id\":" << json_string(session_id)
      << ",\"config_epoch\":" << config_epoch
-     << ",\"cal_id\":\"" << cal_id << "\""
-     << ",\"classification\":\"" << classification << "\""
-     << ",\"serial\":" << (serial.empty() ? "null" : ("\"" + serial + "\""))
+     << ",\"cal_id\":" << json_string(cal_id)
+     << ",\"classification\":" << json_string(classification)
+     << ",\"serial\":" << (serial.empty() ? "null" : json_string(serial))
      << ",\"valid\":" << (valid ? "true" : "false");
   if (valid) {
     os << ",\"broadside_deg\":" << broadside_deg
@@ -56,7 +76,7 @@ std::string DfBearingEvent::to_jsonl() const {
      << ",\"phase_std_deg\":" << phase_std_deg
      << ",\"snr_db\":" << snr_db
      << ",\"ambiguous_front_back\":" << (ambiguous_front_back ? "true" : "false")
-     << ",\"rejection_reason\":" << (rejection_reason.empty() ? "null" : ("\"" + rejection_reason + "\""))
+     << ",\"rejection_reason\":" << (rejection_reason.empty() ? "null" : json_string(rejection_reason))
      << ",\"absolute_position\":null}\n";
   return os.str();
 }
@@ -137,6 +157,7 @@ void UiModel::set_bearing_detailed(const std::string& key, float deg, float mirr
   std::lock_guard<std::mutex> g(m_);
   auto it = tracks_.find(key);
   if (it == tracks_.end()) return;
+  if (df_status_.state != DfUiState::Valid) return;
   it->second.has_bearing = true;
   it->second.bearing_deg = deg;
   it->second.mirrored_deg = mirrored_deg;
@@ -200,6 +221,8 @@ void UiModel::record_df_event(const DfBearingEvent& event) {
     ++df_status_.accepted_bearings;
   } else {
     ++df_status_.rejected_bearings;
+    const auto track = tracks_.find(event.serial.empty() ? "unknown_rf" : event.serial);
+    if (track != tracks_.end()) track->second.has_bearing = false;
     const auto& r = event.rejection_reason;
     if (r.find("calibration") != std::string::npos || r.find("Uncalibrated") != std::string::npos ||
         r.find("Stale") != std::string::npos || r.find("Disconnected") != std::string::npos)
@@ -228,10 +251,10 @@ std::string UiModel::df_summary_jsonl() const {
   std::lock_guard<std::mutex> g(m_);
   std::ostringstream os;
   os << "{\"event\":\"df_summary\",\"state\":\"" << to_string(df_status_.state) << "\""
-     << ",\"reason\":\"" << df_status_.reason << "\""
-     << ",\"session_id\":\"" << df_status_.session_id << "\""
+     << ",\"reason\":" << json_string(df_status_.reason)
+     << ",\"session_id\":" << json_string(df_status_.session_id)
      << ",\"config_epoch\":" << df_status_.config_epoch
-     << ",\"reference_method\":\"" << df_status_.reference_method << "\""
+     << ",\"reference_method\":" << json_string(df_status_.reference_method)
      << ",\"accepted_bearings\":" << df_status_.accepted_bearings
      << ",\"rejected_bearings\":" << df_status_.rejected_bearings
      << ",\"rejected_uncalibrated\":" << df_status_.rejected_uncalibrated

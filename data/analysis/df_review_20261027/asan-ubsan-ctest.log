@@ -1,0 +1,28 @@
+Internal ctest changing into directory: /tmp/punjdrone-df-review-sanitize
+Test project /tmp/punjdrone-df-review-sanitize
+      Start  1: test_ring_buffer
+ 1/11 Test  #1: test_ring_buffer .................   Passed    0.01 sec
+      Start  2: test_file_source
+ 2/11 Test  #2: test_file_source .................   Passed    0.00 sec
+      Start  3: test_config
+ 3/11 Test  #3: test_config ......................   Passed    0.00 sec
+      Start  4: test_receiver
+ 4/11 Test  #4: test_receiver ....................   Passed    0.07 sec
+      Start  5: test_ui_model
+ 5/11 Test  #5: test_ui_model ....................   Passed    0.00 sec
+      Start  6: test_ui_worker
+ 6/11 Test  #6: test_ui_worker ...................   Passed    5.65 sec
+      Start  7: test_dji
+ 7/11 Test  #7: test_dji .........................   Passed   23.34 sec
+      Start  8: test_resampler
+ 8/11 Test  #8: test_resampler ...................   Passed    0.52 sec
+      Start  9: test_rf_metrics
+ 9/11 Test  #9: test_rf_metrics ..................   Passed    0.01 sec
+      Start 10: test_receiver_cli
+10/11 Test #10: test_receiver_cli ................   Passed    0.08 sec
+      Start 11: test_decode_cli
+11/11 Test #11: test_decode_cli ..................   Passed    1.39 sec
+
+100% tests passed, 0 tests failed out of 11
+
+Total Test time (real) =  31.09 sec

@@ -1,0 +1,12 @@
+format=cf32
+sample_rate=11520000
+center_freq=2459500000
+channel=1
+first_device_timestamp_ns=333704340
+capture_host_unix_ns=1793106319102000139
+samples=1152000
+overflows=0
+phase_calibrated=false
+session_id=sess_1793106315891798889
+config_epoch=1
+rig_id=unverified_inputs

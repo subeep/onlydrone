@@ -51,7 +51,8 @@ void sync_df_status(UiModel& model, const DfCalibrationService& service, int64_t
   df.session_id = service.session_id();
   df.config_epoch = service.config_epoch();
   df.rig_id = service.rig_id();
-  df.reference_method = service.calibration().reference_method.empty()
+  df.reference_method = service.calibration().measured_unix_ns <= 0 ||
+                                service.calibration().reference_method.empty()
                             ? "none"
                             : service.calibration().reference_method;
   df.center_hz = service.calibration().center_hz;
@@ -137,6 +138,7 @@ void process_paired_window(UiModel& model, const PairedSampleWindow& window,
                            DfCalibrationService& cal_service, int64_t eval_unix_ns,
                            uint64_t& next_burst_id, std::ofstream* jsonl_out) {
   if (window.after_drop_or_gap) {
+    cal_service.on_gap_or_overflow("paired queue drop or gap invalidated calibration");
     model.invalidate_bearings(map_cal_state(cal_service.state()),
                               "paired queue drop or gap reset active bearings");
   }
@@ -155,9 +157,7 @@ void process_paired_window(UiModel& model, const PairedSampleWindow& window,
     noise = std::clamp(static_cast<double>(*quantile), 1e-20, 1.0);
   }
 
-  std::vector<cf32> res0, res1;
-  const auto paired_bursts =
-      dji::decode_paired_samples(window.ch0, window.ch1, options, &res0, &res1);
+  const auto paired_bursts = dji::decode_paired_samples(window.ch0, window.ch1, options);
 
   std::vector<std::pair<uint64_t, uint64_t>> decoded_intervals;
   for (const auto& pb : paired_bursts) {
@@ -208,7 +208,6 @@ void process_paired_window(UiModel& model, const PairedSampleWindow& window,
       model.upsert_track(track);
     }
 
-    // DF-3: Associate bearing with the exact resampled burst window from both channels.
     PairedBlock blk;
     blk.ch0 = pb.ch0_window;
     blk.ch1 = pb.ch1_window;
@@ -223,15 +222,18 @@ void process_paired_window(UiModel& model, const PairedSampleWindow& window,
     blk.rig_id = cal_service.rig_id();
     blk.channel_order = cal_service.calibration().channel_order;
 
-    const auto bearing = cal_service.estimate_block_bearing(blk, eval_unix_ns, noise, 6.0);
+    const int64_t burst_unix_ns = eval_unix_ns +
+        static_cast<int64_t>(std::llround(global_start * 1e9 / options.sample_rate));
+    const auto bearing = cal_service.estimate_block_bearing(blk, burst_unix_ns, noise, 6.0);
     DfBearingEvent ev;
     ev.burst_id = ++next_burst_id;
     ev.start_sample = global_start;
     ev.end_sample = global_end;
     ev.session_id = cal_service.session_id();
     ev.config_epoch = cal_service.config_epoch();
-    ev.cal_id = cal_service.calibration().reference_method + "@" +
-                std::to_string(cal_service.calibration().measured_unix_ns);
+    if (cal_service.calibration().measured_unix_ns > 0)
+      ev.cal_id = cal_service.calibration().reference_method + "@" +
+                  std::to_string(cal_service.calibration().measured_unix_ns);
     ev.classification = packet.telemetry_parsed ? "decoded_droneid" : "unknown_rf";
     ev.serial = packet.telemetry_parsed ? telemetry.serial : "";
     ev.valid = bearing.valid;
@@ -258,9 +260,10 @@ void process_paired_window(UiModel& model, const PairedSampleWindow& window,
 
   if (count < 1024) return;
   EnergyBurstDetector detector(options.sample_rate, 10 * std::log10(noise));
-  const auto rf_bursts = detector.feed(window.ch0.data(), count, true);
+  const auto rf_bursts = detector.feed(window.ch0.data(), window.ch0.size(), true);
   for (std::size_t idx = 0; idx < rf_bursts.size(); ++idx) {
     const auto& burst = rf_bursts[idx];
+    if (burst.start_sample >= count) continue;
     const auto metrics = measure_rf(burst.samples, options.sample_rate, noise);
     model.record_rf_burst(metrics.rssi_dbfs, metrics.snr_db, metrics.bandwidth_hz,
                           metrics.spectral_center_hz, now_ms());
@@ -289,6 +292,9 @@ void process_paired_window(UiModel& model, const PairedSampleWindow& window,
       const auto prev_end = rf_bursts[idx - 1].start_sample + rf_bursts[idx - 1].samples.size();
       if (burst.start_sample < prev_end + 64) overlapping = true;
     }
+    if (idx + 1 < rf_bursts.size() &&
+        rf_bursts[idx + 1].start_sample < burst.start_sample + burst.samples.size() + 64)
+      overlapping = true;
 
     DfBearingEvent ev;
     ev.burst_id = ++next_burst_id;
@@ -296,8 +302,9 @@ void process_paired_window(UiModel& model, const PairedSampleWindow& window,
     ev.end_sample = b_end;
     ev.session_id = cal_service.session_id();
     ev.config_epoch = cal_service.config_epoch();
-    ev.cal_id = cal_service.calibration().reference_method + "@" +
-                std::to_string(cal_service.calibration().measured_unix_ns);
+    if (cal_service.calibration().measured_unix_ns > 0)
+      ev.cal_id = cal_service.calibration().reference_method + "@" +
+                  std::to_string(cal_service.calibration().measured_unix_ns);
     ev.classification = "unknown_rf";
     ev.time_ms = now_ms();
 
@@ -325,7 +332,9 @@ void process_paired_window(UiModel& model, const PairedSampleWindow& window,
     blk.rig_id = cal_service.rig_id();
     blk.channel_order = cal_service.calibration().channel_order;
 
-    const auto bearing = cal_service.estimate_block_bearing(blk, eval_unix_ns, noise, 6.0);
+    const int64_t burst_unix_ns = eval_unix_ns +
+        static_cast<int64_t>(std::llround(b_start * 1e9 / options.sample_rate));
+    const auto bearing = cal_service.estimate_block_bearing(blk, burst_unix_ns, noise, 6.0);
     ev.valid = bearing.valid;
     ev.broadside_deg = bearing.broadside_deg;
     ev.mirrored_deg = bearing.mirrored_deg;
@@ -513,6 +522,10 @@ void paired_replay_worker(UiModel& model, SourceConfig config, std::atomic<bool>
   DfCalibrationService cal_service;
   BoundedPairedQueue paired_queue(3);
   try {
+    if (config.pair_manifest.empty())
+      throw std::invalid_argument("paired DF requires a verified --pair-manifest; use df_bearing --aligned only for unverified diagnostics");
+    if (!config.df_cal.empty() && config.df_cal_samples)
+      throw std::invalid_argument("choose loaded calibration or a reference prefix, not both");
     std::string ch0_path = config.replay;
     std::string ch1_path = config.replay_ch1;
     std::string session_id = "paired_replay_session";
@@ -550,31 +563,7 @@ void paired_replay_worker(UiModel& model, SourceConfig config, std::atomic<bool>
       gain_db = manifest.gain_ch0_db;
       config.rate = manifest.sample_rate;
       config.center_freq = manifest.center_hz;
-    } else {
-      if (ch0_path.empty() || ch1_path.empty())
-        throw std::invalid_argument("paired replay requires --pair-manifest or both --replay and --replay-ch1");
-      if (!std::filesystem::exists(ch0_path) || !std::filesystem::exists(ch1_path))
-        throw std::runtime_error("paired replay file does not exist");
-      if (std::filesystem::file_size(ch0_path) != std::filesystem::file_size(ch1_path))
-        throw std::runtime_error("paired replay files have unequal byte lengths");
-      const auto meta0 = SidecarMeta::load(ch0_path);
-      const auto meta1 = SidecarMeta::load(ch1_path);
-      if (meta0.present != meta1.present)
-        throw std::runtime_error("paired sidecar mismatch");
-      if (meta0.present) {
-        if (meta0.overflows > 0 || meta1.overflows > 0)
-          throw std::runtime_error("paired sidecar reports overflows");
-        if (meta0.samples != meta1.samples)
-          throw std::runtime_error("paired sidecar sample counts mismatch");
-        if (meta0.first_device_timestamp_ns != meta1.first_device_timestamp_ns ||
-            meta0.first_device_timestamp_ns <= 0)
-          throw std::runtime_error("paired sidecar device timestamps invalid or mismatched");
-        base_device_ns = meta0.first_device_timestamp_ns;
-        if (meta0.capture_host_unix_ns > 0) capture_unix_ns = meta0.capture_host_unix_ns;
-        if (!meta0.session_id.empty()) session_id = meta0.session_id;
-        if (meta0.config_epoch > 0) config_epoch = meta0.config_epoch;
-        if (!meta0.rig_id.empty()) rig_id = meta0.rig_id;
-      }
+      config.fmt = SampleFormat::cf32;
     }
 
     FileSource src0(ch0_path, config.fmt, config.rate, config.center_freq);
@@ -604,8 +593,8 @@ void paired_replay_worker(UiModel& model, SourceConfig config, std::atomic<bool>
     int64_t eval_unix_ns = capture_unix_ns;
     if (!config.df_cal.empty()) {
       const auto loaded_cal = PhaseCal::load(config.df_cal);
-      eval_unix_ns = loaded_cal.measured_unix_ns > 0 ? loaded_cal.measured_unix_ns + 1000000000LL
-                                                     : capture_unix_ns;
+      if (std::abs(loaded_cal.spacing_m - spacing_m) > 1e-9)
+        throw std::runtime_error("calibration spacing does not match manifest rig geometry");
       if (!cal_service.adopt_same_session_calibration(loaded_cal, eval_unix_ns)) {
         sync_df_status(model, cal_service, eval_unix_ns, 0, orientation_deg);
         throw std::runtime_error(cal_service.reason());
@@ -695,10 +684,12 @@ void paired_replay_worker(UiModel& model, SourceConfig config, std::atomic<bool>
                               next_burst_id, jsonl_file.is_open() ? &jsonl_file : nullptr);
       }
     }
+    cal_service.on_disconnect(stop.load() ? "Paired replay stopped" : "Paired replay complete; historical bearings remain in event log");
     sync_df_status(model, cal_service, eval_unix_ns, paired_queue.dropped_pairs(), orientation_deg);
     if (jsonl_file.is_open()) {
       jsonl_file << model.df_summary_jsonl();
       jsonl_file.close();
+      if (!jsonl_file) throw std::runtime_error("failed writing DF JSONL output");
     }
     status.samples_received = received;
     status.dropped_windows = paired_queue.dropped_pairs();

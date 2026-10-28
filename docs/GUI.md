@@ -41,11 +41,14 @@ Connect starts the configured source; Disconnect requests cancellation; Reconnec
 completion before restarting. Rendering does not join a running worker during these button actions.
 Closing the window stops and joins the worker; capture does not continue in the background.
 
-## Live acceptance — deferred by operator
+## Live acceptance — transport checked, transmitter tests pending
 
-**No X310 or transmitting drone is available for this verification run. No radio was contacted.**
-Historical two-second smoke-test notes do not prove the revised pipeline's live performance.
-Commands for a later supervised hardware session:
+The connected X310 has now passed a three-second headless run through the current
+live worker: 46,080,000 samples, zero overflows, gaps or dropped windows. It reported
+ambient RF activity and no decoded packets; there was no known drone transmitter.
+The live worker currently uses fixed 15.36 MSPS (the `--rate` option configures replay).
+The dual-channel transport profile is separately 11.52 MSPS/sc16. See
+`X310_BENCH_20261028.md` for evidence and limitations. Example live commands:
 
 ```bash
 ./build/droneid_ui --device addr=192.168.10.2 --freq 2459500000 --gain 30
@@ -57,12 +60,24 @@ five consecutive receive timeouts fail. It defaults to two seconds. Validate a k
 CRC payloads, ten-minute throughput, overflows, gaps, queue drops, reconnect and shutdown before
 declaring live acceptance. Physical-button interaction and hardware recovery still need testing.
 
+The native GUI also completed a bounded X310 run with 46,080,000 received samples
+and zero gap/drop/overflow counters. Rendering correctly showed Disconnected after
+the run and no active bearings. Direction status text now wraps and the cancel
+button has a separate row to avoid clipping in the default 380-pixel panel.
+
 ## Direction finding
+
+Current paired-replay behavior and review limitations: `docs/DF_REVIEW_20261027.md`.
+`--pair-manifest FILE` is required for paired GUI bearings. Choose either
+`--df-cal FILE` or `--df-cal-samples N --df-ref splitter|ota_broadside`; the prefix
+must actually be a reference capture, not arbitrary drone samples. Both modes
+use capture-time freshness. `--df-jsonl FILE` retains historical accepted/rejected
+events; active arrows clear at replay EOF or cancellation. Live DF stays disabled.
 
 The former GUI path reopened the radio and applied file calibration without verified phase-repeatability
 or session provenance. That is not a validated phase reference. `--df --df-cal FILE` now **fails closed without opening a radio**.
-Use paired-IQ tools described in `docs/PHASE456.md`; integrated same-session calibration,
-timestamp alignment and antenna-rig verification are still required before enabling GUI bearings.
+Use paired-IQ tools described in `docs/PHASE456.md`; the offline lifecycle is integrated,
+but persistent live calibration, hardware alignment and antenna-rig verification remain.
 UBX/X310 timed LO synchronization is supported, but calibration reuse must be measured on this rig.
 The staged implementation and hardware acceptance gates are in `docs/DIRECTION_FINDING_PLAN.md`.
 

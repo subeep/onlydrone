@@ -13,3 +13,5 @@ data/analysis/**/*.jsonl
 data/analysis/**/*.stderr
 __pycache__/
 *.pyc
+*.ppm
+*.partial

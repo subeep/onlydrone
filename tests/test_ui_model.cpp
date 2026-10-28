@@ -82,6 +82,9 @@ TEST(UiModel, TrackUpsertAndBearing) {
   t.rssi_dbfs = -55;
   t.decoded = false;
   m.upsert_track(t);
+  DfUiStatus calibration;
+  calibration.state = DfUiState::Valid;
+  m.set_df_status(calibration);
   m.set_bearing("RF1", 37.5f, 0.8f, true);
   auto tracks = m.tracks();
   EXPECT_EQ(tracks.size(), size_t(1));
@@ -96,6 +99,9 @@ TEST(UiModel, MetricsUpdatesPreservePacketCounts) {
   packet.serial = "REAL-SERIAL";
   model.add_packet(packet);
   model.add_packet(packet);
+  DfUiStatus calibration;
+  calibration.state = DfUiState::Valid;
+  model.set_df_status(calibration);
   model.set_bearing(packet.serial, 12, 0.9, true);
   DroneTrack metrics;
   metrics.key = packet.serial;
@@ -176,6 +182,22 @@ TEST(UiModelDf, InvalidationClearsStaleArrowsAndTracksRejectionReasons) {
   model.invalidate_bearings(DfUiState::Stale, "retune invalidated calibration");
   EXPECT_EQ(model.df_status().state, DfUiState::Stale);
   EXPECT_FALSE(model.tracks().front().has_bearing);
+}
+
+TEST(UiModelDf, JsonEscapesUntrustedText) {
+  droneid::ui::DfBearingEvent event;
+  event.session_id = "session\"\\\n";
+  event.serial = "SER\"IAL";
+  event.rejection_reason = "bad\tinput";
+  const auto encoded = event.to_jsonl();
+  EXPECT_TRUE(encoded.find("session\\\"\\\\\\u000a") != std::string::npos);
+  EXPECT_TRUE(encoded.find("SER\\\"IAL") != std::string::npos);
+  EXPECT_TRUE(encoded.find("bad\\u0009input") != std::string::npos);
+  droneid::ui::UiModel model;
+  droneid::ui::DfUiStatus status;
+  status.reason = "bad\"reason";
+  model.set_df_status(status);
+  EXPECT_TRUE(model.df_summary_jsonl().find("bad\\\"reason") != std::string::npos);
 }
 
 MICROTEST_MAIN

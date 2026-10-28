@@ -165,11 +165,35 @@ TEST(DfGate1, PairedBlockAndManifestTransaction) {
   manifest.save(manifest_file);
   const auto loaded = droneid::PairManifest::load(manifest_file);
   EXPECT_TRUE(loaded.validate_files(ch0_file, ch1_file));
+  auto observed = loaded;
+  observed.hardware_observed = true;
+  observed.master_clock_rate = 184.32e6;
+  observed.wire_format = "sc16";
+  observed.lo_locked_ch0 = true;
+  observed.lo_locked_ch1 = true;
+  observed.ref_locked = true;
+  observed.rf_tune_hz = {2459.5e6, 2459.5e6};
+  observed.save(manifest_file);
+  const auto observed_loaded = droneid::PairManifest::load(manifest_file);
+  EXPECT_TRUE(observed_loaded.hardware_observed);
+  EXPECT_TRUE(observed_loaded.validate_files(ch0_file, ch1_file));
+  EXPECT_EQ(observed_loaded.master_clock_rate, 184.32e6);
+  observed.lo_locked_ch1 = false;
+  EXPECT_FALSE(observed.validate_files(ch0_file, ch1_file));
 
   // Corrupted checksum or unequal EOF must fail validation.
   auto bad_hash = loaded;
   bad_hash.ch1_fnv1a64 = "0000000000000000";
   EXPECT_FALSE(bad_hash.validate_files(ch0_file, ch1_file));
+
+  auto missing_hash = loaded;
+  missing_hash.ch1_fnv1a64.clear();
+  EXPECT_FALSE(missing_hash.validate_files(ch0_file, ch1_file));
+  {
+    std::ofstream metadata(ch1_file + ".meta", std::ios::app);
+    metadata << "sample_rate=50000000\nsession_id=different_session\n";
+  }
+  EXPECT_FALSE(loaded.validate_files(ch0_file, ch1_file));
 
   std::filesystem::remove(ch0_file);
   std::filesystem::remove(ch1_file);
@@ -277,6 +301,55 @@ TEST(DfGate2And3, CalibrationLifecycleAndQualityGates) {
   EXPECT_EQ(service.state(), droneid::DfCalState::Error);
   service.on_disconnect();
   EXPECT_EQ(service.state(), droneid::DfCalState::Disconnected);
+}
+
+TEST(DfReview, LoadedCalibrationCannotBypassGainOrRig) {
+  droneid::DfCalibrationService service;
+  EXPECT_TRUE(service.connect("session", 1, "rig", 2459.5e6, 15.36e6, 20));
+  droneid::PhaseCal calibration;
+  calibration.session_id = "session";
+  calibration.config_epoch = 1;
+  calibration.rig_id = "rig";
+  calibration.center_hz = 2459.5e6;
+  calibration.sample_rate = 15.36e6;
+  calibration.spacing_m = 0.05;
+  calibration.measured_unix_ns = 1000000000;
+  calibration.cal_samples = 2048;
+  calibration.gain_db = 0;
+  EXPECT_FALSE(service.adopt_same_session_calibration(calibration, 2000000000));
+  calibration.gain_db = 20;
+  calibration.rig_id.clear();
+  EXPECT_FALSE(service.adopt_same_session_calibration(calibration, 2000000000));
+  calibration.rig_id = "rig";
+  calibration.delay_slope_rad_per_hz = 1e-8;
+  EXPECT_FALSE(service.adopt_same_session_calibration(calibration, 2000000000));
+  calibration.delay_slope_rad_per_hz = 0;
+  EXPECT_TRUE(service.adopt_same_session_calibration(calibration, 2000000000));
+}
+
+TEST(DfReview, SymmetricOutOfBandEnergyIsNotAnInBandSignal) {
+  droneid::DfCalibrationService service;
+  EXPECT_TRUE(service.connect("session", 1, "rig", 2459.5e6, 15.36e6, 20));
+  droneid::PairedBlock reference;
+  reference.sample_rate = 15.36e6;
+  reference.center_hz = 2459.5e6;
+  reference.first_device_timestamp_ns = 1000000000;
+  reference.session_id = "session";
+  reference.config_epoch = 1;
+  reference.rig_id = "rig";
+  reference.ch0.assign(4096, droneid::cf32(0.3f, 0));
+  reference.ch1 = reference.ch0;
+  EXPECT_TRUE(service.begin_calibration());
+  EXPECT_TRUE(service.complete_calibration(reference, 0.05, 1000000000, 60, 2e6));
+  auto target = reference;
+  for (size_t index = 0; index < target.ch0.size(); ++index) {
+    const double phase = 2 * std::acos(-1.0) * 3e6 * index / target.sample_rate;
+    target.ch0[index] = droneid::cf32(0.3 * std::cos(phase), 0);
+    target.ch1[index] = target.ch0[index];
+  }
+  const auto result = service.estimate_block_bearing(target, 2000000000);
+  EXPECT_FALSE(result.valid);
+  EXPECT_TRUE(result.reason.find("passband") != std::string::npos);
 }
 
 MICROTEST_MAIN

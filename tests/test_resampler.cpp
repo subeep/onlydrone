@@ -19,8 +19,8 @@ std::vector<cf32> tone(size_t count, double rate, double frequency) {
 }
 
 TEST(Resampler, StreamingMatchesContinuousTime) {
-  for (double input_rate : {15.36e6, 50e6, 61.44e6, 92.16e6}) {
-    const double shift = input_rate == 15.36e6 ? -1e6 : -9e6;
+  for (double input_rate : {11.52e6, 15.36e6, 50e6, 61.44e6, 92.16e6}) {
+    const double shift = input_rate <= 15.36e6 ? -1e6 : -9e6;
     const auto input = tone(25003, input_rate, -shift + 1e6);
     ChannelResampler whole(input_rate, shift);
     const auto expected = whole.process(input, true);

@@ -8,6 +8,7 @@
 #include <filesystem>
 #include <fstream>
 #include <iomanip>
+#include <limits>
 #include <sstream>
 #include <stdexcept>
 
@@ -55,13 +56,52 @@ struct CrossStats {
   double coherence = 0;
   double mean_phase_rad = 0;
   double phase_std_rad = 0;
-  double delay_slope_rad_per_hz = 0;
-  double centroid_hz = 0;
-  double bandwidth_hz = 0;
+  double outside_passband_fraction = 0;
 };
 
+double outside_passband_fraction(const std::vector<cf32>& samples, double rate, double passband) {
+  size_t fft_size = 1;
+  while (fft_size * 2 <= std::min<size_t>(1024, samples.size())) fft_size *= 2;
+  const double pi = std::acos(-1.0);
+  double total_power = 0, outside_power = 0;
+  for (size_t start = 0; start < samples.size(); start += fft_size / 2) {
+    if (start + fft_size > samples.size()) start = samples.size() - fft_size;
+    std::vector<std::complex<double>> spectrum(fft_size);
+    for (size_t index = 0; index < fft_size; ++index)
+      spectrum[index] = std::complex<double>(samples[start + index]) *
+                        (0.5 - 0.5 * std::cos(2 * pi * index / (fft_size - 1)));
+    for (size_t index = 1, reversed = 0; index < fft_size; ++index) {
+      size_t bit = fft_size >> 1;
+      for (; reversed & bit; bit >>= 1) reversed ^= bit;
+      reversed ^= bit;
+      if (index < reversed) std::swap(spectrum[index], spectrum[reversed]);
+    }
+    for (size_t length = 2; length <= fft_size; length *= 2) {
+      const auto rotation = std::polar(1.0, -2 * pi / length);
+      for (size_t base = 0; base < fft_size; base += length) {
+        std::complex<double> phase(1, 0);
+        for (size_t offset = 0; offset < length / 2; ++offset) {
+          const auto upper = spectrum[base + offset];
+          const auto lower = phase * spectrum[base + offset + length / 2];
+          spectrum[base + offset] = upper + lower;
+          spectrum[base + offset + length / 2] = upper - lower;
+          phase *= rotation;
+        }
+      }
+    }
+    for (size_t index = 0; index < fft_size; ++index) {
+      const double frequency = std::min(index, fft_size - index) * rate / fft_size;
+      const double power = std::norm(spectrum[index]);
+      total_power += power;
+      if (frequency > passband / 2 + rate / fft_size) outside_power += power;
+    }
+    if (start + fft_size >= samples.size()) break;
+  }
+  return total_power > 0 ? outside_power / total_power : 1;
+}
+
 CrossStats analyze_pair(const std::vector<cf32>& first, const std::vector<cf32>& second,
-                        double sample_rate) {
+                        double sample_rate, double passband_hz = 0) {
   CrossStats stats;
   const std::size_t n = first.size();
   if (n == 0 || n != second.size()) {
@@ -117,32 +157,10 @@ CrossStats analyze_pair(const std::vector<cf32>& first, const std::vector<cf32>&
     if (valid_blocks > 0) stats.phase_std_rad = std::sqrt(sq_sum / static_cast<double>(valid_blocks));
   }
 
-  // Lag-1 instantaneous frequency / differential group delay slope approximation.
-  if (n >= 32 && std::isfinite(sample_rate) && sample_rate > 0) {
-    std::complex<double> lag_ch0(0, 0), lag_ch1(0, 0);
-    for (std::size_t i = 1; i < n; ++i) {
-      lag_ch0 += std::conj(std::complex<double>(first[i - 1])) * std::complex<double>(first[i]);
-      lag_ch1 += std::conj(std::complex<double>(second[i - 1])) * std::complex<double>(second[i]);
-    }
-    if (std::abs(lag_ch0) > 0 && std::abs(lag_ch1) > 0) {
-      const double f0 = std::arg(lag_ch0) * sample_rate / (2.0 * pi);
-      const double f1 = std::arg(lag_ch1) * sample_rate / (2.0 * pi);
-      stats.centroid_hz = 0.5 * (f0 + f1);
-      const double inst_bw = std::sqrt(std::max(0.0, 1.0 - std::abs(lag_ch0) / stats.first_power)) *
-                             sample_rate / pi;
-      stats.bandwidth_hz = inst_bw;
-      // Check phase drift rate between first half and second half vs frequency offset.
-      std::complex<double> c_first_half(0, 0), c_second_half(0, 0);
-      for (std::size_t i = 0; i < n / 2; ++i)
-        c_first_half += std::conj(std::complex<double>(first[i])) * std::complex<double>(second[i]);
-      for (std::size_t i = n / 2; i < n; ++i)
-        c_second_half += std::conj(std::complex<double>(first[i])) * std::complex<double>(second[i]);
-      if (std::abs(c_first_half) > 0 && std::abs(c_second_half) > 0) {
-        const double dphi = std::remainder(std::arg(c_second_half) - std::arg(c_first_half), 2.0 * pi);
-        stats.delay_slope_rad_per_hz = dphi / sample_rate;
-      }
-    }
-  }
+  if (n >= 32 && passband_hz > 0)
+    stats.outside_passband_fraction = std::max(
+        outside_passband_fraction(first, sample_rate, passband_hz),
+        outside_passband_fraction(second, sample_rate, passband_hz));
   return stats;
 }
 
@@ -231,6 +249,8 @@ bool PairedBlock::validate(std::string* reason) const {
     return fail("paired block channels must be non-empty, >=32 samples, and equal length");
   if (first_device_timestamp_ns <= 0)
     return fail("missing or non-positive device timestamp in paired block");
+  if (session_id.empty() || config_epoch == 0 || rig_id.empty())
+    return fail("missing session, epoch or rig provenance in paired block");
   if (!std::isfinite(sample_rate) || sample_rate <= 0 || !std::isfinite(center_hz) || center_hz <= 0)
     return fail("invalid sample rate or center frequency in paired block");
   if (channel_order[0] == channel_order[1])
@@ -257,6 +277,16 @@ std::string PairManifest::serialize() const {
      << "fpga_version = \"" << fpga_version << "\"\n"
      << "clock_source = \"" << clock_source << "\"\n"
      << "time_source = \"" << time_source << "\"\n"
+     << "hardware_observed = " << (hardware_observed ? "true" : "false") << "\n"
+     << "lo_locked_ch0 = " << (lo_locked_ch0 ? "true" : "false") << "\n"
+     << "lo_locked_ch1 = " << (lo_locked_ch1 ? "true" : "false") << "\n"
+     << "ref_locked = " << (ref_locked ? "true" : "false") << "\n"
+     << "master_clock_rate = " << master_clock_rate << "\n"
+     << "wire_format = \"" << wire_format << "\"\n"
+     << "rf_tune_ch0_hz = " << rf_tune_hz[0] << "\n"
+     << "rf_tune_ch1_hz = " << rf_tune_hz[1] << "\n"
+     << "dsp_tune_ch0_hz = " << dsp_tune_hz[0] << "\n"
+     << "dsp_tune_ch1_hz = " << dsp_tune_hz[1] << "\n"
      << "sample_rate = " << sample_rate << "\n"
      << "center_hz = " << center_hz << "\n"
      << "gain_ch0_db = " << gain_ch0_db << "\n"
@@ -328,6 +358,16 @@ PairManifest PairManifest::load(const std::string& path) {
   m.fpga_version = cfg.get("fpga_version", "unknown");
   m.clock_source = cfg.get("clock_source", "internal");
   m.time_source = cfg.get("time_source", "internal");
+  m.hardware_observed = cfg.get("hardware_observed") == "true";
+  if (m.hardware_observed) {
+    m.lo_locked_ch0 = cfg.get("lo_locked_ch0") == "true";
+    m.lo_locked_ch1 = cfg.get("lo_locked_ch1") == "true";
+    m.ref_locked = cfg.get("ref_locked") == "true";
+    m.master_clock_rate = req_double("master_clock_rate");
+    m.wire_format = cfg.get("wire_format");
+    m.rf_tune_hz = {req_double("rf_tune_ch0_hz"), req_double("rf_tune_ch1_hz")};
+    m.dsp_tune_hz = {req_double("dsp_tune_ch0_hz"), req_double("dsp_tune_ch1_hz")};
+  }
   m.sample_rate = req_double("sample_rate");
   m.center_hz = req_double("center_hz");
   m.gain_ch0_db = req_double("gain_ch0_db");
@@ -358,7 +398,19 @@ bool PairManifest::validate_files(const std::string& resolved_ch0, const std::st
     return false;
   };
   if (!complete) return fail("pair manifest is marked incomplete: " + status_reason);
+  if (hardware_observed && (!lo_locked_ch0 || !lo_locked_ch1 || !ref_locked ||
+      !std::isfinite(master_clock_rate) || master_clock_rate <= 0 ||
+      (wire_format != "sc16" && wire_format != "sc8")))
+    return fail("observed hardware has invalid clocks, wire format or unlocked reference/LO");
+  if (schema_version != 1) return fail("unsupported manifest schema_version");
   if (session_id.empty() || config_epoch == 0) return fail("pair manifest missing session_id or config_epoch");
+  if (rig_id.empty() || cable_id.empty() || capture_host_unix_ns <= 0)
+    return fail("pair manifest missing rig, cable or capture time provenance");
+  const auto valid_hash = [](const std::string& hash) {
+    return hash.size() == 16 && hash.find_first_not_of("0123456789abcdef") == std::string::npos;
+  };
+  if (!valid_hash(ch0_fnv1a64) || !valid_hash(ch1_fnv1a64))
+    return fail("pair manifest requires both FNV-1a checksums");
   if (first_device_timestamp_ns <= 0)
     return fail("pair manifest missing valid positive first_device_timestamp_ns");
   if (overflows > 0 || discontinuities > 0)
@@ -368,7 +420,15 @@ bool PairManifest::validate_files(const std::string& resolved_ch0, const std::st
   if (sample_count < 32 || !std::isfinite(sample_rate) || sample_rate <= 0 ||
       !std::isfinite(center_hz) || center_hz <= 0)
     return fail("pair manifest has invalid sample_count, sample_rate, or center_hz");
-  if (std::abs(gain_ch0_db - gain_ch1_db) > 1e-6 || antenna_ch0 != antenna_ch1)
+  if (!std::isfinite(spacing_m) || spacing_m <= 0 || spacing_m > 299792458.0 / center_hz / 2 ||
+      !std::isfinite(orientation_deg) || !std::isfinite(bandwidth_hz) || bandwidth_hz <= 0)
+    return fail("pair manifest has invalid rig geometry or bandwidth");
+  const long double duration_ns = static_cast<long double>(sample_count) * 1e9L / sample_rate;
+  if (duration_ns + first_device_timestamp_ns > std::numeric_limits<int64_t>::max() ||
+      duration_ns + capture_host_unix_ns > std::numeric_limits<int64_t>::max())
+    return fail("pair manifest sample timeline exceeds supported timestamp range");
+  if (!std::isfinite(gain_ch0_db) || !std::isfinite(gain_ch1_db) ||
+      std::abs(gain_ch0_db - gain_ch1_db) > 1e-6 || antenna_ch0 != antenna_ch1)
     return fail("pair manifest channel gain or antenna mismatch");
 
   if (!std::filesystem::exists(resolved_ch0) || !std::filesystem::exists(resolved_ch1))
@@ -377,7 +437,18 @@ bool PairManifest::validate_files(const std::string& resolved_ch0, const std::st
   // Validate sidecars if present.
   const auto meta0 = SidecarMeta::load(resolved_ch0);
   const auto meta1 = SidecarMeta::load(resolved_ch1);
+  if (meta0.present != meta1.present) return fail("only one channel has sidecar metadata");
   if (meta0.present && meta1.present) {
+    for (const auto* meta : {&meta0, &meta1}) {
+      if (meta->format != SampleFormat::cf32 || std::abs(meta->sample_rate - sample_rate) > 1 ||
+          std::abs(meta->center_freq - center_hz) > 1)
+        return fail("sidecar format/rate/frequency mismatch against manifest");
+      if ((!meta->session_id.empty() && meta->session_id != session_id) ||
+          (meta->config_epoch && meta->config_epoch != config_epoch) ||
+          (!meta->rig_id.empty() && meta->rig_id != rig_id) ||
+          (meta->capture_host_unix_ns && meta->capture_host_unix_ns != capture_host_unix_ns))
+        return fail("sidecar session/epoch/rig/capture time mismatch against manifest");
+    }
     if (meta0.first_device_timestamp_ns != first_device_timestamp_ns ||
         meta1.first_device_timestamp_ns != first_device_timestamp_ns)
       return fail("sidecar device timestamp mismatch against manifest");
@@ -391,7 +462,9 @@ bool PairManifest::validate_files(const std::string& resolved_ch0, const std::st
       return fail("sidecar channel index order does not match manifest channel_order");
   }
 
-  const std::size_t bps = meta0.present ? bytes_per_sample(meta0.format) : sizeof(cf32);
+  const std::size_t bps = sizeof(cf32);
+  if (sample_count > std::numeric_limits<uint64_t>::max() / bps)
+    return fail("manifest sample count overflows byte count");
   uint64_t bytes0 = 0, bytes1 = 0;
   const std::string hash0 = fnv1a64_file(resolved_ch0, &bytes0);
   const std::string hash1 = fnv1a64_file(resolved_ch1, &bytes1);
@@ -505,6 +578,11 @@ Bearing estimate_bearing(const std::vector<cf32>& first, const std::vector<cf32>
       !std::isfinite(calibration.phase_rad) || !std::isfinite(calibration.center_hz) ||
       !std::isfinite(calibration.sample_rate) || !std::isfinite(calibration.spacing_m) ||
       !std::isfinite(calibration.max_age_seconds)) return reject("invalid calibration or RF settings");
+  if (!std::isfinite(calibration.passband_hz) || calibration.passband_hz <= 0 ||
+      calibration.passband_hz > sample_rate || !std::isfinite(calibration.phase_dispersion_rad) ||
+      calibration.phase_dispersion_rad < 0 || !std::isfinite(calibration.delay_slope_rad_per_hz) ||
+      calibration.delay_slope_rad_per_hz != 0)
+    return reject("invalid passband or unsupported group-delay calibration; scalar phase only");
   if (!calibration.lo_locked_ch0 || !calibration.lo_locked_ch1)
     return reject("calibration LO not locked on both channels");
   if (first.size() != second.size() || first.size() < 32 || first_ns != second_ns)
@@ -520,9 +598,11 @@ Bearing estimate_bearing(const std::vector<cf32>& first, const std::vector<cf32>
   if (calibration.spacing_m <= 0 || calibration.spacing_m > wavelength / 2)
     return reject("antenna spacing must be positive and no greater than half a wavelength");
 
-  const auto stats = analyze_pair(first, second, sample_rate);
+  const auto stats = analyze_pair(first, second, sample_rate, calibration.passband_hz);
   if (!stats.finite) return reject("non-finite samples");
   if (stats.first_power <= 0 || stats.second_power <= 0) return reject("zero signal power");
+  if (stats.outside_passband_fraction > 0.01)
+    return reject("signal spectral occupancy outside calibrated passband");
   result.clipped_fraction = stats.clipped_fraction;
   if (stats.clipped_fraction > 0.001) return reject("receiver clipping detected");
 
@@ -534,10 +614,7 @@ Bearing estimate_bearing(const std::vector<cf32>& first, const std::vector<cf32>
   if (stats.phase_std_rad > 0.35)
     return reject("excessive phase dispersion or overlapping emitters");
 
-  const double slope_corr = std::isfinite(calibration.delay_slope_rad_per_hz)
-                                ? calibration.delay_slope_rad_per_hz * stats.centroid_hz
-                                : 0.0;
-  const double phase = std::remainder(stats.mean_phase_rad - calibration.phase_rad - slope_corr, 2 * pi);
+  const double phase = std::remainder(stats.mean_phase_rad - calibration.phase_rad, 2 * pi);
   result.phase_diff_rad = phase;
   const double sine = phase * wavelength / (2 * pi * calibration.spacing_m);
   if (std::abs(sine) > 1.0 + 1e-6) return reject("phase inconsistent with antenna spacing");
@@ -646,7 +723,7 @@ bool DfCalibrationService::complete_calibration(const PairedBlock& reference_blo
   }
   if (reference_block.session_id != session_id_ ||
       reference_block.config_epoch != config_epoch_ ||
-      (!reference_block.rig_id.empty() && reference_block.rig_id != rig_id_) ||
+      reference_block.rig_id != rig_id_ ||
       reference_block.channel_order != channel_order_) {
     state_ = DfCalState::Error;
     reason_ = "reference block session, epoch, rig, or channel order mismatch";
@@ -668,7 +745,7 @@ bool DfCalibrationService::complete_calibration(const PairedBlock& reference_blo
     return false;
   }
 
-  const auto stats = analyze_pair(reference_block.ch0, reference_block.ch1, sample_rate_);
+  const auto stats = analyze_pair(reference_block.ch0, reference_block.ch1, sample_rate_, passband_hz);
   if (!stats.finite) {
     state_ = DfCalState::Error;
     reason_ = "non-finite samples in calibration reference";
@@ -697,9 +774,9 @@ bool DfCalibrationService::complete_calibration(const PairedBlock& reference_blo
     reason_ = "unstable phase in calibration reference window";
     return false;
   }
-  if (std::abs(stats.delay_slope_rad_per_hz * passband_hz) > 0.35) {
+  if (stats.outside_passband_fraction > 0.01) {
     state_ = DfCalState::Error;
-    reason_ = "excessive differential group delay slope across calibrated passband";
+    reason_ = "reference spectral occupancy outside calibrated passband";
     return false;
   }
 
@@ -720,7 +797,7 @@ bool DfCalibrationService::complete_calibration(const PairedBlock& reference_blo
   cal.cal_samples = reference_block.ch0.size();
   cal.cal_coherence = stats.coherence;
   cal.phase_dispersion_rad = stats.phase_std_rad;
-  cal.delay_slope_rad_per_hz = stats.delay_slope_rad_per_hz;
+  cal.delay_slope_rad_per_hz = 0;
   cal.lo_locked_ch0 = lo_locked_ch0_;
   cal.lo_locked_ch1 = lo_locked_ch1_;
 
@@ -738,7 +815,7 @@ bool DfCalibrationService::adopt_same_session_calibration(const PhaseCal& cal, i
   }
   if (cal.session_id.empty() || cal.session_id != session_id_ ||
       cal.config_epoch == 0 || cal.config_epoch != config_epoch_ ||
-      (!cal.rig_id.empty() && cal.rig_id != rig_id_) ||
+      cal.rig_id != rig_id_ ||
       cal.channel_order != channel_order_) {
     state_ = DfCalState::Error;
     reason_ = "cross-session or mismatched-epoch/rig/channel calibration rejected";
@@ -746,9 +823,24 @@ bool DfCalibrationService::adopt_same_session_calibration(const PhaseCal& cal, i
   }
   if (std::abs(cal.center_hz - center_hz_) > 1.0 ||
       std::abs(cal.sample_rate - sample_rate_) > 1.0 ||
-      (cal.gain_db != 0 && std::abs(cal.gain_db - gain_db_) > 0.1)) {
+      std::abs(cal.gain_db - gain_db_) > 0.1) {
     state_ = DfCalState::Stale;
     reason_ = "calibration RF frequency, sample rate, or gain mismatch";
+    return false;
+  }
+  if (!std::isfinite(cal.phase_rad) || !std::isfinite(cal.center_hz) ||
+      !std::isfinite(cal.sample_rate) || !std::isfinite(cal.gain_db) ||
+      !std::isfinite(cal.spacing_m) || cal.spacing_m <= 0 || cal.spacing_m > 299792458.0 / center_hz_ / 2 ||
+      !std::isfinite(cal.max_age_seconds) || !std::isfinite(cal.passband_hz) ||
+      cal.passband_hz <= 0 || cal.passband_hz > sample_rate_ ||
+      !std::isfinite(cal.phase_dispersion_rad) || cal.phase_dispersion_rad < 0 ||
+      cal.phase_dispersion_rad > 0.087 || cal.cal_samples < 32 ||
+      !std::isfinite(cal.cal_coherence) || cal.cal_coherence > 1 ||
+      cal.cal_coherence < (cal.reference_method == "splitter" ? 0.98 : 0.92) ||
+      (cal.reference_method != "splitter" && cal.reference_method != "ota_broadside") ||
+      !std::isfinite(cal.delay_slope_rad_per_hz) || cal.delay_slope_rad_per_hz != 0) {
+    state_ = DfCalState::Error;
+    reason_ = "invalid calibration settings or unsupported group-delay correction";
     return false;
   }
   if (!cal.lo_locked_ch0 || !cal.lo_locked_ch1 || !lo_locked_ch0_ || !lo_locked_ch1_) {
@@ -824,7 +916,7 @@ Bearing DfCalibrationService::estimate_block_bearing(const PairedBlock& block, i
   if (!block.validate(&block_err)) return reject(block_err);
 
   if (block.session_id != session_id_ || block.config_epoch != config_epoch_ ||
-      (!block.rig_id.empty() && block.rig_id != rig_id_) ||
+      block.rig_id != rig_id_ ||
       block.channel_order != channel_order_) {
     return reject("paired block session, config_epoch, rig, or channel_order mismatch");
   }
@@ -843,10 +935,6 @@ Bearing DfCalibrationService::estimate_block_bearing(const PairedBlock& block, i
     const double snr_lin = (mean_power - noise_power) / noise_power;
     result.snr_db = 10.0 * std::log10(std::max(snr_lin, 1e-30));
     if (result.snr_db < min_snr_db) return reject("SNR below bearing gate threshold");
-  }
-  if (cal_.passband_hz > 0 &&
-      std::abs(stats.centroid_hz) > 0.5 * cal_.passband_hz) {
-    return reject("signal spectral occupancy outside calibrated passband");
   }
 
   result = estimate_bearing(block.ch0, block.ch1, block.first_device_timestamp_ns,

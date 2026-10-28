@@ -64,6 +64,14 @@ struct PairManifest {
   std::string fpga_version = "unknown";
   std::string clock_source = "internal";
   std::string time_source = "internal";
+  bool hardware_observed = false;
+  bool lo_locked_ch0 = false;
+  bool lo_locked_ch1 = false;
+  bool ref_locked = false;
+  double master_clock_rate = 0;
+  std::string wire_format = "unknown";
+  std::array<double, 2> rf_tune_hz = {0, 0};
+  std::array<double, 2> dsp_tune_hz = {0, 0};
   double sample_rate = 15.36e6;
   double center_hz = 0;
   double gain_ch0_db = 0;

@@ -1,4 +1,4 @@
 check: status=Disconnected packets=1 tracks=0 rf_bursts=1 checklist_groups=8 overflows=0 samples=200000 gaps=0 dropped_windows=0
   packet: telemetry=unsupported frame=8710494e4650bf4c8ea26d5d88e00ca3bd376d002b53c5091a273f90803ff806c0a80e8db450ec70367ab9a5a5f276b4dc2aa7f2aaf5f4b63566cddb7dbc4fac62f3fe4ce472c0c5d032343ae43e3807f69c1d91dfb61f100033d8abd269569f03bf41f7f0f73554e8ec07b2dc5b268959279df3e542700f556e71773f9487d7339720000c1b71b7b6e5000000000000000000000000000000000000000000000000000000000000007a38bbd3ab48ce format=infp inner_crc16=OK
   detail: Replay complete (not live reception)
-13:07:05 [INFO ] FileSource: loaded sidecar /home/sudeep/Music/punjdrone/data/analysis/corpus_deep_20261026/007-ee3601e8d6.decoded.cf32.meta (format=cf32 rate=100000000 center=5745000000)
+18:24:55 [INFO ] FileSource: loaded sidecar /home/sudeep/Music/punjdrone/data/analysis/corpus_deep_20261026/007-ee3601e8d6.decoded.cf32.meta (format=cf32 rate=100000000 center=5745000000)

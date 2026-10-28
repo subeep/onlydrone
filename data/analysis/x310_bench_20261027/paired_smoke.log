@@ -1,0 +1,11 @@
+18:33:17 [INFO ] UsrpSource: opening addr=192.168.10.2,master_clock_rate=184320000
+[INFO] [UHD] linux; GNU C++ version 11.2.0; Boost_107400; UHD_4.1.0.5-3
+[INFO] [X300] X300 initialization sequence...
+[INFO] [X300] Maximum frame size: 1472 bytes.
+[INFO] [X300] Radio 1x clock: 184.32 MHz
+LookupError: KeyError: Cannot find a conversion routine for conversion ID
+  Input format:  sc8_chdr
+  Num inputs:    1
+  Output format: fc32
+  Num outputs:   1
+

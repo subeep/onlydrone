@@ -1,5 +1,26 @@
 # Offline corpus validation and remaining acceptance
 
+## X310 transport and capture checks (28 October)
+
+See `docs/X310_BENCH_20261028.md` and `data/analysis/x310_bench_20261027/`.
+The 600-second two-channel UHD transport benchmark passes at 11.52 MSPS/sc16.
+Bounded application captures check measured hardware metadata and paired continuity.
+The single-channel GUI live backend receives three seconds without gaps or drops;
+uncalibrated paired replay accepts no bearings. Release CTest passes 13/13, including
+11.52 MSPS resampling and synthetic CRC decode. A known split reference, physical
+retune/phase tests, paired live service/soak and measured field angles are still required.
+
+## DF integration review (27 October)
+
+Release CTest now includes `test_df_cli` when Python 3 and the UI executable are
+available: historical-time CLI/UI angle agreement, legacy-calibration rejection,
+zero-gain mismatch and expiry advancing with sample position. Core/worker/model
+regressions also cover manifest inconsistencies, missing provenance, symmetric
+out-of-passband energy, original-rate paired slices and escaped JSONL strings.
+Run `python -m unittest discover -s tests -p test_df_cli.py` standalone if needed;
+`DRONEID_BUILD_DIR` selects another build directory. Current review and remaining
+hardware/software acceptance gaps: `docs/DF_REVIEW_20261027.md`.
+
 ## Implemented
 
 `scripts/validate_corpus.py` reads existing local data only. No IQ downloads, source modifications or

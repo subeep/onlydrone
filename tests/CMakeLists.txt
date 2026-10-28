@@ -27,6 +27,12 @@ if(TARGET droneid_dji)
   target_link_options(test_ui_worker PRIVATE -Wl,--allow-shlib-undefined)
   add_test(NAME test_ui_worker COMMAND test_ui_worker)
   if(TARGET droneid_ui)
+    find_package(Python3 COMPONENTS Interpreter QUIET)
+    if(Python3_Interpreter_FOUND)
+      add_test(NAME test_df_cli COMMAND ${CMAKE_COMMAND} -E env
+        DRONEID_BUILD_DIR=${CMAKE_BINARY_DIR} ${Python3_EXECUTABLE}
+        ${CMAKE_CURRENT_SOURCE_DIR}/test_df_cli.py)
+    endif()
     add_test(NAME test_ui_cli COMMAND ${CMAKE_COMMAND}
       -DUI=$<TARGET_FILE:droneid_ui>
       -DFIXTURE=${CMAKE_CURRENT_SOURCE_DIR}/data/mini2_wideband.cf32

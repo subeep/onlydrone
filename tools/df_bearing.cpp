@@ -103,6 +103,10 @@ int main(int argc, char** argv) {
                                args.number("--center", default_center));
     if (first.sample_rate() != second.sample_rate() || first.center_freq() != second.center_freq())
       throw std::invalid_argument("paired metadata mismatch");
+    if (has_manifest && (format != droneid::SampleFormat::cf32 ||
+        std::abs(first.sample_rate() - manifest.sample_rate) > 1 ||
+        std::abs(first.center_freq() - manifest.center_hz) > 1))
+      throw std::invalid_argument("input format/rate/frequency must match verified manifest");
 
     // Verify equal on-disk file sizes so unequal EOF is caught even when reading a prefix window.
     if (std::filesystem::exists(ch0_path) && std::filesystem::exists(ch1_path)) {
@@ -181,9 +185,45 @@ int main(int argc, char** argv) {
       }
     }
 
-    const auto bearing = droneid::estimate_bearing(left, right, first_ns, second_ns,
-                                                   first.center_freq(), first.sample_rate(),
-                                                   calibration, now);
+    droneid::Bearing bearing;
+    if (has_manifest) {
+      droneid::DfCalibrationService service;
+      if (!service.connect(manifest.session_id, manifest.config_epoch, manifest.rig_id,
+                           manifest.center_hz, manifest.sample_rate, manifest.gain_ch0_db,
+                           manifest.channel_order))
+        throw std::runtime_error(service.reason());
+      droneid::PairedBlock block;
+      block.ch0 = left;
+      block.ch1 = right;
+      block.first_device_timestamp_ns = first_ns;
+      block.start_sample = static_cast<uint64_t>(start);
+      block.sample_rate = manifest.sample_rate;
+      block.center_hz = manifest.center_hz;
+      block.session_id = manifest.session_id;
+      block.config_epoch = manifest.config_epoch;
+      block.rig_id = manifest.rig_id;
+      block.channel_order = manifest.channel_order;
+      const int64_t capture_time = manifest.capture_host_unix_ns + sample_offset_ns;
+      if (std::abs(calibration.spacing_m - manifest.spacing_m) > 1e-9)
+        throw std::runtime_error("calibration spacing does not match manifest rig geometry");
+      if (is_cal) {
+        if (calibration.session_id != manifest.session_id ||
+            calibration.config_epoch != manifest.config_epoch || calibration.rig_id != manifest.rig_id ||
+            std::abs(static_cast<long double>(calibration.measured_unix_ns) - capture_time) > 1000000)
+          throw std::runtime_error("calibration provenance/time must match reference capture window");
+        if (!service.begin_calibration(calibration.reference_method) ||
+            !service.complete_calibration(block, calibration.spacing_m, calibration.measured_unix_ns,
+                                          calibration.max_age_seconds, std::min(10e6, manifest.sample_rate)))
+          throw std::runtime_error(service.reason());
+        calibration = service.calibration();
+      } else if (!service.adopt_same_session_calibration(calibration, capture_time)) {
+        throw std::runtime_error(service.reason());
+      }
+      bearing = service.estimate_block_bearing(block, is_cal ? calibration.measured_unix_ns : capture_time);
+    } else {
+      bearing = droneid::estimate_bearing(left, right, first_ns, second_ns,
+                                         first.center_freq(), first.sample_rate(), calibration, now);
+    }
     if (!bearing.valid) throw std::runtime_error(bearing.reason);
 
     if (is_cal) {

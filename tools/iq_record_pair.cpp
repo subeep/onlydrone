@@ -36,7 +36,7 @@ int main(int argc, char** argv) {
       std::puts("iq_record_pair PREFIX [--config PATH] [--seconds 1] [--freq HZ] [--gain DB]\n"
                 "  [--session-id ID] [--config-epoch N] [--rig-id ID] [--cable-id ID]\n"
                 "  [--spacing-m 0.05] [--orientation-deg 0]\n"
-                "Receives Radio#0/#1 at 15.36 MSPS, sc8 on wire, cf32 to PREFIX.ch0.cf32/PREFIX.ch1.cf32\n"
+                "Receives Radio#0/#1 at the configured rate/wire format, cf32 to PREFIX.ch0.cf32/PREFIX.ch1.cf32\n"
                 "using a bounded writer queue and manifest-last transaction (PREFIX.pair.toml).\n"
                 "Checks sample timestamps and rejects overflows. RF phase calibration remains mandatory.");
       return 0;
@@ -48,19 +48,27 @@ int main(int argc, char** argv) {
 
     droneid::Config config;
     if (args.has("--config")) config = droneid::Config::load(args.get("--config"));
-    if (std::abs(config.sample_rate - 15.36e6) > 1)
-      throw std::invalid_argument("paired capture requires 15.36 MSPS");
+    if (!std::isfinite(config.sample_rate) || config.sample_rate < 10e6 || config.sample_rate > 25e6)
+      throw std::invalid_argument("paired capture rate must be between 10 and 25 MSPS");
+    if (config.wire_format != "sc16" && config.wire_format != "sc8")
+      throw std::invalid_argument("paired wire format must be sc16 or sc8");
+    const double wire_bytes_per_second = 2 * config.sample_rate * (config.wire_format == "sc16" ? 4 : 2);
+    if (wire_bytes_per_second > 100e6)
+      throw std::invalid_argument("paired profile exceeds conservative 1GbE budget (100 MB/s before overhead)");
 
     droneid::UsrpParams params;
     params.device_args = config.device_args;
     params.master_clock_rate = config.master_clock_rate;
+    params.sample_rate = config.sample_rate;
     params.gain_db = args.number("--gain", config.gain_db);
     params.center_freq = args.number("--freq", config.center_freq);
     if (params.center_freq < 1e6 || params.center_freq > 6e9)
       throw std::invalid_argument("invalid center");
     params.antenna = config.antenna;
+    params.clock_source = config.get("clock_source", "internal");
+    params.time_source = config.get("time_source", "internal");
     params.channels = {0, 1};
-    params.wire_format = "sc8";
+    params.wire_format = config.wire_format;
     params.auto_start = false;
 
     const std::string paths[] = {prefix + ".ch0.cf32", prefix + ".ch1.cf32"};
@@ -91,7 +99,7 @@ int main(int argc, char** argv) {
     manifest.orientation_deg = args.number("--orientation-deg", 0.0);
     if (manifest.spacing_m <= 0 || manifest.spacing_m > (299792458.0 / params.center_freq) / 2.0)
       throw std::invalid_argument("spacing-m must be in (0, wavelength/2]");
-    manifest.sample_rate = 15.36e6;
+    manifest.sample_rate = params.sample_rate;
     manifest.center_hz = params.center_freq;
     manifest.gain_ch0_db = params.gain_db;
     manifest.gain_ch1_db = params.gain_db;
@@ -116,10 +124,52 @@ int main(int argc, char** argv) {
 
     try {
       droneid::UsrpSource source(params);
-      if (std::abs(source.sample_rate() - 15.36e6) > 1)
+      if (std::abs(source.sample_rate() - params.sample_rate) > 1)
         throw std::runtime_error("unexpected RX rate");
       manifest.radio_serial = source.serial();
       manifest.sample_rate = source.sample_rate();
+      const auto record_hardware = [&](const droneid::RxHardwareState& hardware) {
+        if (hardware.channels.size() != 2 || !hardware.ref_locked ||
+            !hardware.channels[0].lo_locked || !hardware.channels[1].lo_locked)
+          throw std::runtime_error("paired capture requires measured reference lock and both RX LO locks");
+        const auto& first = hardware.channels[0];
+        const auto& second = hardware.channels[1];
+        if (std::abs(first.sample_rate - second.sample_rate) > 1 ||
+            std::abs(first.center_hz - second.center_hz) > 1 ||
+            std::abs(first.center_hz - params.center_freq) > 1 ||
+            std::abs(first.gain_db - second.gain_db) > 1e-6 ||
+            std::abs(first.bandwidth_hz - second.bandwidth_hz) > 1 ||
+            first.antenna != second.antenna)
+          throw std::runtime_error("observed paired RX configurations do not match");
+        manifest.hardware_observed = true;
+        manifest.uhd_version = hardware.uhd_version;
+        manifest.fpga_version = hardware.fpga_version;
+        manifest.clock_source = hardware.clock_source;
+        manifest.time_source = hardware.time_source;
+        manifest.master_clock_rate = hardware.master_clock_rate;
+        manifest.wire_format = hardware.wire_format;
+        manifest.ref_locked = hardware.ref_locked;
+        manifest.lo_locked_ch0 = first.lo_locked;
+        manifest.lo_locked_ch1 = second.lo_locked;
+        manifest.dboard_ch0 = first.daughterboard_id + " serial=" + first.daughterboard_serial;
+        manifest.dboard_ch1 = second.daughterboard_id + " serial=" + second.daughterboard_serial;
+        manifest.sample_rate = first.sample_rate;
+        manifest.center_hz = first.center_hz;
+        manifest.gain_ch0_db = first.gain_db;
+        manifest.gain_ch1_db = second.gain_db;
+        manifest.bandwidth_hz = first.bandwidth_hz;
+        manifest.antenna_ch0 = first.antenna;
+        manifest.antenna_ch1 = second.antenna;
+        manifest.rf_tune_hz = {first.rf_hz, second.rf_hz};
+        manifest.dsp_tune_hz = {first.dsp_hz, second.dsp_hz};
+      };
+      auto hardware = source.hardware_state();
+      for (int attempt = 0; attempt < 20 &&
+           (!hardware.channels.at(0).lo_locked || !hardware.channels.at(1).lo_locked); ++attempt) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+        hardware = source.hardware_state();
+      }
+      record_hardware(hardware);
 
       // Bounded writer queue so disk I/O never blocks the UHD RX loop.
       constexpr std::size_t kMaxWriterQueue = 64;
@@ -230,6 +280,7 @@ int main(int argc, char** argv) {
                        static_cast<unsigned long long>(target));
           return 130;
         }
+        record_hardware(source.hardware_state());
         for (int channel = 0; channel < 2; ++channel) {
           outputs[channel].close();
           if (!outputs[channel]) throw std::runtime_error("paired output close failed");
@@ -241,7 +292,7 @@ int main(int argc, char** argv) {
           std::ofstream metadata(paths[channel] + ".meta");
           metadata.precision(17);
           metadata << "format=cf32\nsample_rate=" << source.sample_rate()
-                   << "\ncenter_freq=" << params.center_freq
+                   << "\ncenter_freq=" << manifest.center_hz
                    << "\nchannel=" << channel
                    << "\nfirst_device_timestamp_ns=" << first_timestamp
                    << "\ncapture_host_unix_ns=" << capture_unix_ns

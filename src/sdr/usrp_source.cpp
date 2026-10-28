@@ -7,9 +7,12 @@
 #include <uhd/stream.hpp>
 #include <uhd/types/stream_cmd.hpp>
 #include <uhd/types/metadata.hpp>
+#include <uhd/property_tree.hpp>
+#include <uhd/version.hpp>
 
 #include <atomic>
 #include <cmath>
+#include <map>
 #include <sstream>
 #include <stdexcept>
 
@@ -26,6 +29,7 @@ struct UsrpSource::Impl {
   bool streaming = false;
   double actual_rate = 0;
   double actual_freq = 0;
+  std::map<std::size_t, uhd::tune_result_t> tunes;
 };
 
 UsrpSource::UsrpSource(const UsrpParams& params) : impl_(std::make_unique<Impl>()) {
@@ -67,11 +71,19 @@ UsrpSource::UsrpSource(const UsrpParams& params) : impl_(std::make_unique<Impl>(
     LOG_WARN("UsrpSource: requested rate %.0f, got %.0f", p.sample_rate, impl_->actual_rate);
 
   uhd::tune_request_t tr(p.center_freq);
-  impl_->usrp->set_rx_freq(tr, p.channel);
+  impl_->tunes[p.channel] = impl_->usrp->set_rx_freq(tr, p.channel);
   impl_->actual_freq = impl_->usrp->get_rx_freq(p.channel);
 
+  const auto set_bandwidth = [&](std::size_t channel) {
+    if (p.bandwidth <= 0) return;
+    const double supported = impl_->usrp->get_rx_bandwidth_range(channel).clip(p.bandwidth, true);
+    if (std::abs(supported - p.bandwidth) > 1)
+      LOG_WARN("UsrpSource: ch%zu bandwidth %.0f Hz outside supported range; using %.0f Hz",
+               channel, p.bandwidth, supported);
+    impl_->usrp->set_rx_bandwidth(supported, channel);
+  };
   impl_->usrp->set_rx_gain(p.gain_db, p.channel);
-  if (p.bandwidth > 0) impl_->usrp->set_rx_bandwidth(p.bandwidth, p.channel);
+  set_bandwidth(p.channel);
   if (!p.antenna.empty()) impl_->usrp->set_rx_antenna(p.antenna, p.channel);
 
   for (std::size_t index = 1; index < p.channels.size(); ++index) {
@@ -79,9 +91,9 @@ UsrpSource::UsrpSource(const UsrpParams& params) : impl_(std::make_unique<Impl>(
     impl_->usrp->set_rx_rate(p.sample_rate, channel);
     if (std::abs(impl_->usrp->get_rx_rate(channel) - impl_->actual_rate) > 1)
       throw std::runtime_error("dual RX rates do not match");
-    impl_->usrp->set_rx_freq(tr, channel);
+    impl_->tunes[channel] = impl_->usrp->set_rx_freq(tr, channel);
     impl_->usrp->set_rx_gain(p.gain_db, channel);
-    if (p.bandwidth > 0) impl_->usrp->set_rx_bandwidth(p.bandwidth, channel);
+    set_bandwidth(channel);
     if (!p.antenna.empty()) impl_->usrp->set_rx_antenna(p.antenna, channel);
   }
   if (p.clock_source != "internal" && !ref_locked())
@@ -190,9 +202,41 @@ std::string UsrpSource::summary() const {
   return os.str();
 }
 
+RxHardwareState UsrpSource::hardware_state() const {
+  RxHardwareState state;
+  state.uhd_version = uhd::get_version_string();
+  state.fpga_version = "unknown";
+  const auto tree = impl_->usrp->get_tree();
+  if (tree->exists("/mboards/0/fpga_version"))
+    state.fpga_version = tree->access<std::string>("/mboards/0/fpga_version").get();
+  state.clock_source = impl_->usrp->get_clock_source(0);
+  state.time_source = impl_->usrp->get_time_source(0);
+  state.master_clock_rate = impl_->usrp->get_master_clock_rate(0);
+  state.wire_format = impl_->p.wire_format;
+  state.ref_locked = impl_->usrp->get_mboard_sensor("ref_locked", 0).to_bool();
+  for (const auto channel : impl_->p.channels) {
+    RxChannelState receiver;
+    receiver.channel = channel;
+    const auto info = impl_->usrp->get_usrp_rx_info(channel);
+    receiver.daughterboard_id = info.get("rx_id", "unknown");
+    receiver.daughterboard_serial = info.get("rx_serial", "unknown");
+    receiver.antenna = impl_->usrp->get_rx_antenna(channel);
+    receiver.sample_rate = impl_->usrp->get_rx_rate(channel);
+    receiver.center_hz = impl_->usrp->get_rx_freq(channel);
+    receiver.gain_db = impl_->usrp->get_rx_gain(channel);
+    receiver.bandwidth_hz = impl_->usrp->get_rx_bandwidth(channel);
+    receiver.lo_locked = impl_->usrp->get_rx_sensor("lo_locked", channel).to_bool();
+    receiver.rf_hz = impl_->tunes.at(channel).actual_rf_freq;
+    receiver.dsp_hz = impl_->tunes.at(channel).actual_dsp_freq;
+    state.channels.push_back(receiver);
+  }
+  return state;
+}
+
 double UsrpSource::tune(double center_hz) {
   uhd::tune_request_t tr(center_hz);
-  for (auto channel : impl_->p.channels) impl_->usrp->set_rx_freq(tr, channel);
+  for (auto channel : impl_->p.channels)
+    impl_->tunes[channel] = impl_->usrp->set_rx_freq(tr, channel);
   impl_->actual_freq = impl_->usrp->get_rx_freq(impl_->p.channel);
   return impl_->actual_freq;
 }
@@ -217,7 +261,7 @@ void UsrpSource::tune_at(double center_hz, double seconds) {
   impl_->usrp->set_command_time(uhd::time_spec_t(seconds));
   try {
     for (auto channel : impl_->p.channels)
-      impl_->usrp->set_rx_freq(uhd::tune_request_t(center_hz), channel);
+      impl_->tunes[channel] = impl_->usrp->set_rx_freq(uhd::tune_request_t(center_hz), channel);
   } catch (...) {
     impl_->usrp->clear_command_time();
     throw;

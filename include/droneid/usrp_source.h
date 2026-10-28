@@ -29,6 +29,31 @@ struct UsrpParams {
   bool auto_start = true;
 };
 
+struct RxChannelState {
+  std::size_t channel = 0;
+  std::string daughterboard_id;
+  std::string daughterboard_serial;
+  std::string antenna;
+  double sample_rate = 0;
+  double center_hz = 0;
+  double rf_hz = 0;
+  double dsp_hz = 0;
+  double gain_db = 0;
+  double bandwidth_hz = 0;
+  bool lo_locked = false;
+};
+
+struct RxHardwareState {
+  std::string uhd_version;
+  std::string fpga_version;
+  std::string clock_source;
+  std::string time_source;
+  std::string wire_format;
+  double master_clock_rate = 0;
+  bool ref_locked = false;
+  std::vector<RxChannelState> channels;
+};
+
 class UsrpSource : public IqSource {
  public:
   explicit UsrpSource(const UsrpParams& p);
@@ -52,6 +77,7 @@ class UsrpSource : public IqSource {
   std::uint64_t overflow_count() const;
   std::string   serial() const;
   std::string   summary() const;
+  RxHardwareState hardware_state() const;
 
   // Retune (dwell/hop, Phase 4). Returns the actual center set.
   double tune(double center_hz);
