@@ -87,6 +87,12 @@ sidecar overrides. Reported sample indices are in original input-sample units;
 reported CFO is the residual after the chosen frequency shift. `--scan` is a
 diagnostic over at most the first 1,048,576 input samples.
 
+## Open Drone ID (ASTM F3411 Remote ID, Wi-Fi Beacon / NAN)
+
+Opt-in add-on: `odid_decode` decodes recorded Wi-Fi IQ (≥ 20 MSPS), `droneid_ui --odid` shows ODID
+drones tagged `ODID/ASTM`, and `odid_gen` writes synthetic fixtures. Bench-verified on 28 October with an
+ESP32-S3 Remote ID transmitter (beacon + NAN, `data/analysis/odid_20261028/`). See `docs/OPEN_DRONE_ID.md` and `docs/ODID_VERIFICATION_RUNBOOK.md`.
+
 ## Host setup for live capture (Phase 1+)
 
 The X310 is verified reachable at `addr=192.168.10.2`. Before high-rate streaming:

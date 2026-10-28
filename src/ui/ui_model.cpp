@@ -91,6 +91,10 @@ UsrpStatus UiModel::status() const {
   return status_;
 }
 
+std::string track_key(const std::string& source, const std::string& serial) {
+  return source.empty() ? serial : source + ":" + serial;
+}
+
 void UiModel::add_packet(const PacketRow& p) {
   std::lock_guard<std::mutex> g(m_);
   packets_.push_back(p);
@@ -98,9 +102,10 @@ void UiModel::add_packet(const PacketRow& p) {
 
   if (p.serial.empty() || !p.crc_ok) return;
 
-  const std::string key = p.serial;
+  const std::string key = track_key(p.source, p.serial);
   DroneTrack& t = tracks_[key];
   t.key = key;
+  t.source = p.source;
   t.serial = p.serial;
   t.type = p.type;
   t.decoded = true;

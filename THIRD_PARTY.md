@@ -19,6 +19,13 @@ This project is **GPL-3.0-or-later**. Vendored components:
   `src/dji/` and `src/fec/` is ported from its `matlab/updated_scripts` and `cpp/*.cc`.
   Credits in that repo to RUB-SysSec / CISPA for the DroneID reverse engineering.
 
+## Open Drone ID reference (not vendored)
+- https://github.com/opendroneid/opendroneid-core-c — **Apache-2.0**. `libopendroneid/opendroneid.{c,h}`
+  and `wifi.c` were consulted for ASTM F3411 field scaling, validity rules (`checkPackContent`, auth
+  page limits) and the Wi-Fi Beacon / NAN frame layouts. `src/odid/` is an independent C++
+  implementation; no code was copied. The 802.11 PHY in `src/odid/wifi_*.cpp` is written from
+  IEEE 802.11 (DSSS and OFDM clauses).
+
 ## Real-IQ test fixtures — `tests/data/mini2_centered.sc16`, `mini2_wideband.cf32`
 - Source: RUB-SysSec [DroneSecurity](https://github.com/RUB-SysSec/DroneSecurity),
   revision `9ff819843bee48fb140a0704ec78aff757896dea`, `samples/mini2_sm`.

@@ -1,0 +1,40 @@
+Wednesday 28 October 2026 07:37:59 AM UTC
+fa10c5d918addbe0206c08110606512372a66b3d
+ M CMakeLists.txt
+ M README.md
+ M TEST_PLAN.md
+ M THIRD_PARTY.md
+ M docs/GUI.md
+ M progress.md
+ M src/ui/app.cpp
+ M src/ui/receiver_worker.cpp
+ M src/ui/receiver_worker.h
+ M src/ui/ui_model.cpp
+ M src/ui/ui_model.h
+ M tests/CMakeLists.txt
+?? config/x310_odid_wifi.toml
+?? data/analysis/odid_20261028/
+?? docs/ODID_VERIFICATION_RUNBOOK.md
+?? docs/OPEN_DRONE_ID.md
+?? include/droneid/odid.h
+?? include/droneid/odid_wifi.h
+?? src/odid/
+?? src/ui/odid_worker.cpp
+?? tests/test_odid.cpp
+?? tests/test_odid_cli.cmake
+?? tests/test_odid_wifi.cpp
+?? tools/odid_decode.cpp
+?? tools/odid_gen.cpp
+[INFO] [UHD] linux; GNU C++ version 11.2.0; Boost_107400; UHD_4.1.0.5-3
+--------------------------------------------------
+-- UHD Device 0
+--------------------------------------------------
+Device Address:
+    serial: 326CF02
+    addr: 192.168.10.2
+    fpga: HG
+    name: Avgarde
+    product: X310
+    type: x300
+
+

@@ -1,0 +1,2 @@
+13:09:47 [INFO ] FileSource: loaded sidecar data/analysis/odid_20261028/baseline_ch6.iq.meta (format=sc16 rate=20000000 center=2437000000)
+summary: samples=40042496 seconds=2.002 odid_frames=0 uas=0 ofdm_sync=4511 ofdm_signal_ok=69 ofdm_signal_bad=0 dsss_sync=1231 dsss_header_ok=169 dsss_header_bad=5 dsss_cck_skipped=4 fcs_ok=146 fcs_fail=88 non_odid=146 odid_rejected=0

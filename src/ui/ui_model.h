@@ -108,11 +108,14 @@ struct PacketRow {
   std::string payload_hex;
   std::string payload_format = "unknown";
   std::string inner_crc16 = "unchecked";
+  std::string source;              // "" = DJI DroneID (default); "ODID/ASTM" = F3411 Remote ID
+  bool drone_valid = true;         // false when the frame carried no usable position
 };
 
 // One tracked source (decoded drone or raw RF emitter), keyed by serial or an RF id.
 struct DroneTrack {
   std::string key;
+  std::string source;              // "" = DJI DroneID / raw RF; "ODID/ASTM" = F3411 Remote ID
   std::string serial;
   std::string type;
   std::string generation;
@@ -208,6 +211,10 @@ class UiModel {
 
   void reparse_locked();
 };
+
+// Track key for a decoded packet: DJI rows keep the bare serial; other sources are namespaced so a
+// drone broadcasting both DJI DroneID and Remote ID shows as two tracks, one per source.
+std::string track_key(const std::string& source, const std::string& serial);
 
 // Returns the marker char if `line` is a task-list item ("- [ ] ..."), else 0.
 // Exposed for tests.

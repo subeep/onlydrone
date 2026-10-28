@@ -116,6 +116,8 @@ void draw_packets(const std::vector<ui::PacketRow>& packets) {
   ImGui::BeginChild("packets", ImVec2(0, 0), true);
   ImGui::SeparatorText("Decoded packets");
   ImGui::TextDisabled("Outer-CRC-valid payloads; hover serial for format, inner CRC and hex. Unparsed rows have no telemetry.");
+  if (std::any_of(packets.begin(), packets.end(), [](const ui::PacketRow& p) { return !p.source.empty(); }))
+    ImGui::TextDisabled("ODID/ASTM rows: 802.11 FCS-valid F3411 Remote ID; seq = message counter, pilot = operator location.");
   if (ImGui::BeginTable("pkts", 6,
         ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg | ImGuiTableFlags_ScrollY)) {
     ImGui::TableSetupColumn("seq");
@@ -146,8 +148,13 @@ void draw_packets(const std::vector<ui::PacketRow>& packets) {
         }
         continue;
       }
-      ImGui::TableNextColumn(); ImGui::Text("%.6f, %.6f", p.drone_lat, p.drone_lon);
-      ImGui::TableNextColumn(); ImGui::Text("%.0f/%.0f", p.altitude_m, p.height_m);
+      if (p.drone_valid) {
+        ImGui::TableNextColumn(); ImGui::Text("%.6f, %.6f", p.drone_lat, p.drone_lon);
+        ImGui::TableNextColumn(); ImGui::Text("%.0f/%.0f", p.altitude_m, p.height_m);
+      } else {
+        ImGui::TableNextColumn(); ImGui::TextDisabled("-");
+        ImGui::TableNextColumn(); ImGui::TextDisabled("-");
+      }
       ImGui::TableNextColumn();
       if (p.pilot_valid) ImGui::Text("%.6f, %.6f", p.pilot_lat, p.pilot_lon);
       else ImGui::TextDisabled("-");
@@ -432,12 +439,15 @@ static void usage(const char* p) {
       "                    [--df-cal FILE | --df-cal-samples N] [--df-ref splitter|ota_broadside]\n"
       "                    [--df-spacing-m M] [--df-jsonl FILE]\n"
       "  live source:   --device ARGS [--freq HZ] [--gain dB] [--ant NAME]  (needs a UHD build)\n"
+      "  Open Drone ID: --odid  decode ASTM F3411 Wi-Fi Beacon/NAN instead of DJI DroneID\n"
+      "                 (replay >= 20 MSPS, default --rate 20e6; live 20 MSPS, default --freq 2.437e9)\n"
       "  direction find: --df --df-cal FILE  (live hardware DF disabled until DF-5 bench approval)\n", p);
 }
 
 int main(int argc, char** argv) {
   try {
   Config cfg;
+  bool rate_set = false, freq_set = false;
   for (int i = 1; i < argc; ++i) {
     std::string a = argv[i];
     auto next = [&]() -> std::string {
@@ -455,15 +465,16 @@ int main(int argc, char** argv) {
     else if (a == "--replay-ch1") cfg.replay_ch1 = next();
     else if (a == "--pair-manifest") cfg.pair_manifest = next();
     else if (a == "--format") { if (!parse_format(next(), cfg.fmt)) { usage(argv[0]); return 2; } }
-    else if (a == "--rate") cfg.rate = number();
+    else if (a == "--rate") { cfg.rate = number(); rate_set = true; }
     else if (a == "--secs") cfg.secs = number();
     else if (a == "--auto-center") cfg.auto_center = true;
     else if (a == "--freq-offset") cfg.freq_offset = number();
     else if (a == "--device") cfg.device = next();
-    else if (a == "--freq") cfg.center_freq = number();
+    else if (a == "--freq") { cfg.center_freq = number(); freq_set = true; }
     else if (a == "--gain") cfg.gain = number();
     else if (a == "--ant") cfg.antenna = next();
     else if (a == "--df") cfg.df = true;
+    else if (a == "--odid") cfg.odid = true;
     else if (a == "--df-cal") cfg.df_cal = next();
     else if (a == "--df-ref") cfg.df_ref = next();
     else if (a == "--df-cal-samples") {
@@ -485,6 +496,12 @@ int main(int argc, char** argv) {
     else { usage(argv[0]); return 2; }
   }
 
+  if (cfg.odid) {
+    if (!rate_set) cfg.rate = droneid::ui::kOdidLiveRate;
+    if (!freq_set) cfg.center_freq = droneid::ui::kOdidDefaultCenter;
+    if (cfg.df || cfg.auto_center || !cfg.pair_manifest.empty() || !cfg.replay_ch1.empty() || cfg.rate < 20e6)
+      throw std::invalid_argument("--odid is single-channel, needs >= 20 MSPS and excludes DF/paired/auto-center");
+  }
   if (cfg.rate < 10e6 || cfg.rate > 250e6 || cfg.secs < 0 || cfg.secs > 86400 ||
       cfg.center_freq < 1e6 || cfg.center_freq > 6e9 ||
       (cfg.auto_center && cfg.freq_offset != 0) || (!cfg.screenshot.empty() && (cfg.frames < 1 || cfg.check)))
@@ -526,6 +543,9 @@ int main(int argc, char** argv) {
     for (const auto& track : model.tracks()) {
       std::printf("  track: serial=%s count=%llu corr=%.3f", track.serial.c_str(),
                   static_cast<unsigned long long>(track.count), track.corr);
+      if (!track.source.empty())
+        std::printf(" source=%s type=\"%s\" gen=\"%s\"", track.source.c_str(), track.type.c_str(),
+                    track.generation.c_str());
       if (track.has_bearing) {
         std::printf(" bearing_deg=%.4f mirrored_deg=%.4f uncertainty_deg=%.4f ambiguous=%s",
                     track.bearing_deg, track.mirrored_deg, track.bearing_uncertainty_deg,
@@ -533,10 +553,22 @@ int main(int argc, char** argv) {
       }
       std::printf("\n");
     }
-    for (const auto& packet : model.packets())
+    for (const auto& packet : model.packets()) {
+      if (!packet.source.empty()) {
+        std::printf("  packet: source=%s serial=%s seq=%u format=\"%s\" drone=%s", packet.source.c_str(),
+                    packet.serial.c_str(), packet.sequence, packet.payload_format.c_str(),
+                    packet.drone_valid ? "valid" : "none");
+        if (packet.drone_valid)
+          std::printf(" lat=%.7f lon=%.7f alt=%.1f height=%.1f", packet.drone_lat, packet.drone_lon,
+                      packet.altitude_m, packet.height_m);
+        if (packet.pilot_valid) std::printf(" operator=%.7f,%.7f", packet.pilot_lat, packet.pilot_lon);
+        std::printf(" payload=%s\n", packet.payload_hex.c_str());
+        continue;
+      }
       std::printf("  packet: telemetry=%s frame=%s format=%s inner_crc16=%s\n",
                   packet.telemetry_parsed ? "parsed" : "unsupported", packet.payload_hex.c_str(),
                   packet.payload_format.c_str(), packet.inner_crc16.c_str());
+    }
     if (!cfg.pair_manifest.empty() || !cfg.replay_ch1.empty() || cfg.df) {
       const auto df = model.df_status();
       std::printf("  df_status: state=%s accepted=%llu rejected=%llu dropped_pairs=%llu reason=%s\n",

@@ -1,5 +1,30 @@
 # punjdrone — build progress
 
+## Open Drone ID (ASTM F3411) Wi-Fi Beacon / NAN — 2026-10-28
+Operator's test transmitter: ESP32-S3 Remote ID, Wi-Fi Beacon + NAN on channel 6, DSSS 1 Mb/s.
+BLE transports not started.
+- [x] F3411 parser: Basic ID, Location/Vector, Auth, Self-ID, System, Operator ID, Message Pack;
+      scaling and validity rules checked against hand-built byte vectors (`test_odid`).
+- [x] 802.11 receive chain: legacy OFDM 6–54 Mb/s and DSSS 1/2 Mb/s (long/short preamble), FCS,
+      beacon vendor IE FA:0B:BC/0x0D and NAN SDF parsing. PLCP CRC and OFDM scrambler match the
+      standard's examples. Other OFDM constants are checked only by synth/receive self-consistency.
+- [x] Offline CLI `odid_decode` (JSONL evidence), fixture generator `odid_gen`, opt-in GUI mode
+      `--odid` (replay + live 20 MSPS / 200 MHz master clock), tracks and packets tagged `ODID/ASTM`.
+- [x] Synthetic-IQ suites: CRC failures, scrambler seeds, chunk/window boundaries, malformed and
+      non-ODID frames, CFO ±200 kHz, ±40 ppm clock offset, 20/23.04/25/50 MSPS. Release 16/16 CTest.
+- [x] X310 transport at 200 MHz master clock / 20 MSPS sc16 on 1 GbE: 60 s, zero drops/overruns.
+- [x] Real third-party Wi-Fi decodes FCS-valid on air: OFDM 6/12/24/48 Mb/s, DSSS 1/2 Mb/s.
+      (A gr-ieee802-11 cross-check could not run: the local install crashes.)
+- [x] Operator's transmitter from recorded IQ: 141 frames in 10 s (beacon + NAN). UAS ID, MAC, operator
+      ID, self-ID and operator position match the device configuration (operator-confirmed).
+- [x] GUI replay = CLI (141); live GUI 30 s: 404 ODID packets, one `ODID/ASTM` track, zero
+      overflows/gaps/drops; native live window screenshot.
+- [/] Decode fraction about 70% on busy channel 6; FCS failures traced to collisions with other Wi-Fi.
+- [ ] ≥ 5 min live run, reconnect/cable removal, other channels/5 GHz, range/sensitivity, quiet-channel rate.
+
+Design, gates and limits: `docs/OPEN_DRONE_ID.md`. Device steps: `docs/ODID_VERIFICATION_RUNBOOK.md`.
+Evidence: `data/analysis/odid_20261028/README.md`.
+
 ## X310 bench update — 2026-10-28
 - [x] Detailed step-by-step bench/field verification runbook: `docs/X310_DF_VERIFICATION_RUNBOOK.md`.
 - [x] X310 `326CF02`, dual UBX-160 v2, UHD 4.1.0.5-3 / FPGA 38.0 inventoried.

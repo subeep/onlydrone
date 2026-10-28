@@ -1,0 +1,17 @@
+# punjdrone Open Drone ID (ASTM F3411 Wi-Fi Beacon / NAN) capture profile: X310, single antenna.
+# 200 MHz master clock / 10 = 20 MSPS, the native 802.11 OFDM rate; 640 Mb/s sc16 payload on 1GbE.
+# Receive-only. Not hardware-verified yet: see docs/ODID_VERIFICATION_RUNBOOK.md.
+
+[radio]
+device_args       = "addr=192.168.10.2"
+master_clock_rate = 200000000      # X310 alternative to 184.32 MHz; 20 MSPS needs an integer decimation of 10
+sample_rate       = 20000000       # one 20 MHz Wi-Fi channel
+center_freq       = 2437000000     # Wi-Fi channel 6 (ODID NAN 2.4 GHz channel; common beacon channel)
+gain_db           = 20
+antenna           = "RX2"
+wire_format       = "sc16"
+num_channels      = 1
+
+[ui]
+ui            = false
+progress_file = "progress.md"

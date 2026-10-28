@@ -1,0 +1,4 @@
+frames=141 uas_ids=['ESP32S3RIDD682C4'] macs=['70:af:09:d6:82:c4']
+wifi_beacon  dsss 1M frames=69 span=9.90s rate=7.0/s counter 242..85 missed_by_counter=31 snr_med=14.5dB cfo_med=+5140Hz
+wifi_nan     dsss 1M frames=72 span=9.90s rate=7.3/s counter 242..85 missed_by_counter=28 snr_med=14.1dB cfo_med=+5124Hz
+lat 51.4775407..51.4777672 lon -0.0020361..-0.0014739 operator 51.4779,-0.0015 op_id=TEST-OPERATOR-0001

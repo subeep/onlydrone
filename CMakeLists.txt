@@ -29,6 +29,22 @@ add_library(droneid_core
 target_include_directories(droneid_core PUBLIC include)
 target_link_libraries(droneid_core PUBLIC Threads::Threads)
 
+# --- ASTM F3411 Open Drone ID: message parser + Wi-Fi Beacon/NAN receiver (no FFTW needed) ---
+add_library(droneid_odid
+  src/odid/messages.cpp
+  src/odid/wifi_mac.cpp
+  src/odid/wifi_dsp.cpp
+  src/odid/wifi_ofdm.cpp
+  src/odid/wifi_dsss.cpp
+  src/odid/wifi_decoder.cpp)
+target_include_directories(droneid_odid PUBLIC include)
+target_link_libraries(droneid_odid PUBLIC droneid_core)
+
+add_executable(odid_decode tools/odid_decode.cpp)
+target_link_libraries(odid_decode PRIVATE droneid_odid)
+add_executable(odid_gen tools/odid_gen.cpp)
+target_link_libraries(odid_gen PRIVATE droneid_odid)
+
 # --- application ---
 add_executable(droneid src/app/main.cpp)
 target_link_libraries(droneid PRIVATE droneid_core)
@@ -141,9 +157,9 @@ add_library(droneid_ui_model src/ui/ui_model.cpp)
 target_include_directories(droneid_ui_model PUBLIC src/ui)
 
 if(TARGET droneid_rf)
-  add_library(droneid_ui_worker src/ui/receiver_worker.cpp)
+  add_library(droneid_ui_worker src/ui/receiver_worker.cpp src/ui/odid_worker.cpp)
   target_include_directories(droneid_ui_worker PUBLIC src/ui)
-  target_link_libraries(droneid_ui_worker PUBLIC droneid_ui_model droneid_rf Threads::Threads)
+  target_link_libraries(droneid_ui_worker PUBLIC droneid_ui_model droneid_rf droneid_odid Threads::Threads)
   if(TARGET droneid_sdr)
     target_compile_definitions(droneid_ui_worker PRIVATE DRONEID_HAVE_UHD=1)
     target_link_libraries(droneid_ui_worker PRIVATE droneid_sdr)

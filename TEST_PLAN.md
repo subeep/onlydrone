@@ -1,5 +1,24 @@
 # Offline corpus validation and remaining acceptance
 
+## Open Drone ID Wi-Fi (28 October)
+
+Three new hermetic suites (evidence tier 1, **synthetic IQ only**). Release CTest passes 16/16:
+- `test_odid`: F3411 messages from hand-assembled bytes (scaling, unknown markers, range
+  rejection), auth pages, binary IDs, Message Pack structure/content rules, partial rejection,
+  encoder round trip, CRC-32, and beacon/NAN MPDU layouts and rejection reasons.
+- `test_odid_wifi`: PLCP CRC-16 standard example, OFDM scrambler sequence, convolutional
+  encoder generators, every OFDM rate × beacon/NAN, DSSS 1/2 Mb/s × long/short preamble,
+  23.04/25/50 MSPS input with CFO and clock offset, `freq_offset`, scrambler-seed transparency,
+  FCS failures, non-ODID/malformed frames, back-to-back frames, stream chunking across window
+  edges (each frame exactly once at the right sample), truncation, and noise/tone/silence.
+- `test_odid_cli`: `odid_gen` → `odid_decode` output, JSONL, exit codes and invalid arguments.
+  When the UI is built, `droneid_ui --check --odid` shows `ODID/ASTM` packets and tracks, and the
+  same file in default (DJI) mode yields none.
+
+Hardware tiers (28 October, `data/analysis/odid_20261028/`): the 20 MSPS transport, a real
+ESP32-S3 transmitter (CLI, GUI replay, 30 s live GUI) and on-air third-party Wi-Fi decoding all
+pass. Still open: ≥ 5 min soak, reconnect, other channels/5 GHz, range and sensitivity.
+
 ## X310 transport and capture checks (28 October)
 
 See `docs/X310_BENCH_20261028.md` and `data/analysis/x310_bench_20261027/`.

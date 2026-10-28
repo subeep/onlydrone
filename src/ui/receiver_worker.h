@@ -35,7 +35,15 @@ struct SourceConfig {
   uint64_t df_cal_samples = 0;
   double df_spacing_m = 0.05;
   std::string df_jsonl;
+  // Opt-in ASTM F3411 Open Drone ID over Wi-Fi (Beacon/NAN). Off by default; when on, the source
+  // is decoded as 802.11 instead of DJI DroneID and live reception tunes a 20 MSPS Wi-Fi channel.
+  bool odid = false;
 };
+
+// ODID Wi-Fi live profile: 200 MHz master clock / 10 = 20 MSPS, the native 802.11 OFDM rate.
+constexpr double kOdidLiveRate = 20e6;
+constexpr double kOdidLiveMasterClock = 200e6;
+constexpr double kOdidDefaultCenter = 2.437e9;  // Wi-Fi channel 6
 
 struct SampleWindow {
   std::vector<cf32> samples;
@@ -99,5 +107,7 @@ void replay_worker(UiModel& model, SourceConfig config, std::atomic<bool>& stop)
 void paired_replay_worker(UiModel& model, SourceConfig config, std::atomic<bool>& stop);
 void live_worker(UiModel& model, SourceConfig config, std::atomic<bool>& stop);
 void df_live_worker(UiModel& model, SourceConfig config, std::atomic<bool>& stop);
+void odid_replay_worker(UiModel& model, SourceConfig config, std::atomic<bool>& stop);
+void odid_live_worker(UiModel& model, SourceConfig config, std::atomic<bool>& stop);
 
 }  // namespace droneid::ui

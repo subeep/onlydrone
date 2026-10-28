@@ -19,6 +19,25 @@ if(TARGET droneid_ui_model)
   add_test(NAME test_ui_model COMMAND test_ui_model)
 endif()
 
+# ASTM F3411 Open Drone ID: parser/MAC, Wi-Fi PHY on synthetic IQ, CLI (+ UI when built).
+if(TARGET droneid_odid)
+  add_executable(test_odid test_odid.cpp)
+  target_link_libraries(test_odid PRIVATE droneid_odid)
+  add_test(NAME test_odid COMMAND test_odid)
+  add_executable(test_odid_wifi test_odid_wifi.cpp)
+  target_link_libraries(test_odid_wifi PRIVATE droneid_odid)
+  target_include_directories(test_odid_wifi PRIVATE ${CMAKE_SOURCE_DIR}/src/odid)
+  add_test(NAME test_odid_wifi COMMAND test_odid_wifi)
+  set(odid_ui_arg "")
+  if(TARGET droneid_ui)
+    set(odid_ui_arg -DUI=$<TARGET_FILE:droneid_ui>)
+  endif()
+  add_test(NAME test_odid_cli COMMAND ${CMAKE_COMMAND}
+    -DGEN=$<TARGET_FILE:odid_gen> -DDECODE=$<TARGET_FILE:odid_decode> ${odid_ui_arg}
+    -DWORK=${CMAKE_CURRENT_BINARY_DIR}/odid_cli
+    -P ${CMAKE_CURRENT_SOURCE_DIR}/test_odid_cli.cmake)
+endif()
+
 # DJI decoder tests (only when the decoder library was built).
 if(TARGET droneid_dji)
   add_executable(test_ui_worker test_ui_worker.cpp)

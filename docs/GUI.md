@@ -65,6 +65,30 @@ and zero gap/drop/overflow counters. Rendering correctly showed Disconnected aft
 the run and no active bearings. Direction status text now wraps and the cancel
 button has a separate row to avoid clipping in the default 380-pixel panel.
 
+## Open Drone ID mode (`--odid`, opt-in)
+
+`--odid` switches the source to the ASTM F3411 Wi-Fi decoder (Beacon + NAN; `docs/OPEN_DRONE_ID.md`).
+Without it, nothing changes. Replay needs ≥ 20 MSPS (default `--rate 20e6`; `.meta` overrides).
+Live uses a 200 MHz master clock, 20 MSPS and `--freq` (default 2437 MHz, channel 6). `--odid`
+rejects DF, paired replay, `--auto-center` and rates below 20 MSPS. `--freq-offset` is allowed.
+
+```bash
+./build/droneid_ui --odid --replay capture.iq --format sc16 [--check]
+./build/droneid_ui --odid --device addr=192.168.10.2 --freq 2437e6 --gain 20
+```
+
+Decoded frames (802.11 FCS-valid, F3411-valid) appear in both tables tagged `ODID/ASTM`. In the drones
+table, `serial` is the UAS ID (or `mac:…` before a Basic ID arrives), `type` is `ODID/ASTM <UA type>`,
+`gen` is `ODID/ASTM wifi_beacon|wifi_nan`, and `corr` is PHY sync quality. In the packet log,
+`seq` is the F3411 message counter, `pilot` is the System message's operator location, and `-` marks
+a frame without position. Hovering shows the PHY/rate and the Message Pack hex. Track keys are
+namespaced (`ODID/ASTM:<id>`), so a drone that also sends DJI DroneID gets a separate track.
+`--check` prints `source=ODID/ASTM` on ODID track/packet lines; DJI lines are unchanged. The status
+detail shows ODID/FCS/sync counters. DJI decoding and the unknown-RF summary are off in this mode.
+Bench-verified 28 October with an ESP32-S3 Remote ID transmitter: replay matches the CLI, native
+replay and live windows render the ODID track, and live ran 30 s with zero overflows/gaps/drops
+(`data/analysis/odid_20261028/`). The longitude columns are clipped at the default window width.
+
 ## Direction finding
 
 Current paired-replay behavior and review limitations: `docs/DF_REVIEW_20261027.md`.

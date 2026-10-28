@@ -463,6 +463,10 @@ bool BoundedPairedQueue::pop(PairedSampleWindow& out) {
 }
 
 void replay_worker(UiModel& model, SourceConfig config, std::atomic<bool>& stop) {
+  if (config.odid) {
+    odid_replay_worker(model, config, stop);
+    return;
+  }
   if (!config.pair_manifest.empty() || !config.replay_ch1.empty()) {
     paired_replay_worker(model, config, stop);
     return;
@@ -708,6 +712,10 @@ void paired_replay_worker(UiModel& model, SourceConfig config, std::atomic<bool>
 }
 
 void live_worker(UiModel& model, SourceConfig config, std::atomic<bool>& stop) {
+  if (config.odid) {
+    odid_live_worker(model, config, stop);
+    return;
+  }
   UsrpStatus status;
   status.state = UsrpStatus::State::Connecting;
   status.label = "X310 live";
