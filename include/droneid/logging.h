@@ -34,7 +34,11 @@ inline void log_msg(LogLevel l, const char* fmt, ...) {
   char ts[16];
   std::time_t t = std::time(nullptr);
   std::tm tm{};
+#ifdef _WIN32
+  localtime_s(&tm, &t);
+#else
   localtime_r(&t, &tm);
+#endif
   std::strftime(ts, sizeof ts, "%H:%M:%S", &tm);
   std::fprintf(stderr, "%s [%-5s] ", ts, level_str(l));
   va_list ap;

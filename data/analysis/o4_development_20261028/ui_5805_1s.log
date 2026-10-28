@@ -1,0 +1,4 @@
+13:39:41 [INFO ] FileSource: loaded sidecar data/air3s/air3s_58_5805e6_20261026T074519Z.iq.meta (format=sc16 rate=15360000 center=5805000000)
+check: status=Disconnected packets=0 tracks=0 rf_bursts=848 checklist_groups=11 overflows=0 samples=15360000 gaps=0 dropped_windows=0
+  o4_evidence: windows=62 structure=51 candidates=48 identity=unverified
+  detail: Replay complete (not live reception)

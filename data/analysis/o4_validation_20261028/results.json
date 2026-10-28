@@ -1,0 +1,926 @@
+[
+  {
+    "path": "data/air3s/air3s_24_2410e6_20261026T074318Z.iq",
+    "label": "air3s_present_weak_label",
+    "label_scope": "recording, not individual RF events",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "data/air3s/air3s_24_2410e6_20261026T074318Z.iq"
+    ],
+    "input_bytes": 491520000,
+    "metadata": {
+      "format": "sc16",
+      "sample_rate": "15360000",
+      "center_freq": "2410000000",
+      "gain_db": "35.0",
+      "antenna": "RX2",
+      "wire_format": "sc16",
+      "overflows": "0",
+      "utc": "2026-10-26T07:43:29"
+    },
+    "sample_rate": 15360000.0,
+    "duration_seconds": 8.0,
+    "wall_seconds": 1.6698994549997224,
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 122880000,
+      "windows": 500,
+      "structure_windows": 0,
+      "candidate_windows": 0,
+      "unclassified_tail_samples": 0,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "development_candidate_windows": 0,
+    "later_candidate_windows": 0,
+    "reasons": {
+      "insufficient_structure": 348,
+      "clipping": 152
+    },
+    "log": "data/analysis/o4_validation_20261028/air3s_24_2410e6_20261026T074318Z-1c26d478.jsonl",
+    "stderr": "data/analysis/o4_validation_20261028/air3s_24_2410e6_20261026T074318Z-1c26d478.stderr"
+  },
+  {
+    "path": "data/air3s/air3s_24_2425e6_20261026T074318Z.iq",
+    "label": "air3s_present_weak_label",
+    "label_scope": "recording, not individual RF events",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "data/air3s/air3s_24_2425e6_20261026T074318Z.iq"
+    ],
+    "input_bytes": 491520000,
+    "metadata": {
+      "format": "sc16",
+      "sample_rate": "15360000",
+      "center_freq": "2425000000",
+      "gain_db": "35.0",
+      "antenna": "RX2",
+      "wire_format": "sc16",
+      "overflows": "0",
+      "utc": "2026-10-26T07:43:41"
+    },
+    "sample_rate": 15360000.0,
+    "duration_seconds": 8.0,
+    "wall_seconds": 1.8206271620001644,
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 122880000,
+      "windows": 500,
+      "structure_windows": 0,
+      "candidate_windows": 0,
+      "unclassified_tail_samples": 0,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "development_candidate_windows": 0,
+    "later_candidate_windows": 0,
+    "reasons": {
+      "insufficient_structure": 407,
+      "clipping": 93
+    },
+    "log": "data/analysis/o4_validation_20261028/air3s_24_2425e6_20261026T074318Z-fbef40e6.jsonl",
+    "stderr": "data/analysis/o4_validation_20261028/air3s_24_2425e6_20261026T074318Z-fbef40e6.stderr"
+  },
+  {
+    "path": "data/air3s/air3s_24_2440e6_20261026T074318Z.iq",
+    "label": "air3s_present_weak_label",
+    "label_scope": "recording, not individual RF events",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "data/air3s/air3s_24_2440e6_20261026T074318Z.iq"
+    ],
+    "input_bytes": 491520000,
+    "metadata": {
+      "format": "sc16",
+      "sample_rate": "15360000",
+      "center_freq": "2440000000",
+      "gain_db": "35.0",
+      "antenna": "RX2",
+      "wire_format": "sc16",
+      "overflows": "0",
+      "utc": "2026-10-26T07:43:53"
+    },
+    "sample_rate": 15360000.0,
+    "duration_seconds": 8.0,
+    "wall_seconds": 1.9228625000005195,
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 122880000,
+      "windows": 500,
+      "structure_windows": 0,
+      "candidate_windows": 0,
+      "unclassified_tail_samples": 0,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "development_candidate_windows": 0,
+    "later_candidate_windows": 0,
+    "reasons": {
+      "insufficient_structure": 433,
+      "clipping": 67
+    },
+    "log": "data/analysis/o4_validation_20261028/air3s_24_2440e6_20261026T074318Z-28c20d04.jsonl",
+    "stderr": "data/analysis/o4_validation_20261028/air3s_24_2440e6_20261026T074318Z-28c20d04.stderr"
+  },
+  {
+    "path": "data/air3s/air3s_24_2455e6_20261026T074318Z.iq",
+    "label": "air3s_present_weak_label",
+    "label_scope": "recording, not individual RF events",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "data/air3s/air3s_24_2455e6_20261026T074318Z.iq"
+    ],
+    "input_bytes": 491520000,
+    "metadata": {
+      "format": "sc16",
+      "sample_rate": "15360000",
+      "center_freq": "2455000000",
+      "gain_db": "35.0",
+      "antenna": "RX2",
+      "wire_format": "sc16",
+      "overflows": "0",
+      "utc": "2026-10-26T07:44:04"
+    },
+    "sample_rate": 15360000.0,
+    "duration_seconds": 8.0,
+    "wall_seconds": 2.1208320200003072,
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 122880000,
+      "windows": 500,
+      "structure_windows": 0,
+      "candidate_windows": 0,
+      "unclassified_tail_samples": 0,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "development_candidate_windows": 0,
+    "later_candidate_windows": 0,
+    "reasons": {
+      "insufficient_structure": 500
+    },
+    "log": "data/analysis/o4_validation_20261028/air3s_24_2455e6_20261026T074318Z-80560f7f.jsonl",
+    "stderr": "data/analysis/o4_validation_20261028/air3s_24_2455e6_20261026T074318Z-80560f7f.stderr"
+  },
+  {
+    "path": "data/air3s/air3s_24_2470e6_20261026T074318Z.iq",
+    "label": "air3s_present_weak_label",
+    "label_scope": "recording, not individual RF events",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "data/air3s/air3s_24_2470e6_20261026T074318Z.iq"
+    ],
+    "input_bytes": 491520000,
+    "metadata": {
+      "format": "sc16",
+      "sample_rate": "15360000",
+      "center_freq": "2470000000",
+      "gain_db": "35.0",
+      "antenna": "RX2",
+      "wire_format": "sc16",
+      "overflows": "0",
+      "utc": "2026-10-26T07:44:16"
+    },
+    "sample_rate": 15360000.0,
+    "duration_seconds": 8.0,
+    "wall_seconds": 2.1214755729997705,
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 122880000,
+      "windows": 500,
+      "structure_windows": 0,
+      "candidate_windows": 0,
+      "unclassified_tail_samples": 0,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "development_candidate_windows": 0,
+    "later_candidate_windows": 0,
+    "reasons": {
+      "insufficient_structure": 500
+    },
+    "log": "data/analysis/o4_validation_20261028/air3s_24_2470e6_20261026T074318Z-8f404e72.jsonl",
+    "stderr": "data/analysis/o4_validation_20261028/air3s_24_2470e6_20261026T074318Z-8f404e72.stderr"
+  },
+  {
+    "path": "data/air3s/air3s_58_5745e6_20261026T074519Z.iq",
+    "label": "air3s_present_weak_label",
+    "label_scope": "recording, not individual RF events",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "data/air3s/air3s_58_5745e6_20261026T074519Z.iq"
+    ],
+    "input_bytes": 491520000,
+    "metadata": {
+      "format": "sc16",
+      "sample_rate": "15360000",
+      "center_freq": "5745000000",
+      "gain_db": "40.0",
+      "antenna": "RX2",
+      "wire_format": "sc16",
+      "overflows": "0",
+      "utc": "2026-10-26T07:45:30"
+    },
+    "sample_rate": 15360000.0,
+    "duration_seconds": 8.0,
+    "wall_seconds": 2.0710136259995124,
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 122880000,
+      "windows": 500,
+      "structure_windows": 319,
+      "candidate_windows": 283,
+      "unclassified_tail_samples": 0,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "development_candidate_windows": 12,
+    "later_candidate_windows": 271,
+    "reasons": {
+      "insufficient_structure": 169,
+      "awaiting_persistence": 36,
+      "repeated_structure_identity_unverified": 283,
+      "clipping": 12
+    },
+    "log": "data/analysis/o4_validation_20261028/air3s_58_5745e6_20261026T074519Z-af770a9e.jsonl",
+    "stderr": "data/analysis/o4_validation_20261028/air3s_58_5745e6_20261026T074519Z-af770a9e.stderr"
+  },
+  {
+    "path": "data/air3s/air3s_58_5775e6_20261026T074519Z.iq",
+    "label": "air3s_present_weak_label",
+    "label_scope": "recording, not individual RF events",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "data/air3s/air3s_58_5775e6_20261026T074519Z.iq"
+    ],
+    "input_bytes": 491520000,
+    "metadata": {
+      "format": "sc16",
+      "sample_rate": "15360000",
+      "center_freq": "5775000000",
+      "gain_db": "40.0",
+      "antenna": "RX2",
+      "wire_format": "sc16",
+      "overflows": "0",
+      "utc": "2026-10-26T07:45:42"
+    },
+    "sample_rate": 15360000.0,
+    "duration_seconds": 8.0,
+    "wall_seconds": 2.1221235900002284,
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 122880000,
+      "windows": 500,
+      "structure_windows": 25,
+      "candidate_windows": 3,
+      "unclassified_tail_samples": 0,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "development_candidate_windows": 0,
+    "later_candidate_windows": 3,
+    "reasons": {
+      "insufficient_structure": 474,
+      "clipping": 1,
+      "awaiting_persistence": 22,
+      "repeated_structure_identity_unverified": 3
+    },
+    "log": "data/analysis/o4_validation_20261028/air3s_58_5775e6_20261026T074519Z-33e56a8e.jsonl",
+    "stderr": "data/analysis/o4_validation_20261028/air3s_58_5775e6_20261026T074519Z-33e56a8e.stderr"
+  },
+  {
+    "path": "data/air3s/air3s_58_5805e6_20261026T074519Z.iq",
+    "label": "air3s_present_weak_label",
+    "label_scope": "recording, not individual RF events",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "data/air3s/air3s_58_5805e6_20261026T074519Z.iq"
+    ],
+    "input_bytes": 491520000,
+    "metadata": {
+      "format": "sc16",
+      "sample_rate": "15360000",
+      "center_freq": "5805000000",
+      "gain_db": "40.0",
+      "antenna": "RX2",
+      "wire_format": "sc16",
+      "overflows": "0",
+      "utc": "2026-10-26T07:45:54"
+    },
+    "sample_rate": 15360000.0,
+    "duration_seconds": 8.0,
+    "wall_seconds": 2.120887756999764,
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 122880000,
+      "windows": 500,
+      "structure_windows": 308,
+      "candidate_windows": 280,
+      "unclassified_tail_samples": 0,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "development_candidate_windows": 12,
+    "later_candidate_windows": 268,
+    "reasons": {
+      "awaiting_persistence": 28,
+      "insufficient_structure": 192,
+      "repeated_structure_identity_unverified": 280
+    },
+    "log": "data/analysis/o4_validation_20261028/air3s_58_5805e6_20261026T074519Z-a4e167ed.jsonl",
+    "stderr": "data/analysis/o4_validation_20261028/air3s_58_5805e6_20261026T074519Z-a4e167ed.stderr"
+  },
+  {
+    "path": "data/air3s/air3s_58_5835e6_20261026T074519Z.iq",
+    "label": "air3s_present_weak_label",
+    "label_scope": "recording, not individual RF events",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "data/air3s/air3s_58_5835e6_20261026T074519Z.iq"
+    ],
+    "input_bytes": 491520000,
+    "metadata": {
+      "format": "sc16",
+      "sample_rate": "15360000",
+      "center_freq": "5835000000",
+      "gain_db": "40.0",
+      "antenna": "RX2",
+      "wire_format": "sc16",
+      "overflows": "0",
+      "utc": "2026-10-26T07:46:06"
+    },
+    "sample_rate": 15360000.0,
+    "duration_seconds": 8.0,
+    "wall_seconds": 2.1209589440004493,
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 122880000,
+      "windows": 500,
+      "structure_windows": 283,
+      "candidate_windows": 230,
+      "unclassified_tail_samples": 0,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "development_candidate_windows": 13,
+    "later_candidate_windows": 217,
+    "reasons": {
+      "awaiting_persistence": 53,
+      "insufficient_structure": 217,
+      "repeated_structure_identity_unverified": 230
+    },
+    "log": "data/analysis/o4_validation_20261028/air3s_58_5835e6_20261026T074519Z-26d6f00d.jsonl",
+    "stderr": "data/analysis/o4_validation_20261028/air3s_58_5835e6_20261026T074519Z-26d6f00d.stderr"
+  },
+  {
+    "path": "data/mini2/mini2_24_2410e6_20261026T075349Z.iq",
+    "label": "non_o4_mini2_present",
+    "label_scope": "recording, not individual RF events",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "data/mini2/mini2_24_2410e6_20261026T075349Z.iq"
+    ],
+    "input_bytes": 491520000,
+    "metadata": {
+      "format": "sc16",
+      "sample_rate": "15360000",
+      "center_freq": "2410000000",
+      "gain_db": "35.0",
+      "antenna": "RX2",
+      "wire_format": "sc16",
+      "overflows": "0",
+      "utc": "2026-10-26T07:54:00"
+    },
+    "sample_rate": 15360000.0,
+    "duration_seconds": 8.0,
+    "wall_seconds": 1.9209248320003098,
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 122880000,
+      "windows": 500,
+      "structure_windows": 0,
+      "candidate_windows": 0,
+      "unclassified_tail_samples": 0,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "development_candidate_windows": 0,
+    "later_candidate_windows": 0,
+    "reasons": {
+      "insufficient_structure": 441,
+      "clipping": 59
+    },
+    "log": "data/analysis/o4_validation_20261028/mini2_24_2410e6_20261026T075349Z-0a8acec5.jsonl",
+    "stderr": "data/analysis/o4_validation_20261028/mini2_24_2410e6_20261026T075349Z-0a8acec5.stderr"
+  },
+  {
+    "path": "data/mini2/mini2_24_2425e6_20261026T075349Z.iq",
+    "label": "non_o4_mini2_present",
+    "label_scope": "recording, not individual RF events",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "data/mini2/mini2_24_2425e6_20261026T075349Z.iq"
+    ],
+    "input_bytes": 491520000,
+    "metadata": {
+      "format": "sc16",
+      "sample_rate": "15360000",
+      "center_freq": "2425000000",
+      "gain_db": "35.0",
+      "antenna": "RX2",
+      "wire_format": "sc16",
+      "overflows": "0",
+      "utc": "2026-10-26T07:54:11"
+    },
+    "sample_rate": 15360000.0,
+    "duration_seconds": 8.0,
+    "wall_seconds": 1.9715130049999061,
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 122880000,
+      "windows": 500,
+      "structure_windows": 1,
+      "candidate_windows": 0,
+      "unclassified_tail_samples": 0,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "development_candidate_windows": 0,
+    "later_candidate_windows": 0,
+    "reasons": {
+      "insufficient_structure": 447,
+      "clipping": 52,
+      "awaiting_persistence": 1
+    },
+    "log": "data/analysis/o4_validation_20261028/mini2_24_2425e6_20261026T075349Z-7277b2aa.jsonl",
+    "stderr": "data/analysis/o4_validation_20261028/mini2_24_2425e6_20261026T075349Z-7277b2aa.stderr"
+  },
+  {
+    "path": "data/mini2/mini2_24_2440e6_20261026T075349Z.iq",
+    "label": "non_o4_mini2_present",
+    "label_scope": "recording, not individual RF events",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "data/mini2/mini2_24_2440e6_20261026T075349Z.iq"
+    ],
+    "input_bytes": 491520000,
+    "metadata": {
+      "format": "sc16",
+      "sample_rate": "15360000",
+      "center_freq": "2440000000",
+      "gain_db": "35.0",
+      "antenna": "RX2",
+      "wire_format": "sc16",
+      "overflows": "0",
+      "utc": "2026-10-26T07:54:23"
+    },
+    "sample_rate": 15360000.0,
+    "duration_seconds": 8.0,
+    "wall_seconds": 2.0212747969999327,
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 122880000,
+      "windows": 500,
+      "structure_windows": 0,
+      "candidate_windows": 0,
+      "unclassified_tail_samples": 0,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "development_candidate_windows": 0,
+    "later_candidate_windows": 0,
+    "reasons": {
+      "insufficient_structure": 445,
+      "clipping": 55
+    },
+    "log": "data/analysis/o4_validation_20261028/mini2_24_2440e6_20261026T075349Z-912c8286.jsonl",
+    "stderr": "data/analysis/o4_validation_20261028/mini2_24_2440e6_20261026T075349Z-912c8286.stderr"
+  },
+  {
+    "path": "data/mini2/mini2_24_2455e6_20261026T075349Z.iq",
+    "label": "non_o4_mini2_present",
+    "label_scope": "recording, not individual RF events",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "data/mini2/mini2_24_2455e6_20261026T075349Z.iq"
+    ],
+    "input_bytes": 491520000,
+    "metadata": {
+      "format": "sc16",
+      "sample_rate": "15360000",
+      "center_freq": "2455000000",
+      "gain_db": "35.0",
+      "antenna": "RX2",
+      "wire_format": "sc16",
+      "overflows": "0",
+      "utc": "2026-10-26T07:54:35"
+    },
+    "sample_rate": 15360000.0,
+    "duration_seconds": 8.0,
+    "wall_seconds": 2.172162808000394,
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 122880000,
+      "windows": 500,
+      "structure_windows": 0,
+      "candidate_windows": 0,
+      "unclassified_tail_samples": 0,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "development_candidate_windows": 0,
+    "later_candidate_windows": 0,
+    "reasons": {
+      "insufficient_structure": 500
+    },
+    "log": "data/analysis/o4_validation_20261028/mini2_24_2455e6_20261026T075349Z-3588ee2f.jsonl",
+    "stderr": "data/analysis/o4_validation_20261028/mini2_24_2455e6_20261026T075349Z-3588ee2f.stderr"
+  },
+  {
+    "path": "data/mini2/mini2_24_2470e6_20261026T075349Z.iq",
+    "label": "non_o4_mini2_present",
+    "label_scope": "recording, not individual RF events",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "data/mini2/mini2_24_2470e6_20261026T075349Z.iq"
+    ],
+    "input_bytes": 491520000,
+    "metadata": {
+      "format": "sc16",
+      "sample_rate": "15360000",
+      "center_freq": "2470000000",
+      "gain_db": "35.0",
+      "antenna": "RX2",
+      "wire_format": "sc16",
+      "overflows": "0",
+      "utc": "2026-10-26T07:54:47"
+    },
+    "sample_rate": 15360000.0,
+    "duration_seconds": 8.0,
+    "wall_seconds": 2.171768232999966,
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 122880000,
+      "windows": 500,
+      "structure_windows": 0,
+      "candidate_windows": 0,
+      "unclassified_tail_samples": 0,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "development_candidate_windows": 0,
+    "later_candidate_windows": 0,
+    "reasons": {
+      "insufficient_structure": 499,
+      "clipping": 1
+    },
+    "log": "data/analysis/o4_validation_20261028/mini2_24_2470e6_20261026T075349Z-2a5d9ca2.jsonl",
+    "stderr": "data/analysis/o4_validation_20261028/mini2_24_2470e6_20261026T075349Z-2a5d9ca2.stderr"
+  },
+  {
+    "path": "data/mini2/mini2_droneid_2459500000_20261026T090845Z.iq",
+    "label": "non_o4_mini2_present",
+    "label_scope": "recording, not individual RF events",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "data/mini2/mini2_droneid_2459500000_20261026T090845Z.iq"
+    ],
+    "input_bytes": 1843396608,
+    "metadata": {
+      "format": "sc16",
+      "sample_rate": "15360000",
+      "center_freq": "2459500000",
+      "gain_db": "35.0",
+      "antenna": "RX2",
+      "wire_format": "sc16",
+      "overflows": "0",
+      "utc": "2026-10-26T09:09:17"
+    },
+    "sample_rate": 15360000.0,
+    "duration_seconds": 30.0032,
+    "wall_seconds": 7.942953998000121,
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 460849152,
+      "windows": 1875,
+      "structure_windows": 0,
+      "candidate_windows": 0,
+      "unclassified_tail_samples": 49152,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "development_candidate_windows": 0,
+    "later_candidate_windows": 0,
+    "reasons": {
+      "insufficient_structure": 1875
+    },
+    "log": "data/analysis/o4_validation_20261028/mini2_droneid_2459500000_20261026T090845Z-b7ca623f.jsonl",
+    "stderr": "data/analysis/o4_validation_20261028/mini2_droneid_2459500000_20261026T090845Z-b7ca623f.stderr"
+  },
+  {
+    "path": "data/mini2/sweep_20261026T092618Z/mini2_2399500000.iq",
+    "label": "non_o4_mini2_present",
+    "label_scope": "recording, not individual RF events",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "data/mini2/sweep_20261026T092618Z/mini2_2399500000.iq"
+    ],
+    "input_bytes": 491520000,
+    "metadata": {
+      "format": "sc16",
+      "sample_rate": "15360000",
+      "center_freq": "2399500000",
+      "gain_db": "35.0",
+      "antenna": "RX2",
+      "wire_format": "sc16",
+      "overflows": "0",
+      "utc": "2026-10-26T09:26:29"
+    },
+    "sample_rate": 15360000.0,
+    "duration_seconds": 8.0,
+    "wall_seconds": 2.122456578999845,
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 122880000,
+      "windows": 500,
+      "structure_windows": 0,
+      "candidate_windows": 0,
+      "unclassified_tail_samples": 0,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "development_candidate_windows": 0,
+    "later_candidate_windows": 0,
+    "reasons": {
+      "insufficient_structure": 498,
+      "clipping": 2
+    },
+    "log": "data/analysis/o4_validation_20261028/mini2_2399500000-f0feda36.jsonl",
+    "stderr": "data/analysis/o4_validation_20261028/mini2_2399500000-f0feda36.stderr"
+  },
+  {
+    "path": "data/mini2/sweep_20261026T092618Z/mini2_2414500000.iq",
+    "label": "non_o4_mini2_present",
+    "label_scope": "recording, not individual RF events",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "data/mini2/sweep_20261026T092618Z/mini2_2414500000.iq"
+    ],
+    "input_bytes": 491520000,
+    "metadata": {
+      "format": "sc16",
+      "sample_rate": "15360000",
+      "center_freq": "2414500000",
+      "gain_db": "35.0",
+      "antenna": "RX2",
+      "wire_format": "sc16",
+      "overflows": "0",
+      "utc": "2026-10-26T09:26:41"
+    },
+    "sample_rate": 15360000.0,
+    "duration_seconds": 8.0,
+    "wall_seconds": 1.4692432900001222,
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 122880000,
+      "windows": 500,
+      "structure_windows": 0,
+      "candidate_windows": 0,
+      "unclassified_tail_samples": 0,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "development_candidate_windows": 0,
+    "later_candidate_windows": 0,
+    "reasons": {
+      "clipping": 199,
+      "insufficient_structure": 301
+    },
+    "log": "data/analysis/o4_validation_20261028/mini2_2414500000-ca105ccf.jsonl",
+    "stderr": "data/analysis/o4_validation_20261028/mini2_2414500000-ca105ccf.stderr"
+  },
+  {
+    "path": "data/mini2/sweep_20261026T092618Z/mini2_2429500000.iq",
+    "label": "non_o4_mini2_present",
+    "label_scope": "recording, not individual RF events",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "data/mini2/sweep_20261026T092618Z/mini2_2429500000.iq"
+    ],
+    "input_bytes": 491520000,
+    "metadata": {
+      "format": "sc16",
+      "sample_rate": "15360000",
+      "center_freq": "2429500000",
+      "gain_db": "35.0",
+      "antenna": "RX2",
+      "wire_format": "sc16",
+      "overflows": "0",
+      "utc": "2026-10-26T09:26:53"
+    },
+    "sample_rate": 15360000.0,
+    "duration_seconds": 8.0,
+    "wall_seconds": 2.0206423110003016,
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 122880000,
+      "windows": 500,
+      "structure_windows": 0,
+      "candidate_windows": 0,
+      "unclassified_tail_samples": 0,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "development_candidate_windows": 0,
+    "later_candidate_windows": 0,
+    "reasons": {
+      "insufficient_structure": 466,
+      "clipping": 34
+    },
+    "log": "data/analysis/o4_validation_20261028/mini2_2429500000-17f92664.jsonl",
+    "stderr": "data/analysis/o4_validation_20261028/mini2_2429500000-17f92664.stderr"
+  },
+  {
+    "path": "data/mini2/sweep_20261026T092618Z/mini2_2444500000.iq",
+    "label": "non_o4_mini2_present",
+    "label_scope": "recording, not individual RF events",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "data/mini2/sweep_20261026T092618Z/mini2_2444500000.iq"
+    ],
+    "input_bytes": 491520000,
+    "metadata": {
+      "format": "sc16",
+      "sample_rate": "15360000",
+      "center_freq": "2444500000",
+      "gain_db": "35.0",
+      "antenna": "RX2",
+      "wire_format": "sc16",
+      "overflows": "0",
+      "utc": "2026-10-26T09:27:05"
+    },
+    "sample_rate": 15360000.0,
+    "duration_seconds": 8.0,
+    "wall_seconds": 1.8715869740008202,
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 122880000,
+      "windows": 500,
+      "structure_windows": 0,
+      "candidate_windows": 0,
+      "unclassified_tail_samples": 0,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "development_candidate_windows": 0,
+    "later_candidate_windows": 0,
+    "reasons": {
+      "clipping": 75,
+      "insufficient_structure": 425
+    },
+    "log": "data/analysis/o4_validation_20261028/mini2_2444500000-de58397c.jsonl",
+    "stderr": "data/analysis/o4_validation_20261028/mini2_2444500000-de58397c.stderr"
+  },
+  {
+    "path": "data/mini2/sweep_20261026T092618Z/mini2_2459500000.iq",
+    "label": "non_o4_mini2_present",
+    "label_scope": "recording, not individual RF events",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "data/mini2/sweep_20261026T092618Z/mini2_2459500000.iq"
+    ],
+    "input_bytes": 491520000,
+    "metadata": {
+      "format": "sc16",
+      "sample_rate": "15360000",
+      "center_freq": "2459500000",
+      "gain_db": "35.0",
+      "antenna": "RX2",
+      "wire_format": "sc16",
+      "overflows": "0",
+      "utc": "2026-10-26T09:27:16"
+    },
+    "sample_rate": 15360000.0,
+    "duration_seconds": 8.0,
+    "wall_seconds": 2.1221638399993026,
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 122880000,
+      "windows": 500,
+      "structure_windows": 0,
+      "candidate_windows": 0,
+      "unclassified_tail_samples": 0,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "development_candidate_windows": 0,
+    "later_candidate_windows": 0,
+    "reasons": {
+      "insufficient_structure": 500
+    },
+    "log": "data/analysis/o4_validation_20261028/mini2_2459500000-245fe168.jsonl",
+    "stderr": "data/analysis/o4_validation_20261028/mini2_2459500000-245fe168.stderr"
+  },
+  {
+    "path": "data/baseline/baseline_24_073340Z.iq",
+    "label": "no_drone_baseline",
+    "label_scope": "recording, not individual RF events",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "data/baseline/baseline_24_073340Z.iq"
+    ],
+    "input_bytes": 184549376,
+    "metadata": {
+      "format": "sc16",
+      "sample_rate": "15360000",
+      "center_freq": "2459500000",
+      "gain_db": "20.0",
+      "antenna": "RX2",
+      "wire_format": "sc16",
+      "overflows": "0",
+      "utc": "2026-10-26T07:33:46"
+    },
+    "sample_rate": 15360000.0,
+    "duration_seconds": 3.0037333333333334,
+    "wall_seconds": 0.817072466999889,
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 46137344,
+      "windows": 187,
+      "structure_windows": 0,
+      "candidate_windows": 0,
+      "unclassified_tail_samples": 180224,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "development_candidate_windows": 0,
+    "later_candidate_windows": 0,
+    "reasons": {
+      "insufficient_structure": 187
+    },
+    "log": "data/analysis/o4_validation_20261028/baseline_24_073340Z-4de92c72.jsonl",
+    "stderr": "data/analysis/o4_validation_20261028/baseline_24_073340Z-4de92c72.stderr"
+  },
+  {
+    "path": "data/analysis/odid_20261028/baseline_ch6.iq",
+    "label": "no_drone_wifi_baseline",
+    "label_scope": "recording, not individual RF events",
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "data/analysis/odid_20261028/baseline_ch6.iq"
+    ],
+    "input_bytes": 160169984,
+    "metadata": {
+      "format": "sc16",
+      "sample_rate": "20000000",
+      "center_freq": "2437000000",
+      "gain_db": "20.0",
+      "antenna": "RX2",
+      "wire_format": "sc16",
+      "overflows": "0",
+      "utc": "2026-10-28T07:39:47"
+    },
+    "sample_rate": 20000000.0,
+    "duration_seconds": 2.0021248,
+    "wall_seconds": 0.7164890240001114,
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 40042496,
+      "windows": 125,
+      "structure_windows": 0,
+      "candidate_windows": 0,
+      "unclassified_tail_samples": 42496,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "development_candidate_windows": 0,
+    "later_candidate_windows": 0,
+    "reasons": {
+      "insufficient_structure": 125
+    },
+    "log": "data/analysis/o4_validation_20261028/baseline_ch6-e64564f4.jsonl",
+    "stderr": "data/analysis/o4_validation_20261028/baseline_ch6-e64564f4.stderr"
+  }
+]

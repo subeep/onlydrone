@@ -1,0 +1,65 @@
+{
+  "profile": "o4_structure_v2",
+  "cases": 60,
+  "errors": 0,
+  "by_family": {
+    "O2": {
+      "captures": 5,
+      "seconds": 1.6,
+      "captures_with_candidates": 0,
+      "candidate_windows": 0,
+      "windows": 100
+    },
+    "O3": {
+      "captures": 8,
+      "seconds": 2.56,
+      "captures_with_candidates": 0,
+      "candidate_windows": 0,
+      "windows": 160
+    },
+    "O3+": {
+      "captures": 9,
+      "seconds": 2.88,
+      "captures_with_candidates": 0,
+      "candidate_windows": 0,
+      "windows": 180
+    },
+    "O4": {
+      "captures": 14,
+      "seconds": 4.4799999999999995,
+      "captures_with_candidates": 11,
+      "candidate_windows": 173,
+      "windows": 280
+    },
+    "O4+": {
+      "captures": 12,
+      "seconds": 3.8399999999999994,
+      "captures_with_candidates": 0,
+      "candidate_windows": 0,
+      "windows": 240
+    },
+    "negative-no-drone": {
+      "captures": 2,
+      "seconds": 0.64,
+      "captures_with_candidates": 0,
+      "candidate_windows": 0,
+      "windows": 40
+    },
+    "non-DJI": {
+      "captures": 3,
+      "seconds": 0.96,
+      "captures_with_candidates": 0,
+      "candidate_windows": 0,
+      "windows": 60
+    },
+    "unverified/other": {
+      "captures": 7,
+      "seconds": 2.24,
+      "captures_with_candidates": 4,
+      "candidate_windows": 64,
+      "windows": 140
+    }
+  },
+  "scope": "External recordings not used to set v1 thresholds. Bounded prefix coverage; recording labels are not event truth. Related files may share sessions/devices.",
+  "identity_accuracy": null
+}

@@ -1,0 +1,10 @@
+Internal ctest changing into directory: /tmp/punjdrone-o4-sanitize
+Test project /tmp/punjdrone-o4-sanitize
+    Start  9: test_ui_worker
+1/2 Test  #9: test_ui_worker ...................   Passed   10.65 sec
+    Start 13: test_o4_detector
+2/2 Test #13: test_o4_detector .................   Passed   21.93 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =  32.58 sec

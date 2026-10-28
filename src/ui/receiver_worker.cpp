@@ -14,6 +14,7 @@
 #include "droneid/dji.h"
 #include "droneid/file_source.h"
 #include "droneid/rf_metrics.h"
+#include "droneid/o4_detector.h"
 #ifdef DRONEID_HAVE_UHD
 #include "droneid/usrp_source.h"
 #endif
@@ -71,7 +72,16 @@ void sync_df_status(UiModel& model, const DfCalibrationService& service, int64_t
   model.set_df_status(df);
 }
 
-void process_window(UiModel& model, const SampleWindow& window, const dji::DecodeOptions& options) {
+void process_o4(UiModel& model, O4CandidateDetector& detector, const cf32* data,
+                std::size_t count, uint64_t start) {
+  for (const auto& e : detector.feed(data, count, start))
+    model.record_o4_evidence(e.structure_match, e.candidate, e.cyclic_correlation);
+}
+
+void process_window(UiModel& model, const SampleWindow& window, const dji::DecodeOptions& options,
+                    O4CandidateDetector& o4) {
+  process_o4(model, o4, window.samples.data(),
+             std::min(window.accept_before, window.samples.size()), window.start_sample);
   for (const auto& burst : dji::decode_samples(window.samples, options)) {
     if (!burst.crc_ok || static_cast<std::size_t>(burst.sample_index) >= window.accept_before) continue;
     dji::Telemetry telemetry;
@@ -136,7 +146,11 @@ void process_window(UiModel& model, const SampleWindow& window, const dji::Decod
 void process_paired_window(UiModel& model, const PairedSampleWindow& window,
                            const dji::DecodeOptions& options, double center_hz,
                            DfCalibrationService& cal_service, int64_t eval_unix_ns,
-                           uint64_t& next_burst_id, std::ofstream* jsonl_out) {
+                           uint64_t& next_burst_id, std::ofstream* jsonl_out,
+                           O4CandidateDetector& o4) {
+  if (window.after_drop_or_gap) o4.reset();
+  process_o4(model, o4, window.ch0.data(),
+             std::min(window.accept_before, window.ch0.size()), window.start_sample);
   if (window.after_drop_or_gap) {
     cal_service.on_gap_or_overflow("paired queue drop or gap invalidated calibration");
     model.invalidate_bearings(map_cal_state(cal_service.state()),
@@ -487,6 +501,8 @@ void replay_worker(UiModel& model, SourceConfig config, std::atomic<bool>& stop)
       throw std::invalid_argument("replay rate must be between 10 and 250 MSPS");
     const auto overlap = static_cast<std::size_t>(std::ceil(12000 * options.sample_rate / 15.36e6));
     WindowAssembler assembler(1u << 20, std::max<std::size_t>(10008, overlap));
+    O4CandidateDetector o4(source.sample_rate());
+    model.reset_o4_evidence();
     const uint64_t limit = config.secs > 0 ? static_cast<uint64_t>(config.secs * options.sample_rate) : UINT64_MAX;
     std::vector<cf32> block(65536);
     int64_t timestamp = 0;
@@ -500,11 +516,11 @@ void replay_worker(UiModel& model, SourceConfig config, std::atomic<bool>& stop)
       received += count;
       for (const auto& window : assembler.feed(block.data(), count)) {
         if (stop.load()) break;
-        process_window(model, window, options);
+        process_window(model, window, options, o4);
       }
     }
     if (!stop.load())
-      for (const auto& window : assembler.feed(nullptr, 0, true)) process_window(model, window, options);
+      for (const auto& window : assembler.feed(nullptr, 0, true)) process_window(model, window, options, o4);
     status.samples_received = received;
     status.state = UsrpStatus::State::Disconnected;
     status.detail = stop.load() ? "Replay stopped" : "Replay complete (not live reception)";
@@ -648,6 +664,8 @@ void paired_replay_worker(UiModel& model, SourceConfig config, std::atomic<bool>
     options.freq_offset = config.freq_offset;
     const auto overlap = static_cast<std::size_t>(std::ceil(12000 * rate / 15.36e6));
     PairedWindowAssembler assembler(1u << 20, std::max<std::size_t>(10008, overlap));
+    O4CandidateDetector o4(rate);
+    model.reset_o4_evidence();
     const int64_t post_cal_device_ns =
         base_device_ns + static_cast<int64_t>(std::llround(received * 1e9 / rate));
     const uint64_t limit =
@@ -674,7 +692,7 @@ void paired_replay_worker(UiModel& model, SourceConfig config, std::atomic<bool>
       PairedSampleWindow ready_win;
       while (!stop.load() && paired_queue.pop(ready_win)) {
         process_paired_window(model, ready_win, options, center_hz, cal_service, eval_unix_ns,
-                              next_burst_id, jsonl_file.is_open() ? &jsonl_file : nullptr);
+                              next_burst_id, jsonl_file.is_open() ? &jsonl_file : nullptr, o4);
       }
     }
     if (!stop.load()) {
@@ -685,7 +703,7 @@ void paired_replay_worker(UiModel& model, SourceConfig config, std::atomic<bool>
       PairedSampleWindow ready_win;
       while (!stop.load() && paired_queue.pop(ready_win)) {
         process_paired_window(model, ready_win, options, center_hz, cal_service, eval_unix_ns,
-                              next_burst_id, jsonl_file.is_open() ? &jsonl_file : nullptr);
+                              next_burst_id, jsonl_file.is_open() ? &jsonl_file : nullptr, o4);
       }
     }
     cal_service.on_disconnect(stop.load() ? "Paired replay stopped" : "Paired replay complete; historical bearings remain in event log");
@@ -741,7 +759,9 @@ void live_worker(UiModel& model, SourceConfig config, std::atomic<bool>& stop) {
     std::deque<SampleWindow> queue;
     bool finished = false;
     std::string dsp_error;
+    model.reset_o4_evidence();
     std::thread processor([&] {
+      O4CandidateDetector o4(source.sample_rate());
       for (;;) {
         SampleWindow window;
         {
@@ -751,7 +771,7 @@ void live_worker(UiModel& model, SourceConfig config, std::atomic<bool>& stop) {
           window = std::move(queue.front());
           queue.pop_front();
         }
-        try { process_window(model, window, {}); }
+        try { process_window(model, window, {}, o4); }
         catch (const std::exception& error) {
           std::lock_guard<std::mutex> lock(mutex);
           dsp_error = error.what();

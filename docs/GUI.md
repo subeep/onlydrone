@@ -14,6 +14,8 @@ The checklist panel remains removed as requested. The checklist parser remains i
   overload, with visible counters; timestamp gaps/overflows reset partial windows. This prevents DSP
   from directly blocking RX, but does not establish lossless real-time throughput on hardware.
 - RF metrics are aggregate **unknown RF**, not O4 identification, unique drone counts or valid bearings.
+- A separate experimental O4-like structure line reports candidate windows from the
+  shared detector, without creating identities or positions. See `O4_DETECTOR.md`.
 - CRC-valid unsupported payloads remain in the packet log with raw hex, without invented serials,
   GPS or tracks. Hover a serial/unparsed cell to inspect the payload.
 

@@ -1,0 +1,542 @@
+[
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset1-single_drone_states",
+    "model": "mavic3",
+    "family": "O3+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3_1_Ascend_c17_u1_d2.mat",
+    "id": "000-332549e495"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset1-single_drone_states",
+    "model": "mavic3C",
+    "family": "O3+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3C_1_Ascend_c17_u1_d2.mat",
+    "id": "001-7f493fc1d2"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset1-single_drone_states",
+    "model": "mavic3S",
+    "family": "unverified/other",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavic3S_1_Ascend_c17_u1_d2.mat",
+    "id": "002-758c4e2ab2"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset1-single_drone_states",
+    "model": "mavicAir2",
+    "family": "O2",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2_1_Ascend_c17_u1_d2.mat",
+    "id": "003-d03083ea4d"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset1-single_drone_states",
+    "model": "mavicAir2s",
+    "family": "O3",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mavicAir2s_1_Ascend_c17_u1_d2.mat",
+    "id": "004-abd7deb88a"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset1-single_drone_states",
+    "model": "mini3pro",
+    "family": "O3",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini3pro_2_Ascend_c17_u1_d2.mat",
+    "id": "005-e3b612dd56"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset1-single_drone_states",
+    "model": "mini4PRO",
+    "family": "O4",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Ascend_c17_u1_d2.mat",
+    "id": "006-216d8c637b"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset1-single_drone_states",
+    "model": "mini4PRO",
+    "family": "O4",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_Cruise_c6_u1_d2.mat",
+    "id": "007-b54eda1c0b"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset1-single_drone_states",
+    "model": "mini4PRO",
+    "family": "O4",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini4PRO_1_TakeOff_c16_u1_d2.mat",
+    "id": "008-2b1414edb8"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset1-single_drone_states",
+    "model": "mini5PRO",
+    "family": "O4+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Ascend_c17_u1_d2.mat",
+    "id": "009-e6109ff3ad"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset1-single_drone_states",
+    "model": "mini5PRO",
+    "family": "O4+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_Cruise_c6_u1_d2.mat",
+    "id": "010-238a0f31d6"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset1-single_drone_states",
+    "model": "mini5PRO",
+    "family": "O4+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset1-single_drone_states/mini5PRO_1_TakeOff_c16_u1_d2.mat",
+    "id": "011-c0f87ffccc"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset3-single_drone_hover",
+    "model": "mavic3",
+    "family": "O3+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3_1_hover_c1_u1_d2.mat",
+    "id": "012-995552cb67"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset3-single_drone_hover",
+    "model": "mavic3C",
+    "family": "O3+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3C_1_hover_c1_u1_d2.mat",
+    "id": "013-19869eac30"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset3-single_drone_hover",
+    "model": "mavic3S",
+    "family": "unverified/other",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavic3S_1_hover_c1_u1_d2.mat",
+    "id": "014-b5005e668b"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset3-single_drone_hover",
+    "model": "mavicAir2",
+    "family": "O2",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2_1_hover_c1_u1_d2.mat",
+    "id": "015-bd11bb7db6"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset3-single_drone_hover",
+    "model": "mavicAir2s",
+    "family": "O3",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mavicAir2s_1_hover_c1_u1_d2.mat",
+    "id": "016-5818baaf25"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset3-single_drone_hover",
+    "model": "mini3pro",
+    "family": "O3",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini3pro_1_hover_c1_u2_d1.mat",
+    "id": "017-773f5cbbe7"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset3-single_drone_hover",
+    "model": "mini4PRO",
+    "family": "O4",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_1_hover_c1_u1_d2.mat",
+    "id": "018-b6a089cc05"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset3-single_drone_hover",
+    "model": "mini4PRO",
+    "family": "O4",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_2_hover_c2_u2_d1.mat",
+    "id": "019-e0a4e437b3"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset3-single_drone_hover",
+    "model": "mini4PRO",
+    "family": "O4",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini4PRO_5_hover_c3_u2_d1.mat",
+    "id": "020-87e9cdc22b"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset3-single_drone_hover",
+    "model": "mini5PRO",
+    "family": "O4+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini5PRO_1_hover_c1_u1_d2.mat",
+    "id": "021-ee3601e8d6"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset3-single_drone_hover",
+    "model": "mini5PRO",
+    "family": "O4+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini5PRO_1_hover_c2_u2_d2.mat",
+    "id": "022-9121da0458"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset3-single_drone_hover",
+    "model": "mini5PRO",
+    "family": "O4+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset3-single_drone_hover/mini5PRO_1_hover_c3_u2_d3.mat",
+    "id": "023-f07d83536d"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset4-single_drone_dual_frequency",
+    "model": "mavic3",
+    "family": "O3+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavic3_1_hover_c1_u2_d2.mat",
+    "id": "024-78cedcf16c"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset4-single_drone_dual_frequency",
+    "model": "mavic3C",
+    "family": "O3+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavic3C_1_hover_c1_u2_d2.mat",
+    "id": "025-fb063d1351"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset4-single_drone_dual_frequency",
+    "model": "mavic3S",
+    "family": "unverified/other",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavic3S_1_hover_c1_u2_d2.mat",
+    "id": "026-c5d75e5ebd"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset4-single_drone_dual_frequency",
+    "model": "mavicAir2",
+    "family": "O2",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavicAir2_1_hover_c1_u2_d2.mat",
+    "id": "027-736540099d"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset4-single_drone_dual_frequency",
+    "model": "mavicAir2s",
+    "family": "O3",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mavicAir2s_1_hover_c1_u2_d2.mat",
+    "id": "028-b761e98a97"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset4-single_drone_dual_frequency",
+    "model": "mini3pro",
+    "family": "O3",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mini3pro_1_hover_c1_u2_d2.mat",
+    "id": "029-95ded115b2"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset4-single_drone_dual_frequency",
+    "model": "mini4PRO",
+    "family": "O4",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mini4PRO_1_hover_c1_u2_d2.mat",
+    "id": "030-114a7d6470"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset4-single_drone_dual_frequency",
+    "model": "mini4PRO",
+    "family": "O4",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mini4PRO_2_hover_c1_u2_d2.mat",
+    "id": "031-d6531ba5be"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset4-single_drone_dual_frequency",
+    "model": "mini4PRO",
+    "family": "O4",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mini4PRO_2_hover_c3_u2_d2.mat",
+    "id": "032-7197707e2e"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset4-single_drone_dual_frequency",
+    "model": "mini5PRO",
+    "family": "O4+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mini5PRO_1_hover_c1_u2_d2.mat",
+    "id": "033-dfb5f0f5d0"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset4-single_drone_dual_frequency",
+    "model": "mini5PRO",
+    "family": "O4+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mini5PRO_1_hover_c2_u2_d2.mat",
+    "id": "034-0482322c19"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset4-single_drone_dual_frequency",
+    "model": "mini5PRO",
+    "family": "O4+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mini5PRO_1_hover_c3_u2_d2.mat",
+    "id": "035-a2f555913a"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset6-wifi_mixed",
+    "model": "mavic3",
+    "family": "O3+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavic3_1_c1.mat",
+    "id": "036-1d74952cd9"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset6-wifi_mixed",
+    "model": "mavic3C",
+    "family": "O3+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavic3C_1_c1.mat",
+    "id": "037-ba2c84777a"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset6-wifi_mixed",
+    "model": "mavic3S",
+    "family": "unverified/other",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavic3S_1_c1.mat",
+    "id": "038-84545998df"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset6-wifi_mixed",
+    "model": "mavicAir2",
+    "family": "O2",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2_1_c1.mat",
+    "id": "039-6d97f38b9e"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset6-wifi_mixed",
+    "model": "mavicAir2s",
+    "family": "O3",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mavicAir2s_1_c1.mat",
+    "id": "040-e04b054d40"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset6-wifi_mixed",
+    "model": "mini3pro",
+    "family": "O3",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini3pro_1_c1.mat",
+    "id": "041-4479ba36f8"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset6-wifi_mixed",
+    "model": "mini4PRO",
+    "family": "O4",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini4PRO_1_c1.mat",
+    "id": "042-6099231448"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset6-wifi_mixed",
+    "model": "mini4PRO",
+    "family": "O4",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini4PRO_3_c1.mat",
+    "id": "043-f1ffd6aab0"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset6-wifi_mixed",
+    "model": "mini4PRO",
+    "family": "O4",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini4PRO_4_c6.mat",
+    "id": "044-b144cfb3a2"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset6-wifi_mixed",
+    "model": "mini5PRO",
+    "family": "O4+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini5PRO_1_c1.mat",
+    "id": "045-ab16995c06"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset6-wifi_mixed",
+    "model": "mini5PRO",
+    "family": "O4+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini5PRO_1_c4.mat",
+    "id": "046-d97a1b46a7"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset6-wifi_mixed",
+    "model": "mini5PRO",
+    "family": "O4+",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini5PRO_1_c6.mat",
+    "id": "047-ee889004a2"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "environment",
+    "model": "indoor_environment",
+    "family": "negative-no-drone",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset7-environment/indoor_environment.mat",
+    "id": "048-d8e369e0ba"
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "environment",
+    "model": "outdoor_environment",
+    "family": "negative-no-drone",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset7-environment/outdoor_environment.mat",
+    "id": "049-766b679ea4"
+  },
+  {
+    "dataset": "RFUAV",
+    "group": "first_iq_member",
+    "model": "DJI AVATA2",
+    "family": "O4",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI AVATA2.rar",
+    "id": "050-b0e0cd552f"
+  },
+  {
+    "dataset": "RFUAV",
+    "group": "first_iq_member",
+    "model": "DJI MINI4 PRO",
+    "family": "O4",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI MINI4 PRO.rar",
+    "id": "051-ad37063f67"
+  },
+  {
+    "dataset": "RFUAV",
+    "group": "first_iq_member",
+    "model": "DJI MAVIC3 PRO",
+    "family": "O3+",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI MAVIC3 PRO.rar",
+    "id": "052-6b166822bb"
+  },
+  {
+    "dataset": "RFUAV",
+    "group": "first_iq_member",
+    "model": "DJI MINI3",
+    "family": "O2",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI MINI3.rar",
+    "id": "053-351f3c57bc"
+  },
+  {
+    "dataset": "RFUAV",
+    "group": "first_iq_member",
+    "model": "DJI FPV COMBO",
+    "family": "unverified/other",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI FPV COMBO.rar",
+    "id": "054-59669911f3"
+  },
+  {
+    "dataset": "RFUAV",
+    "group": "first_iq_member",
+    "model": "FRSKY X14",
+    "family": "non-DJI",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/FRSKY X14.rar",
+    "id": "055-818f1cb0e6"
+  },
+  {
+    "dataset": "RFUAV",
+    "group": "first_iq_member",
+    "model": "FUTABA T18SZ",
+    "family": "non-DJI",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/FUTABA T18SZ.rar",
+    "id": "056-cfb541ed1f"
+  },
+  {
+    "dataset": "RFUAV",
+    "group": "first_iq_member",
+    "model": "Herelink Hx4",
+    "family": "non-DJI",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/Herelink Hx4.rar",
+    "id": "057-fccfb1f511"
+  },
+  {
+    "dataset": "RFUAV",
+    "group": "first_iq_member",
+    "model": "DAUTEL EVO NANO",
+    "family": "unverified/other",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DAUTEL EVO NANO.rar",
+    "id": "058-ca3063b98b"
+  },
+  {
+    "dataset": "RFUAV",
+    "group": "first_iq_member",
+    "model": "RadioMaster BOXER",
+    "family": "unverified/other",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/RadioMaster BOXER.rar",
+    "id": "059-73c11fa578"
+  }
+]

@@ -1,0 +1,132 @@
+[
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset4-single_drone_dual_frequency",
+    "model": "mini4PRO",
+    "family": "O4",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset4-single_drone_dual_frequency/mini4PRO_2_hover_c3_u2_d2.mat",
+    "id": "032-7197707e2e",
+    "rate": 100000000.0,
+    "center": 5745000000.0,
+    "member": null,
+    "source_seconds": 1.4,
+    "start_sample": 0,
+    "samples": 140000000,
+    "tested_seconds": 1.4,
+    "clip_sha256": "fe71c7bddd93571ad4b048357211ace15cd66cb9949919ff9479547016e9d3da",
+    "scaling": "unchanged adapter IQ; no per-capture normalization or channel selection",
+    "raw_clipped_fraction": 0.0,
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "/tmp/o4-external-b59d95db/prefix.cf32",
+      "--format",
+      "cf32",
+      "--rate",
+      "100000000.0"
+    ],
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 140000000,
+      "windows": 87,
+      "structure_windows": 0,
+      "candidate_windows": 0,
+      "unclassified_tail_samples": 800000,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "reasons": {
+      "insufficient_structure": 87
+    },
+    "status": "ok",
+    "wall_seconds": 11.361556392999773
+  },
+  {
+    "dataset": "DroneRFa",
+    "group": "dataset6-wifi_mixed",
+    "model": "mini4PRO",
+    "family": "O4",
+    "kind": "hdf",
+    "path": "/media/sudeep/Storage/datasets/DRFF-R2/DRFF-R2/dataset6-wifi_mixed/mini4PRO_3_c1.mat",
+    "id": "043-f1ffd6aab0",
+    "rate": 100000000.0,
+    "center": 2437000000.0,
+    "member": null,
+    "source_seconds": 1.4,
+    "start_sample": 0,
+    "samples": 140000000,
+    "tested_seconds": 1.4,
+    "clip_sha256": "e0c6f183fd6ac1de400c36258f22cf305ed37c98af8a26d4fe4e48480a707d12",
+    "scaling": "unchanged adapter IQ; no per-capture normalization or channel selection",
+    "raw_clipped_fraction": 0.0,
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "/tmp/o4-external-d1btdqby/prefix.cf32",
+      "--format",
+      "cf32",
+      "--rate",
+      "100000000.0"
+    ],
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 140000000,
+      "windows": 87,
+      "structure_windows": 3,
+      "candidate_windows": 0,
+      "unclassified_tail_samples": 800000,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "reasons": {
+      "awaiting_persistence": 3,
+      "insufficient_structure": 84
+    },
+    "status": "ok",
+    "wall_seconds": 9.75300571799744
+  },
+  {
+    "dataset": "RFUAV",
+    "group": "first_iq_member",
+    "model": "DJI AVATA2",
+    "family": "O4",
+    "kind": "rar",
+    "path": "/media/sudeep/Storage/datasets/RFUAV/DJI AVATA2.rar",
+    "id": "050-b0e0cd552f",
+    "rate": 100000000.0,
+    "center": 5760000000.0,
+    "member": "DJI AVATA2/VTSBW=10/pack1_0-1s.iq",
+    "source_seconds": null,
+    "start_sample": 0,
+    "samples": 100000000,
+    "tested_seconds": 1.0,
+    "clip_sha256": "3b0c9cdab0b460fbb152cfc86200afcf179556900e499af70c6d28cb5e025b24",
+    "scaling": "unchanged adapter IQ; no per-capture normalization or channel selection",
+    "raw_clipped_fraction": 0.0,
+    "command": [
+      "/home/sudeep/Music/punjdrone/build/o4_detect",
+      "/tmp/o4-external-fojge6o0/prefix.cf32",
+      "--format",
+      "cf32",
+      "--rate",
+      "100000000.0"
+    ],
+    "summary": {
+      "event": "summary",
+      "profile": "air3s_structure_v1",
+      "samples": 100000000,
+      "windows": 62,
+      "structure_windows": 0,
+      "candidate_windows": 0,
+      "unclassified_tail_samples": 800000,
+      "identified_drones": null,
+      "o4_identity_accuracy": null
+    },
+    "reasons": {
+      "insufficient_structure": 62
+    },
+    "status": "ok",
+    "wall_seconds": 7.390328382996813
+  }
+]

@@ -3,6 +3,8 @@
 #include "droneid/dji.h"
 #include "droneid/file_source.h"
 #include "droneid/test/microtest.h"
+#include "droneid/o4_detector.h"
+#include "o4_fixture.h"
 
 #include <algorithm>
 #include <cmath>
@@ -10,6 +12,37 @@
 #include <fstream>
 
 using namespace droneid;
+
+TEST(UiWorker, O4EvidenceMatchesStreamingWithoutInventingTrack) {
+  const auto samples=structured_reference(15.36e6);
+  const auto path=(std::filesystem::temp_directory_path()/"punjdrone_o4_worker.cf32").string();
+  {
+    std::ofstream out(path,std::ios::binary);
+    out.write(reinterpret_cast<const char*>(samples.data()),samples.size()*sizeof(cf32));
+  }
+  O4CandidateDetector detector(15.36e6);
+  uint64_t candidates=0, structures=0;
+  const auto events=detector.feed(samples.data(),samples.size(),0);
+  for (const auto& e:events) { candidates+=e.candidate; structures+=e.structure_match; }
+  ui::SourceConfig config;
+  config.replay=path;
+  config.fmt=SampleFormat::cf32;
+  config.rate=15.36e6;
+  ui::UiModel model;
+  std::atomic<bool> stop{false};
+  ui::replay_worker(model,config,stop);
+  EXPECT_EQ(model.status().state,ui::UsrpStatus::State::Disconnected);
+  EXPECT_EQ(model.rf_summary().o4_windows,events.size());
+  EXPECT_EQ(model.rf_summary().o4_candidate_windows,candidates);
+  EXPECT_EQ(model.rf_summary().o4_structure_windows,structures);
+  EXPECT_TRUE(candidates>0);
+  EXPECT_TRUE(model.tracks().empty());
+  auto connecting=model.status();
+  connecting.state=ui::UsrpStatus::State::Connecting;
+  model.set_status(connecting);
+  EXPECT_EQ(model.rf_summary().o4_windows,uint64_t(0));
+  std::filesystem::remove(path);
+}
 
 TEST(UiWorker, ReplayMatchesBackendAndTrackCount) {
   ui::UiModel model;

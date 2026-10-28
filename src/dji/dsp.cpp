@@ -2,11 +2,9 @@
 // GPL-3.0-or-later.
 #include "dsp.hpp"
 
-#if __has_include(<fftw3.h>)
+#if DRONEID_USE_FFTW3
 #include <fftw3.h>
-#define DRONEID_USE_FFTW3 1
 #else
-#define DRONEID_USE_FFTW3 0
 #define FFTW_FORWARD (-1)
 #define FFTW_BACKWARD 1
 #endif

@@ -1,0 +1,10 @@
+{
+  "profile": "o4_structure_v2",
+  "recordings": 22,
+  "seconds": 187.00905813333333,
+  "control_seconds": 115.00905813333333,
+  "control_candidate_windows": 0,
+  "control_windows": 7187,
+  "o4_identity_accuracy": null,
+  "limitation": "Development used first 0.32 s of these sessions. Later windows are temporal extension, not independent held-out identity validation. Labels are recording-level; adjacent windows are correlated."
+}

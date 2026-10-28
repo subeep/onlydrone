@@ -15,6 +15,14 @@
 #include <thread>
 #include <fstream>
 #include <stdexcept>
+#include <cstring>
+#ifdef _WIN32
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+#include <windows.h>
+#include <commdlg.h>
+#endif
 
 #include <algorithm>
 
@@ -48,6 +56,78 @@ using droneid::ui::df_live_worker;
 
 #ifndef DRONEID_UI_CHECK_ONLY
 namespace {
+
+struct SourceEditor {
+  char path[32768]{};
+  char device[1024]{};
+  char antenna[64]{};
+  int source = 0, format = 1;
+  double rate = 15.36, center = 2459.5, gain = 30, seconds = 0;
+  bool auto_center = false, odid = false;
+  explicit SourceEditor(const Config& cfg) {
+    std::snprintf(path, sizeof path, "%s", cfg.replay.c_str());
+    std::snprintf(device, sizeof device, "%s", cfg.device.empty() ? "addr=192.168.10.2" : cfg.device.c_str());
+    std::snprintf(antenna, sizeof antenna, "%s", cfg.antenna.c_str());
+    source = !cfg.device.empty(); format = static_cast<int>(cfg.fmt);
+    rate = cfg.rate / 1e6; center = cfg.center_freq / 1e6; gain = cfg.gain;
+    seconds = cfg.secs; auto_center = cfg.auto_center; odid = cfg.odid;
+  }
+  void draw(bool running, bool paired) {
+    if (!ImGui::CollapsingHeader("Source settings", ImGuiTreeNodeFlags_DefaultOpen)) return;
+    if (paired) { ImGui::TextWrapped("Paired/DF source configured by command line. Restart without DF options to change source here."); return; }
+    ImGui::BeginDisabled(running);
+    ImGui::SetNextItemWidth(180);
+    ImGui::Combo("Source", &source, "IQ replay\0Live X310\0");
+    ImGui::SameLine();
+    if (ImGui::Checkbox("Wi-Fi Remote ID", &odid) && odid) { rate = 20; center = 2437; auto_center = false; }
+    if (source == 0) {
+      ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x - 160);
+      ImGui::InputText("IQ file", path, sizeof path);
+#ifdef _WIN32
+      ImGui::SameLine();
+      if (ImGui::Button("Browse...")) {
+        wchar_t selected[32768]{};
+        OPENFILENAMEW dialog{};
+        dialog.lStructSize = sizeof dialog;
+        dialog.hwndOwner = GetActiveWindow();
+        dialog.lpstrFilter = L"IQ recordings\0*.iq;*.cf32;*.sc16;*.sc8;*.bin\0All files\0*.*\0";
+        dialog.lpstrFile = selected; dialog.nMaxFile = 32768;
+        dialog.Flags = OFN_FILEMUSTEXIST | OFN_PATHMUSTEXIST | OFN_NOCHANGEDIR;
+        if (GetOpenFileNameW(&dialog)) {
+          if (!WideCharToMultiByte(CP_UTF8, 0, selected, -1, path, sizeof path, nullptr, nullptr)) path[0] = 0;
+        }
+      }
+#endif
+      ImGui::SetNextItemWidth(110);
+      ImGui::Combo("Format", &format, "cf32\0sc16\0sc8\0");
+      ImGui::SameLine(); ImGui::Checkbox("Auto-center DJI bursts", &auto_center);
+      ImGui::TextDisabled("Raw interleaved I/Q; .meta sidecar overrides format/rate. Extract HDF5/RAR first.");
+    } else {
+      ImGui::SetNextItemWidth(400); ImGui::InputText("Device arguments", device, sizeof device);
+      ImGui::SameLine(); ImGui::SetNextItemWidth(80); ImGui::InputText("Antenna", antenna, sizeof antenna);
+    }
+    if (source) rate = odid ? 20 : 15.36;
+    ImGui::BeginDisabled(source != 0);
+    ImGui::SetNextItemWidth(100); ImGui::InputDouble("MSPS", &rate, 0, 0, "%.3f");
+    ImGui::EndDisabled();
+    ImGui::SameLine(); ImGui::SetNextItemWidth(110); ImGui::InputDouble("Center MHz", &center, 0, 0, "%.3f");
+    ImGui::SameLine(); ImGui::SetNextItemWidth(80); ImGui::InputDouble("Gain dB", &gain, 0, 0, "%.1f");
+    ImGui::SameLine(); ImGui::SetNextItemWidth(80); ImGui::InputDouble("Seconds (0=all)", &seconds, 0, 0, "%.2f");
+    ImGui::EndDisabled();
+    if (running) ImGui::TextDisabled("Disconnect before changing source settings.");
+  }
+  void apply(Config& cfg) const {
+    if (!cfg.pair_manifest.empty() || !cfg.replay_ch1.empty() || cfg.df) return;
+    if (!std::isfinite(rate) || rate < 10 || rate > 250 || !std::isfinite(center) || center < 1 || center > 6000 ||
+        !std::isfinite(gain) || gain < 0 || gain > 100 || !std::isfinite(seconds) || seconds < 0 || seconds > 86400 ||
+        (odid && (rate < 20 || auto_center))) throw std::invalid_argument("Invalid source settings: rate 10-250 MSPS, center 1-6000 MHz; Wi-Fi RID needs >=20 MSPS and no auto-center.");
+    if (source && (!device[0] || !antenna[0])) throw std::invalid_argument("Enter X310 device arguments and antenna.");
+    cfg.device = source ? device : ""; cfg.replay = source ? "" : path;
+    cfg.fmt = static_cast<SampleFormat>(format); cfg.rate = rate * 1e6;
+    cfg.center_freq = center * 1e6; cfg.gain = gain; cfg.secs = seconds;
+    cfg.antenna = antenna; cfg.odid = odid; cfg.auto_center = auto_center;
+  }
+};
 
 void draw_usrp_bar(const UsrpStatus& s, bool& want_start, bool& want_stop) {
   ImGui::BeginChild("usrp_bar", ImVec2(0, 112), true);
@@ -83,6 +163,9 @@ void draw_drones(const std::vector<ui::DroneTrack>& tracks, const ui::RfSummary&
                       static_cast<unsigned long long>(rf.bursts_total), rf.peak_rssi_dbfs,
                       rf.last_snr_db, rf.last_bw_hz / 1e6);
   ImGui::TextDisabled("(RF energy incl. Wi-Fi/baseline — not a drone count)");
+  ImGui::TextWrapped("Experimental O4-like structure: %llu / %llu windows; identity unverified",
+      static_cast<unsigned long long>(rf.o4_candidate_windows),
+      static_cast<unsigned long long>(rf.o4_windows));
   if (ImGui::BeginTable("tracks", 6,
         ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg | ImGuiTableFlags_ScrollY)) {
     ImGui::TableSetupColumn("serial");
@@ -261,6 +344,7 @@ int run_window(UiModel& model, const Config& cfg) {
   std::atomic<bool> worker_done{true};
   bool restart_requested = false;
   Config active_cfg = cfg;
+  SourceEditor source_editor(cfg);
 
   auto stop_worker = [&]() {
     if (!running) return;
@@ -268,6 +352,11 @@ int run_window(UiModel& model, const Config& cfg) {
   };
   auto start_worker = [&]() {
     if (running) { stop_worker(); restart_requested = true; return; }
+    try { source_editor.apply(active_cfg); }
+    catch (const std::exception& e) {
+      UsrpStatus s; s.state = UsrpStatus::State::Error; s.label = "Source settings"; s.detail = e.what();
+      model.set_status(s); return;
+    }
     if (!active_cfg.pair_manifest.empty() || !active_cfg.replay_ch1.empty()) {
       stop.store(false);
       worker_done.store(false);
@@ -326,7 +415,7 @@ int run_window(UiModel& model, const Config& cfg) {
     worker = std::thread([&] { replay_worker(model, active_cfg, stop); worker_done.store(true); });
     running = true;
   };
-  start_worker();  // auto-connect on launch
+  if (!cfg.device.empty() || !cfg.replay.empty() || !cfg.pair_manifest.empty()) start_worker();
 
   int frame = 0;
   bool screenshot_failed = false;
@@ -355,6 +444,7 @@ int run_window(UiModel& model, const Config& cfg) {
                  ImGuiWindowFlags_NoBringToFrontOnFocus);
 
     bool want_start = false, want_stop = false;
+    source_editor.draw(running, active_cfg.df || !active_cfg.pair_manifest.empty() || !active_cfg.replay_ch1.empty());
     draw_usrp_bar(model.status(), want_start, want_stop);
     if (want_stop) {
       restart_requested = false;
@@ -540,6 +630,10 @@ int main(int argc, char** argv) {
                 static_cast<unsigned long long>(rf.bursts_total), model.checklist().size(),
                 static_cast<unsigned long long>(st.overflows), static_cast<unsigned long long>(st.samples_received),
                 static_cast<unsigned long long>(st.discontinuities), static_cast<unsigned long long>(st.dropped_windows));
+    std::printf("  o4_evidence: windows=%llu structure=%llu candidates=%llu identity=unverified\n",
+                static_cast<unsigned long long>(rf.o4_windows),
+                static_cast<unsigned long long>(rf.o4_structure_windows),
+                static_cast<unsigned long long>(rf.o4_candidate_windows));
     for (const auto& track : model.tracks()) {
       std::printf("  track: serial=%s count=%llu corr=%.3f", track.serial.c_str(),
                   static_cast<unsigned long long>(track.count), track.corr);

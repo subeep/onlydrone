@@ -96,13 +96,24 @@ struct vdecoder {
 
 static int16_t *vdec_malloc(size_t n)
 {
-#if defined(__MACH__)
+#if defined(_WIN32)
+  return (int16_t *) _aligned_malloc(sizeof(int16_t) * n, SSE_ALIGN);
+#elif defined(__MACH__)
 	// OSX guarentee's 16-byte alignment on the heap but lacks memalign() (Has posix_memalign though)
 	return (int16_t *) malloc(sizeof(int16_t) * n);
 #elif defined(HAVE_SSE3)
 	return (int16_t *) memalign(SSE_ALIGN, sizeof(int16_t) * n);
 #else
 	return (int16_t *) malloc(sizeof(int16_t) * n);
+#endif
+}
+
+static void vdec_free(void *p)
+{
+#if defined(_WIN32)
+  _aligned_free(p);
+#else
+  free(p);
 #endif
 }
 
@@ -189,8 +200,8 @@ static void free_trellis(struct vtrellis *trellis)
 		return;
 
 	free(trellis->vals);
-	free(trellis->outputs);
-	free(trellis->sums);
+	vdec_free(trellis->outputs);
+	vdec_free(trellis->sums);
 	free(trellis);
 }
 
@@ -332,7 +343,7 @@ static void free_vdec(struct vdecoder *dec)
 	if (!dec)
 		return;
 
-	free(dec->paths[0]);
+	vdec_free(dec->paths[0]);
 	free(dec->paths);
 	free_trellis(dec->trellis);
 	free(dec);

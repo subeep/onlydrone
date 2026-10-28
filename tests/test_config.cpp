@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <string>
+#include <filesystem>
 
 #include "droneid/config.h"
 #include "droneid/test/microtest.h"
@@ -12,8 +13,7 @@ using droneid::Config;
 
 namespace {
 std::string tmp_path(const char* name) {
-  const char* dir = std::getenv("TMPDIR");
-  std::string base = dir ? dir : "/tmp";
+  std::string base = std::filesystem::temp_directory_path().string();
   return base + "/droneid_cfg_" + name;
 }
 }  // namespace

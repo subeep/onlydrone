@@ -137,6 +137,10 @@ struct DroneTrack {
 
 // Aggregate "unknown RF" activity — NOT a per-drone count (energy bursts incl. Wi-Fi/baseline).
 struct RfSummary {
+  std::uint64_t o4_windows = 0;
+  std::uint64_t o4_structure_windows = 0;
+  std::uint64_t o4_candidate_windows = 0;
+  double o4_last_cyclic_correlation = 0;
   std::uint64_t bursts_total = 0;
   double peak_rssi_dbfs = -300;
   double last_rssi_dbfs = -300;
@@ -178,6 +182,8 @@ class UiModel {
   void record_rf_burst(double rssi_dbfs, double snr_db, double bw_hz, double center_hz,
                        std::int64_t ms);
   RfSummary rf_summary() const;
+  void record_o4_evidence(bool structure_match, bool candidate, double cyclic_correlation);
+  void reset_o4_evidence();
 
   // --- DF-4 state & operational logging ---
   void set_df_status(const DfUiStatus& s);

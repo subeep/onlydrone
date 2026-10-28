@@ -161,7 +161,9 @@ def load(case, seconds, temporary):
             return iq, rate, center, None, handle["RF0_I"].shape[0] / rate
     if kind == "rar":
         listing = subprocess.check_output(["unrar", "lb", str(path)], text=True, timeout=30).splitlines()
-        member = next(name for name in listing if name.endswith(".iq"))
+        member = case.get("member") or next(name for name in listing if name.endswith(".iq"))
+        if member not in listing or not member.endswith(".iq"):
+            raise ValueError("requested IQ archive member is absent")
         parent = str(Path(member).parent)
         xml = next(name for name in listing if name.endswith(".xml") and str(Path(name).parent) == parent)
         metadata = ET.fromstring(subprocess.check_output(["unrar", "p", "-inul", str(path), xml], timeout=30))

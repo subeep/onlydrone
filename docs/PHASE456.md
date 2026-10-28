@@ -51,6 +51,11 @@ coverage and the 1GbE soak test remain unverified.
 
 ## Phase 5: RF evidence, not invented O4 identities
 
+Update 28 October: `o4_detect` and the GUI now evaluate repeated signal structure
+as experimental `o4_candidate` evidence. This is separate from the energy-only
+tool below and does not establish identity or drone count. Full local results,
+algorithm and remaining validation: [O4 detector](O4_DETECTOR.md).
+
 ```bash
 ./build/rf_analyze capture.iq --noise-dbfs -60 > rf-events.jsonl
 ```

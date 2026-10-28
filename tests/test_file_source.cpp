@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <cstdio>
 #include <string>
+#include <filesystem>
 #include <vector>
 
 #include "droneid/file_source.h"
@@ -12,8 +13,7 @@ using namespace droneid;
 
 namespace {
 std::string tmp_path(const char* name) {
-  const char* dir = std::getenv("TMPDIR");
-  std::string base = dir ? dir : "/tmp";
+  std::string base = std::filesystem::temp_directory_path().string();
   return base + "/droneid_test_" + name;
 }
 

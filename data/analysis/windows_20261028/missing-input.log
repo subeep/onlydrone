@@ -1,0 +1,3 @@
+check: status=Error packets=0 tracks=0 rf_bursts=0 checklist_groups=11 overflows=0 samples=0 gaps=0 dropped_windows=0
+  o4_evidence: windows=0 structure=0 candidates=0 identity=unverified
+  detail: FileSource: cannot open does-not-exist.iq

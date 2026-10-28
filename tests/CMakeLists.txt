@@ -43,7 +43,7 @@ if(TARGET droneid_dji)
   add_executable(test_ui_worker test_ui_worker.cpp)
   target_link_libraries(test_ui_worker PRIVATE droneid_ui_worker)
   target_compile_definitions(test_ui_worker PRIVATE DRONEID_TEST_DATA_DIR="${CMAKE_CURRENT_SOURCE_DIR}/data")
-  target_link_options(test_ui_worker PRIVATE -Wl,--allow-shlib-undefined)
+  droneid_runtime_link(test_ui_worker)
   add_test(NAME test_ui_worker COMMAND test_ui_worker)
   if(TARGET droneid_ui)
     find_package(Python3 COMPONENTS Interpreter QUIET)
@@ -67,6 +67,9 @@ if(TARGET droneid_dji)
   add_executable(test_rf_metrics test_rf_metrics.cpp)
   target_link_libraries(test_rf_metrics PRIVATE droneid_rf)
   add_test(NAME test_rf_metrics COMMAND test_rf_metrics)
+  add_executable(test_o4_detector test_o4_detector.cpp)
+  target_link_libraries(test_o4_detector PRIVATE droneid_rf)
+  add_test(NAME test_o4_detector COMMAND test_o4_detector)
   add_test(NAME test_receiver_cli COMMAND ${CMAKE_COMMAND}
     -DHOP=$<TARGET_FILE:droneid_hop>
     -DRF=$<TARGET_FILE:rf_analyze>

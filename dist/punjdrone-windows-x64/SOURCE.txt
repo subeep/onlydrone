@@ -1,0 +1,20 @@
+Source code availability (GPL-3.0-or-later)
+===========================================
+
+punjdrone is free software under the GNU General Public License v3 (see COPYING).
+If you distribute these binaries, you must also make the corresponding source
+available to the recipients.
+
+Project repository:
+  https://github.com/subeep/onlydrone.git
+
+This Windows build corresponds to commit:
+  5ad8e1f3834bccaa67843fd670a5b15477273f94
+plus local working-tree changes (Windows port, UHD C-API adapter, and the O4
+candidate detector) that were not yet committed at build time. The complete
+corresponding source — including those local changes and the pinned GLFW 3.4 and
+FFTW 3.3.10 dependency archives used for the static build — is kept in the build
+workspace and must accompany the binaries if you redistribute them.
+
+Third-party components and their licenses are listed in THIRD_PARTY.md.
+No UHD runtime DLL is included or redistributed here; install UHD separately.

@@ -208,12 +208,18 @@ See [`DRONEID_BUILD_PLAN.md`](DRONEID_BUILD_PLAN.md) for the detail behind each 
 - [ ] **Accept:** detects Mini 2 on any DroneID channel; report shows catch rate
 
 ## Phase 5 — O4 path (Air 3S)
+- [x] Experimental structure-based `o4_detect` + shared GUI worker path; clipping/prominence/persistence
+      guards, gap reset and sample-indexed evidence. Profile and limitations: `docs/O4_DETECTOR.md`.
+- [x] Full local 22-file/187.009 s sweep: pinned Air 3S link 280/500 candidate windows;
+      controls 0/7,187 windows over 115.009 s. Same-session development, not independent O4 accuracy.
+- [x] Release 17/17 suites and targeted detector/worker ASan+UBSan 2/2 pass;
+      native GUI verified, CLI/UI one-second counts agree (48/62 candidate windows).
 - [x] Bounded streaming energy detector + `rf_analyze` JSONL RSSI/SNR, 99%-power bandwidth,
       spectral centroid and clipping metrics; chunk/continuous-input tests and four full local-file checks.
       All RF events are `unknown_rf`: baseline has activity too. Counts are not unique drones.
-- [ ] Burst classifier (bandwidth/period/CFO signature); detect + count drones
+- [/] Candidate signal classifier implemented; verified O4 identity and unique-drone counting remain open.
 - [/] RF metrics: RSSI/SNR implemented; source-specific CFO, proximity and verified fingerprint pending.
-- [ ] Drones-detected panel populated (incl. undecoded O4)
+- [/] Candidate-window evidence shown separately in GUI; confirmed undecoded O4 identity still pending.
 - [ ] **Accept:** reliably flags Air 3S, separates from Wi-Fi, logs metrics; no false position
 
 

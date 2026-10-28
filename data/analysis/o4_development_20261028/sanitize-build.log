@@ -1,0 +1,64 @@
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.2") 
+-- Checking for module 'fftw3f'
+--   Found fftw3f, version 3.3.8
+-- Checking for module 'zlib'
+--   Found zlib, version 1.2.11
+-- droneid: UHD=OFF UI=OFF SQLITE=OFF GTEST=OFF
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /tmp/punjdrone-o4-sanitize
+[1/38] Building CXX object CMakeFiles/droneid_core.dir/src/core/hop.cpp.o
+[2/38] Building CXX object CMakeFiles/droneid_core.dir/src/core/config.cpp.o
+[3/38] Building CXX object CMakeFiles/droneid_core.dir/src/sdr/file_source.cpp.o
+[4/38] Building CXX object CMakeFiles/droneid_core.dir/src/o4/aoa.cpp.o
+[5/38] Linking CXX static library libdroneid_core.a
+[6/38] Building CXX object CMakeFiles/droneid_odid.dir/src/odid/messages.cpp.o
+[7/38] Building CXX object CMakeFiles/droneid_odid.dir/src/odid/wifi_dsp.cpp.o
+[8/38] Building CXX object CMakeFiles/droneid_odid.dir/src/odid/wifi_mac.cpp.o
+[9/38] Building CXX object CMakeFiles/droneid_odid.dir/src/odid/wifi_dsss.cpp.o
+[10/38] Building CXX object CMakeFiles/droneid_odid.dir/src/odid/wifi_ofdm.cpp.o
+[11/38] Building C object CMakeFiles/turbofec.dir/third_party/turbofec/src/conv_dec.c.o
+[12/38] Building C object CMakeFiles/turbofec.dir/third_party/turbofec/src/conv_enc.c.o
+[13/38] Building C object CMakeFiles/turbofec.dir/third_party/turbofec/src/conv_rate_match.c.o
+[14/38] Building C object CMakeFiles/turbofec.dir/third_party/turbofec/src/turbo_dec.c.o
+[15/38] Building C object CMakeFiles/turbofec.dir/third_party/turbofec/src/turbo_enc.c.o
+[16/38] Building C object CMakeFiles/turbofec.dir/third_party/turbofec/src/turbo_rate_match.c.o
+[17/38] Linking C static library libturbofec.a
+[18/38] Building CXX object CMakeFiles/droneid_dji.dir/src/dji/params.cpp.o
+[19/38] Building CXX object CMakeFiles/droneid_odid.dir/src/odid/wifi_decoder.cpp.o
+[20/38] Linking CXX static library libdroneid_odid.a
+[21/38] Building CXX object CMakeFiles/droneid_dji.dir/src/dji/dsp.cpp.o
+[22/38] Building CXX object CMakeFiles/droneid_dji.dir/src/fec/scrambler.cpp.o
+[23/38] Building CXX object CMakeFiles/droneid_dji.dir/src/fec/turbo.cpp.o
+[24/38] Building CXX object CMakeFiles/droneid_dji.dir/src/dji/decode.cpp.o
+[25/38] Building CXX object CMakeFiles/droneid_dji.dir/src/proto/frame.cpp.o
+[26/38] Linking CXX static library libdroneid_dji.a
+[27/38] Building CXX object CMakeFiles/droneid_rf.dir/src/o4/rf_metrics.cpp.o
+[28/38] Building CXX object CMakeFiles/droneid_rf.dir/src/o4/o4_detector.cpp.o
+[29/38] Linking CXX static library libdroneid_rf.a
+[30/38] Building CXX object CMakeFiles/droneid_ui_model.dir/src/ui/ui_model.cpp.o
+[31/38] Linking CXX static library libdroneid_ui_model.a
+[32/38] Building CXX object CMakeFiles/droneid_ui_worker.dir/src/ui/receiver_worker.cpp.o
+[33/38] Building CXX object CMakeFiles/droneid_ui_worker.dir/src/ui/odid_worker.cpp.o
+[34/38] Linking CXX static library libdroneid_ui_worker.a
+[35/38] Building CXX object tests/CMakeFiles/test_o4_detector.dir/test_o4_detector.cpp.o
+[36/38] Linking CXX executable tests/test_o4_detector
+[37/38] Building CXX object tests/CMakeFiles/test_ui_worker.dir/test_ui_worker.cpp.o
+[38/38] Linking CXX executable tests/test_ui_worker

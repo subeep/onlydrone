@@ -1,0 +1,16 @@
+{
+  "profile": "air3s_structure_v1",
+  "cases": 3,
+  "errors": 0,
+  "by_family": {
+    "O4": {
+      "captures": 3,
+      "seconds": 3.8,
+      "captures_with_candidates": 0,
+      "candidate_windows": 0,
+      "windows": 236
+    }
+  },
+  "scope": "External recordings not used to set v1 thresholds. Bounded prefix coverage; recording labels are not event truth. Related files may share sessions/devices.",
+  "identity_accuracy": null
+}

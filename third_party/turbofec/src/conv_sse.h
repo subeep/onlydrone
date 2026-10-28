@@ -304,6 +304,9 @@
  * preserved and read and written into the same memory location. Normalize
  * sums if requires.
  */
+#ifndef __always_inline
+#define __always_inline __inline__ __attribute__((__always_inline__))
+#endif
 __always_inline void _sse_metrics_k5_n2(const int16_t *val,
 					const int16_t *out,
 					int16_t *sums,

@@ -1,0 +1,7 @@
+[INFO] [UHD] linux; GNU C++ version 11.2.0; Boost_107400; UHD_4.1.0.5-3
+[INFO] [X300] X300 initialization sequence...
+[INFO] [X300] Maximum frame size: 1472 bytes.
+[INFO] [X300] Radio 1x clock: 184.32 MHz
+check: status=Disconnected packets=0 tracks=0 rf_bursts=2643 checklist_groups=11 overflows=0 samples=76800000 gaps=0 dropped_windows=10
+  o4_evidence: windows=265 structure=0 candidates=0 identity=unverified
+  detail: Live stream stopped

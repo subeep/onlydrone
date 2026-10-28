@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <cstring>
 #include <fstream>
+#include <filesystem>
 #include <stdexcept>
 
 #include "droneid/logging.h"
@@ -14,7 +15,7 @@ namespace {
 
 // Load a "<path>.meta" sidecar if present. Keys: format, sample_rate, center_freq.
 void load_sidecar(const std::string& path, SampleFormat& fmt, double& rate, double& center) {
-  std::ifstream in(path + ".meta");
+  std::ifstream in(std::filesystem::u8path(path + ".meta"));
   if (!in) return;
   std::string line;
   while (std::getline(in, line)) {
@@ -43,7 +44,11 @@ FileSource::FileSource(const std::string& path, SampleFormat fmt, double sample_
                        double center_freq, bool loop)
     : fmt_(fmt), sample_rate_(sample_rate), center_freq_(center_freq), loop_(loop) {
   load_sidecar(path, fmt_, sample_rate_, center_freq_);
+#ifdef _WIN32
+  fp_ = _wfopen(std::filesystem::u8path(path).c_str(), L"rb");
+#else
   fp_ = std::fopen(path.c_str(), "rb");
+#endif
   if (!fp_) throw std::runtime_error("FileSource: cannot open " + path);
 }
 

@@ -83,6 +83,10 @@ std::string DfBearingEvent::to_jsonl() const {
 
 void UiModel::set_status(const UsrpStatus& s) {
   std::lock_guard<std::mutex> g(m_);
+  if (s.state == UsrpStatus::State::Connecting) {
+    rf_.o4_windows = rf_.o4_structure_windows = rf_.o4_candidate_windows = 0;
+    rf_.o4_last_cyclic_correlation = 0;
+  }
   status_ = s;
 }
 
@@ -196,6 +200,20 @@ void UiModel::record_rf_burst(double rssi_dbfs, double snr_db, double bw_hz, dou
 RfSummary UiModel::rf_summary() const {
   std::lock_guard<std::mutex> g(m_);
   return rf_;
+}
+
+void UiModel::record_o4_evidence(bool structure_match, bool candidate, double cyclic_correlation) {
+  std::lock_guard<std::mutex> g(m_);
+  ++rf_.o4_windows;
+  rf_.o4_structure_windows += structure_match;
+  rf_.o4_candidate_windows += candidate;
+  rf_.o4_last_cyclic_correlation = cyclic_correlation;
+}
+
+void UiModel::reset_o4_evidence() {
+  std::lock_guard<std::mutex> g(m_);
+  rf_.o4_windows = rf_.o4_structure_windows = rf_.o4_candidate_windows = 0;
+  rf_.o4_last_cyclic_correlation = 0;
 }
 
 void UiModel::set_df_status(const DfUiStatus& s) {

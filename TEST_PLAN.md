@@ -1,5 +1,20 @@
 # Offline corpus validation and remaining acceptance
 
+## O4 candidate evidence (28 October)
+
+The new structure detector is tested independently of energy detection. See
+`docs/O4_DETECTOR.md` and `data/analysis/o4_validation_20261028/REPORT.md`.
+Full local evaluation covers 22 files / 187.009 s. Candidate windows occur in the
+Air 3S 5.8 GHz captures; Mini 2 and no-drone/Wi-Fi controls produce 0/7,187 candidate
+windows. These sessions contributed development prefixes; there is no independent
+O4 identity accuracy claim. External sda1 datasets were unavailable during this run.
+`test_o4_detector` covers structure, rate/chunk invariance, persistence/gap reset
+and interference/invalid inputs; `test_ui_worker` checks shared detector counts and
+no invented track. Existing ODID/DJI/DF suites remain required.
+Final verification: release 17/17 suites pass; targeted detector/UI-worker
+ASan+UBSan 2/2 pass with leak detection disabled. Native replay evidence and logs
+are saved under `data/analysis/o4_development_20261028/`.
+
 ## Open Drone ID Wi-Fi (28 October)
 
 Three new hermetic suites (evidence tier 1, **synthetic IQ only**). Release CTest passes 16/16:

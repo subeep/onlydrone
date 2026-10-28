@@ -1,0 +1,10 @@
+[ RUN    ] O4Evidence.StructureRatesAndChunkContinuity
+[     OK ] O4Evidence.StructureRatesAndChunkContinuity
+[ RUN    ] O4Evidence.RejectsNoiseToneWifiAndOtherNumerology
+[     OK ] O4Evidence.RejectsNoiseToneWifiAndOtherNumerology
+[ RUN    ] O4Evidence.ClippingInvalidSamplesAndShortInput
+[     OK ] O4Evidence.ClippingInvalidSamplesAndShortInput
+[ RUN    ] O4Evidence.WeakStructureRequiresLongPersistenceAndResetsOnGap
+[     OK ] O4Evidence.WeakStructureRequiresLongPersistenceAndResetsOnGap
+----
+4 case(s), 0 failing

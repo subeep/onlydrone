@@ -1,0 +1,5 @@
+{
+  "build/capi-linux/o4_detect": "73428f598c7b6008b53470c24db8df5ea60a65ca896aaf47b6263ba6232b7d00",
+  "src/o4/o4_detector.cpp": "39125030cc54a09de802f964dc43d5c43e7a36a2b8fb458cb927c51bd4b0a820",
+  "include/droneid/o4_detector.h": "f1b6766ecb1d8b1005d845a47374005a8e36198b464684c754835c9b272cee69"
+}

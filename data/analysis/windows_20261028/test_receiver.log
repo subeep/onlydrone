@@ -1,0 +1,16 @@
+[ RUN    ] Hop.TimingAndCoverageModel
+[     OK ] Hop.TimingAndCoverageModel
+[ RUN    ] Hop.RejectInvalidInputs
+[     OK ] Hop.RejectInvalidInputs
+[ RUN    ] Direction.CalibratedAnglesAndRejections
+[     OK ] Direction.CalibratedAnglesAndRejections
+[ RUN    ] DfGate1.PairedBlockAndManifestTransaction
+[     OK ] DfGate1.PairedBlockAndManifestTransaction
+[ RUN    ] DfGate2And3.CalibrationLifecycleAndQualityGates
+[     OK ] DfGate2And3.CalibrationLifecycleAndQualityGates
+[ RUN    ] DfReview.LoadedCalibrationCannotBypassGainOrRig
+[     OK ] DfReview.LoadedCalibrationCannotBypassGainOrRig
+[ RUN    ] DfReview.SymmetricOutOfBandEnergyIsNotAnInBandSignal
+[     OK ] DfReview.SymmetricOutOfBandEnergyIsNotAnInBandSignal
+----
+7 case(s), 0 failing
