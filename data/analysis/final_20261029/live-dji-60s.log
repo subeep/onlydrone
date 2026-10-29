@@ -1,0 +1,10 @@
+11:39:52 [INFO ] UsrpSource: opening addr=192.168.10.2,master_clock_rate=184320000
+[INFO] [UHD] linux; GNU C++ version 11.2.0; Boost_107400; UHD_4.1.0.5-3
+[INFO] [X300] X300 initialization sequence...
+[INFO] [X300] Maximum frame size: 1472 bytes.
+[INFO] [X300] Radio 1x clock: 184.32 MHz
+11:39:55 [WARN ] UsrpSource: ch0 bandwidth 10000000 Hz outside supported range; using 160000000 Hz
+11:39:55 [INFO ] UsrpSource: X310 326CF02 ch0 rate=15.36 MSPS center=2459.5 MHz gain=20 dB ant=RX2 wire=sc16 ref=locked
+check: status=Disconnected packets=0 tracks=0 rf_bursts=17476 checklist_groups=13 overflows=0 samples=921600000 gaps=0 dropped_windows=108
+  o4_evidence: windows=3245 structure=2 candidates=0 identity=unverified
+  detail: Live stream stopped

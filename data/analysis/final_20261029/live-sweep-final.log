@@ -1,0 +1,9 @@
+12:33:14 [INFO ] UsrpSource: opening addr=192.168.10.2,master_clock_rate=200000000
+[INFO] [UHD] linux; GNU C++ version 11.2.0; Boost_107400; UHD_4.1.0.5-3
+[INFO] [X300] X300 initialization sequence...
+[INFO] [X300] Maximum frame size: 1472 bytes.
+[INFO] [X300] Radio 1x clock: 200 MHz
+12:33:17 [WARN ] UsrpSource: ch0 bandwidth 20000000 Hz outside supported range; using 160000000 Hz
+12:33:17 [INFO ] UsrpSource: X310 326CF02 ch0 rate=20 MSPS center=2399.5 MHz gain=20 dB ant=RX2 wire=sc16 ref=locked
+Disconnected: Sweep stopped; visits=33 valid=33
+{"event":"sweep_plan","profile":"balanced","steps":33,"sample_rate":20000000,"minimum_cycle_before_processing":28.430000,"maximum_cycle_before_processing":29.750000,"catch_probability":null}

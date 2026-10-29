@@ -1,0 +1,8 @@
+23:15:12 [INFO ] UsrpSource: opening addr=192.168.10.2,master_clock_rate=200000000
+[INFO] [UHD] linux; GNU C++ version 11.2.0; Boost_107400; UHD_4.1.0.5-3
+Error: LookupError: KeyError: No devices found for ----->
+Device Address:
+    addr: 192.168.10.2
+    master_clock_rate: 200000000
+
+{"event":"sweep_plan","profile":"fast","steps":33,"sample_rate":20000000,"minimum_cycle_before_processing":18.610000,"maximum_cycle_before_processing":19.930000,"catch_probability":null}

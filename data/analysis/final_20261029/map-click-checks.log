@@ -1,0 +1,9 @@
+native-pilot-only FAIL
+native-unsupported FAIL
+native-valid-location PASS
+windows-valid-location PASS
+Traceback (most recent call last):
+  File "/home/sudeep/Music/punjdrone/data/analysis/final_20261029/verify_clicks.py", line 43, in <module>
+    assert all(r['passed'] for r in results)
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

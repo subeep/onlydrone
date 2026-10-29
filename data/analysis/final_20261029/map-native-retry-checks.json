@@ -1,0 +1,16 @@
+[
+  {
+    "name": "native-pilot-only",
+    "passed": true,
+    "exit_code": 0,
+    "expected_selection": "drone_location=unavailable center=31.1471000,75.3412000 zoom=7",
+    "screenshot": "data/analysis/final_20261029/native-pilot-only.ppm"
+  },
+  {
+    "name": "native-unsupported",
+    "passed": true,
+    "exit_code": 0,
+    "expected_selection": "drone_location=unavailable center=31.1471000,75.3412000 zoom=7",
+    "screenshot": "data/analysis/final_20261029/native-unsupported.ppm"
+  }
+]

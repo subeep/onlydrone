@@ -27,7 +27,9 @@ struct UsrpStatus {
   std::uint64_t overflows = 0;
   std::uint64_t samples_received = 0;
   std::uint64_t dropped_windows = 0;
+  std::uint64_t dropped_rf_windows = 0; // included in total; remainder is packet decoding
   std::uint64_t discontinuities = 0;
+  std::uint64_t sweep_visits = 0, sweep_valid_visits = 0;
 };
 
 const char* to_string(UsrpStatus::State s);
@@ -96,6 +98,7 @@ struct DfBearingEvent {
 
 // One decoded DroneID frame row for the packet log.
 struct PacketRow {
+  std::uint64_t packet_id = 0;    // assigned by UiModel; stable across log eviction
   std::int64_t time_ms = 0;        // wall-clock when added
   std::uint16_t sequence = 0;
   std::string serial;
@@ -171,6 +174,7 @@ class UiModel {
   // Adds a packet to the bounded log and upserts the matching track.
   void add_packet(const PacketRow& p);
   std::vector<PacketRow> packets() const;   // newest last
+  std::uint64_t packet_count() const;
 
   void upsert_track(const DroneTrack& t);   // merges by key
   void set_bearing(const std::string& key, float deg, float quality, bool ambiguous);
@@ -209,6 +213,7 @@ class UiModel {
   UsrpStatus status_;
   DfUiStatus df_status_;
   std::deque<PacketRow> packets_;
+  std::uint64_t packet_count_ = 0;
   std::deque<DfBearingEvent> df_events_;
   std::map<std::string, DroneTrack> tracks_;
   RfSummary rf_;

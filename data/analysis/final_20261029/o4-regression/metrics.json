@@ -1,0 +1,51 @@
+{
+  "profile": "o4_structure_v2",
+  "cases": 35,
+  "errors": 0,
+  "by_family": {
+    "O2": {
+      "captures": 4,
+      "seconds": 2.56,
+      "captures_with_candidates": 0,
+      "candidate_windows": 0,
+      "windows": 160
+    },
+    "O3": {
+      "captures": 8,
+      "seconds": 5.12,
+      "captures_with_candidates": 0,
+      "candidate_windows": 0,
+      "windows": 320
+    },
+    "O3+": {
+      "captures": 10,
+      "seconds": 6.3999999999999995,
+      "captures_with_candidates": 0,
+      "candidate_windows": 0,
+      "windows": 400
+    },
+    "O4": {
+      "captures": 8,
+      "seconds": 5.12,
+      "captures_with_candidates": 7,
+      "candidate_windows": 202,
+      "windows": 320
+    },
+    "O4+": {
+      "captures": 3,
+      "seconds": 1.92,
+      "captures_with_candidates": 0,
+      "candidate_windows": 0,
+      "windows": 120
+    },
+    "non-DJI": {
+      "captures": 2,
+      "seconds": 1.28,
+      "captures_with_candidates": 0,
+      "candidate_windows": 0,
+      "windows": 80
+    }
+  },
+  "scope": "Frozen o4_structure_v2 on preselected files/archive members absent from the development evaluation. 0.64-second prefixes; no tuning on these results. Files may share sessions/devices with development, so this is file-held-out evidence, not session-held-out identity accuracy. Recording labels are not event truth.",
+  "identity_accuracy": null
+}

@@ -1,6 +1,9 @@
 #pragma once
 
 #include <atomic>
+#include <array>
+#include <memory>
+#include <stdexcept>
 #include <cstdint>
 #include <deque>
 #include <string>
@@ -8,6 +11,7 @@
 
 #include "droneid/aoa.h"
 #include "droneid/types.h"
+#include "droneid/sweep.h"
 #include "ui_model.h"
 
 namespace droneid::ui {
@@ -38,6 +42,14 @@ struct SourceConfig {
   // Opt-in ASTM F3411 Open Drone ID over Wi-Fi (Beacon/NAN). Off by default; when on, the source
   // is decoded as 802.11 instead of DJI DroneID and live reception tunes a 20 MSPS Wi-Fi channel.
   bool odid = false;
+  bool sweep = false;
+  std::string sweep_profile = "balanced";
+  bool sweep_include_52 = false;
+  bool sweep_all_wifi = false;
+  std::uint64_t sweep_cycles = 0;  // zero runs until stopped
+  double sweep_settle = .05;
+  double sweep_jitter = .04;
+  std::string sweep_jsonl;
 };
 
 // ODID Wi-Fi live profile: 200 MHz master clock / 10 = 20 MSPS, the native 802.11 OFDM rate.
@@ -49,6 +61,33 @@ struct SampleWindow {
   std::vector<cf32> samples;
   std::size_t accept_before = 0;
   uint64_t start_sample = 0;
+};
+
+// One immutable buffer shared by independent packet and RF/O4 consumers. Caller
+// supplies synchronization. A slow RF lane never evicts a packet-lane window.
+class LiveWindowFanout {
+ public:
+  explicit LiveWindowFanout(std::size_t capacity) : capacity_(capacity) {
+    if(!capacity) throw std::invalid_argument("live queue capacity must be positive");
+  }
+  void push(SampleWindow window) {
+    auto shared=std::make_shared<const SampleWindow>(std::move(window));
+    for(std::size_t lane=0;lane<2;++lane) {
+      if(queues_[lane].size()==capacity_) {queues_[lane].pop_front();++dropped_[lane];}
+      queues_[lane].push_back(shared);
+    }
+  }
+  bool empty(std::size_t lane) const {return queues_.at(lane).empty();}
+  std::shared_ptr<const SampleWindow> pop(std::size_t lane) {
+    auto& q=queues_.at(lane);
+    if(q.empty()) return {};
+    auto result=std::move(q.front());q.pop_front();return result;
+  }
+  std::uint64_t dropped(std::size_t lane) const {return dropped_.at(lane);}
+ private:
+  std::size_t capacity_;
+  std::array<std::deque<std::shared_ptr<const SampleWindow>>,2> queues_;
+  std::array<std::uint64_t,2> dropped_{};
 };
 
 class WindowAssembler {
@@ -109,5 +148,8 @@ void live_worker(UiModel& model, SourceConfig config, std::atomic<bool>& stop);
 void df_live_worker(UiModel& model, SourceConfig config, std::atomic<bool>& stop);
 void odid_replay_worker(UiModel& model, SourceConfig config, std::atomic<bool>& stop);
 void odid_live_worker(UiModel& model, SourceConfig config, std::atomic<bool>& stop);
+void sweep_worker(UiModel& model, SourceConfig config, std::atomic<bool>& stop);
+void process_odid_capture(UiModel& model, const std::vector<cf32>& samples, double rate);
+void process_sweep_capture(UiModel& model, const std::vector<cf32>& samples, SweepMode mode, double rate);
 
 }  // namespace droneid::ui

@@ -3,9 +3,65 @@
 #include <string>
 
 #include "../src/ui/ui_model.h"
+#include "../src/ui/map_state.h"
+#include <limits>
 #include "droneid/test/microtest.h"
 
 using namespace droneid::ui;
+
+TEST(PacketMap, SelectionUsesValidatedDroneCoordinatesAndSurvivesEviction) {
+  UiModel model(1);
+  PacketRow p;
+  p.sequence=4; p.serial="selected"; p.telemetry_parsed=true;
+  p.drone_lat=30.901; p.drone_lon=75.857; p.payload_hex="010203";
+  model.add_packet(p);
+  PacketSelection selection;
+  EXPECT_NEAR(selection.lat,kPunjabLat,1e-9);
+  selection.select(model.packets().back());
+  EXPECT_NEAR(selection.lat,30.901,1e-9);
+  EXPECT_EQ(selection.zoom,14);
+  const auto id=selection.packet->packet_id;
+  p.serial="new"; model.add_packet(p); // same timestamp and sequence, different identity
+  EXPECT_TRUE(model.packets().back().packet_id != id);
+  EXPECT_EQ(selection.packet->serial,std::string("selected"));
+  EXPECT_EQ(selection.packet->payload_hex,std::string("010203"));
+  selection.reset();
+  EXPECT_FALSE(selection.packet.has_value());
+  EXPECT_NEAR(selection.lon,kPunjabLon,1e-9);
+}
+
+TEST(PacketMap, InvalidUnparsedAndPilotOnlyPacketsNeverInventDroneLocation) {
+  PacketSelection selection;
+  PacketRow p; p.telemetry_parsed=true; p.drone_lat=30.9; p.drone_lon=75.8;
+  EXPECT_TRUE(packet_drone_location(p));
+  for(int reason=0;reason<6;++reason) {
+    auto bad=p;
+    if(reason==0) bad.telemetry_parsed=false;
+    if(reason==1) bad.drone_valid=false;
+    if(reason==2) bad.crc_ok=false;
+    if(reason==3) bad.drone_lat=std::numeric_limits<double>::quiet_NaN();
+    if(reason==4) bad.drone_lon=181;
+    if(reason==5) {bad.drone_lat=0;bad.drone_lon=0;}
+    bad.pilot_valid=true;bad.pilot_lat=50;bad.pilot_lon=10;
+    selection.select(bad);
+    EXPECT_FALSE(packet_drone_location(bad));
+    EXPECT_NEAR(selection.lat,kPunjabLat,1e-9);
+    EXPECT_NEAR(selection.lon,kPunjabLon,1e-9);
+  }
+}
+
+TEST(PacketMap, MercatorRoundTripAndWorldWrapping) {
+  for(int z:{2,7,14,19}) {
+    auto p=project_location(kPunjabLat,kPunjabLon,z);
+    auto ll=unproject_location(p.x,p.y,z);
+    EXPECT_NEAR(ll.x,kPunjabLat,1e-7);
+    EXPECT_NEAR(ll.y,kPunjabLon,1e-7);
+    auto wrapped=unproject_location(p.x+256.0*(1<<z),p.y,z);
+    EXPECT_NEAR(wrapped.y,kPunjabLon,1e-7);
+    auto pole=project_location(90,0,z);
+    EXPECT_TRUE(std::isfinite(pole.y));
+  }
+}
 
 TEST(UiChecklist, MarkerDetection) {
   EXPECT_EQ(checklist_marker("- [ ] todo"), ' ');

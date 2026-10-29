@@ -34,6 +34,9 @@ def main():
     run('missing-input', 'droneid_ui.exe', ['--check','--replay','does-not-exist.iq'], expected=1, contains=['status=Error'])
     # No hardware needed. Invalid sample rate must fail before receiver startup.
     run('invalid-rate', 'droneid_ui.exe', ['--check','--replay','tests/data/mini2_wideband.cf32','--rate','nan'], expected=2)
+    run('sweep-plan', 'droneid_sweep.exe', ['--profile','balanced','--jitter','0'],
+        contains=['"steps":33','28.430000','2478500000','5845000000','wifi_remote_id'])
+    run('sweep-invalid-settle', 'droneid_sweep.exe', ['--settle','0'], expected=1)
     if not all(r['passed'] for r in results):
         raise SystemExit(1)
 

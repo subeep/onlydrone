@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-29",
+  "linux_ctest_suites_passed": 18,
+  "radio_access_attempted": false,
+  "windows_binaries_match_build": 17,
+  "source_files_verified": 189,
+  "zip_crc_checks": "passed",
+  "archive_sha256_checks": "passed",
+  "source_matches_working_files": true,
+  "operator_guides_match": true,
+  "windows_execution": "Previously checked under Wine; no new Windows execution or native Windows hardware acceptance claimed",
+  "archives": {
+    "punjdrone-windows-x64.zip": "e423513b8e47e1d1d6b0c823c06e4d9cbf4c290888b05aeef6d5cc1e14e3e55e",
+    "punjdrone-windows-source.zip": "a5bccc749599a4d815bb21536d5a7674a85e82359a27aad399e590f26b0f8512"
+  }
+}

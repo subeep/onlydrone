@@ -4,6 +4,7 @@
 #include "droneid/file_source.h"
 #include "droneid/test/microtest.h"
 #include "droneid/o4_detector.h"
+#include "droneid/odid_wifi.h"
 #include "o4_fixture.h"
 
 #include <algorithm>
@@ -12,6 +13,37 @@
 #include <fstream>
 
 using namespace droneid;
+
+TEST(UiWorker, SlowRfQueueDoesNotDropPacketDecoderInput) {
+  ui::LiveWindowFanout queue(2);
+  ui::SampleWindow window; window.samples={{1,2}};window.start_sample=0;
+  queue.push(window);
+  auto packet0=queue.pop(0);
+  EXPECT_EQ(packet0->start_sample,uint64_t(0));
+  window.start_sample=100;queue.push(window);
+  auto packet1=queue.pop(0);
+  window.start_sample=200;queue.push(window);
+  EXPECT_EQ(queue.dropped(0),uint64_t(0));
+  EXPECT_EQ(queue.dropped(1),uint64_t(1));
+  auto rf1=queue.pop(1);
+  EXPECT_EQ(rf1.get(),packet1.get()); // shared immutable samples; no second IQ copy
+  EXPECT_EQ(rf1->start_sample,uint64_t(100));
+  EXPECT_EQ(queue.pop(0)->start_sample,uint64_t(200));
+  EXPECT_TRUE(queue.empty(0));
+  EXPECT_EQ(queue.pop(1)->start_sample,uint64_t(200));
+  EXPECT_TRUE(queue.empty(1));
+  EXPECT_FALSE(bool(queue.pop(0)));
+}
+
+TEST(UiWorker, BothLiveQueuesBoundedAndDroppedRangesRemainVisible) {
+  ui::LiveWindowFanout queue(1);
+  ui::SampleWindow first; first.start_sample=123;queue.push(first);
+  ui::SampleWindow second; second.start_sample=456;queue.push(second);
+  EXPECT_EQ(queue.dropped(0),uint64_t(1));
+  EXPECT_EQ(queue.dropped(1),uint64_t(1));
+  EXPECT_EQ(queue.pop(0)->start_sample,uint64_t(456));
+  EXPECT_EQ(queue.pop(1)->start_sample,uint64_t(456));
+}
 
 TEST(UiWorker, O4EvidenceMatchesStreamingWithoutInventingTrack) {
   const auto samples=structured_reference(15.36e6);
@@ -434,6 +466,47 @@ TEST(UiWorker, PairedChunkIndependenceAndPassbandRejection) {
   const auto oob_res = cal.estimate_block_bearing(oob, 2000000000LL);
   EXPECT_FALSE(oob_res.valid);
   EXPECT_TRUE(oob_res.reason.find("passband") != std::string::npos);
+}
+
+TEST(SweepWorker, O4HistoryDoesNotCrossRetunes) {
+  const double rate=20e6;
+  auto samples=structured_reference(rate);
+  droneid::ui::UiModel model;
+  std::vector<droneid::cf32> short_dwell(samples.begin(), samples.begin()+static_cast<std::size_t>(rate*.032));
+  for (int visit=0;visit<10;++visit)
+    droneid::ui::process_sweep_capture(model,short_dwell,droneid::SweepMode::O4,rate);
+  EXPECT_EQ(model.rf_summary().o4_candidate_windows,uint64_t(0));
+  droneid::ui::process_sweep_capture(model,samples,droneid::SweepMode::O4,rate);
+  EXPECT_TRUE(model.rf_summary().o4_candidate_windows>0);
+  EXPECT_TRUE(model.tracks().empty());
+  EXPECT_EQ(model.packet_count(),uint64_t(0));
+}
+
+TEST(SweepWorker, DecodesDroneIdAtSharedTwentyMsps) {
+  FileSource source(std::string(DRONEID_TEST_DATA_DIR)+"/mini2_centered.sc16",SampleFormat::sc16,15.36e6);
+  std::vector<cf32> samples(16000); int64_t timestamp=0;
+  samples.resize(source.recv(samples.data(),samples.size(),timestamp));
+  const auto at20=odid::resample(samples,15.36e6,20e6);
+  ui::UiModel model;
+  ui::process_sweep_capture(model,at20,SweepMode::DroneId,20e6);
+  EXPECT_EQ(model.packet_count(),uint64_t(1));
+  EXPECT_EQ(model.tracks().size(),std::size_t(1));
+  EXPECT_EQ(model.packets().front().inner_crc16,std::string("OK"));
+}
+
+TEST(SweepWorker, DecodesWifiRidAtSharedTwentyMsps) {
+  odid::BasicId id; id.id_type=1; id.ua_type=2; id.uas_id="SWEEP-TEST";
+  auto mpdu=odid::build_beacon_mpdu({2,0,0,0,0,1},"sweep",0,odid::encode_pack({odid::encode(id)}));
+  auto waveform=odid::synth_ofdm_ppdu(mpdu,6);
+  std::vector<cf32> samples(10000);
+  samples.insert(samples.end(),waveform.begin(),waveform.end()); samples.resize(samples.size()+10000);
+  ui::UiModel model(1);
+  ui::process_sweep_capture(model,samples,SweepMode::WifiRid,20e6);
+  ui::process_sweep_capture(model,samples,SweepMode::WifiRid,20e6);
+  EXPECT_EQ(model.packet_count(),uint64_t(2));
+  EXPECT_EQ(model.packets().size(),std::size_t(1));
+  EXPECT_EQ(model.packets().front().serial,std::string("SWEEP-TEST"));
+  EXPECT_EQ(model.packets().front().source,std::string("ODID/ASTM"));
 }
 
 MICROTEST_MAIN

@@ -1,0 +1,30 @@
+[
+  {
+    "name": "native-pilot-only",
+    "passed": false,
+    "exit_code": 0,
+    "expected_selection": "drone_location=unavailable center=31.1471000,75.3412000 zoom=7",
+    "screenshot": "data/analysis/final_20261029/native-pilot-only.ppm"
+  },
+  {
+    "name": "native-unsupported",
+    "passed": false,
+    "exit_code": 0,
+    "expected_selection": "drone_location=unavailable center=31.1471000,75.3412000 zoom=7",
+    "screenshot": "data/analysis/final_20261029/native-unsupported.ppm"
+  },
+  {
+    "name": "native-valid-location",
+    "passed": true,
+    "exit_code": 0,
+    "expected_selection": "drone_location=valid center=51.4775410,-0.0015244 zoom=14",
+    "screenshot": "data/analysis/final_20261029/native-valid-location.ppm"
+  },
+  {
+    "name": "windows-valid-location",
+    "passed": true,
+    "exit_code": 0,
+    "expected_selection": "drone_location=valid center=51.4775410,-0.0015244 zoom=14",
+    "screenshot": "data/analysis/final_20261029/windows-valid-location.ppm"
+  }
+]

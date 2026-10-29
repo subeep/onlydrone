@@ -1,9 +1,18 @@
 # Windows x64 application
 
-Build date: 28 October 2026. Extract the complete `punjdrone-windows-x64.zip`
+Build date: 29 October 2026. Extract the complete `punjdrone-windows-x64.zip`
 directory, then double-click **droneid_ui.exe**. This is a native Windows PE x64
 program, with the GUI, DJI decoder, O4 candidate detector and Wi-Fi Remote ID
 decoder compiled in. A console also opens for diagnostics. No Python is needed.
+
+Click a packet row for persistent details and its reported position on the
+OpenStreetMap panel. The default view is Punjab, India. Internet is needed for
+uncached tiles; WinHTTP is supplied by Windows. See `PACKET_MAP.md`.
+
+**Automatic sweep** is now a third GUI source. It interleaves DroneID, O4 and
+Wi-Fi Remote ID at 20 MSPS. Start with the balanced profile; see
+`AUTOMATIC_SWEEP.md` for exact centers, dwells, blind intervals and acceptance.
+`tools\droneid_sweep.exe` also prints a plan or runs a live bounded/continuous scan.
 
 Requirements: Windows x64, an x86-64 CPU with SSE4.1, and an OpenGL 3.0-capable
 graphics driver. The supplied binary has been exercised under Wine on Linux;

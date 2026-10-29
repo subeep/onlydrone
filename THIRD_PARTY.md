@@ -2,6 +2,15 @@
 
 This project is **GPL-3.0-or-later**. Vendored components:
 
+## Native map
+- stb_image: https://github.com/nothings/stb, MIT license option; vendored PNG
+  decoder and hashes in `third_party/stb/`. License shipped with Windows.
+- Map data/tiles: © OpenStreetMap contributors, https://www.openstreetmap.org/copyright.
+  Visible attribution is included. Tiles are fetched for the current view and
+  cached locally; no tiles are bundled or redistributed in the package.
+- Linux uses the system libcurl (curl license); Windows uses system WinHTTP.
+  See `docs/PACKET_MAP.md` for cache, network and build behavior.
+
 ## turbofec — `third_party/turbofec/`
 - Source: https://github.com/ttsou/turbofec
 - License: **GPL-3.0** (see `third_party/turbofec/LICENSE`)
@@ -34,3 +43,15 @@ This project is **GPL-3.0-or-later**. Vendored components:
   transformation and checksums are in `tests/data/README.md`.
 - The upstream packed record layout was also consulted to verify v2 field
   boundaries against the decoded bytes. Motion units still require validation.
+
+## Windows build dependencies
+
+- GLFW 3.4: https://github.com/glfw/glfw, zlib license; pinned archive and license
+  accompany the Windows source/binary packages.
+- FFTW 3.3.10: https://www.fftw.org, GPL-2.0-or-later; static float/SSE2 build,
+  corresponding source archive and COPYING are supplied.
+- Dear ImGui: `third_party/imgui/LICENSE.txt` (MIT).
+- UHD C headers: `third_party/uhd_c/README.md`, derived from UHD 4.1.0.5-3,
+  GPL-3.0-or-later. No UHD runtime DLL is redistributed.
+- MinGW-w64/GCC runtime: linked statically; runtime copyright/exception notices
+  are supplied under `licenses/` in the Windows package.

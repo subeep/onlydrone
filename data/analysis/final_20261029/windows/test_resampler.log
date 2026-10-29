@@ -1,0 +1,10 @@
+[ RUN    ] Resampler.StreamingMatchesContinuousTime
+[     OK ] Resampler.StreamingMatchesContinuousTime
+[ RUN    ] Resampler.RejectsAliasedEnergy
+[     OK ] Resampler.RejectsAliasedEnergy
+[ RUN    ] Resampler.PreservesOccupiedBand
+[     OK ] Resampler.PreservesOccupiedBand
+[ RUN    ] Resampler.EmptyAndInvalidInput
+[     OK ] Resampler.EmptyAndInvalidInput
+----
+4 case(s), 0 failing

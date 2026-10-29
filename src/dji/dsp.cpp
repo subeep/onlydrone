@@ -14,9 +14,37 @@
 #include <algorithm>
 #include <stdexcept>
 #include <limits>
+#include <array>
+#include <map>
+#include <mutex>
 
 namespace droneid::dji::dsp {
 namespace {
+
+#if DRONEID_USE_FFTW3
+// FFTW execution may run concurrently; planning/destruction must be serialized.
+// Each processing thread reuses a bounded set of plans keyed by array alignment.
+std::mutex& planner_mutex() { static std::mutex mutex; return mutex; }
+struct PlanCache {
+  std::map<std::array<int,4>,fftwf_plan> plans;
+  ~PlanCache() {
+    std::lock_guard<std::mutex> lock(planner_mutex());
+    for(auto& entry:plans) fftwf_destroy_plan(entry.second);
+  }
+  fftwf_plan get(int n,int dir,fftwf_complex* in,fftwf_complex* out) {
+    std::lock_guard<std::mutex> lock(planner_mutex());
+    const std::array<int,4> key{n,dir,fftwf_alignment_of(reinterpret_cast<float*>(in)),
+                                    fftwf_alignment_of(reinterpret_cast<float*>(out))};
+    auto found=plans.find(key);
+    if(found!=plans.end()) return found->second;
+    if(plans.size()>=32) {fftwf_destroy_plan(plans.begin()->second);plans.erase(plans.begin());}
+    auto plan=fftwf_plan_dft_1d(n,in,out,dir,FFTW_ESTIMATE);
+    if(!plan) throw std::runtime_error("FFTW plan allocation failed");
+    try {plans.emplace(key,plan);} catch(...) {fftwf_destroy_plan(plan);throw;}
+    return plan;
+  }
+};
+#endif
 
 #if !DRONEID_USE_FFTW3
 void radix2_fft(std::vector<std::complex<double>>& a, int dir) {
@@ -53,9 +81,8 @@ std::vector<cf32> run_fft(const std::vector<cf32>& x, int dir) {
   std::vector<cf32> out(n);
   auto* in = reinterpret_cast<fftwf_complex*>(const_cast<cf32*>(x.data()));
   auto* o = reinterpret_cast<fftwf_complex*>(out.data());
-  fftwf_plan p = fftwf_plan_dft_1d(n, in, o, dir, FFTW_ESTIMATE);
-  fftwf_execute(p);
-  fftwf_destroy_plan(p);
+  thread_local PlanCache cache;
+  fftwf_execute_dft(cache.get(n,dir,in,o),in,o);
   return out;
 #else
   if ((n & (n - 1)) == 0) {

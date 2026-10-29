@@ -1,0 +1,2 @@
+11:37:42 [INFO ] FileSource: loaded sidecar data/analysis/odid_20261028/odid_ch6.iq.meta (format=sc16 rate=20000000 center=2437000000)
+ui_selection: packet=11 drone_location=valid center=51.4775410,-0.0015244 zoom=14

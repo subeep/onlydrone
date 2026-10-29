@@ -102,6 +102,8 @@ std::string track_key(const std::string& source, const std::string& serial) {
 void UiModel::add_packet(const PacketRow& p) {
   std::lock_guard<std::mutex> g(m_);
   packets_.push_back(p);
+  ++packet_count_;
+  packets_.back().packet_id = packet_count_;
   while (packets_.size() > packet_cap_) packets_.pop_front();
 
   if (p.serial.empty() || !p.crc_ok) return;
@@ -120,6 +122,11 @@ void UiModel::add_packet(const PacketRow& p) {
 std::vector<PacketRow> UiModel::packets() const {
   std::lock_guard<std::mutex> g(m_);
   return std::vector<PacketRow>(packets_.begin(), packets_.end());
+}
+
+std::uint64_t UiModel::packet_count() const {
+  std::lock_guard<std::mutex> g(m_);
+  return packet_count_;
 }
 
 void UiModel::upsert_track(const DroneTrack& in) {

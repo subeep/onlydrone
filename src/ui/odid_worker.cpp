@@ -114,6 +114,16 @@ odid::WifiDecodeOptions options_for(double rate, double freq_offset) {
 
 }  // namespace
 
+void process_odid_capture(UiModel& model, const std::vector<cf32>& samples, double rate) {
+  odid::OdidWifiStream stream(options_for(rate, 0));
+  OdidPublisher publisher(model);
+  for (std::size_t offset = 0; offset < samples.size(); offset += 262144) {
+    const auto count = std::min(std::size_t(262144), samples.size()-offset);
+    for (const auto& decoded : stream.feed(samples.data()+offset, count)) publisher.publish(decoded);
+  }
+  for (const auto& decoded : stream.feed(nullptr, 0, true)) publisher.publish(decoded);
+}
+
 void odid_replay_worker(UiModel& model, SourceConfig config, std::atomic<bool>& stop) {
   UsrpStatus status;
   status.state = UsrpStatus::State::Connecting;

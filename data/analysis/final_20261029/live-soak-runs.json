@@ -1,0 +1,37 @@
+[
+  {
+    "name": "live-dji-60s",
+    "command": [
+      "build/droneid_ui",
+      "--check",
+      "--device",
+      "addr=192.168.10.2",
+      "--gain",
+      "20",
+      "--freq",
+      "2459500000",
+      "--secs",
+      "60"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 63.842563219999874
+  },
+  {
+    "name": "live-odid-600s",
+    "command": [
+      "build/droneid_ui",
+      "--check",
+      "--device",
+      "addr=192.168.10.2",
+      "--gain",
+      "20",
+      "--odid",
+      "--freq",
+      "2437000000",
+      "--secs",
+      "600"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 603.6472175700001
+  }
+]

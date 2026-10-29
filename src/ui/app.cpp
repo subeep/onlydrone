@@ -32,6 +32,10 @@
 #include "droneid/rf_metrics.h"
 #include "ui_model.h"
 #include "receiver_worker.h"
+#include "map_state.h"
+#ifndef DRONEID_UI_CHECK_ONLY
+#include "map_view.h"
+#endif
 
 #ifdef DRONEID_HAVE_UHD
 #include "droneid/usrp_source.h"
@@ -64,11 +68,17 @@ struct SourceEditor {
   int source = 0, format = 1;
   double rate = 15.36, center = 2459.5, gain = 30, seconds = 0;
   bool auto_center = false, odid = false;
+  int sweep_profile = 1;
+  bool include_52 = false, all_wifi = false;
+  char sweep_log[1024] = "sweep-events.jsonl";
   explicit SourceEditor(const Config& cfg) {
     std::snprintf(path, sizeof path, "%s", cfg.replay.c_str());
     std::snprintf(device, sizeof device, "%s", cfg.device.empty() ? "addr=192.168.10.2" : cfg.device.c_str());
     std::snprintf(antenna, sizeof antenna, "%s", cfg.antenna.c_str());
-    source = !cfg.device.empty(); format = static_cast<int>(cfg.fmt);
+    source = cfg.sweep ? 2 : !cfg.device.empty(); format = static_cast<int>(cfg.fmt);
+    sweep_profile = cfg.sweep_profile == "fast" ? 0 : cfg.sweep_profile == "thorough" ? 2 : 1;
+    include_52 = cfg.sweep_include_52; all_wifi = cfg.sweep_all_wifi;
+    if (!cfg.sweep_jsonl.empty()) std::snprintf(sweep_log,sizeof sweep_log,"%s",cfg.sweep_jsonl.c_str());
     rate = cfg.rate / 1e6; center = cfg.center_freq / 1e6; gain = cfg.gain;
     seconds = cfg.secs; auto_center = cfg.auto_center; odid = cfg.odid;
   }
@@ -77,9 +87,18 @@ struct SourceEditor {
     if (paired) { ImGui::TextWrapped("Paired/DF source configured by command line. Restart without DF options to change source here."); return; }
     ImGui::BeginDisabled(running);
     ImGui::SetNextItemWidth(180);
-    ImGui::Combo("Source", &source, "IQ replay\0Live X310\0");
+    ImGui::Combo("Source", &source, "IQ replay\0Live X310\0Automatic sweep\0");
     ImGui::SameLine();
+    ImGui::BeginDisabled(source == 2);
     if (ImGui::Checkbox("Wi-Fi Remote ID", &odid) && odid) { rate = 20; center = 2437; auto_center = false; }
+    ImGui::EndDisabled();
+    if (source == 2) {
+      ImGui::SetNextItemWidth(130); ImGui::Combo("Sweep profile", &sweep_profile, "fast\0balanced\0thorough\0");
+      ImGui::SameLine(); ImGui::Checkbox("Include 5.2 GHz", &include_52);
+      ImGui::SameLine(); ImGui::Checkbox("Wi-Fi channels 1-13", &all_wifi);
+      ImGui::SetNextItemWidth(400); ImGui::InputText("Evidence JSONL", sweep_log, sizeof sweep_log);
+      ImGui::TextWrapped("Interleaved DJI / O4 / Wi-Fi RID. RX pauses during processing; logs report blind intervals. DF unavailable.");
+    }
     if (source == 0) {
       ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x - 160);
       ImGui::InputText("IQ file", path, sizeof path);
@@ -106,11 +125,13 @@ struct SourceEditor {
       ImGui::SetNextItemWidth(400); ImGui::InputText("Device arguments", device, sizeof device);
       ImGui::SameLine(); ImGui::SetNextItemWidth(80); ImGui::InputText("Antenna", antenna, sizeof antenna);
     }
-    if (source) rate = odid ? 20 : 15.36;
+    if (source) rate = odid || source == 2 ? 20 : 15.36;
     ImGui::BeginDisabled(source != 0);
     ImGui::SetNextItemWidth(100); ImGui::InputDouble("MSPS", &rate, 0, 0, "%.3f");
     ImGui::EndDisabled();
-    ImGui::SameLine(); ImGui::SetNextItemWidth(110); ImGui::InputDouble("Center MHz", &center, 0, 0, "%.3f");
+    ImGui::SameLine(); ImGui::BeginDisabled(source == 2);
+    ImGui::SetNextItemWidth(110); ImGui::InputDouble("Center MHz", &center, 0, 0, "%.3f");
+    ImGui::EndDisabled();
     ImGui::SameLine(); ImGui::SetNextItemWidth(80); ImGui::InputDouble("Gain dB", &gain, 0, 0, "%.1f");
     ImGui::SameLine(); ImGui::SetNextItemWidth(80); ImGui::InputDouble("Seconds (0=all)", &seconds, 0, 0, "%.2f");
     ImGui::EndDisabled();
@@ -120,17 +141,20 @@ struct SourceEditor {
     if (!cfg.pair_manifest.empty() || !cfg.replay_ch1.empty() || cfg.df) return;
     if (!std::isfinite(rate) || rate < 10 || rate > 250 || !std::isfinite(center) || center < 1 || center > 6000 ||
         !std::isfinite(gain) || gain < 0 || gain > 100 || !std::isfinite(seconds) || seconds < 0 || seconds > 86400 ||
-        (odid && (rate < 20 || auto_center))) throw std::invalid_argument("Invalid source settings: rate 10-250 MSPS, center 1-6000 MHz; Wi-Fi RID needs >=20 MSPS and no auto-center.");
+        (source != 2 && odid && (rate < 20 || auto_center))) throw std::invalid_argument("Invalid source settings: rate 10-250 MSPS, center 1-6000 MHz; Wi-Fi RID needs >=20 MSPS and no auto-center.");
     if (source && (!device[0] || !antenna[0])) throw std::invalid_argument("Enter X310 device arguments and antenna.");
     cfg.device = source ? device : ""; cfg.replay = source ? "" : path;
     cfg.fmt = static_cast<SampleFormat>(format); cfg.rate = rate * 1e6;
     cfg.center_freq = center * 1e6; cfg.gain = gain; cfg.secs = seconds;
-    cfg.antenna = antenna; cfg.odid = odid; cfg.auto_center = auto_center;
+    cfg.antenna = antenna; cfg.odid = odid && source != 2; cfg.auto_center = source == 0 && auto_center;
+    cfg.sweep = source == 2;
+    cfg.sweep_profile = sweep_profile == 0 ? "fast" : sweep_profile == 2 ? "thorough" : "balanced";
+    cfg.sweep_include_52 = include_52; cfg.sweep_all_wifi = all_wifi; cfg.sweep_jsonl = sweep_log;
   }
 };
 
 void draw_usrp_bar(const UsrpStatus& s, bool& want_start, bool& want_stop) {
-  ImGui::BeginChild("usrp_bar", ImVec2(0, 112), true);
+  ImGui::BeginChild("usrp_bar", ImVec2(0, s.sweep_visits ? 130 : 112), true);
   const char* dot = "o";
   ImVec4 col(0.6f, 0.6f, 0.6f, 1);
   switch (s.state) {
@@ -150,9 +174,11 @@ void draw_usrp_bar(const UsrpStatus& s, bool& want_start, bool& want_stop) {
               s.label.c_str(), s.rate_hz / 1e6, s.center_hz / 1e9, s.gain_db,
               s.ref_locked ? "locked" : "-", static_cast<unsigned long long>(s.overflows));
   if (!s.detail.empty()) ImGui::TextDisabled("%s", s.detail.c_str());
-  ImGui::TextDisabled("Samples %llu | timestamp gaps %llu | dropped DSP windows %llu",
+  ImGui::TextDisabled("Samples %llu | timestamp gaps %llu | DSP drops %llu (RF/O4 %llu)",
       static_cast<unsigned long long>(s.samples_received), static_cast<unsigned long long>(s.discontinuities),
-      static_cast<unsigned long long>(s.dropped_windows));
+      static_cast<unsigned long long>(s.dropped_windows),static_cast<unsigned long long>(s.dropped_rf_windows));
+  if (s.sweep_visits) ImGui::Text("Sweep visits %llu | valid %llu", static_cast<unsigned long long>(s.sweep_visits),
+                                static_cast<unsigned long long>(s.sweep_valid_visits));
   ImGui::EndChild();
 }
 
@@ -195,10 +221,10 @@ void draw_drones(const std::vector<ui::DroneTrack>& tracks, const ui::RfSummary&
   ImGui::EndChild();
 }
 
-void draw_packets(const std::vector<ui::PacketRow>& packets) {
+void draw_packets(const std::vector<ui::PacketRow>& packets, ui::PacketSelection& selection) {
   ImGui::BeginChild("packets", ImVec2(0, 0), true);
   ImGui::SeparatorText("Decoded packets");
-  ImGui::TextDisabled("Outer-CRC-valid payloads; hover serial for format, inner CRC and hex. Unparsed rows have no telemetry.");
+  ImGui::TextDisabled("Click a packet row for its information and map. Unparsed rows have no telemetry.");
   if (std::any_of(packets.begin(), packets.end(), [](const ui::PacketRow& p) { return !p.source.empty(); }))
     ImGui::TextDisabled("ODID/ASTM rows: 802.11 FCS-valid F3411 Remote ID; seq = message counter, pilot = operator location.");
   if (ImGui::BeginTable("pkts", 6,
@@ -214,8 +240,15 @@ void draw_packets(const std::vector<ui::PacketRow>& packets) {
       const auto& p = *it;
       ImGui::TableNextRow();
       ImGui::TableNextColumn();
-      if (p.telemetry_parsed) ImGui::Text("%u", p.sequence);
-      else ImGui::TextDisabled("CRC24 OK");
+      const std::string row_label = (p.telemetry_parsed ? std::to_string(p.sequence) : "CRC OK") +
+          "##packet_" + std::to_string(p.packet_id);
+      if (ImGui::Selectable(row_label.c_str(), selection.packet && selection.packet->packet_id==p.packet_id,
+                            ImGuiSelectableFlags_SpanAllColumns)) {
+        selection.select(p);
+        std::fprintf(stderr,"ui_selection: packet=%llu drone_location=%s center=%.7f,%.7f zoom=%d\n",
+            static_cast<unsigned long long>(p.packet_id),ui::packet_drone_location(p)?"valid":"unavailable",
+            selection.lat,selection.lon,selection.zoom);
+      }
       ImGui::TableNextColumn(); ImGui::TextUnformatted(p.telemetry_parsed ? p.serial.c_str() : p.payload_format.c_str());
       if (ImGui::IsItemHovered() && !p.payload_hex.empty()) {
         ImGui::BeginTooltip();
@@ -231,7 +264,7 @@ void draw_packets(const std::vector<ui::PacketRow>& packets) {
         }
         continue;
       }
-      if (p.drone_valid) {
+      if (ui::packet_drone_location(p)) {
         ImGui::TableNextColumn(); ImGui::Text("%.6f, %.6f", p.drone_lat, p.drone_lon);
         ImGui::TableNextColumn(); ImGui::Text("%.0f/%.0f", p.altitude_m, p.height_m);
       } else {
@@ -239,10 +272,10 @@ void draw_packets(const std::vector<ui::PacketRow>& packets) {
         ImGui::TableNextColumn(); ImGui::TextDisabled("-");
       }
       ImGui::TableNextColumn();
-      if (p.pilot_valid) ImGui::Text("%.6f, %.6f", p.pilot_lat, p.pilot_lon);
+      if (p.crc_ok && p.pilot_valid && ui::valid_location(p.pilot_lat,p.pilot_lon)) ImGui::Text("%.6f, %.6f", p.pilot_lat, p.pilot_lon);
       else ImGui::TextDisabled("-");
       ImGui::TableNextColumn();
-      if (p.home_valid) ImGui::Text("%.6f, %.6f", p.home_lat, p.home_lon);
+      if (p.crc_ok && p.home_valid && ui::valid_location(p.home_lat,p.home_lon)) ImGui::Text("%.6f, %.6f", p.home_lat, p.home_lon);
       else ImGui::TextDisabled("-");
     }
     ImGui::EndTable();
@@ -250,73 +283,40 @@ void draw_packets(const std::vector<ui::PacketRow>& packets) {
   ImGui::EndChild();
 }
 
-void draw_direction(const std::vector<ui::DroneTrack>& tracks, const ui::DfUiStatus& df,
-                    bool& want_cal_splitter, bool& want_cal_ota, bool& want_cal_cancel) {
-  ImGui::BeginChild("direction", ImVec2(0, 0), true);
-  ImGui::SeparatorText("Direction (2-Element Broadside AoA)");
-
-  ImVec4 state_col(0.6f, 0.6f, 0.6f, 1.0f);
-  if (df.state == ui::DfUiState::Valid) state_col = ImVec4(0.2f, 0.85f, 0.35f, 1.0f);
-  else if (df.state == ui::DfUiState::Calibrating || df.state == ui::DfUiState::Uncalibrated)
-    state_col = ImVec4(0.95f, 0.75f, 0.15f, 1.0f);
-  else if (df.state == ui::DfUiState::Stale || df.state == ui::DfUiState::Error)
-    state_col = ImVec4(0.9f, 0.25f, 0.25f, 1.0f);
-
-  ImGui::PushTextWrapPos(0.0f);
-  ImGui::TextColored(state_col, "Cal: %s", ui::to_string(df.state));
-  ImGui::TextDisabled("Reference: %s | age: %.0fs", df.reference_method.c_str(), df.cal_age_seconds);
-  if (!df.reason.empty()) ImGui::TextDisabled("%s", df.reason.c_str());
-
-  if (ImGui::SmallButton("Calibrate (Splitter)")) want_cal_splitter = true;
-  ImGui::SameLine();
-  if (ImGui::SmallButton("Calibrate (OTA)")) want_cal_ota = true;
-  if (ImGui::SmallButton("Cancel/Invalidate")) want_cal_cancel = true;
-
-  ImGui::TextDisabled("Rig: %s (epoch %llu) | %.3f GHz | orient %.0f deg",
-                      df.rig_id.empty() ? "-" : df.rig_id.c_str(),
-                      static_cast<unsigned long long>(df.config_epoch),
-                      df.center_hz / 1e9, df.orientation_deg);
-  ImGui::TextDisabled("Accepted %llu | Rejected %llu (coh %llu, disp %llu, clip %llu, ovlp %llu)",
-                      static_cast<unsigned long long>(df.accepted_bearings),
-                      static_cast<unsigned long long>(df.rejected_bearings),
-                      static_cast<unsigned long long>(df.rejected_coherence),
-                      static_cast<unsigned long long>(df.rejected_dispersion),
-                      static_cast<unsigned long long>(df.rejected_clipping),
-                      static_cast<unsigned long long>(df.rejected_overlap));
-  ImGui::PopTextWrapPos();
-
-  ImDrawList* dl = ImGui::GetWindowDrawList();
-  const ImVec2 p0 = ImGui::GetCursorScreenPos();
-  const ImVec2 avail = ImGui::GetContentRegionAvail();
-  const float r = std::max(30.0f, std::min(avail.x, avail.y - 36.0f) * 0.44f);
-  const ImVec2 c(p0.x + avail.x * 0.5f, p0.y + r + 8);
-  dl->AddCircle(c, r, IM_COL32(120, 120, 120, 255), 48);
-  dl->AddLine(ImVec2(c.x - r, c.y), ImVec2(c.x + r, c.y), IM_COL32(70, 70, 70, 255));
-  dl->AddLine(ImVec2(c.x, c.y - r), ImVec2(c.x, c.y + r), IM_COL32(70, 70, 70, 255));
-
-  bool any = false;
-  if (df.state == ui::DfUiState::Valid) {
-    for (const auto& t : tracks) {
-      if (!t.has_bearing) continue;
-      any = true;
-      const float q = std::clamp(t.bearing_quality, 0.25f, 1.0f);
-      const double a = (t.bearing_deg - 90.0) * 3.14159265358979323846 / 180.0;  // 0deg = broadside up
-      const ImVec2 tip(c.x + static_cast<float>(std::cos(a)) * r * q,
-                       c.y + static_cast<float>(std::sin(a)) * r * q);
-      dl->AddLine(c, tip, IM_COL32(60, 210, 95, static_cast<int>(255 * q)), 2.5f);
-      if (t.bearing_ambiguous) {
-        const double ma = (t.mirrored_deg - 90.0) * 3.14159265358979323846 / 180.0;
-        const ImVec2 mtip(c.x + static_cast<float>(std::cos(ma)) * r * q * 0.85f,
-                          c.y + static_cast<float>(std::sin(ma)) * r * q * 0.85f);
-        dl->AddLine(c, mtip, IM_COL32(220, 170, 50, static_cast<int>(180 * q)), 1.5f);
-      }
-    }
-  }
-  ImGui::Dummy(ImVec2(avail.x, 2 * r + 16));
-  if (!any) {
-    ImGui::TextDisabled("No active validated bearings (%s)", ui::to_string(df.state));
+void draw_packet_details(ui::PacketSelection& selection, const std::vector<ui::PacketRow>& rows) {
+  ImGui::BeginChild("packet_details",ImVec2(0,selection.packet?230:100),true);
+  ImGui::SeparatorText("Selected packet");
+  if (!selection.packet) {
+    ImGui::TextWrapped("Click a decoded packet on the left to inspect its telemetry and payload. The map defaults to Punjab, India.");
   } else {
-    ImGui::TextDisabled("Solid green: broadside angle; amber: front/back mirror ambiguity.");
+    const auto& p=*selection.packet;
+    ImGui::Text("Packet #%llu | sequence %u",static_cast<unsigned long long>(p.packet_id),p.sequence);
+    if (std::none_of(rows.begin(),rows.end(),[&](const auto& r){return r.packet_id==p.packet_id;}))
+      ImGui::TextDisabled("Retained selection: this packet has left the live log.");
+    ImGui::TextWrapped("Source: %s | serial: %s | type: %s",p.source.empty()?"DJI DroneID":p.source.c_str(),
+                        p.serial.empty()?"unavailable":p.serial.c_str(),p.type.empty()?"unavailable":p.type.c_str());
+    ImGui::Text("Received: %lld ms since Unix epoch",static_cast<long long>(p.time_ms));
+    ImGui::TextWrapped("Format: %s | %s: %s | inner CRC16: %s",p.payload_format.c_str(),
+        p.source.empty()?"CRC24":"802.11 FCS",p.crc_ok?"OK":"FAIL",p.inner_crc16.c_str());
+    if (ui::packet_drone_location(p)) {
+      ImGui::Text("Drone: %.6f, %.6f",p.drone_lat,p.drone_lon);
+      ImGui::Text("Altitude / height: %.1f / %.1f m",p.altitude_m,p.height_m);
+      if(ImGui::SmallButton("Center drone")) {selection.lat=p.drone_lat;selection.lon=p.drone_lon;selection.zoom=14;}
+    } else ImGui::TextWrapped("No valid drone position in this packet. Punjab is the default view, not a detected location.");
+    if(p.crc_ok && p.telemetry_parsed && p.pilot_valid && ui::valid_location(p.pilot_lat,p.pilot_lon)) {
+      ImGui::Text("Pilot/operator: %.6f, %.6f",p.pilot_lat,p.pilot_lon);
+      if(ImGui::SmallButton("Center pilot/operator")) {selection.lat=p.pilot_lat;selection.lon=p.pilot_lon;selection.zoom=14;}
+    }
+    if(p.crc_ok && p.telemetry_parsed && p.home_valid && ui::valid_location(p.home_lat,p.home_lon)) {
+      ImGui::Text("Home: %.6f, %.6f",p.home_lat,p.home_lon);
+      if(ImGui::SmallButton("Center home")) {selection.lat=p.home_lat;selection.lon=p.home_lon;selection.zoom=14;}
+    }
+    if(!p.telemetry_parsed) ImGui::TextWrapped("Payload preserved; telemetry format unsupported or invalid.");
+    if(!p.payload_hex.empty()) {
+      if(ImGui::SmallButton("Copy payload hex")) ImGui::SetClipboardText(p.payload_hex.c_str());
+      ImGui::TextWrapped("Payload: %s",p.payload_hex.c_str());
+    }
+    if(ImGui::SmallButton("Clear selection")) selection.reset();
   }
   ImGui::EndChild();
 }
@@ -345,6 +345,8 @@ int run_window(UiModel& model, const Config& cfg) {
   bool restart_requested = false;
   Config active_cfg = cfg;
   SourceEditor source_editor(cfg);
+  ui::PacketSelection selection;
+  auto map_view=std::make_unique<ui::MapView>();
 
   auto stop_worker = [&]() {
     if (!running) return;
@@ -456,29 +458,17 @@ int run_window(UiModel& model, const Config& cfg) {
     const auto tracks = model.tracks();
     const auto packets = model.packets();
     const auto rf = model.rf_summary();
-    const auto df = model.df_status();
-    const float dir_w = 380.0f;
+    const float dir_w = std::max(420.0f, ImGui::GetContentRegionAvail().x * .40f);
     const float left_w = std::max(220.0f, ImGui::GetContentRegionAvail().x - dir_w - 8);
 
     ImGui::BeginChild("left", ImVec2(left_w, 0), false);
     draw_drones(tracks, rf);
-    draw_packets(packets);
+    draw_packets(packets, selection);
     ImGui::EndChild();
     ImGui::SameLine();
     ImGui::BeginChild("mid", ImVec2(0, 0), false);
-    bool want_cal_splitter = false, want_cal_ota = false, want_cal_cancel = false;
-    draw_direction(tracks, df, want_cal_splitter, want_cal_ota, want_cal_cancel);
-    if (want_cal_cancel) {
-      restart_requested = false;
-      stop_worker();
-      model.invalidate_bearings(ui::DfUiState::Uncalibrated,
-                                "Calibration canceled/invalidated by operator");
-    } else if (want_cal_splitter || want_cal_ota) {
-      active_cfg.df_ref = want_cal_ota ? "ota_broadside" : "splitter";
-      active_cfg.df_cal.clear();
-      if (active_cfg.df_cal_samples == 0) active_cfg.df_cal_samples = 4096;
-      start_worker();
-    }
+    draw_packet_details(selection, packets);
+    map_view->draw(selection);
     ImGui::EndChild();
 
     ImGui::End();
@@ -509,6 +499,7 @@ int run_window(UiModel& model, const Config& cfg) {
 
   stop_worker();
   if (worker.joinable()) worker.join();
+  map_view.reset(); // release textures while the OpenGL context still exists
   ImGui_ImplOpenGL3_Shutdown();
   ImGui_ImplGlfw_Shutdown();
   ImGui::DestroyContext();
@@ -532,6 +523,8 @@ static void usage(const char* p) {
       "  Open Drone ID: --odid  decode ASTM F3411 Wi-Fi Beacon/NAN instead of DJI DroneID\n"
       "                 (replay >= 20 MSPS, default --rate 20e6; live 20 MSPS, default --freq 2.437e9)\n"
       "  direction find: --df --df-cal FILE  (live hardware DF disabled until DF-5 bench approval)\n", p);
+  std::fprintf(stderr,"  automatic sweep: --device ARGS --sweep [--sweep-profile fast|balanced|thorough]\n"
+                      "                   [--sweep-include-52] [--sweep-all-wifi] [--sweep-jsonl FILE]\n");
 }
 
 int main(int argc, char** argv) {
@@ -565,6 +558,11 @@ int main(int argc, char** argv) {
     else if (a == "--ant") cfg.antenna = next();
     else if (a == "--df") cfg.df = true;
     else if (a == "--odid") cfg.odid = true;
+    else if (a == "--sweep") cfg.sweep = true;
+    else if (a == "--sweep-profile") cfg.sweep_profile = next();
+    else if (a == "--sweep-include-52") cfg.sweep_include_52 = true;
+    else if (a == "--sweep-all-wifi") cfg.sweep_all_wifi = true;
+    else if (a == "--sweep-jsonl") cfg.sweep_jsonl = next();
     else if (a == "--df-cal") cfg.df_cal = next();
     else if (a == "--df-ref") cfg.df_ref = next();
     else if (a == "--df-cal-samples") {
@@ -586,6 +584,12 @@ int main(int argc, char** argv) {
     else { usage(argv[0]); return 2; }
   }
 
+  if (cfg.sweep) {
+    droneid::SweepPlan plan(cfg.sweep_profile, cfg.sweep_include_52, cfg.sweep_all_wifi);
+    (void)plan;
+    if (cfg.odid || cfg.df || !cfg.replay.empty() || !cfg.replay_ch1.empty() || !cfg.pair_manifest.empty() || cfg.device.empty())
+      throw std::invalid_argument("--sweep requires --device and excludes replay/DF/--odid");
+  }
   if (cfg.odid) {
     if (!rate_set) cfg.rate = droneid::ui::kOdidLiveRate;
     if (!freq_set) cfg.center_freq = droneid::ui::kOdidDefaultCenter;
@@ -634,6 +638,10 @@ int main(int argc, char** argv) {
                 static_cast<unsigned long long>(rf.o4_windows),
                 static_cast<unsigned long long>(rf.o4_structure_windows),
                 static_cast<unsigned long long>(rf.o4_candidate_windows));
+    std::printf("  processing: packet_drops=%llu rf_o4_drops=%llu total_packets=%llu retained_packets=%zu\n",
+        static_cast<unsigned long long>(st.dropped_windows-st.dropped_rf_windows),
+        static_cast<unsigned long long>(st.dropped_rf_windows),
+        static_cast<unsigned long long>(model.packet_count()),model.packets().size());
     for (const auto& track : model.tracks()) {
       std::printf("  track: serial=%s count=%llu corr=%.3f", track.serial.c_str(),
                   static_cast<unsigned long long>(track.count), track.corr);

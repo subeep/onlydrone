@@ -1,5 +1,17 @@
 # Operator UI — verification and use
 
+Click a decoded packet to retain its details and highlight its reported location
+on the new OpenStreetMap panel. Without valid drone coordinates the view defaults
+to Punjab, India. Pan/zoom, separate drone/operator/home markers, cached tiles and
+an online toggle are available. The polar plot has been replaced. Full behavior:
+`PACKET_MAP.md`. Linux GUI builds now require libcurl development headers.
+
+The source selector now includes **Automatic sweep** on Linux and Windows. Select
+balanced/fast/thorough, optional 5.2 GHz and Wi-Fi channels 1–13, and a writable
+JSONL log. Each dwell resets detector history and rejects discontinuous samples.
+The UI shows visit/valid counts; evidence logs show frequencies and blind intervals.
+See `AUTOMATIC_SWEEP.md` for settings and acceptance limits.
+
 Native Dear ImGui + GLFW/OpenGL3. Build with `DRONEID_WITH_UI=ON`; UHD is optional for offline replay.
 The checklist panel remains removed as requested. The checklist parser remains independently tested.
 
@@ -10,14 +22,16 @@ The checklist panel remains removed as requested. The checklist parser remains i
 - `src/ui/app.cpp`: rendering, argument validation and asynchronous stop/reconnect requests.
 - Replay reads bounded blocks using the sidecar's actual rate. Overlapping decode windows retain
   boundary bursts; only the owning window publishes each result. Cancellation is checked between windows.
-- Live RX and DSP use separate threads with a three-window queue. Oldest windows are dropped under
-  overload, with visible counters; timestamp gaps/overflows reset partial windows. This prevents DSP
-  from directly blocking RX, but does not establish lossless real-time throughput on hardware.
+- Live DJI reception uses separate RX, packet-decoder and RF/O4 threads. Each processing lane
+  has a bounded three-window queue sharing immutable IQ buffers. A slow RF lane cannot evict
+  packet input. Total and RF/O4 drops are visible; gaps reset partial windows. FFTW plans are
+  cached per thread with synchronized planning/destruction. See the final verification report
+  for measured throughput; these queues do not guarantee lossless processing on every host.
 - RF metrics are aggregate **unknown RF**, not O4 identification, unique drone counts or valid bearings.
 - A separate experimental O4-like structure line reports candidate windows from the
   shared detector, without creating identities or positions. See `O4_DETECTOR.md`.
 - CRC-valid unsupported payloads remain in the packet log with raw hex, without invented serials,
-  GPS or tracks. Hover a serial/unparsed cell to inspect the payload.
+  GPS or tracks. Click a packet row to inspect its retained details and payload.
 
 ## Build and replay
 
@@ -64,8 +78,8 @@ declaring live acceptance. Physical-button interaction and hardware recovery sti
 
 The native GUI also completed a bounded X310 run with 46,080,000 received samples
 and zero gap/drop/overflow counters. Rendering correctly showed Disconnected after
-the run and no active bearings. Direction status text now wraps and the cancel
-button has a separate row to avoid clipping in the default 380-pixel panel.
+the run and no active bearings. That historical screenshot predates the map panel;
+the direction plot and calibration buttons were replaced on 29 October.
 
 ## Open Drone ID mode (`--odid`, opt-in)
 
@@ -98,7 +112,9 @@ Current paired-replay behavior and review limitations: `docs/DF_REVIEW_20261027.
 `--df-cal FILE` or `--df-cal-samples N --df-ref splitter|ota_broadside`; the prefix
 must actually be a reference capture, not arbitrary drone samples. Both modes
 use capture-time freshness. `--df-jsonl FILE` retains historical accepted/rejected
-events; active arrows clear at replay EOF or cancellation. Live DF stays disabled.
+events; active bearing fields clear at replay EOF or cancellation. The right panel
+now shows the packet map, while accepted paired-replay bearings remain in the
+track table. Live DF stays disabled.
 
 The former GUI path reopened the radio and applied file calibration without verified phase-repeatability
 or session provenance. That is not a validated phase reference. `--df --df-cal FILE` now **fails closed without opening a radio**.
@@ -110,7 +126,7 @@ The staged implementation and hardware acceptance gates are in `docs/DIRECTION_F
 ## Packet diagnostics (2026-10-27)
 
 Packet rows distinguish `v2`, `v3`, `infp`, `cryp`, auxiliary type `0x11` and unknown envelopes.
-Hover the serial/format for raw bytes and inner CRC16 status. The row's `CRC24 OK` label refers
+Click a packet row for retained raw bytes and inner CRC16 status (hover also remains available). The row's `CRC24 OK` label refers
 only to the outer transport checksum. Supported v2 telemetry requires valid inner CRC16 and
 a recognized logical length (79 or 91 bytes); other formats or failed checks never create a track.
 The headless worker prints the same diagnostics. CRCs detect corruption, not spoofed identity.

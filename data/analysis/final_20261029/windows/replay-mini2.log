@@ -1,0 +1,6 @@
+check: status=Disconnected packets=1 tracks=1 rf_bursts=1 checklist_groups=13 overflows=0 samples=52084 gaps=0 dropped_windows=0
+  o4_evidence: windows=0 structure=0 candidates=0 identity=unverified
+  processing: packet_drops=0 rf_o4_drops=0 total_packets=1 retained_packets=1
+  track: serial=SysSecWasHere  count=1 corr=0.873
+  packet: telemetry=parsed frame=5810021203131f5379735365635761734865726520000000000000000000000000000000000000000067255429bad57f0100001e038900195a130000000000000000003f00000000000000000000000000000000000000000057f5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d47823eb1cbb5444fd8e17117cf818ff920a0da56c06721c83596d5c464239c5f36d format=v2 inner_crc16=OK
+  detail: Replay complete (not live reception)

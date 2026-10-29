@@ -9,6 +9,8 @@
 #include <fstream>
 #include <stdexcept>
 #include <thread>
+#include <iostream>
+#include <iomanip>
 
 #include "droneid/aoa.h"
 #include "droneid/dji.h"
@@ -78,10 +80,7 @@ void process_o4(UiModel& model, O4CandidateDetector& detector, const cf32* data,
     model.record_o4_evidence(e.structure_match, e.candidate, e.cyclic_correlation);
 }
 
-void process_window(UiModel& model, const SampleWindow& window, const dji::DecodeOptions& options,
-                    O4CandidateDetector& o4) {
-  process_o4(model, o4, window.samples.data(),
-             std::min(window.accept_before, window.samples.size()), window.start_sample);
+void process_packet_window(UiModel& model, const SampleWindow& window, const dji::DecodeOptions& options) {
   for (const auto& burst : dji::decode_samples(window.samples, options)) {
     if (!burst.crc_ok || static_cast<std::size_t>(burst.sample_index) >= window.accept_before) continue;
     dji::Telemetry telemetry;
@@ -124,6 +123,11 @@ void process_window(UiModel& model, const SampleWindow& window, const dji::Decod
     track.last_ms = packet.time_ms;
     model.upsert_track(track);
   }
+}
+
+void process_rf_window(UiModel& model, const SampleWindow& window, const dji::DecodeOptions& options,
+                       O4CandidateDetector& o4) {
+  process_o4(model,o4,window.samples.data(),std::min(window.accept_before,window.samples.size()),window.start_sample);
   const std::size_t count = std::min(window.accept_before, window.samples.size());
   if (count < 1024) return;
   std::vector<float> power;
@@ -141,6 +145,12 @@ void process_window(UiModel& model, const SampleWindow& window, const dji::Decod
     model.record_rf_burst(metrics.rssi_dbfs, metrics.snr_db, metrics.bandwidth_hz,
                           metrics.spectral_center_hz, now_ms());
   }
+}
+
+void process_window(UiModel& model, const SampleWindow& window, const dji::DecodeOptions& options,
+                    O4CandidateDetector& o4) {
+  process_packet_window(model,window,options);
+  process_rf_window(model,window,options,o4);
 }
 
 void process_paired_window(UiModel& model, const PairedSampleWindow& window,
@@ -729,7 +739,111 @@ void paired_replay_worker(UiModel& model, SourceConfig config, std::atomic<bool>
   }
 }
 
+void process_sweep_capture(UiModel& model, const std::vector<cf32>& samples, SweepMode mode, double rate) {
+  if (mode == SweepMode::WifiRid) { process_odid_capture(model, samples, rate); return; }
+  O4CandidateDetector o4(rate);
+  if (mode == SweepMode::O4) { process_o4(model, o4, samples.data(), samples.size(), 0); return; }
+  dji::DecodeOptions options; options.sample_rate = rate;
+  WindowAssembler assembler(1u << 20, static_cast<std::size_t>(std::ceil(12000*rate/15.36e6)));
+  for (std::size_t offset = 0; offset < samples.size(); offset += 65536) {
+    const auto count = std::min(std::size_t(65536), samples.size()-offset);
+    for (const auto& window : assembler.feed(samples.data()+offset, count)) process_window(model, window, options, o4);
+  }
+  for (const auto& window : assembler.feed(nullptr, 0, true)) process_window(model, window, options, o4);
+}
+
+void sweep_worker(UiModel& model, SourceConfig config, std::atomic<bool>& stop) {
+  UsrpStatus status; status.state = UsrpStatus::State::Connecting; status.label = "X310 sweep";
+  model.set_status(status);
+#ifdef DRONEID_HAVE_UHD
+  try {
+    if (config.device.empty() || config.df || config.odid || !config.replay.empty() ||
+        !config.pair_manifest.empty() || !config.replay_ch1.empty())
+      throw std::invalid_argument("sweep needs one live source and excludes fixed ODID/DF/replay modes");
+    SweepPlan plan(config.sweep_profile, config.sweep_include_52, config.sweep_all_wifi, config.sweep_settle, config.sweep_jitter);
+    std::ofstream file;
+    std::ostream* log = nullptr;
+    if (config.sweep_jsonl == "-") log = &std::cout;
+    else if (!config.sweep_jsonl.empty()) {
+      file.open(std::filesystem::u8path(config.sweep_jsonl), std::ios::app);
+      if (!file) throw std::runtime_error("cannot open sweep evidence log");
+      log = &file;
+    }
+    if (log) *log << std::setprecision(12) << "{\"event\":\"sweep_start\",\"unix_ms\":" << now_ms()
+                  << ",\"sample_rate\":20000000,\"profile\":\"" << config.sweep_profile
+                  << "\",\"steps_per_cycle\":" << plan.size() << "}\n" << std::flush;
+    UsrpParams p; p.device_args = config.device; p.master_clock_rate = SweepPlan::master_clock_rate;
+    p.sample_rate = SweepPlan::sample_rate; p.bandwidth = SweepPlan::sample_rate;
+    p.center_freq = plan.step(0).center_hz; p.gain_db = config.gain; p.antenna = config.antenna; p.auto_start = false;
+    UsrpSource source(p);
+    if (std::abs(source.sample_rate()-SweepPlan::sample_rate)>1) throw std::runtime_error("sweep requires actual 20 MSPS");
+    status.state = UsrpStatus::State::Connected; status.label = "X310 " + source.serial() + " sweep";
+    status.rate_hz = source.sample_rate(); status.gain_db = p.gain_db; status.ref_locked = source.ref_locked();
+    model.invalidate_bearings(DfUiState::Uncalibrated, "Frequency sweep: no calibrated direction output");
+    const auto began = std::chrono::steady_clock::now();
+    double previous_end = 0;
+    for (uint64_t index = 0; !stop.load(); ++index) {
+      if (config.sweep_cycles && index / plan.size() >= config.sweep_cycles) break;
+      if (config.secs > 0 && std::chrono::duration<double>(std::chrono::steady_clock::now()-began).count() >= config.secs) break;
+      const auto step = plan.step(index);
+      status.center_hz = step.center_hz;
+      status.detail = std::string("Sweep ") + config.sweep_profile + " | " + to_string(step.mode) + " | tuning / settling";
+      model.set_status(status);
+      const auto target = static_cast<std::size_t>(std::llround(step.dwell_seconds*source.sample_rate()));
+      std::vector<cf32> samples(target);
+      // Allocate before timed commands: allocation latency must not make start late.
+      const double actual_tune = source.device_time() + SweepPlan::command_lead_seconds;
+      const double actual_listen = actual_tune + plan.settle_seconds();
+      source.tune_at(step.center_hz, actual_tune);
+      source.start_at(actual_listen);
+      DwellContinuity capture(source.sample_rate(), actual_listen, source.overflow_count());
+      int timeouts = 0;
+      while (!stop.load() && capture.received() < target) {
+        int64_t timestamp = 0;
+        const auto count = source.recv(samples.data()+capture.received(), std::min<std::size_t>(65536,target-capture.received()),timestamp);
+        if (!count) { if (++timeouts >= 4) throw std::runtime_error("sweep RX repeatedly timed out"); continue; }
+        timeouts = 0;
+        capture.add(count,timestamp,source.overflow_count());
+      }
+      source.stop();
+      samples.resize(capture.received());
+      const bool valid = capture.valid(target) && !stop.load();
+      ++status.sweep_visits; status.samples_received += capture.received(); status.overflows = source.overflow_count();
+      if (valid) ++status.sweep_valid_visits; else ++status.discontinuities;
+      status.detail = std::string("Sweep ") + to_string(step.mode) + (valid ? " | processing (RX paused)" : " | rejected incomplete/discontinuous dwell");
+      model.set_status(status);
+      const auto processing_start = std::chrono::steady_clock::now();
+      const auto packets_before = model.packet_count();
+      const auto candidates_before = model.rf_summary().o4_candidate_windows;
+      if (valid) process_sweep_capture(model, samples, step.mode, source.sample_rate());
+      const double processing = std::chrono::duration<double>(std::chrono::steady_clock::now()-processing_start).count();
+      if (log) {
+        *log << "{\"event\":\"sweep_dwell\",\"index\":" << index << ",\"center_hz\":" << step.center_hz
+             << ",\"mode\":\"" << to_string(step.mode) << "\",\"listen_device_seconds\":" << actual_listen
+             << ",\"dwell_seconds\":" << step.dwell_seconds << ",\"valid_capture\":" << (valid?"true":"false")
+             << ",\"samples\":" << capture.received() << ",\"packets\":" << model.packet_count()-packets_before
+             << ",\"o4_candidate_windows\":" << model.rf_summary().o4_candidate_windows-candidates_before
+             << ",\"identity_confirmed_by_o4\":false,\"processing_seconds\":" << processing
+             << ",\"blind_seconds_before_dwell\":" << (previous_end ? actual_listen-previous_end : 0)
+             << ",\"overflows_total\":" << status.overflows << "}\n" << std::flush;
+        if (!*log) throw std::runtime_error("sweep evidence log write failed");
+      }
+      previous_end = actual_listen + capture.received()/source.sample_rate();
+    }
+    status.state = UsrpStatus::State::Disconnected;
+    status.detail = "Sweep stopped; visits=" + std::to_string(status.sweep_visits) + " valid=" + std::to_string(status.sweep_valid_visits);
+    model.set_status(status);
+  } catch (const std::exception& e) {
+    status.state = UsrpStatus::State::Error; status.detail = e.what(); model.set_status(status);
+  }
+#else
+  (void)config; (void)stop;
+  status.state = UsrpStatus::State::Error; status.detail = "Sweep requires a UHD-enabled build"; model.set_status(status);
+#endif
+}
+
 void live_worker(UiModel& model, SourceConfig config, std::atomic<bool>& stop) {
+  if (config.sweep) { sweep_worker(model, config, stop); return; }
   if (config.odid) {
     odid_live_worker(model, config, stop);
     return;
@@ -756,42 +870,48 @@ void live_worker(UiModel& model, SourceConfig config, std::atomic<bool>& stop) {
     model.set_status(status);
     std::mutex mutex;
     std::condition_variable ready;
-    std::deque<SampleWindow> queue;
+    LiveWindowFanout queue(3);
     bool finished = false;
     std::string dsp_error;
     model.reset_o4_evidence();
-    std::thread processor([&] {
+    auto process = [&](size_t lane) {
       O4CandidateDetector o4(source.sample_rate());
       for (;;) {
-        SampleWindow window;
+        std::shared_ptr<const SampleWindow> window;
         {
           std::unique_lock<std::mutex> lock(mutex);
-          ready.wait(lock, [&] { return finished || !queue.empty(); });
-          if (stop.load() || (finished && queue.empty())) break;
-          window = std::move(queue.front());
-          queue.pop_front();
+          ready.wait(lock, [&] { return finished || !queue.empty(lane); });
+          if (stop.load() || (finished && queue.empty(lane))) break;
+          window = queue.pop(lane);
         }
-        try { process_window(model, window, {}, o4); }
-        catch (const std::exception& error) {
+        try {
+          if(lane==0) process_packet_window(model,*window,{});
+          else process_rf_window(model,*window,{},o4);
+        } catch (const std::exception& error) {
           std::lock_guard<std::mutex> lock(mutex);
           dsp_error = error.what();
           break;
         }
       }
-    });
+    };
+    std::thread processor, rf_processor;
     auto finish = [&] {
       { std::lock_guard<std::mutex> lock(mutex); finished = true; }
       ready.notify_all();
-      processor.join();
+      if(processor.joinable()) processor.join();
+      if(rf_processor.joinable()) rf_processor.join();
     };
+    try {
+      processor=std::thread(process,0);
+      rf_processor=std::thread(process,1);
+    } catch (...) { finish(); throw; }
     auto enqueue = [&](std::vector<SampleWindow> windows) {
       std::lock_guard<std::mutex> lock(mutex);
       if (!dsp_error.empty()) throw std::runtime_error("DSP: " + dsp_error);
-      for (auto& window : windows) {
-        if (queue.size() == 3) { queue.pop_front(); ++status.dropped_windows; }
-        queue.push_back(std::move(window));
-      }
-      ready.notify_one();
+      for (auto& window : windows) queue.push(std::move(window));
+      status.dropped_rf_windows=queue.dropped(1);
+      status.dropped_windows=queue.dropped(0)+queue.dropped(1);
+      ready.notify_all();
     };
     try {
       WindowAssembler assembler;
@@ -817,7 +937,7 @@ void live_worker(UiModel& model, SourceConfig config, std::atomic<bool>& stop) {
         status.samples_received += count;
         status.overflows = overflows;
         enqueue(assembler.feed(block.data(), count));
-        status.detail = "RX + bounded DSP queue; gaps/drops are reported";
+        status.detail = "RX + independent packet / RF-O4 queues; gaps/drops are reported";
         model.set_status(status);
       }
       if (!stop.load()) enqueue(assembler.feed(nullptr, 0, true));
@@ -828,7 +948,7 @@ void live_worker(UiModel& model, SourceConfig config, std::atomic<bool>& stop) {
       status.state = UsrpStatus::State::Disconnected;
       model.set_status(status);
     } catch (...) {
-      if (processor.joinable()) finish();
+      if (processor.joinable() || rf_processor.joinable()) finish();
       throw;
     }
   } catch (const std::exception& error) {

@@ -1,0 +1,8 @@
+{
+  "passed": false,
+  "exit_code": 0,
+  "input": "Live X310 20 MSPS / 2437 MHz / RX2 / gain 20",
+  "selection_log": "data/analysis/final_20261029/live-map.log",
+  "screenshot": "data/analysis/final_20261029/live-map.ppm",
+  "interaction": "X11 client-coordinate mouse events into actual GLFW packet table"
+}

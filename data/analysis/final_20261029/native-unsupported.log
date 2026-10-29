@@ -1,0 +1,2 @@
+12:28:00 [INFO ] FileSource: loaded sidecar data/analysis/corpus_deep_20261026/002-995552cb67.decoded.cf32.meta (format=cf32 rate=100000000 center=5745000000)
+ui_selection: packet=1 drone_location=unavailable center=31.1471000,75.3412000 zoom=7

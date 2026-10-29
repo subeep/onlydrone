@@ -1,0 +1,39 @@
+[ RUN    ] DjiTurbo.RoundTrip
+[     OK ] DjiTurbo.RoundTrip
+[ RUN    ] DjiScrambler.DeterministicAndBinary
+[     OK ] DjiScrambler.DeterministicAndBinary
+[ RUN    ] DjiEndToEnd.SynthesizeThenDecode
+[     OK ] DjiEndToEnd.SynthesizeThenDecode
+[ RUN    ] DjiEndToEnd.IntegerCarrierOffset
+[     OK ] DjiEndToEnd.IntegerCarrierOffset
+[ RUN    ] DjiEndToEnd.RealMini2Capture
+23:16:12 [INFO ] decoder input 15.360 MSPS -> 15.360 MSPS, shift +0 Hz
+[     OK ] DjiEndToEnd.RealMini2Capture
+[ RUN    ] DjiFile.ChunkBoundaryAndSampleLimit
+23:16:13 [INFO ] decoder input 15.360 MSPS -> 15.360 MSPS, shift +0 Hz
+23:16:13 [INFO ] decoder input 15.360 MSPS -> 15.360 MSPS, shift +0 Hz
+23:16:14 [INFO ] decoder input 15.360 MSPS -> 15.360 MSPS, shift +0 Hz
+[     OK ] DjiFile.ChunkBoundaryAndSampleLimit
+[ RUN    ] DjiFrame.RejectsTruncatedAndUnsupportedRecords
+[     OK ] DjiFrame.RejectsTruncatedAndUnsupportedRecords
+[ RUN    ] DjiEndToEnd.RawWidebandMini2
+23:16:14 [INFO ] decoder input 15.360 MSPS -> 15.360 MSPS, shift +0 Hz
+23:16:15 [INFO ] decoder input 50.000 MSPS -> 15.360 MSPS, shift -9600000 Hz
+23:16:15 [INFO ] decoder input 50.000 MSPS -> 15.360 MSPS, shift -9600000 Hz
+23:16:15 [INFO ] decoder input 50.000 MSPS -> 15.360 MSPS, shift -9713745 Hz (auto)
+23:16:15 [INFO ] decoder input 50.000 MSPS -> 15.360 MSPS, shift -0 Hz (auto)
+[     OK ] DjiEndToEnd.RawWidebandMini2
+[ RUN    ] DjiEndToEnd.NativeWidebandSynthetic
+[     OK ] DjiEndToEnd.NativeWidebandSynthetic
+[ RUN    ] DjiFile.WidebandStreamingMatchesMemory
+23:16:16 [INFO ] decoder input 50.000 MSPS -> 15.360 MSPS, shift -9600000 Hz
+23:16:16 [INFO ] decoder input 50.000 MSPS -> 15.360 MSPS, shift -9600000 Hz
+[     OK ] DjiFile.WidebandStreamingMatchesMemory
+[ RUN    ] DjiEnvelope.VerifiedLayoutsAndCorruption
+[     OK ] DjiEnvelope.VerifiedLayoutsAndCorruption
+[ RUN    ] DjiEnvelope.InvalidLengths
+[     OK ] DjiEnvelope.InvalidLengths
+[ RUN    ] DjiPairedReview.BearingWindowsRemainInOriginalSampleDomain
+[     OK ] DjiPairedReview.BearingWindowsRemainInOriginalSampleDomain
+----
+13 case(s), 0 failing

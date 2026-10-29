@@ -1,0 +1,12 @@
+[ RUN    ] RingBuffer.RoundsCapacityToPowerOfTwo
+[     OK ] RingBuffer.RoundsCapacityToPowerOfTwo
+[ RUN    ] RingBuffer.WriteThenRead
+[     OK ] RingBuffer.WriteThenRead
+[ RUN    ] RingBuffer.WriteClampsWhenFull
+[     OK ] RingBuffer.WriteClampsWhenFull
+[ RUN    ] RingBuffer.WrapAroundPreservesOrder
+[     OK ] RingBuffer.WrapAroundPreservesOrder
+[ RUN    ] RingBuffer.SpscThreadedNoLoss
+[     OK ] RingBuffer.SpscThreadedNoLoss
+----
+5 case(s), 0 failing

@@ -1,0 +1,7 @@
+check: status=Disconnected packets=1 tracks=1 rf_bursts=2 checklist_groups=13 overflows=0 samples=200000 gaps=0 dropped_windows=0
+  o4_evidence: windows=0 structure=0 candidates=0 identity=unverified
+  processing: packet_drops=0 rf_o4_drops=0 total_packets=1 retained_packets=1
+  track: serial=3YTBJ3Q0030J2X count=1 corr=0.953
+  packet: telemetry=parsed frame=5810028400f71f335954424a3351303033304a32580000d26b3c018fec54001a006b000100feff0100ca01ed01a68b9a0100008eec5400d16b3c01d36b3c018fec54004213313938393631303033333234313330353038380002a4000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000aa33ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7554d3 format=v2 inner_crc16=OK
+  detail: Replay complete (not live reception)
+12:26:23 [INFO ] FileSource: loaded sidecar /home/sudeep/Music/punjdrone/data/analysis/corpus_deep_20261026/004-5818baaf25.decoded.cf32.meta (format=cf32 rate=100000000 center=5745000000)

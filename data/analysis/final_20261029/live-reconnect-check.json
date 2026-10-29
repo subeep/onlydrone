@@ -1,0 +1,13 @@
+{
+  "passed": false,
+  "exit_code": 0,
+  "radio_open_count": 1,
+  "actions": [
+    "automatic start",
+    "Disconnect",
+    "Connect",
+    "Reconnect",
+    "window close"
+  ],
+  "screenshot": "data/analysis/final_20261029/live-reconnect.ppm"
+}

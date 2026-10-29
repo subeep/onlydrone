@@ -1,0 +1,40 @@
+[1/20] Building CXX object CMakeFiles/droneid_dji.dir/src/dji/dsp.cpp.o
+[2/20] Linking CXX static library libdroneid_dji.a
+[3/20] Linking CXX executable droneid_decode
+[4/20] Linking CXX executable frame_gen
+[5/20] Linking CXX executable rf_analyze
+[6/20] Linking CXX executable o4_detect
+[7/20] Linking CXX executable droneid_hop
+[8/20] Linking CXX executable droneid_sweep
+[9/20] Building CXX object CMakeFiles/droneid_ui.dir/src/ui/app.cpp.o
+[10/20] Building CXX object tests/CMakeFiles/test_ui_model.dir/test_ui_model.cpp.o
+[11/20] Linking CXX executable tests/test_ui_model
+[12/20] Building CXX object CMakeFiles/droneid_ui.dir/src/ui/map_view.cpp.o
+In file included from /home/sudeep/Music/punjdrone/src/ui/map_view.cpp:34:
+/home/sudeep/Music/punjdrone/third_party/stb/stb_image.h: In function ‘int stbi__parse_png_file(stbi__png*, int, int)’:
+/home/sudeep/Music/punjdrone/third_party/stb/stb_image.h:4948:45: warning: ‘tc16[2]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+ 4948 |          if (p[0] == tc[0] && p[1] == tc[1] && p[2] == tc[2])
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~
+/home/sudeep/Music/punjdrone/third_party/stb/stb_image.h:5082:17: note: ‘tc16[2]’ was declared here
+ 5082 |    stbi__uint16 tc16[3];
+      |                 ^~~~
+/home/sudeep/Music/punjdrone/third_party/stb/stb_image.h:4948:28: warning: ‘tc16[1]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+ 4948 |          if (p[0] == tc[0] && p[1] == tc[1] && p[2] == tc[2])
+      |              ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~
+/home/sudeep/Music/punjdrone/third_party/stb/stb_image.h:5082:17: note: ‘tc16[1]’ was declared here
+ 5082 |    stbi__uint16 tc16[3];
+      |                 ^~~~
+/home/sudeep/Music/punjdrone/third_party/stb/stb_image.h:4943:15: warning: ‘tc16[0]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+ 4943 |          p[1] = (p[0] == tc[0] ? 0 : 65535);
+      |          ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/sudeep/Music/punjdrone/third_party/stb/stb_image.h:5082:17: note: ‘tc16[0]’ was declared here
+ 5082 |    stbi__uint16 tc16[3];
+      |                 ^~~~
+[13/20] Linking CXX executable droneid_ui
+[14/20] Building CXX object tests/CMakeFiles/test_ui_worker.dir/test_ui_worker.cpp.o
+[15/20] Linking CXX executable tests/test_ui_worker
+[16/20] Linking CXX executable tests/test_resampler
+[17/20] Linking CXX executable tests/test_rf_metrics
+[18/20] Linking CXX executable tests/test_o4_detector
+[19/20] Building CXX object tests/CMakeFiles/test_dji.dir/test_dji.cpp.o
+[20/20] Linking CXX executable tests/test_dji

@@ -1,0 +1,6 @@
+[ RUN    ] Config.ParsesKnownKeysAndIgnoresSectionsAndComments
+[     OK ] Config.ParsesKnownKeysAndIgnoresSectionsAndComments
+[ RUN    ] Config.MissingFileThrows
+[     OK ] Config.MissingFileThrows
+----
+2 case(s), 0 failing

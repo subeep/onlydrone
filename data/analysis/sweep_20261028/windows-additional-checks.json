@@ -1,0 +1,17 @@
+[
+  {
+    "name": "windows-plan",
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "windows-bad-settle",
+    "exit": 1,
+    "passed": true
+  },
+  {
+    "name": "windows-o4-ui",
+    "exit": 0,
+    "passed": true
+  }
+]

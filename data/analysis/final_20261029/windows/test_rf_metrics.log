@@ -1,0 +1,8 @@
+[ RUN    ] Rf.ToneMetrics
+[     OK ] Rf.ToneMetrics
+[ RUN    ] Rf.ChunkIndependentAndBounded
+[     OK ] Rf.ChunkIndependentAndBounded
+[ RUN    ] Rf.SilenceAndInvalidConfiguration
+[     OK ] Rf.SilenceAndInvalidConfiguration
+----
+3 case(s), 0 failing

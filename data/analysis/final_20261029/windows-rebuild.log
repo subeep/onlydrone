@@ -1,0 +1,70 @@
+[  6%] Built target turbofec
+[ 11%] Built target droneid_core
+Consolidate compiler generated dependencies of target droneid_ui_model
+[ 12%] Built target droneid_ui_model
+[ 30%] Built target glfw
+[ 31%] Built target df_bearing
+[ 33%] Built target test_ring_buffer
+[ 35%] Built target test_file_source
+[ 37%] Built target test_config
+[ 38%] Built target test_receiver
+Consolidate compiler generated dependencies of target test_ui_model
+[ 40%] Built target test_ui_model
+[ 46%] Built target droneid_odid
+[ 48%] Built target droneid
+[ 50%] Built target iq_replay
+[ 52%] Built target iq_gen
+[ 54%] Built target channelize
+[ 56%] Built target droneid_sdr
+Consolidate compiler generated dependencies of target droneid_dji
+[ 62%] Built target droneid_dji
+Consolidate compiler generated dependencies of target burst_scan
+[ 63%] Built target burst_scan
+[ 68%] Built target imgui
+[ 69%] Built target iq_record_pair
+[ 71%] Built target test_odid
+[ 73%] Built target test_odid_wifi
+[ 74%] Built target test_dji
+[ 76%] Built target test_resampler
+[ 78%] Built target odid_decode
+[ 80%] Built target odid_gen
+[ 82%] Built target iq_record
+[ 83%] Built target droneid_decode
+[ 84%] Built target frame_gen
+[ 86%] Built target droneid_rf
+[ 87%] Built target droneid_hop
+[ 88%] Built target rf_analyze
+Consolidate compiler generated dependencies of target droneid_ui_worker
+[ 89%] Built target o4_detect
+[ 92%] Built target droneid_ui_worker
+[ 93%] Built target test_rf_metrics
+[ 94%] Built target test_o4_detector
+Consolidate compiler generated dependencies of target droneid_sweep
+[ 95%] Built target droneid_sweep
+Consolidate compiler generated dependencies of target droneid_ui
+[ 96%] Building CXX object CMakeFiles/droneid_ui.dir/src/ui/app.cpp.obj
+Consolidate compiler generated dependencies of target test_ui_worker
+[ 97%] Built target test_ui_worker
+[ 98%] Building CXX object CMakeFiles/droneid_ui.dir/src/ui/map_view.cpp.obj
+In file included from /home/sudeep/Music/punjdrone/src/ui/map_view.cpp:34:
+/home/sudeep/Music/punjdrone/third_party/stb/stb_image.h: In function ‘int stbi__parse_png_file(stbi__png*, int, int)’:
+/home/sudeep/Music/punjdrone/third_party/stb/stb_image.h:4948:45: warning: ‘tc16[2]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+ 4948 |          if (p[0] == tc[0] && p[1] == tc[1] && p[2] == tc[2])
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~
+/home/sudeep/Music/punjdrone/third_party/stb/stb_image.h:5082:17: note: ‘tc16[2]’ was declared here
+ 5082 |    stbi__uint16 tc16[3];
+      |                 ^~~~
+/home/sudeep/Music/punjdrone/third_party/stb/stb_image.h:4948:28: warning: ‘tc16[1]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+ 4948 |          if (p[0] == tc[0] && p[1] == tc[1] && p[2] == tc[2])
+      |              ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~
+/home/sudeep/Music/punjdrone/third_party/stb/stb_image.h:5082:17: note: ‘tc16[1]’ was declared here
+ 5082 |    stbi__uint16 tc16[3];
+      |                 ^~~~
+/home/sudeep/Music/punjdrone/third_party/stb/stb_image.h:4943:15: warning: ‘tc16[0]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+ 4943 |          p[1] = (p[0] == tc[0] ? 0 : 65535);
+      |          ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/sudeep/Music/punjdrone/third_party/stb/stb_image.h:5082:17: note: ‘tc16[0]’ was declared here
+ 5082 |    stbi__uint16 tc16[3];
+      |                 ^~~~
+[100%] Linking CXX executable droneid_ui.exe
+[100%] Built target droneid_ui

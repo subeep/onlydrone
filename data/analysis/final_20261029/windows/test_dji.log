@@ -1,0 +1,41 @@
+[ RUN    ] DjiDsp.ConcurrentFftPlansPreserveRoundTripsAcrossCacheEviction
+[     OK ] DjiDsp.ConcurrentFftPlansPreserveRoundTripsAcrossCacheEviction
+[ RUN    ] DjiTurbo.RoundTrip
+[     OK ] DjiTurbo.RoundTrip
+[ RUN    ] DjiScrambler.DeterministicAndBinary
+[     OK ] DjiScrambler.DeterministicAndBinary
+[ RUN    ] DjiEndToEnd.SynthesizeThenDecode
+[     OK ] DjiEndToEnd.SynthesizeThenDecode
+[ RUN    ] DjiEndToEnd.IntegerCarrierOffset
+[     OK ] DjiEndToEnd.IntegerCarrierOffset
+[ RUN    ] DjiEndToEnd.RealMini2Capture
+12:28:08 [INFO ] decoder input 15.360 MSPS -> 15.360 MSPS, shift +0 Hz
+[     OK ] DjiEndToEnd.RealMini2Capture
+[ RUN    ] DjiFile.ChunkBoundaryAndSampleLimit
+12:28:08 [INFO ] decoder input 15.360 MSPS -> 15.360 MSPS, shift +0 Hz
+12:28:08 [INFO ] decoder input 15.360 MSPS -> 15.360 MSPS, shift +0 Hz
+12:28:09 [INFO ] decoder input 15.360 MSPS -> 15.360 MSPS, shift +0 Hz
+[     OK ] DjiFile.ChunkBoundaryAndSampleLimit
+[ RUN    ] DjiFrame.RejectsTruncatedAndUnsupportedRecords
+[     OK ] DjiFrame.RejectsTruncatedAndUnsupportedRecords
+[ RUN    ] DjiEndToEnd.RawWidebandMini2
+12:28:10 [INFO ] decoder input 15.360 MSPS -> 15.360 MSPS, shift +0 Hz
+12:28:10 [INFO ] decoder input 50.000 MSPS -> 15.360 MSPS, shift -9600000 Hz
+12:28:10 [INFO ] decoder input 50.000 MSPS -> 15.360 MSPS, shift -9600000 Hz
+12:28:10 [INFO ] decoder input 50.000 MSPS -> 15.360 MSPS, shift -9713745 Hz (auto)
+12:28:10 [INFO ] decoder input 50.000 MSPS -> 15.360 MSPS, shift -0 Hz (auto)
+[     OK ] DjiEndToEnd.RawWidebandMini2
+[ RUN    ] DjiEndToEnd.NativeWidebandSynthetic
+[     OK ] DjiEndToEnd.NativeWidebandSynthetic
+[ RUN    ] DjiFile.WidebandStreamingMatchesMemory
+12:28:11 [INFO ] decoder input 50.000 MSPS -> 15.360 MSPS, shift -9600000 Hz
+12:28:11 [INFO ] decoder input 50.000 MSPS -> 15.360 MSPS, shift -9600000 Hz
+[     OK ] DjiFile.WidebandStreamingMatchesMemory
+[ RUN    ] DjiEnvelope.VerifiedLayoutsAndCorruption
+[     OK ] DjiEnvelope.VerifiedLayoutsAndCorruption
+[ RUN    ] DjiEnvelope.InvalidLengths
+[     OK ] DjiEnvelope.InvalidLengths
+[ RUN    ] DjiPairedReview.BearingWindowsRemainInOriginalSampleDomain
+[     OK ] DjiPairedReview.BearingWindowsRemainInOriginalSampleDomain
+----
+14 case(s), 0 failing

@@ -40,6 +40,8 @@ endif()
 
 # DJI decoder tests (only when the decoder library was built).
 if(TARGET droneid_dji)
+  add_test(NAME test_sweep_cli COMMAND ${CMAKE_COMMAND}
+    -DSWEEP=$<TARGET_FILE:droneid_sweep> -P ${CMAKE_CURRENT_SOURCE_DIR}/test_sweep_cli.cmake)
   add_executable(test_ui_worker test_ui_worker.cpp)
   target_link_libraries(test_ui_worker PRIVATE droneid_ui_worker)
   target_compile_definitions(test_ui_worker PRIVATE DRONEID_TEST_DATA_DIR="${CMAKE_CURRENT_SOURCE_DIR}/data")

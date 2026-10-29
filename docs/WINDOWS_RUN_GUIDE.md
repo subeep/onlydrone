@@ -3,12 +3,13 @@
 A plain, start-to-finish guide for running `droneid_ui.exe` on a Windows PC.
 For build internals and acceptance detail, see [`WINDOWS.md`](WINDOWS.md).
 
-There are **two ways** to use it, with different requirements:
+There are **three ways** to use it, with different requirements:
 
 | Mode | What it does | Extra install needed |
 |---|---|---|
 | **Offline replay** | Open a recorded IQ file, decode DJI DroneID / Wi-Fi Remote ID, show the O4 candidate counter | **Nothing** — just the `.exe` |
 | **Live X310** | Receive from the USRP X310 radio in real time | The **UHD 4.x runtime** (plus radio networking) |
+| **Automatic sweep** | Retune through DJI DroneID, O4 and Wi-Fi Remote ID frequencies | The same UHD runtime and networking; see `AUTOMATIC_SWEEP.md` |
 
 Start with offline replay — it needs nothing but the file and confirms the app runs on your machine.
 
@@ -62,7 +63,11 @@ This plays back a recorded IQ capture.
 What you should see:
 - **Decoded packets / Drones** populate for DJI DroneID (O1/O2/O3) and Wi-Fi Remote ID (ASTM F3411) captures.
 - The **O4 candidate** counter increments separately — it never invents a serial, position, or bearing.
-- **Direction** stays empty: live bearings are disabled until hardware calibration is accepted.
+- Click a **Decoded packets** row to show packet details and its reported position on the
+  **OpenStreetMap** panel. Without valid drone coordinates, the map defaults to Punjab,
+  India. Live bearings still require hardware calibration; the map does not infer them.
+- Uncached map tiles need internet. **Online tiles** can be switched off for cached tiles
+  only. See [`PACKET_MAP.md`](PACKET_MAP.md) for controls, attribution and cache locations.
 
 > You need an actual IQ recording to see anything — the app is a receiver, not a simulator. HDF5/`.mat`/zip files must be exported to raw IQ first; do **not** just rename them to `.iq`.
 

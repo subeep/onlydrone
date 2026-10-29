@@ -5,11 +5,54 @@ addition to energy detection. It finds a repeated structure observed in the
 local Air 3S 5.8 GHz recordings without requiring payload decoding.
 
 Its output is **`o4_candidate`**, not confirmed O4 identity, a model prediction,
-unique-drone count, range or direction. The profile is named `air3s_structure_v1`.
+unique-drone count, range or direction. The current profile is `o4_structure_v2`;
+the original frozen `air3s_structure_v1` results are preserved separately.
 Other OFDM systems can share these characteristics; distinguishing all O4/O4+
 devices from all other transmitters remains an independent validation task.
 
 ## What changed
+
+V2 retains the original strong-evidence path and adds a weak-evidence path:
+lag correlation >0.015, lag prominence >3, cyclic correlation >0.01,
+cyclic prominence >2 and harmonic correlation >0.005. Clipping must remain
+≤0.001. The current window must match and at least **8 of 10 complete windows**
+must support it, requiring **160 ms** of continuous data. This adds sensitivity
+while demanding longer persistence and greater cyclic prominence. JSON records
+`weak_structure_match` and `weak_supporting_windows` separately. Both histories
+reset on gaps and every sweep retune. Strong-path fields keep their original meaning.
+
+The added thresholds were selected after examining the three v1 external misses;
+therefore rerunning those files is development/regression evidence. A separate
+preselected set of files and archive members was evaluated after freezing v2.
+
+## Current v2 results (28 October 2026)
+
+| Evaluation | O4-labeled files with candidates | Clearly non-O4 controls | Scope |
+|---|---:|---:|---|
+| Local Air 3S/Mini 2/baseline, 187.009 s | 4/9 Air 3S recordings; 809 candidate windows | 0/7,187 windows over 115.009 s | Development sessions |
+| External regression, 60 × 0.32 s | 11/14 | 0/540 windows in 27 controls | Inspected during v2 development |
+| New files/members, 35 × 0.64 s | **7/8** | **0/960 windows in 24 controls** | File-held-out, not session-held-out |
+
+The new set includes six Mini 4 Pro files (all six with candidates) and two
+Avata 2 members (one with 29/40 candidate windows; the other with zero).
+The three new O4+ files had zero candidates; O4+ is **not validated/supported**.
+The external regression also includes four positive `mavic3S` files whose model
+label is ambiguous; they remain `unverified/other`, not relabeled as correct O4.
+The local 2.4 GHz Air 3S captures still have no candidates.
+
+Artifacts: `data/analysis/o4_v2_local_20261028/`, `o4_v2_external_20261028/`,
+and `o4_v2_holdout_20261028/` (under `data/analysis/`). The holdout manifest and
+source/binary hashes were saved before evaluating its cases and were verified
+unchanged afterward. Selection and reproduction: `scripts/validate_o4_holdout.py`.
+No large IQ files were downloaded or original datasets modified.
+
+**7/8 is recording-prefix coverage, not 87.5% drone identity accuracy.** Labels
+indicate a drone was present in a recording, not exactly which samples contain
+its signal. Related files can share sessions and devices. Candidate windows are
+correlated and cannot be counted as drones. One Avata 2 miss, missed local bands,
+O4+ and independent event-level false-alarm/recall testing remain open.
+
+The remainder documents the original v1 development and its preserved results.
 
 Previously, every energy burst was `unknown_rf`. Energy alone detects baseline
 Wi-Fi too. `rf_analyze` retains that useful behavior and its RF metrics.
@@ -120,8 +163,9 @@ O4 recall**, and 0/7,187 is **not a guaranteed real-world false-positive rate**.
 Development used the first 0.32 s of these same sessions. The report separately
 counts candidates after that prefix, but those later windows are temporal extension,
 not a held-out session/site/model test. No thresholds were tuned on the later full-file
-evaluation. Tests against Mini 4 Pro, Avata 2, O3/O3+, O4+ and independent Wi-Fi/FPV
-sessions remain required. `/media/sudeep/Storage/datasets` was unmounted during this run.
+evaluation. The external disk was unmounted during this initial run, then remounted;
+the later external and v2 results are reported above. Independent sessions/sites and
+event-level Wi-Fi/FPV ground truth remain required.
 
 The C++ detector processed 187.009 s in approximately 47.43 s aggregate elapsed
 tool time on this host. This is an offline detector-only measurement, not a GUI/live
@@ -141,13 +185,15 @@ pipeline throughput guarantee. The one-second pinned-link sample produces exactl
   (`test_o4_detector`, `test_ui_worker`; leak detection disabled). Logs are in
   `data/analysis/o4_development_20261028/`.
 - Native replay checks display evidence separately from empty identity/position tables.
-- No X310 capture or transmission was performed for this change. Live integration
-  uses the shared worker but still needs a new load/recovery acceptance run.
+- Later Windows-port checks used the connected X310 receive-only through the UHD
+  C API adapter: zero radio overflows/gaps, but DSP drops were observed during
+  concurrent build/evaluation work. Full-load/recovery acceptance remains open;
+  see `data/analysis/windows_20261028/REPORT.md`. No transmission was performed.
 
 To graduate from candidates to a validated identity detector:
 
-1. Remount the external dataset volume and inventory the available O4/O4+ and
-   non-O4 recordings with verified rate/format metadata.
+1. Expand the completed external inventory with verified event labels and additional
+   O4/O4+ waveform modes; preserve the frozen v1/v2 results.
 2. Establish independent sessions/sites/models for development and held-out
    evaluation; never split overlapping windows across those groups.
 3. Add controlled O4-on/O4-off, Wi-Fi-only, other-drone and mixed-source tests with

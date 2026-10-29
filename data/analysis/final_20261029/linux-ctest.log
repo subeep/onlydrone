@@ -1,0 +1,42 @@
+Internal ctest changing into directory: /home/sudeep/Music/punjdrone/build
+Test project /home/sudeep/Music/punjdrone/build
+      Start  1: test_ring_buffer
+ 1/18 Test  #1: test_ring_buffer .................   Passed    0.00 sec
+      Start  2: test_file_source
+ 2/18 Test  #2: test_file_source .................   Passed    0.00 sec
+      Start  3: test_config
+ 3/18 Test  #3: test_config ......................   Passed    0.00 sec
+      Start  4: test_receiver
+ 4/18 Test  #4: test_receiver ....................   Passed    0.01 sec
+      Start  5: test_ui_model
+ 5/18 Test  #5: test_ui_model ....................   Passed    0.00 sec
+      Start  6: test_odid
+ 6/18 Test  #6: test_odid ........................   Passed    0.00 sec
+      Start  7: test_odid_wifi
+ 7/18 Test  #7: test_odid_wifi ...................   Passed    0.37 sec
+      Start  8: test_odid_cli
+ 8/18 Test  #8: test_odid_cli ....................   Passed    0.25 sec
+      Start  9: test_sweep_cli
+ 9/18 Test  #9: test_sweep_cli ...................   Passed    0.06 sec
+      Start 10: test_ui_worker
+10/18 Test #10: test_ui_worker ...................   Passed    1.49 sec
+      Start 11: test_df_cli
+11/18 Test #11: test_df_cli ......................   Passed    0.23 sec
+      Start 12: test_ui_cli
+12/18 Test #12: test_ui_cli ......................   Passed    0.36 sec
+      Start 13: test_dji
+13/18 Test #13: test_dji .........................   Passed    3.24 sec
+      Start 14: test_resampler
+14/18 Test #14: test_resampler ...................   Passed    0.08 sec
+      Start 15: test_rf_metrics
+15/18 Test #15: test_rf_metrics ..................   Passed    0.00 sec
+      Start 16: test_o4_detector
+16/18 Test #16: test_o4_detector .................   Passed    1.56 sec
+      Start 17: test_receiver_cli
+17/18 Test #17: test_receiver_cli ................   Passed    0.06 sec
+      Start 18: test_decode_cli
+18/18 Test #18: test_decode_cli ..................   Passed    0.20 sec
+
+100% tests passed, 0 tests failed out of 18
+
+Total Test time (real) =   7.93 sec

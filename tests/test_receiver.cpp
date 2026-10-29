@@ -1,5 +1,6 @@
 #include "droneid/aoa.h"
 #include "droneid/hop.h"
+#include "droneid/sweep.h"
 #include "droneid/test/microtest.h"
 
 #include <cmath>
@@ -8,6 +9,7 @@
 #include <fstream>
 #include <limits>
 #include <stdexcept>
+#include <set>
 
 template <typename Action> bool rejects(Action action) {
   try { action(); } catch (const std::exception&) { return true; }
@@ -39,6 +41,49 @@ TEST(Hop, RejectInvalidInputs) {
   EXPECT_TRUE(rejects([] { droneid::HopSchedule::dwell_for_probability(0, 1, 0.5); }));
   EXPECT_TRUE(rejects([] { droneid::HopSchedule::dwell_for_probability(1, 0.1, 1.1); }));
   EXPECT_TRUE(rejects([] { droneid::HopSchedule::dwell_for_probability(1, 2, 0.5); }));
+}
+
+TEST(Sweep, ProfilesCoverageRotationAndBudget) {
+  droneid::SweepPlan balanced("balanced",false,false,.05,0);
+  EXPECT_EQ(balanced.size(),std::size_t(33));
+  EXPECT_NEAR(balanced.minimum_cycle_seconds(),28.43,1e-9);
+  droneid::SweepPlan thorough("thorough",true,false,.05,.04);
+  EXPECT_EQ(thorough.size(),std::size_t(51));
+  EXPECT_NEAR(thorough.minimum_cycle_seconds(),69.29,1e-9);
+  EXPECT_NEAR(thorough.maximum_cycle_seconds_before_processing(),71.33,1e-9);
+  std::set<double> first, second, grid;
+  int dji=0,o4=0,wifi=0;
+  for (std::size_t i=0;i<balanced.size();++i) {
+    auto s=balanced.step(i);
+    first.insert(s.center_hz); second.insert(balanced.step(i+balanced.size()).center_hz);
+    if (s.mode==droneid::SweepMode::DroneId) ++dji;
+    if (s.mode==droneid::SweepMode::O4) { ++o4; grid.insert(s.center_hz); EXPECT_TRUE(s.dwell_seconds>=.16); }
+    if (s.mode==droneid::SweepMode::WifiRid) ++wifi;
+  }
+  EXPECT_TRUE(first==second);
+  EXPECT_EQ(dji,8); EXPECT_EQ(o4,22); EXPECT_EQ(wifi,3);
+  for (auto band : {std::pair<double,double>{2400e6,2483.5e6},{5725e6,5850e6}}) {
+    for (double frequency=band.first;frequency<=band.second;frequency+=.5e6) {
+      bool covered=false;
+      for (auto center:grid) if (std::abs(center-frequency)<=5e6) covered=true;
+      EXPECT_TRUE(covered);
+    }
+  }
+  EXPECT_TRUE(rejects([]{droneid::SweepPlan p("unsupported");}));
+  EXPECT_TRUE(rejects([]{droneid::SweepPlan p("balanced",false,false,.001);}));
+}
+
+TEST(Sweep, RejectsLateStartGapOverflowAndPartialDwell) {
+  droneid::DwellContinuity ok(20e6,1.,3);
+  ok.add(1000,1000000000LL,3); ok.add(1000,1000050000LL,3);
+  EXPECT_TRUE(ok.valid(2000)); EXPECT_FALSE(ok.valid(2001));
+  droneid::DwellContinuity gap(20e6,1.,3);
+  gap.add(1000,1000000000LL,3); gap.add(1000,1000050200LL,3);
+  EXPECT_FALSE(gap.valid(2000));
+  droneid::DwellContinuity late(20e6,1.,3);
+  late.add(1000,1000001000LL,3); EXPECT_FALSE(late.valid(1000));
+  droneid::DwellContinuity overflow(20e6,1.,3);
+  overflow.add(1000,1000000000LL,4); EXPECT_FALSE(overflow.valid(1000));
 }
 
 TEST(Direction, CalibratedAnglesAndRejections) {

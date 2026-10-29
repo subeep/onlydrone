@@ -1,0 +1,2 @@
+f55ee9b36fee62c6d45b1c6b9f4d50fa830d41622f32b742844fc466996600c1  punjdrone-windows-x64.zip
+0081d222585c783cec267e1bfaaa3652ad36ac9996819b004a1cf5bad0566a8d  punjdrone-windows-source.zip

@@ -1,5 +1,58 @@
 # punjdrone — build progress
 
+## Final packet/map review and connected X310 — 2026-10-29
+- [x] Replaced the right polar panel with a native OpenStreetMap view, default Punjab,
+      clickable packet rows, retained details/raw payload, and labeled drone/operator/home
+      positions. Invalid or missing coordinates do not create a drone marker.
+- [x] Native and Windows/Wine visible packet selection checks; raw unsupported and
+      pilot-only native selections also verified. Map guide: `docs/PACKET_MAP.md`.
+- [x] Real X310 balanced sweep: 33/33 valid dwells, zero overflows, about 61 seconds
+      including processing. Initial scan before transmitter activation: no packet detections.
+- [x] Real 600-second channel-6 Remote ID run: 12 billion samples, 939 ESP32 frames,
+      zero overflows/gaps/DSP drops. Transmitter enabled partway through this run.
+- [x] Fixed a throughput issue found in live DJI testing: independent bounded packet and
+      RF/O4 queues share immutable IQ; FFTW plans are cached with synchronized planning.
+      Pre-fix 60-second runs dropped 108/150 windows despite clean radio transport.
+- [x] Linux 18/18 suites, Python 14/14, Windows/Wine 17/17 checks; nine retained real-IQ
+      packet clips still match CLI/UI payloads and checksums after the processing change.
+- [x] Frozen 35-case O4 rerun matches every prior per-case result: 7/8 O4 prefixes,
+      zero candidate windows in 24 clear control prefixes; one Avata 2 miss and O4+ remain.
+- [x] Post-fix live DJI 60-second run: 921.6 million samples, zero packet/RF queue
+      drops, zero overflows/gaps; all 3,750 O4 evidence windows evaluated.
+- [x] Extended post-fix DJI run: 600 seconds / 9.216 billion samples, all 37,500 O4
+      windows processed, zero packet/RF drops, gaps or overflows.
+- [ ] Finish final archive validation; see
+      `data/analysis/final_20261029/REPORT.md` for final results and outstanding gates.
+
+## Software handoff — 2026-10-29
+- [x] Operator confirmed the X310 is disconnected; finish software first. Further radio
+      checks are deferred until access is restored, not counted as passed.
+- [x] Windows binary/source archives include the same current operator guide and automatic
+      sweep instructions. Packaging now copies the guide on every build, including a clean build.
+- [x] All shipped helper executables are refreshed from the current build; packaging rejects stale
+      or unmatched executables. Final Linux suite rerun: 18/18 pass.
+- [x] Offline replay, O4 candidate detection and automatic-sweep software are implemented.
+      Existing evidence and remaining limits are recorded below; O4+ detection, native Windows
+      radio acceptance and physically calibrated direction finding are not complete.
+
+## Windows and automatic sweep — 2026-10-28
+- [x] Native Windows x64 GUI + tools, static GLFW/FFTW, runtime-loaded receive-only UHD C API;
+      source picker, live settings, missing-driver errors. Earlier Windows core checks: 15/15 under Wine.
+- [x] `o4_structure_v2` weak-path persistence; full local controls 0/7,187 candidate windows;
+      new file-held-out set 7/8 O4 prefixes and 0/960 non-O4 control windows. One Avata 2 miss; O4+ open.
+- [x] Automatic interleaved DroneID/O4/Wi-Fi RID sweep in GUI and `droneid_sweep`, 20 MSPS,
+      guarded timed retunes, per-dwell continuity rejection, detector reset and blind-interval JSONL.
+- [x] Sweep schedule/continuity/reset/CLI regression coverage; Linux 18/18 CTest pass;
+      updated Windows build passes 15 core + 3 additional checks under Wine, O4 CLI/UI parity
+      and rendered sweep controls. Guide: `docs/AUTOMATIC_SWEEP.md`.
+- [ ] Native Windows + UHD/X310 acceptance, new sweep hardware timing/recall and ten-minute load test.
+- [ ] Complete physical direction-finding calibration and angle acceptance; live DF remains disabled.
+
+Recommended starting sweep: balanced, 800 ms DroneID / 640 ms O4 / 1 s Wi-Fi,
+50 ms settle + 100 ms command lead + 0–40 ms jitter. About 28–30 s/cycle before processing.
+This is a starting schedule, not a verified universal optimum or all-drone detection guarantee.
+Live sweep attempt at 23:15 IST: device discovery failed at `192.168.10.2`; no dwell captured.
+
 ## Open Drone ID (ASTM F3411) Wi-Fi Beacon / NAN — 2026-10-28
 Operator's test transmitter: ESP32-S3 Remote ID, Wi-Fi Beacon + NAN on channel 6, DSSS 1 Mb/s.
 BLE transports not started.

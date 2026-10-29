@@ -38,6 +38,7 @@ find_package(PkgConfig)
 add_library(droneid_core
   src/core/config.cpp
   src/core/hop.cpp
+  src/core/sweep.cpp
   src/o4/aoa.cpp
   src/sdr/file_source.cpp)
 target_include_directories(droneid_core PUBLIC include)
@@ -189,6 +190,9 @@ if(TARGET droneid_rf)
   add_library(droneid_ui_worker src/ui/receiver_worker.cpp src/ui/odid_worker.cpp)
   target_include_directories(droneid_ui_worker PUBLIC src/ui)
   target_link_libraries(droneid_ui_worker PUBLIC droneid_ui_model droneid_rf droneid_odid Threads::Threads)
+  add_executable(droneid_sweep tools/droneid_sweep.cpp)
+  target_link_libraries(droneid_sweep PRIVATE droneid_ui_worker)
+  droneid_runtime_link(droneid_sweep)
   if(TARGET droneid_sdr)
     target_compile_definitions(droneid_ui_worker PRIVATE DRONEID_HAVE_UHD=1)
     target_link_libraries(droneid_ui_worker PRIVATE droneid_sdr)
@@ -226,8 +230,9 @@ if(DRONEID_WITH_UI)
   target_link_libraries(imgui PUBLIC ${GLFW_LIBRARIES})
   set_target_properties(imgui PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
-  add_executable(droneid_ui src/ui/app.cpp)
-  target_include_directories(droneid_ui PRIVATE src/ui ${GLFW_INCLUDE_DIRS})
+  add_executable(droneid_ui src/ui/app.cpp src/ui/map_view.cpp)
+  target_include_directories(droneid_ui PRIVATE src/ui third_party/stb ${GLFW_INCLUDE_DIRS})
+  set_source_files_properties(src/ui/map_view.cpp PROPERTIES COMPILE_OPTIONS "-Wno-unused-function")
   target_link_libraries(droneid_ui PRIVATE
     droneid_ui_worker droneid_dji imgui ${GLFW_LIBRARIES} OpenGL::GL ${CMAKE_DL_LIBS})
   target_link_directories(droneid_ui PRIVATE ${GLFW_LIBRARY_DIRS})
@@ -242,7 +247,10 @@ if(DRONEID_WITH_UI)
   # let the (linuxbrew) linker defer them, as the UHD targets already do.
   droneid_runtime_link(droneid_ui)
   if(WIN32)
-    target_link_libraries(droneid_ui PRIVATE comdlg32)
+    target_link_libraries(droneid_ui PRIVATE comdlg32 winhttp)
+  else()
+    find_package(CURL REQUIRED)
+    target_link_libraries(droneid_ui PRIVATE CURL::libcurl)
   endif()
   message(STATUS "droneid: UI enabled (GLFW ${GLFW_VERSION})")
 endif()

@@ -1,0 +1,125 @@
+-- droneid: UHD found ()
+-- Including Win32 support
+-- droneid: UI enabled (GLFW )
+-- droneid: UHD=ON UI=ON SQLITE=OFF GTEST=OFF
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/sudeep/Music/punjdrone/build/windows
+Consolidate compiler generated dependencies of target droneid_ui_model
+Consolidate compiler generated dependencies of target turbofec
+Consolidate compiler generated dependencies of target droneid_core
+[  1%] Building CXX object CMakeFiles/droneid_ui_model.dir/src/ui/ui_model.cpp.obj
+Consolidate compiler generated dependencies of target glfw
+[  7%] Built target turbofec
+[  7%] Building CXX object CMakeFiles/droneid_core.dir/src/core/sweep.cpp.obj
+[ 25%] Built target glfw
+Consolidate compiler generated dependencies of target imgui
+[ 30%] Built target imgui
+[ 31%] Linking CXX static library libdroneid_core.a
+[ 35%] Built target droneid_core
+Consolidate compiler generated dependencies of target iq_replay
+Consolidate compiler generated dependencies of target droneid
+Consolidate compiler generated dependencies of target droneid_odid
+[ 36%] Linking CXX executable droneid.exe
+[ 37%] Linking CXX executable iq_replay.exe
+[ 42%] Built target droneid_odid
+Consolidate compiler generated dependencies of target iq_gen
+[ 43%] Linking CXX executable iq_gen.exe
+[ 44%] Built target iq_gen
+Consolidate compiler generated dependencies of target channelize
+[ 45%] Linking CXX executable channelize.exe
+[ 46%] Built target droneid
+[ 47%] Built target iq_replay
+Consolidate compiler generated dependencies of target droneid_sdr
+Consolidate compiler generated dependencies of target droneid_dji
+[ 48%] Built target droneid_sdr
+[ 54%] Built target droneid_dji
+Consolidate compiler generated dependencies of target burst_scan
+Consolidate compiler generated dependencies of target df_bearing
+[ 55%] Linking CXX executable burst_scan.exe
+[ 55%] Linking CXX executable df_bearing.exe
+[ 56%] Built target channelize
+Consolidate compiler generated dependencies of target iq_record_pair
+[ 57%] Linking CXX executable iq_record_pair.exe
+[ 58%] Built target df_bearing
+Consolidate compiler generated dependencies of target test_ring_buffer
+[ 59%] Linking CXX executable test_ring_buffer.exe
+[ 59%] Built target burst_scan
+Consolidate compiler generated dependencies of target test_file_source
+[ 60%] Linking CXX executable test_file_source.exe
+[ 61%] Built target test_ring_buffer
+Consolidate compiler generated dependencies of target test_config
+[ 63%] Linking CXX executable test_config.exe
+[ 63%] Built target iq_record_pair
+Consolidate compiler generated dependencies of target test_receiver
+[ 63%] Building CXX object tests/CMakeFiles/test_receiver.dir/test_receiver.cpp.obj
+[ 64%] Built target test_file_source
+Consolidate compiler generated dependencies of target test_odid
+[ 65%] Linking CXX executable test_odid.exe
+[ 66%] Built target test_config
+Consolidate compiler generated dependencies of target test_odid_wifi
+[ 67%] Linking CXX executable test_odid_wifi.exe
+[ 68%] Built target test_odid
+Consolidate compiler generated dependencies of target test_dji
+[ 69%] Linking CXX executable test_dji.exe
+[ 70%] Built target test_odid_wifi
+Consolidate compiler generated dependencies of target test_resampler
+[ 71%] Linking CXX executable test_resampler.exe
+[ 72%] Linking CXX static library libdroneid_ui_model.a
+[ 72%] Built target droneid_ui_model
+Consolidate compiler generated dependencies of target odid_decode
+[ 73%] Linking CXX executable odid_decode.exe
+[ 74%] Built target test_resampler
+Consolidate compiler generated dependencies of target odid_gen
+[ 74%] Linking CXX executable odid_gen.exe
+[ 75%] Built target odid_gen
+[ 75%] Built target test_dji
+Consolidate compiler generated dependencies of target iq_record
+Consolidate compiler generated dependencies of target droneid_decode
+[ 75%] Linking CXX executable droneid_decode.exe
+[ 75%] Linking CXX executable iq_record.exe
+[ 76%] Built target odid_decode
+Consolidate compiler generated dependencies of target frame_gen
+[ 77%] Linking CXX executable frame_gen.exe
+[ 78%] Built target iq_record
+Consolidate compiler generated dependencies of target droneid_rf
+[ 81%] Built target droneid_rf
+Consolidate compiler generated dependencies of target droneid_hop
+[ 82%] Linking CXX executable droneid_hop.exe
+[ 83%] Built target droneid_decode
+Consolidate compiler generated dependencies of target droneid_ui_worker
+[ 84%] Building CXX object CMakeFiles/droneid_ui_worker.dir/src/ui/receiver_worker.cpp.obj
+[ 85%] Built target frame_gen
+Consolidate compiler generated dependencies of target test_ui_model
+[ 86%] Building CXX object tests/CMakeFiles/test_ui_model.dir/test_ui_model.cpp.obj
+[ 87%] Built target droneid_hop
+[ 88%] Building CXX object CMakeFiles/droneid_ui_worker.dir/src/ui/odid_worker.cpp.obj
+[ 89%] Linking CXX executable test_receiver.exe
+[ 89%] Built target test_receiver
+Consolidate compiler generated dependencies of target test_rf_metrics
+[ 89%] Linking CXX executable test_rf_metrics.exe
+[ 90%] Built target test_rf_metrics
+Consolidate compiler generated dependencies of target test_o4_detector
+[ 90%] Linking CXX executable test_o4_detector.exe
+[ 91%] Linking CXX executable test_ui_model.exe
+[ 92%] Built target test_o4_detector
+Consolidate compiler generated dependencies of target rf_analyze
+[ 93%] Linking CXX executable rf_analyze.exe
+[ 93%] Built target test_ui_model
+Consolidate compiler generated dependencies of target o4_detect
+[ 94%] Linking CXX executable o4_detect.exe
+[ 95%] Built target o4_detect
+[ 95%] Built target rf_analyze
+[ 95%] Linking CXX static library libdroneid_ui_worker.a
+[ 95%] Built target droneid_ui_worker
+Consolidate compiler generated dependencies of target test_ui_worker
+Consolidate compiler generated dependencies of target droneid_ui
+[ 95%] Building CXX object tests/CMakeFiles/test_ui_worker.dir/test_ui_worker.cpp.obj
+[ 96%] Building CXX object CMakeFiles/droneid_sweep.dir/tools/droneid_sweep.cpp.obj
+[ 97%] Building CXX object CMakeFiles/droneid_ui.dir/src/ui/app.cpp.obj
+[ 98%] Linking CXX executable droneid_sweep.exe
+[ 98%] Built target droneid_sweep
+[100%] Linking CXX executable test_ui_worker.exe
+[100%] Linking CXX executable droneid_ui.exe
+[100%] Built target test_ui_worker
+[100%] Built target droneid_ui

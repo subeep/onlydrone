@@ -1,0 +1,177 @@
+[
+  {
+    "name": "test_ring_buffer",
+    "command": [
+      "/tmp/punjdrone-win-toolchain/root/usr/lib/wine/wine64",
+      "build/windows/tests/test_ring_buffer.exe"
+    ],
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "test_file_source",
+    "command": [
+      "/tmp/punjdrone-win-toolchain/root/usr/lib/wine/wine64",
+      "build/windows/tests/test_file_source.exe"
+    ],
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "test_config",
+    "command": [
+      "/tmp/punjdrone-win-toolchain/root/usr/lib/wine/wine64",
+      "build/windows/tests/test_config.exe"
+    ],
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "test_receiver",
+    "command": [
+      "/tmp/punjdrone-win-toolchain/root/usr/lib/wine/wine64",
+      "build/windows/tests/test_receiver.exe"
+    ],
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "test_ui_model",
+    "command": [
+      "/tmp/punjdrone-win-toolchain/root/usr/lib/wine/wine64",
+      "build/windows/tests/test_ui_model.exe"
+    ],
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "test_odid",
+    "command": [
+      "/tmp/punjdrone-win-toolchain/root/usr/lib/wine/wine64",
+      "build/windows/tests/test_odid.exe"
+    ],
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "test_odid_wifi",
+    "command": [
+      "/tmp/punjdrone-win-toolchain/root/usr/lib/wine/wine64",
+      "build/windows/tests/test_odid_wifi.exe"
+    ],
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "test_ui_worker",
+    "command": [
+      "/tmp/punjdrone-win-toolchain/root/usr/lib/wine/wine64",
+      "build/windows/tests/test_ui_worker.exe"
+    ],
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "test_dji",
+    "command": [
+      "/tmp/punjdrone-win-toolchain/root/usr/lib/wine/wine64",
+      "build/windows/tests/test_dji.exe"
+    ],
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "test_resampler",
+    "command": [
+      "/tmp/punjdrone-win-toolchain/root/usr/lib/wine/wine64",
+      "build/windows/tests/test_resampler.exe"
+    ],
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "test_rf_metrics",
+    "command": [
+      "/tmp/punjdrone-win-toolchain/root/usr/lib/wine/wine64",
+      "build/windows/tests/test_rf_metrics.exe"
+    ],
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "test_o4_detector",
+    "command": [
+      "/tmp/punjdrone-win-toolchain/root/usr/lib/wine/wine64",
+      "build/windows/tests/test_o4_detector.exe"
+    ],
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "replay-mini2",
+    "command": [
+      "/tmp/punjdrone-win-toolchain/root/usr/lib/wine/wine64",
+      "build/windows/droneid_ui.exe",
+      "--check",
+      "--replay",
+      "tests/data/mini2_wideband.cf32",
+      "--format",
+      "cf32",
+      "--rate",
+      "50e6",
+      "--auto-center"
+    ],
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "missing-input",
+    "command": [
+      "/tmp/punjdrone-win-toolchain/root/usr/lib/wine/wine64",
+      "build/windows/droneid_ui.exe",
+      "--check",
+      "--replay",
+      "does-not-exist.iq"
+    ],
+    "exit_code": 1,
+    "passed": true
+  },
+  {
+    "name": "invalid-rate",
+    "command": [
+      "/tmp/punjdrone-win-toolchain/root/usr/lib/wine/wine64",
+      "build/windows/droneid_ui.exe",
+      "--check",
+      "--replay",
+      "tests/data/mini2_wideband.cf32",
+      "--rate",
+      "nan"
+    ],
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "name": "sweep-plan",
+    "command": [
+      "/tmp/punjdrone-win-toolchain/root/usr/lib/wine/wine64",
+      "build/windows/droneid_sweep.exe",
+      "--profile",
+      "balanced",
+      "--jitter",
+      "0"
+    ],
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "sweep-invalid-settle",
+    "command": [
+      "/tmp/punjdrone-win-toolchain/root/usr/lib/wine/wine64",
+      "build/windows/droneid_sweep.exe",
+      "--settle",
+      "0"
+    ],
+    "exit_code": 1,
+    "passed": true
+  }
+]

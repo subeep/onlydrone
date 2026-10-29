@@ -1,0 +1,503 @@
+Start testing: Oct 29 07:14 IST
+----------------------------------------------------------
+1/18 Testing: test_ring_buffer
+1/18 Test: test_ring_buffer
+Command: "/home/sudeep/Music/punjdrone/build/tests/test_ring_buffer"
+Directory: /home/sudeep/Music/punjdrone/build/tests
+"test_ring_buffer" start time: Oct 29 07:14 IST
+Output:
+----------------------------------------------------------
+[ RUN    ] RingBuffer.RoundsCapacityToPowerOfTwo
+[     OK ] RingBuffer.RoundsCapacityToPowerOfTwo
+[ RUN    ] RingBuffer.WriteThenRead
+[     OK ] RingBuffer.WriteThenRead
+[ RUN    ] RingBuffer.WriteClampsWhenFull
+[     OK ] RingBuffer.WriteClampsWhenFull
+[ RUN    ] RingBuffer.WrapAroundPreservesOrder
+[     OK ] RingBuffer.WrapAroundPreservesOrder
+[ RUN    ] RingBuffer.SpscThreadedNoLoss
+[     OK ] RingBuffer.SpscThreadedNoLoss
+----
+5 case(s), 0 failing
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"test_ring_buffer" end time: Oct 29 07:14 IST
+"test_ring_buffer" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/18 Testing: test_file_source
+2/18 Test: test_file_source
+Command: "/home/sudeep/Music/punjdrone/build/tests/test_file_source"
+Directory: /home/sudeep/Music/punjdrone/build/tests
+"test_file_source" start time: Oct 29 07:14 IST
+Output:
+----------------------------------------------------------
+[ RUN    ] FileSource.ReadsCf32Exactly
+[     OK ] FileSource.ReadsCf32Exactly
+[ RUN    ] FileSource.ReadsSc16WithinTolerance
+[     OK ] FileSource.ReadsSc16WithinTolerance
+[ RUN    ] FileSource.PartialLastBlockCountsSamplesOnly
+[     OK ] FileSource.PartialLastBlockCountsSamplesOnly
+----
+3 case(s), 0 failing
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"test_file_source" end time: Oct 29 07:14 IST
+"test_file_source" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/18 Testing: test_config
+3/18 Test: test_config
+Command: "/home/sudeep/Music/punjdrone/build/tests/test_config"
+Directory: /home/sudeep/Music/punjdrone/build/tests
+"test_config" start time: Oct 29 07:14 IST
+Output:
+----------------------------------------------------------
+[ RUN    ] Config.ParsesKnownKeysAndIgnoresSectionsAndComments
+[     OK ] Config.ParsesKnownKeysAndIgnoresSectionsAndComments
+[ RUN    ] Config.MissingFileThrows
+[     OK ] Config.MissingFileThrows
+----
+2 case(s), 0 failing
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"test_config" end time: Oct 29 07:14 IST
+"test_config" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/18 Testing: test_receiver
+4/18 Test: test_receiver
+Command: "/home/sudeep/Music/punjdrone/build/tests/test_receiver"
+Directory: /home/sudeep/Music/punjdrone/build/tests
+"test_receiver" start time: Oct 29 07:14 IST
+Output:
+----------------------------------------------------------
+[ RUN    ] Hop.TimingAndCoverageModel
+[     OK ] Hop.TimingAndCoverageModel
+[ RUN    ] Hop.RejectInvalidInputs
+[     OK ] Hop.RejectInvalidInputs
+[ RUN    ] Sweep.ProfilesCoverageRotationAndBudget
+[     OK ] Sweep.ProfilesCoverageRotationAndBudget
+[ RUN    ] Sweep.RejectsLateStartGapOverflowAndPartialDwell
+[     OK ] Sweep.RejectsLateStartGapOverflowAndPartialDwell
+[ RUN    ] Direction.CalibratedAnglesAndRejections
+[     OK ] Direction.CalibratedAnglesAndRejections
+[ RUN    ] DfGate1.PairedBlockAndManifestTransaction
+[     OK ] DfGate1.PairedBlockAndManifestTransaction
+[ RUN    ] DfGate2And3.CalibrationLifecycleAndQualityGates
+[     OK ] DfGate2And3.CalibrationLifecycleAndQualityGates
+[ RUN    ] DfReview.LoadedCalibrationCannotBypassGainOrRig
+[     OK ] DfReview.LoadedCalibrationCannotBypassGainOrRig
+[ RUN    ] DfReview.SymmetricOutOfBandEnergyIsNotAnInBandSignal
+[     OK ] DfReview.SymmetricOutOfBandEnergyIsNotAnInBandSignal
+----
+9 case(s), 0 failing
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test_receiver" end time: Oct 29 07:14 IST
+"test_receiver" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/18 Testing: test_ui_model
+5/18 Test: test_ui_model
+Command: "/home/sudeep/Music/punjdrone/build/tests/test_ui_model"
+Directory: /home/sudeep/Music/punjdrone/build/tests
+"test_ui_model" start time: Oct 29 07:14 IST
+Output:
+----------------------------------------------------------
+[ RUN    ] UiChecklist.MarkerDetection
+[     OK ] UiChecklist.MarkerDetection
+[ RUN    ] UiChecklist.ParseGroupsAndItems
+[     OK ] UiChecklist.ParseGroupsAndItems
+[ RUN    ] UiChecklist.InPlaceEditPreservesProse
+[     OK ] UiChecklist.InPlaceEditPreservesProse
+[ RUN    ] UiModel.PacketRingBounded
+[     OK ] UiModel.PacketRingBounded
+[ RUN    ] UiModel.TrackUpsertAndBearing
+[     OK ] UiModel.TrackUpsertAndBearing
+[ RUN    ] UiModel.MetricsUpdatesPreservePacketCounts
+[     OK ] UiModel.MetricsUpdatesPreservePacketCounts
+[ RUN    ] UiModel.UnsupportedPayloadDoesNotInventTrack
+[     OK ] UiModel.UnsupportedPayloadDoesNotInventTrack
+[ RUN    ] UiModelDf.InvalidationClearsStaleArrowsAndTracksRejectionReasons
+[     OK ] UiModelDf.InvalidationClearsStaleArrowsAndTracksRejectionReasons
+[ RUN    ] UiModelDf.JsonEscapesUntrustedText
+[     OK ] UiModelDf.JsonEscapesUntrustedText
+----
+9 case(s), 0 failing
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"test_ui_model" end time: Oct 29 07:14 IST
+"test_ui_model" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/18 Testing: test_odid
+6/18 Test: test_odid
+Command: "/home/sudeep/Music/punjdrone/build/tests/test_odid"
+Directory: /home/sudeep/Music/punjdrone/build/tests
+"test_odid" start time: Oct 29 07:14 IST
+Output:
+----------------------------------------------------------
+[ RUN    ] Odid.BasicIdVector
+[     OK ] Odid.BasicIdVector
+[ RUN    ] Odid.LocationScalingVector
+[     OK ] Odid.LocationScalingVector
+[ RUN    ] Odid.LocationSpeedMultiplierAndUnknowns
+[     OK ] Odid.LocationSpeedMultiplierAndUnknowns
+[ RUN    ] Odid.LocationRejectsOutOfRange
+[     OK ] Odid.LocationRejectsOutOfRange
+[ RUN    ] Odid.SystemVector
+[     OK ] Odid.SystemVector
+[ RUN    ] Odid.SelfIdOperatorIdAndAuth
+[     OK ] Odid.SelfIdOperatorIdAndAuth
+[ RUN    ] Odid.BinaryIdsAreHex
+[     OK ] Odid.BinaryIdsAreHex
+[ RUN    ] Odid.MessagePack
+[     OK ] Odid.MessagePack
+[ RUN    ] Odid.MalformedPacks
+[     OK ] Odid.MalformedPacks
+[ RUN    ] Odid.PackKeepsValidMessagesAndCountsRejected
+[     OK ] Odid.PackKeepsValidMessagesAndCountsRejected
+[ RUN    ] Odid.EncoderRoundTrip
+[     OK ] Odid.EncoderRoundTrip
+[ RUN    ] Odid.MergeKeepsIdentityAcrossFrames
+[     OK ] Odid.MergeKeepsIdentityAcrossFrames
+[ RUN    ] OdidMac.Crc32KnownValue
+[     OK ] OdidMac.Crc32KnownValue
+[ RUN    ] OdidMac.BeaconRoundTrip
+[     OK ] OdidMac.BeaconRoundTrip
+[ RUN    ] OdidMac.NanRoundTrip
+[     OK ] OdidMac.NanRoundTrip
+[ RUN    ] OdidMac.RejectsNonOdidAndCorruptFrames
+[     OK ] OdidMac.RejectsNonOdidAndCorruptFrames
+----
+16 case(s), 0 failing
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"test_odid" end time: Oct 29 07:14 IST
+"test_odid" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/18 Testing: test_odid_wifi
+7/18 Test: test_odid_wifi
+Command: "/home/sudeep/Music/punjdrone/build/tests/test_odid_wifi"
+Directory: /home/sudeep/Music/punjdrone/build/tests
+"test_odid_wifi" start time: Oct 29 07:14 IST
+Output:
+----------------------------------------------------------
+[ RUN    ] WifiPhy.PlcpCrcMatchesStandardExample
+[     OK ] WifiPhy.PlcpCrcMatchesStandardExample
+[ RUN    ] WifiPhy.OfdmScramblerSequence
+[     OK ] WifiPhy.OfdmScramblerSequence
+[ RUN    ] WifiPhy.ConvEncoderImpulseResponse
+[     OK ] WifiPhy.ConvEncoderImpulseResponse
+[ RUN    ] WifiPhy.OfdmAllRatesBeaconAndNan
+[     OK ] WifiPhy.OfdmAllRatesBeaconAndNan
+[ RUN    ] WifiPhy.DsssRatesAndPreambles
+[     OK ] WifiPhy.DsssRatesAndPreambles
+[ RUN    ] WifiPhy.OtherSampleRatesCfoAndClockOffset
+[     OK ] WifiPhy.OtherSampleRatesCfoAndClockOffset
+[ RUN    ] WifiPhy.FrequencyOffsetOptionRecentresChannel
+[     OK ] WifiPhy.FrequencyOffsetOptionRecentresChannel
+[ RUN    ] WifiPhy.ScramblerSeedsAreTransparent
+[     OK ] WifiPhy.ScramblerSeedsAreTransparent
+[ RUN    ] WifiPhy.FcsFailureIsNotReported
+[     OK ] WifiPhy.FcsFailureIsNotReported
+[ RUN    ] WifiPhy.NonOdidAndMalformedFramesAreCounted
+[     OK ] WifiPhy.NonOdidAndMalformedFramesAreCounted
+[ RUN    ] WifiPhy.StreamChunkBoundariesReportEachFrameOnce
+[     OK ] WifiPhy.StreamChunkBoundariesReportEachFrameOnce
+[ RUN    ] WifiPhy.BackToBackOfdmFrames
+[     OK ] WifiPhy.BackToBackOfdmFrames
+[ RUN    ] WifiPhy.TruncatedFrameAtStreamEnd
+[     OK ] WifiPhy.TruncatedFrameAtStreamEnd
+[ RUN    ] WifiPhy.NoiseToneAndSilenceProduceNothing
+[     OK ] WifiPhy.NoiseToneAndSilenceProduceNothing
+----
+14 case(s), 0 failing
+<end of output>
+Test time =   0.36 sec
+----------------------------------------------------------
+Test Passed.
+"test_odid_wifi" end time: Oct 29 07:14 IST
+"test_odid_wifi" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/18 Testing: test_odid_cli
+8/18 Test: test_odid_cli
+Command: "/usr/bin/cmake" "-DGEN=/home/sudeep/Music/punjdrone/build/odid_gen" "-DDECODE=/home/sudeep/Music/punjdrone/build/odid_decode" "-DUI=/home/sudeep/Music/punjdrone/build/droneid_ui" "-DWORK=/home/sudeep/Music/punjdrone/build/tests/odid_cli" "-P" "/home/sudeep/Music/punjdrone/tests/test_odid_cli.cmake"
+Directory: /home/sudeep/Music/punjdrone/build/tests
+"test_odid_cli" start time: Oct 29 07:14 IST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.23 sec
+----------------------------------------------------------
+Test Passed.
+"test_odid_cli" end time: Oct 29 07:14 IST
+"test_odid_cli" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/18 Testing: test_sweep_cli
+9/18 Test: test_sweep_cli
+Command: "/usr/bin/cmake" "-DSWEEP=/home/sudeep/Music/punjdrone/build/droneid_sweep" "-P" "/home/sudeep/Music/punjdrone/tests/test_sweep_cli.cmake"
+Directory: /home/sudeep/Music/punjdrone/build/tests
+"test_sweep_cli" start time: Oct 29 07:14 IST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"test_sweep_cli" end time: Oct 29 07:14 IST
+"test_sweep_cli" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/18 Testing: test_ui_worker
+10/18 Test: test_ui_worker
+Command: "/home/sudeep/Music/punjdrone/build/tests/test_ui_worker"
+Directory: /home/sudeep/Music/punjdrone/build/tests
+"test_ui_worker" start time: Oct 29 07:14 IST
+Output:
+----------------------------------------------------------
+[ RUN    ] UiWorker.O4EvidenceMatchesStreamingWithoutInventingTrack
+[     OK ] UiWorker.O4EvidenceMatchesStreamingWithoutInventingTrack
+[ RUN    ] UiWorker.ReplayMatchesBackendAndTrackCount
+[     OK ] UiWorker.ReplayMatchesBackendAndTrackCount
+[ RUN    ] UiWorker.WindowBoundaryHasNeitherLossNorDuplicates
+[     OK ] UiWorker.WindowBoundaryHasNeitherLossNorDuplicates
+[ RUN    ] UiWorker.ResetDropsPartialWindow
+[     OK ] UiWorker.ResetDropsPartialWindow
+[ RUN    ] UiWorker.StopAndMissingFileAreHandled
+[     OK ] UiWorker.StopAndMissingFileAreHandled
+[ RUN    ] UiWorker.DfRejectsCrossSessionCalibrationWithoutOpeningRadio
+[     OK ] UiWorker.DfRejectsCrossSessionCalibrationWithoutOpeningRadio
+[ RUN    ] UiWorker.UnsupportedCrcPayloadIsLoggedWithoutTelemetry
+[     OK ] UiWorker.UnsupportedCrcPayloadIsLoggedWithoutTelemetry
+[ RUN    ] UiWorker.PairedQueueDropsWholePairNeverSingleChannel
+[     OK ] UiWorker.PairedQueueDropsWholePairNeverSingleChannel
+[ RUN    ] UiWorker.PairedReplayAssociatesDecodedAndUnknownRfBearingsAndRejectsMalformedPairs
+[     OK ] UiWorker.PairedReplayAssociatesDecodedAndUnknownRfBearingsAndRejectsMalformedPairs
+[ RUN    ] UiWorker.PairedChunkIndependenceAndPassbandRejection
+[     OK ] UiWorker.PairedChunkIndependenceAndPassbandRejection
+[ RUN    ] SweepWorker.O4HistoryDoesNotCrossRetunes
+[     OK ] SweepWorker.O4HistoryDoesNotCrossRetunes
+[ RUN    ] SweepWorker.DecodesDroneIdAtSharedTwentyMsps
+[     OK ] SweepWorker.DecodesDroneIdAtSharedTwentyMsps
+[ RUN    ] SweepWorker.DecodesWifiRidAtSharedTwentyMsps
+[     OK ] SweepWorker.DecodesWifiRidAtSharedTwentyMsps
+----
+13 case(s), 0 failing
+<end of output>
+Test time =   1.70 sec
+----------------------------------------------------------
+Test Passed.
+"test_ui_worker" end time: Oct 29 07:14 IST
+"test_ui_worker" time elapsed: 00:00:01
+----------------------------------------------------------
+
+11/18 Testing: test_df_cli
+11/18 Test: test_df_cli
+Command: "/usr/bin/cmake" "-E" "env" "DRONEID_BUILD_DIR=/home/sudeep/Music/punjdrone/build" "/home/linuxbrew/.linuxbrew/bin/python3" "/home/sudeep/Music/punjdrone/tests/test_df_cli.py"
+Directory: /home/sudeep/Music/punjdrone/build/tests
+"test_df_cli" start time: Oct 29 07:14 IST
+Output:
+----------------------------------------------------------
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.169s
+
+OK
+<end of output>
+Test time =   0.23 sec
+----------------------------------------------------------
+Test Passed.
+"test_df_cli" end time: Oct 29 07:14 IST
+"test_df_cli" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/18 Testing: test_ui_cli
+12/18 Test: test_ui_cli
+Command: "/usr/bin/cmake" "-DUI=/home/sudeep/Music/punjdrone/build/droneid_ui" "-DFIXTURE=/home/sudeep/Music/punjdrone/tests/data/mini2_wideband.cf32" "-P" "/home/sudeep/Music/punjdrone/tests/test_ui_cli.cmake"
+Directory: /home/sudeep/Music/punjdrone/build/tests
+"test_ui_cli" start time: Oct 29 07:14 IST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.33 sec
+----------------------------------------------------------
+Test Passed.
+"test_ui_cli" end time: Oct 29 07:14 IST
+"test_ui_cli" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/18 Testing: test_dji
+13/18 Test: test_dji
+Command: "/home/sudeep/Music/punjdrone/build/tests/test_dji"
+Directory: /home/sudeep/Music/punjdrone/build/tests
+"test_dji" start time: Oct 29 07:14 IST
+Output:
+----------------------------------------------------------
+07:14:45 [INFO ] decoder input 15.360 MSPS -> 15.360 MSPS, shift +0 Hz
+07:14:45 [INFO ] decoder input 15.360 MSPS -> 15.360 MSPS, shift +0 Hz
+07:14:45 [INFO ] decoder input 15.360 MSPS -> 15.360 MSPS, shift +0 Hz
+07:14:46 [INFO ] decoder input 15.360 MSPS -> 15.360 MSPS, shift +0 Hz
+07:14:46 [INFO ] decoder input 15.360 MSPS -> 15.360 MSPS, shift +0 Hz
+07:14:46 [INFO ] decoder input 50.000 MSPS -> 15.360 MSPS, shift -9600000 Hz
+07:14:46 [INFO ] decoder input 50.000 MSPS -> 15.360 MSPS, shift -9600000 Hz
+07:14:46 [INFO ] decoder input 50.000 MSPS -> 15.360 MSPS, shift -9713745 Hz (auto)
+07:14:47 [INFO ] decoder input 50.000 MSPS -> 15.360 MSPS, shift -0 Hz (auto)
+07:14:47 [INFO ] decoder input 50.000 MSPS -> 15.360 MSPS, shift -9600000 Hz
+07:14:47 [INFO ] decoder input 50.000 MSPS -> 15.360 MSPS, shift -9600000 Hz
+[ RUN    ] DjiTurbo.RoundTrip
+[     OK ] DjiTurbo.RoundTrip
+[ RUN    ] DjiScrambler.DeterministicAndBinary
+[     OK ] DjiScrambler.DeterministicAndBinary
+[ RUN    ] DjiEndToEnd.SynthesizeThenDecode
+[     OK ] DjiEndToEnd.SynthesizeThenDecode
+[ RUN    ] DjiEndToEnd.IntegerCarrierOffset
+[     OK ] DjiEndToEnd.IntegerCarrierOffset
+[ RUN    ] DjiEndToEnd.RealMini2Capture
+[     OK ] DjiEndToEnd.RealMini2Capture
+[ RUN    ] DjiFile.ChunkBoundaryAndSampleLimit
+[     OK ] DjiFile.ChunkBoundaryAndSampleLimit
+[ RUN    ] DjiFrame.RejectsTruncatedAndUnsupportedRecords
+[     OK ] DjiFrame.RejectsTruncatedAndUnsupportedRecords
+[ RUN    ] DjiEndToEnd.RawWidebandMini2
+[     OK ] DjiEndToEnd.RawWidebandMini2
+[ RUN    ] DjiEndToEnd.NativeWidebandSynthetic
+[     OK ] DjiEndToEnd.NativeWidebandSynthetic
+[ RUN    ] DjiFile.WidebandStreamingMatchesMemory
+[     OK ] DjiFile.WidebandStreamingMatchesMemory
+[ RUN    ] DjiEnvelope.VerifiedLayoutsAndCorruption
+[     OK ] DjiEnvelope.VerifiedLayoutsAndCorruption
+[ RUN    ] DjiEnvelope.InvalidLengths
+[     OK ] DjiEnvelope.InvalidLengths
+[ RUN    ] DjiPairedReview.BearingWindowsRemainInOriginalSampleDomain
+[     OK ] DjiPairedReview.BearingWindowsRemainInOriginalSampleDomain
+----
+13 case(s), 0 failing
+<end of output>
+Test time =   3.64 sec
+----------------------------------------------------------
+Test Passed.
+"test_dji" end time: Oct 29 07:14 IST
+"test_dji" time elapsed: 00:00:03
+----------------------------------------------------------
+
+14/18 Testing: test_resampler
+14/18 Test: test_resampler
+Command: "/home/sudeep/Music/punjdrone/build/tests/test_resampler"
+Directory: /home/sudeep/Music/punjdrone/build/tests
+"test_resampler" start time: Oct 29 07:14 IST
+Output:
+----------------------------------------------------------
+[ RUN    ] Resampler.StreamingMatchesContinuousTime
+[     OK ] Resampler.StreamingMatchesContinuousTime
+[ RUN    ] Resampler.RejectsAliasedEnergy
+[     OK ] Resampler.RejectsAliasedEnergy
+[ RUN    ] Resampler.PreservesOccupiedBand
+[     OK ] Resampler.PreservesOccupiedBand
+[ RUN    ] Resampler.EmptyAndInvalidInput
+[     OK ] Resampler.EmptyAndInvalidInput
+----
+4 case(s), 0 failing
+<end of output>
+Test time =   0.08 sec
+----------------------------------------------------------
+Test Passed.
+"test_resampler" end time: Oct 29 07:14 IST
+"test_resampler" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/18 Testing: test_rf_metrics
+15/18 Test: test_rf_metrics
+Command: "/home/sudeep/Music/punjdrone/build/tests/test_rf_metrics"
+Directory: /home/sudeep/Music/punjdrone/build/tests
+"test_rf_metrics" start time: Oct 29 07:14 IST
+Output:
+----------------------------------------------------------
+[ RUN    ] Rf.ToneMetrics
+[     OK ] Rf.ToneMetrics
+[ RUN    ] Rf.ChunkIndependentAndBounded
+[     OK ] Rf.ChunkIndependentAndBounded
+[ RUN    ] Rf.SilenceAndInvalidConfiguration
+[     OK ] Rf.SilenceAndInvalidConfiguration
+----
+3 case(s), 0 failing
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"test_rf_metrics" end time: Oct 29 07:14 IST
+"test_rf_metrics" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/18 Testing: test_o4_detector
+16/18 Test: test_o4_detector
+Command: "/home/sudeep/Music/punjdrone/build/tests/test_o4_detector"
+Directory: /home/sudeep/Music/punjdrone/build/tests
+"test_o4_detector" start time: Oct 29 07:14 IST
+Output:
+----------------------------------------------------------
+[ RUN    ] O4Evidence.StructureRatesAndChunkContinuity
+[     OK ] O4Evidence.StructureRatesAndChunkContinuity
+[ RUN    ] O4Evidence.RejectsNoiseToneWifiAndOtherNumerology
+[     OK ] O4Evidence.RejectsNoiseToneWifiAndOtherNumerology
+[ RUN    ] O4Evidence.ClippingInvalidSamplesAndShortInput
+[     OK ] O4Evidence.ClippingInvalidSamplesAndShortInput
+[ RUN    ] O4Evidence.WeakStructureRequiresLongPersistenceAndResetsOnGap
+[     OK ] O4Evidence.WeakStructureRequiresLongPersistenceAndResetsOnGap
+----
+4 case(s), 0 failing
+<end of output>
+Test time =   1.56 sec
+----------------------------------------------------------
+Test Passed.
+"test_o4_detector" end time: Oct 29 07:14 IST
+"test_o4_detector" time elapsed: 00:00:01
+----------------------------------------------------------
+
+17/18 Testing: test_receiver_cli
+17/18 Test: test_receiver_cli
+Command: "/usr/bin/cmake" "-DHOP=/home/sudeep/Music/punjdrone/build/droneid_hop" "-DRF=/home/sudeep/Music/punjdrone/build/rf_analyze" "-DDF=/home/sudeep/Music/punjdrone/build/df_bearing" "-DFIXTURE=/home/sudeep/Music/punjdrone/tests/data/mini2_centered.sc16" "-P" "/home/sudeep/Music/punjdrone/tests/test_receiver_cli.cmake"
+Directory: /home/sudeep/Music/punjdrone/build/tests
+"test_receiver_cli" start time: Oct 29 07:14 IST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"test_receiver_cli" end time: Oct 29 07:14 IST
+"test_receiver_cli" time elapsed: 00:00:00
+----------------------------------------------------------
+
+18/18 Testing: test_decode_cli
+18/18 Test: test_decode_cli
+Command: "/usr/bin/cmake" "-DDECODER=/home/sudeep/Music/punjdrone/build/droneid_decode" "-DFIXTURE=/home/sudeep/Music/punjdrone/tests/data/mini2_wideband.cf32" "-P" "/home/sudeep/Music/punjdrone/tests/test_decode_cli.cmake"
+Directory: /home/sudeep/Music/punjdrone/build/tests
+"test_decode_cli" start time: Oct 29 07:14 IST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.24 sec
+----------------------------------------------------------
+Test Passed.
+"test_decode_cli" end time: Oct 29 07:14 IST
+"test_decode_cli" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 29 07:14 IST

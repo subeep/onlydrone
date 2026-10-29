@@ -1,0 +1,82 @@
+[  6%] Built target turbofec
+[ 11%] Built target droneid_core
+Consolidate compiler generated dependencies of target droneid_ui_model
+[ 12%] Built target droneid_ui_model
+[ 30%] Built target glfw
+[ 31%] Built target df_bearing
+[ 33%] Built target test_ring_buffer
+[ 35%] Built target test_file_source
+[ 36%] Built target test_receiver
+[ 38%] Built target test_config
+Consolidate compiler generated dependencies of target test_ui_model
+[ 44%] Built target droneid_odid
+[ 46%] Built target test_ui_model
+[ 48%] Built target droneid
+[ 50%] Built target iq_replay
+[ 52%] Built target iq_gen
+[ 54%] Built target channelize
+[ 55%] Building CXX object CMakeFiles/droneid_dji.dir/src/dji/dsp.cpp.obj
+[ 57%] Built target droneid_sdr
+[ 58%] Built target burst_scan
+[ 63%] Built target imgui
+[ 64%] Built target iq_record_pair
+[ 66%] Built target test_odid
+[ 68%] Built target test_odid_wifi
+[ 70%] Built target odid_decode
+[ 72%] Built target odid_gen
+[ 74%] Built target iq_record
+[ 75%] Linking CXX static library libdroneid_dji.a
+[ 79%] Built target droneid_dji
+[ 80%] Linking CXX executable droneid_decode.exe
+[ 80%] Linking CXX executable frame_gen.exe
+[ 81%] Built target frame_gen
+[ 81%] Built target droneid_decode
+[ 83%] Built target droneid_rf
+[ 83%] Linking CXX executable droneid_hop.exe
+[ 83%] Building CXX object tests/CMakeFiles/test_dji.dir/test_dji.cpp.obj
+[ 84%] Built target droneid_hop
+[ 85%] Linking CXX executable test_resampler.exe
+[ 86%] Built target test_resampler
+[ 86%] Linking CXX executable test_rf_metrics.exe
+[ 87%] Built target test_rf_metrics
+[ 87%] Linking CXX executable test_o4_detector.exe
+[ 88%] Built target test_o4_detector
+[ 89%] Linking CXX executable rf_analyze.exe
+[ 89%] Built target rf_analyze
+[ 89%] Linking CXX executable o4_detect.exe
+[ 90%] Built target o4_detect
+Consolidate compiler generated dependencies of target droneid_ui_worker
+[ 93%] Built target droneid_ui_worker
+Consolidate compiler generated dependencies of target droneid_sweep
+[ 93%] Linking CXX executable droneid_sweep.exe
+[ 94%] Linking CXX executable test_dji.exe
+[ 95%] Built target droneid_sweep
+Consolidate compiler generated dependencies of target droneid_ui
+[ 96%] Building CXX object CMakeFiles/droneid_ui.dir/src/ui/app.cpp.obj
+[ 96%] Built target test_dji
+[ 96%] Building CXX object tests/CMakeFiles/test_ui_worker.dir/test_ui_worker.cpp.obj
+[ 97%] Building CXX object CMakeFiles/droneid_ui.dir/src/ui/map_view.cpp.obj
+[ 98%] Linking CXX executable test_ui_worker.exe
+[ 98%] Built target test_ui_worker
+In file included from /home/sudeep/Music/punjdrone/src/ui/map_view.cpp:34:
+/home/sudeep/Music/punjdrone/third_party/stb/stb_image.h: In function ‘int stbi__parse_png_file(stbi__png*, int, int)’:
+/home/sudeep/Music/punjdrone/third_party/stb/stb_image.h:4948:45: warning: ‘tc16[2]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+ 4948 |          if (p[0] == tc[0] && p[1] == tc[1] && p[2] == tc[2])
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~
+/home/sudeep/Music/punjdrone/third_party/stb/stb_image.h:5082:17: note: ‘tc16[2]’ was declared here
+ 5082 |    stbi__uint16 tc16[3];
+      |                 ^~~~
+/home/sudeep/Music/punjdrone/third_party/stb/stb_image.h:4948:28: warning: ‘tc16[1]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+ 4948 |          if (p[0] == tc[0] && p[1] == tc[1] && p[2] == tc[2])
+      |              ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~
+/home/sudeep/Music/punjdrone/third_party/stb/stb_image.h:5082:17: note: ‘tc16[1]’ was declared here
+ 5082 |    stbi__uint16 tc16[3];
+      |                 ^~~~
+/home/sudeep/Music/punjdrone/third_party/stb/stb_image.h:4943:15: warning: ‘tc16[0]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+ 4943 |          p[1] = (p[0] == tc[0] ? 0 : 65535);
+      |          ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/sudeep/Music/punjdrone/third_party/stb/stb_image.h:5082:17: note: ‘tc16[0]’ was declared here
+ 5082 |    stbi__uint16 tc16[3];
+      |                 ^~~~
+[100%] Linking CXX executable droneid_ui.exe
+[100%] Built target droneid_ui

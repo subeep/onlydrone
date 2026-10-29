@@ -1,0 +1,23 @@
+{
+  "base_commit": "bb6bf238f773caac36d8ab70b9fb07577338bf63",
+  "snapshot_sha256": "0081d222585c783cec267e1bfaaa3652ad36ac9996819b004a1cf5bad0566a8d",
+  "binaries": {
+    "droneid_ui.exe": "1efa83767e82605c8ab94b13f4c90831f1b099dcf5911a63c43583fbb5e23f50",
+    "tools/droneid_decode.exe": "de45a852265d70584bae86d6167114f49a08b30686820523a854714312edf5b7",
+    "tools/iq_replay.exe": "da82a4ab7eeab2a3b9b26947885b20a31b26d96dd13610c513454d2eb7d01084",
+    "tools/iq_record.exe": "d7891e25e75246226486f60d5c1dfda44349ae77b3f9b3126e7a38489a0cc939",
+    "tools/odid_gen.exe": "095272589243c52c3ba1a4f208907c5ff9c063a1bd9531bb3f2bb31af05cd4e7",
+    "tools/frame_gen.exe": "1d0eb58466fd359e3a3f3b31c472e1d5ae2fde56dbd21e3d32207c7caab99f88",
+    "tools/odid_decode.exe": "de0ac7033b874f2a76eb9292f8f1020bdab827435499ac8771ec52da01f08ec5",
+    "tools/droneid.exe": "e2475f6418de42037ba88db9a135eb57aa6cbecefe66923ce640e94de566014b",
+    "tools/burst_scan.exe": "0baa82786c4f1b71f6ad58f1884a147a5cc9fbb68ea154191402b23f71f7b9b5",
+    "tools/droneid_hop.exe": "5d891c759cae8572c31102e4829c29ff93197f5ac189344ded86bf98f9ef0e29",
+    "tools/df_bearing.exe": "4e793c715a86cb1fc5415d76ebdd1f315f4b4985110139592f8cd79ccb16a0dc",
+    "tools/droneid_sweep.exe": "2968f886df9e7a81b33452b1555b929c1ae04726a1587f9a289379be6afe11df",
+    "tools/rf_analyze.exe": "217628ea6f42d28a61ef47cf6de8089ced8f2ed8946388c1d70657a01f5704a7",
+    "tools/channelize.exe": "2a97f6b7c27268ce813c4520ee30629c5bbdb589e6e6cd2585aa69fbb3bc6659",
+    "tools/o4_detect.exe": "14e00c6ddba6e79b140e5930c3e452f8751ea6da11c5e6ce5bd248fc15be2fb3",
+    "tools/iq_gen.exe": "8e591259fe44377965873a5e3dc94266b7196bc67f10eb16e6b8eea66feebdf6",
+    "tools/iq_record_pair.exe": "789c720a34a568f9b4dc9756c08ee36e7c3f5af116ea9a25d8cc47a444d92772"
+  }
+}

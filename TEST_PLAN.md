@@ -141,3 +141,31 @@ CTest covers the real Mini 2 golden checksum, supported v2 lengths, unknown/unsu
 corrupted inner data and invalid logical lengths. Python envelope tests match those guards.
 INFP occurs in O3+ and O4+ labels: never use it alone as an O4 classifier. No payload decryption or
 v3 telemetry mapping is claimed. Decoder output remains raw transport evidence when parsing fails.
+
+## Automatic sweep / Windows acceptance (2026-10-28)
+
+- Linux `test_receiver`: profile coverage, cycle rotation/budgets, invalid settings,
+  late starts, timestamp gaps, overflow and partial-dwell rejection.
+- `test_ui_worker`: O4 persistence never spans separate sweep captures.
+  Real Mini 2 and synthetic Wi-Fi RID also decode through the sweep dispatcher
+  at its shared 20 MSPS rate; the worker's 13 cases pass on Linux and Windows/Wine.
+- `test_sweep_cli`: plan-only default, full/optional bands and invalid arguments.
+- Linux CTest: 18/18 pass after sweep integration. Updated Windows targets pass 15 core
+  plus 3 additional checks under Wine (plan, invalid settle and O4 GUI parity); O4 CLI/UI
+  agree at 13/20 windows on the Air 3S prefix. New sweep controls were rendered and inspected.
+  Actual X310 sweep acceptance remains pending: the 23:15 IST attempt found no device.
+- Use `docs/AUTOMATIC_SWEEP.md` for frequency/dwell profiles, measured blind-interval
+  accounting, baseline/known-drone/mixed-source and disconnect/recovery acceptance.
+
+## Final packet/map and connected-radio verification — 2026-10-29
+
+- Verify real mouse selection of native and Windows/Wine packet rows: supported
+  telemetry, pilot-only/no drone GPS, and unsupported CRC-valid raw payloads.
+- Confirm Punjab default, exact clicked-packet snapshot, finite/ranged location
+  checks, explicit marker roles, pan/zoom and visible OpenStreetMap attribution.
+- Repeat retained O1/O2/O3/O3+ packet parity and the frozen 35-case O4 regression.
+- Run the actual X310 balanced sweep and sustained fixed-channel reception;
+  distinguish radio overflows/timestamp gaps from DSP queue drops.
+- Rebuild both platforms; verify Windows replay, maps, native DLL imports,
+  package/source checksums and complete license/document packaging.
+- Evidence and unresolved gates: `data/analysis/final_20261029/REPORT.md`.

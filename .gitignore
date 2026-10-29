@@ -9,7 +9,7 @@ imgui.ini
 *.a
 compile_commands.json
 data/**/*.cf32
-data/analysis/**/*.jsonl
+*.jsonl
 data/analysis/**/*.stderr
 __pycache__/
 *.pyc

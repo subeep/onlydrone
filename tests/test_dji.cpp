@@ -6,12 +6,33 @@
 #include <filesystem>
 #include <numeric>
 #include <vector>
+#include <atomic>
+#include <thread>
+#include "../src/dji/dsp.hpp"
 
 #include "droneid/dji.h"
 #include "droneid/file_source.h"
 #include "droneid/test/microtest.h"
 
 using namespace droneid;
+
+TEST(DjiDsp, ConcurrentFftPlansPreserveRoundTripsAcrossCacheEviction) {
+  std::atomic<bool> start{false},ok{true};
+  auto run=[&](int seed) {
+    while(!start.load()) std::this_thread::yield();
+    for(int pass=0;pass<80;++pass) {
+      std::vector<cf32> samples(128+(pass%40));
+      for(size_t i=0;i<samples.size();++i) samples[i]={float(std::sin(i*.13+seed)),float(std::cos(i*.17))};
+      const auto original=samples;
+      auto restored=dji::dsp::ifft(dji::dsp::fft(samples));
+      if(samples!=original || restored.size()!=samples.size()) ok=false;
+      for(size_t i=0;i<restored.size();++i)
+        if(!std::isfinite(std::abs(restored[i])) || std::abs(restored[i]-samples[i])>1e-4f) ok=false;
+    }
+  };
+  std::thread a(run,1),b(run,2);start=true;a.join();b.join();
+  EXPECT_TRUE(ok.load());
+}
 
 TEST(DjiTurbo, RoundTrip) {
   std::vector<uint8_t> user(91, 0);

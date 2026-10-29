@@ -1,0 +1,43 @@
+[  6%] Built target turbofec
+[ 11%] Built target droneid_core
+[ 12%] Built target droneid_ui_model
+[ 30%] Built target glfw
+[ 31%] Built target df_bearing
+[ 33%] Built target test_ring_buffer
+[ 35%] Built target test_file_source
+[ 37%] Built target test_config
+[ 38%] Built target test_receiver
+[ 40%] Built target test_ui_model
+[ 46%] Built target droneid_odid
+[ 48%] Built target droneid
+[ 50%] Built target iq_replay
+[ 52%] Built target iq_gen
+[ 54%] Built target channelize
+[ 56%] Built target droneid_sdr
+Consolidate compiler generated dependencies of target droneid_dji
+[ 62%] Built target droneid_dji
+[ 63%] Built target burst_scan
+[ 64%] Built target iq_record_pair
+[ 69%] Built target imgui
+[ 72%] Built target test_odid
+[ 73%] Built target test_odid_wifi
+Consolidate compiler generated dependencies of target test_dji
+[ 75%] Built target test_resampler
+[ 76%] Built target test_dji
+[ 78%] Built target odid_decode
+[ 80%] Built target odid_gen
+[ 82%] Built target droneid_decode
+[ 83%] Built target iq_record
+[ 85%] Built target droneid_rf
+[ 86%] Built target frame_gen
+[ 87%] Built target droneid_hop
+[ 90%] Built target droneid_ui_worker
+[ 91%] Built target test_rf_metrics
+[ 92%] Built target test_o4_detector
+[ 93%] Built target rf_analyze
+[ 94%] Built target o4_detect
+[ 95%] Built target droneid_sweep
+Consolidate compiler generated dependencies of target droneid_ui
+Consolidate compiler generated dependencies of target test_ui_worker
+[ 98%] Built target droneid_ui
+[100%] Built target test_ui_worker
