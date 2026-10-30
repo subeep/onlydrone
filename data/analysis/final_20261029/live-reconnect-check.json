@@ -9,5 +9,9 @@
     "Reconnect",
     "window close"
   ],
-  "screenshot": "data/analysis/final_20261029/live-reconnect.ppm"
+  "screenshot": "data/analysis/final_20261029/live-reconnect.ppm",
+  "status": "blocked",
+  "reason": "X310 unreachable at 192.168.10.2; GUI reports No devices found. Address routes via Wi-Fi gateway; 2/2 ICMP requests unanswered.",
+  "actions_note": "Button clicks were attempted; successful disconnect/connect/reconnect transitions were not observed.",
+  "network_evidence": "reconnect-network.log"
 }

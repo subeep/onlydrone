@@ -1,7 +1,2 @@
-12:46:22 [INFO ] UsrpSource: opening addr=192.168.10.2,master_clock_rate=200000000
+21:10:03 [INFO ] UsrpSource: opening addr=192.168.10.2,master_clock_rate=200000000
 [INFO] [UHD] linux; GNU C++ version 11.2.0; Boost_107400; UHD_4.1.0.5-3
-[INFO] [X300] X300 initialization sequence...
-[INFO] [X300] Maximum frame size: 1472 bytes.
-[INFO] [X300] Radio 1x clock: 200 MHz
-12:46:25 [WARN ] UsrpSource: ch0 bandwidth 20000000 Hz outside supported range; using 160000000 Hz
-12:46:25 [INFO ] UsrpSource: X310 326CF02 ch0 rate=20 MSPS center=2437 MHz gain=20 dB ant=RX2 wire=sc16 ref=locked

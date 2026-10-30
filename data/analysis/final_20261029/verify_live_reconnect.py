@@ -1,9 +1,14 @@
 import os,subprocess,time,json
 from pathlib import Path
-from x11_click import click
+
 out=Path('data/analysis/final_20261029');logfile=out/'live-reconnect.log'
 x='/tmp/punjdrone-win-toolchain/root/usr/bin/xdotool'
 env=dict(os.environ,LD_LIBRARY_PATH='/tmp/punjdrone-win-toolchain/root/usr/lib/x86_64-linux-gnu')
+def click(wid,xpos,ypos):
+ subprocess.run([x,'mousemove','--sync','--window',str(wid),str(xpos),str(ypos)],env=env,check=True)
+ time.sleep(.4)
+ subprocess.run([x,'click','1'],env=env,check=True)
+ time.sleep(.4)
 with logfile.open('w') as log:
  app=subprocess.Popen(['build/droneid_ui','--device','addr=192.168.10.2','--odid','--freq','2437000000','--gain','20','--frames','2400','--screenshot',str(out/'live-reconnect.ppm')],stdout=log,stderr=log)
  try:

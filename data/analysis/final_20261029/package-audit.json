@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "binaries_match_build": 17,
+  "source_files_match": 197,
+  "zip_crc": "passed",
+  "sha256": "passed",
+  "maps_and_final_report_packaged": true,
+  "archives": {
+    "punjdrone-windows-x64.zip": "b459e120a6c419386b2802ea7c3eba65821de032d7a251adc862c2e91235596f",
+    "punjdrone-windows-source.zip": "aa74571132f5c742053a513b87a58a0784ea68917314041e52b610f3fc7a9881"
+  }
+}

@@ -21,8 +21,13 @@
       drops, zero overflows/gaps; all 3,750 O4 evidence windows evaluated.
 - [x] Extended post-fix DJI run: 600 seconds / 9.216 billion samples, all 37,500 O4
       windows processed, zero packet/RF drops, gaps or overflows.
-- [ ] Finish final archive validation; see
-      `data/analysis/final_20261029/REPORT.md` for final results and outstanding gates.
+- [x] Final Windows binary/source archive audit: all 17 executables match the build,
+      all 197 source files match the working tree, SHA-256/ZIP CRC and packaged guides pass.
+- [ ] Positive live packet click and reconnect/recovery: no transmitter is on; the
+      21:10 IST follow-up also found X310 unreachable, routed via Wi-Fi. The GUI
+      displayed No devices found. Earlier live reception evidence remains valid.
+- Final results and outstanding gates: `docs/FINAL_VERIFICATION.md` and
+  `data/analysis/final_20261029/REPORT.md`.
 
 ## Software handoff — 2026-10-29
 - [x] Operator confirmed the X310 is disconnected; finish software first. Further radio

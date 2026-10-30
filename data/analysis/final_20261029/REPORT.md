@@ -23,6 +23,7 @@ messages contain configured coordinates near Greenwich, not the Punjab default.
 | Linux final CTest | 18/18 suites pass | `linux-ctest.log` |
 | Python validation utilities | 14/14 tests pass | `python-tests.log` |
 | Windows/Wine executable checks | 17/17 pass | `windows/checks.json` |
+| Distributed Windows folder smoke check | Packaged executable decodes bundled example: 1 packet, 1 track, valid inner CRC | `packaged-replay.log` |
 | Shared UI worker | 15 cases pass on Windows (also covered by Linux CTest) | `windows/test_ui_worker.log` |
 | Packet/model/map state | 12 cases pass on Windows | `windows/test_ui_model.log` |
 | DJI decoder + concurrent FFT | 14 cases pass on Windows | `windows/test_dji.log` |
@@ -32,7 +33,7 @@ messages contain configured coordinates near Greenwich, not the Punjab default.
 | Windows/Wine packet click: valid drone GPS | Passed on final build, including cached map with online downloads disabled | `windows-map-final-check.json`, `windows-map-final.png` |
 | Native click: pilot-only Mini 2 | Passed; details/pilot coordinates, Punjab default, no false drone marker | `map-native-retry-checks.json`, `native-pilot-only.png` |
 | Native click: unsupported CRC-valid Mavic 3 payload | Passed; raw payload/checksums, no invented telemetry | `map-native-retry-checks.json`, `native-unsupported.png` |
-| O4 regression | All 35 cases successful; every per-case count matches the frozen prior run | `o4-regression/results.json` |
+| O4 regression | All 35 cases completed and matched the frozen prior run; known detection misses remain | `o4-regression/results.json` |
 
 The packet corpus covers retained O1/O2/O3/O3+ transport examples. Unsupported
 formats remain explicitly unparsed despite valid transport/inner checksums.
@@ -105,12 +106,31 @@ new-array execution remains independent, following
 Tests exercise independent queue overflow, shared-buffer lifetime, and concurrent
 FFT round trips through cache eviction. Packet payload parity still passes.
 
+## Reconnect follow-up and package provenance
+
+At 21:10 IST the GUI reconnect check could not establish a radio connection.
+The GUI correctly displayed `No devices found`; the X310 address `192.168.10.2`
+was routed through the Wi-Fi gateway, with two unanswered ICMP probes.
+`live-reconnect-check.json`, `live-reconnect.png` and `reconnect-network.log`
+record this blocked check. The earlier attempt also did not observe the expected
+three radio opens; its results are preserved as `live-reconnect-first-attempt.*`.
+Neither attempt is counted as a successful disconnect/reconnect test. No
+transmitter was powered during this follow-up, as confirmed by the operator.
+
+The Windows x64 build uses MinGW-w64, static GLFW/FFTW and the runtime-loaded
+UHD C API. The source snapshot is based on commit `d75f394` with this follow-up's
+verification/report updates. `BUILD_MANIFEST.json` records the exact base commit,
+source archive hash and all 17 shipped executable hashes. `package-audit.json`
+passed for all 17 binaries against `build/windows/`, all 197 source files against
+the working tree, documentation/licensing, ZIP CRCs and distribution SHA-256 sums.
+
 ## Remaining release limits
 
 - Extended post-fix DJI throughput passed. Final archive integrity is recorded separately in `package-audit.json`.
 - A positive live packet click needs a powered transmitter; the operator confirms
   none is currently on. Live decoding and recorded-IQ clicking have separately
-  passed. Known-source reconnect/recovery and unplug tests remain.
+  passed. Reconnect/recovery and unplug tests remain; the follow-up could not
+  access the radio.
 - No native Windows + UHD/X310 acceptance has been performed. System DLL imports
   only, including the newly used `WINHTTP.dll`, are listed in `windows-imports.txt`.
 - O4 candidate classification has known misses; O4+ remains unresolved. CRC-valid

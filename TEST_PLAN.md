@@ -169,3 +169,10 @@ v3 telemetry mapping is claimed. Decoder output remains raw transport evidence w
 - Rebuild both platforms; verify Windows replay, maps, native DLL imports,
   package/source checksums and complete license/document packaging.
 - Evidence and unresolved gates: `data/analysis/final_20261029/REPORT.md`.
+
+Final follow-up: binary/source archive integrity passes (17 executables, 197 source
+files); see `package-audit.json`. GUI reconnect remains unverified: at 21:10 IST
+the X310 was unreachable and the GUI displayed No devices found. This does not
+replace the earlier completed connected-radio tests. A positive live packet click
+still needs a powered transmitter. Native Windows radio and physical DF remain
+separate acceptance gates.

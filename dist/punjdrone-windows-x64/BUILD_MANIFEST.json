@@ -1,6 +1,6 @@
 {
-  "base_commit": "bb6bf238f773caac36d8ab70b9fb07577338bf63",
-  "snapshot_sha256": "0081d222585c783cec267e1bfaaa3652ad36ac9996819b004a1cf5bad0566a8d",
+  "base_commit": "d75f39494ea86bfa214cb68d0b4bb40fc258a294",
+  "snapshot_sha256": "aa74571132f5c742053a513b87a58a0784ea68917314041e52b610f3fc7a9881",
   "binaries": {
     "droneid_ui.exe": "1efa83767e82605c8ab94b13f4c90831f1b099dcf5911a63c43583fbb5e23f50",
     "tools/droneid_decode.exe": "de45a852265d70584bae86d6167114f49a08b30686820523a854714312edf5b7",
